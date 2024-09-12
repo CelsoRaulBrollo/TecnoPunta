@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ProyectoTaller
 {
-    public partial class Form1 : Form
+    public partial class FormularioInicio : Form
     {
-        public Form1()
+        public FormularioInicio()
         {
             InitializeComponent();
+        }
+
+        private void BSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
