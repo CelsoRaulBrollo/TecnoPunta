@@ -40,6 +40,7 @@
             this.BInicioSesion = new System.Windows.Forms.Button();
             this.BSalir = new System.Windows.Forms.Button();
             this.LSub = new System.Windows.Forms.Label();
+            this.LValidaciones = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenLogin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,15 +117,19 @@
             // 
             this.TUsuario.Location = new System.Drawing.Point(453, 260);
             this.TUsuario.Name = "TUsuario";
-            this.TUsuario.Size = new System.Drawing.Size(270, 27);
+            this.TUsuario.Size = new System.Drawing.Size(272, 27);
             this.TUsuario.TabIndex = 8;
+            this.TUsuario.TextChanged += new System.EventHandler(this.TUsuario_TextChanged);
             // 
             // TContraseña
             // 
             this.TContraseña.Location = new System.Drawing.Point(453, 336);
+            this.TContraseña.MaxLength = 20;
             this.TContraseña.Name = "TContraseña";
-            this.TContraseña.Size = new System.Drawing.Size(270, 27);
-            this.TContraseña.TabIndex = 9;
+            this.TContraseña.Size = new System.Drawing.Size(272, 27);
+            this.TContraseña.TabIndex = 7;
+            this.TContraseña.UseSystemPasswordChar = true;
+            this.TContraseña.TextChanged += new System.EventHandler(this.TContraseña_TextChanged);
             // 
             // BInicioSesion
             // 
@@ -134,13 +139,14 @@
             this.BInicioSesion.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.BInicioSesion.FlatAppearance.BorderSize = 0;
             this.BInicioSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BInicioSesion.Location = new System.Drawing.Point(501, 394);
+            this.BInicioSesion.Location = new System.Drawing.Point(502, 408);
             this.BInicioSesion.Name = "BInicioSesion";
             this.BInicioSesion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BInicioSesion.Size = new System.Drawing.Size(172, 31);
             this.BInicioSesion.TabIndex = 16;
             this.BInicioSesion.Text = "Iniciar Sesion";
             this.BInicioSesion.UseVisualStyleBackColor = false;
+            this.BInicioSesion.Click += new System.EventHandler(this.BInicioSesion_Click);
             // 
             // BSalir
             // 
@@ -169,12 +175,29 @@
             this.LSub.TabIndex = 18;
             this.LSub.Text = "© 2024 Brollo | Capay";
             // 
+            // LValidaciones
+            // 
+            this.LValidaciones.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LValidaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LValidaciones.Enabled = false;
+            this.LValidaciones.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.LValidaciones.ForeColor = System.Drawing.Color.Firebrick;
+            this.LValidaciones.Location = new System.Drawing.Point(435, 371);
+            this.LValidaciones.Multiline = true;
+            this.LValidaciones.Name = "LValidaciones";
+            this.LValidaciones.ReadOnly = true;
+            this.LValidaciones.Size = new System.Drawing.Size(306, 31);
+            this.LValidaciones.TabIndex = 19;
+            this.LValidaciones.TabStop = false;
+            this.LValidaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FormularioInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(753, 511);
+            this.Controls.Add(this.LValidaciones);
             this.Controls.Add(this.LSub);
             this.Controls.Add(this.BSalir);
             this.Controls.Add(this.BInicioSesion);
@@ -213,6 +236,7 @@
         private System.Windows.Forms.Button BInicioSesion;
         private System.Windows.Forms.Button BSalir;
         private System.Windows.Forms.Label LSub;
+        private System.Windows.Forms.TextBox LValidaciones;
     }
 }
 
