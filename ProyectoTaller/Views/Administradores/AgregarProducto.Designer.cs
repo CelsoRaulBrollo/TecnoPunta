@@ -109,6 +109,7 @@
             this.TPrecio.Name = "TPrecio";
             this.TPrecio.Size = new System.Drawing.Size(205, 20);
             this.TPrecio.TabIndex = 6;
+            this.TPrecio.TextChanged += new System.EventHandler(this.TPrecio_TextChanged);
             // 
             // CBCategoria
             // 
