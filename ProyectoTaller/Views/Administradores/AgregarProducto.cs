@@ -21,5 +21,10 @@ namespace ProyectoTaller.Views.Administradores
         {
 
         }
+
+        private void TPrecio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
