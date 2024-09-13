@@ -118,6 +118,7 @@
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(205, 21);
             this.CBCategoria.TabIndex = 7;
+            this.CBCategoria.SelectedIndexChanged += new System.EventHandler(this.CBCategoria_SelectedIndexChanged);
             // 
             // TStock
             // 
@@ -125,6 +126,7 @@
             this.TStock.Name = "TStock";
             this.TStock.Size = new System.Drawing.Size(205, 20);
             this.TStock.TabIndex = 8;
+            this.TStock.TextChanged += new System.EventHandler(this.TStock_TextChanged);
             // 
             // LImagen
             // 
@@ -150,6 +152,7 @@
             this.BSalir.Text = "Salir       ";
             this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSalir.UseVisualStyleBackColor = true;
+            this.BSalir.Click += new System.EventHandler(this.BSalir_Click);
             // 
             // BBorrar
             // 
@@ -168,6 +171,7 @@
             this.BBorrar.Text = "Borrar Todo";
             this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBorrar.UseVisualStyleBackColor = true;
+            this.BBorrar.Click += new System.EventHandler(this.BBorrar_Click);
             // 
             // BAgregar
             // 
@@ -183,6 +187,7 @@
             this.BAgregar.Text = "Agregar    ";
             this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BAgregar.UseVisualStyleBackColor = true;
+            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
             // 
             // PBImagen
             // 
@@ -196,6 +201,7 @@
             this.PBImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PBImagen.TabIndex = 10;
             this.PBImagen.TabStop = false;
+            this.PBImagen.Click += new System.EventHandler(this.PBImagen_Click);
             // 
             // AgregarProducto
             // 
