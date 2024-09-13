@@ -61,6 +61,7 @@
             this.TNombreProducto.Name = "TNombreProducto";
             this.TNombreProducto.Size = new System.Drawing.Size(205, 20);
             this.TNombreProducto.TabIndex = 1;
+            this.TNombreProducto.TextChanged += new System.EventHandler(this.TNombreProducto_TextChanged);
             // 
             // LNombreProducto
             // 

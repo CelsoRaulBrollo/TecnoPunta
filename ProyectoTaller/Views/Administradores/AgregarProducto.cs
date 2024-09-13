@@ -17,5 +17,9 @@ namespace ProyectoTaller.Views.Administradores
             InitializeComponent();
         }
 
+        private void TNombreProducto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
