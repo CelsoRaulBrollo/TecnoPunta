@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTaller.Views.Administradores;
+using System;
 using System.Windows.Forms;
 
 namespace ProyectoTaller
@@ -13,7 +14,7 @@ namespace ProyectoTaller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormularioInicio());
+            Application.Run(new AgregarProducto());
         }
     }
 }
