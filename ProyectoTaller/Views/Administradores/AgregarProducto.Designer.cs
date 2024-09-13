@@ -56,7 +56,7 @@
             // 
             this.LTituloAgregar.AutoSize = true;
             this.LTituloAgregar.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloAgregar.Location = new System.Drawing.Point(281, 25);
+            this.LTituloAgregar.Location = new System.Drawing.Point(296, 25);
             this.LTituloAgregar.Name = "LTituloAgregar";
             this.LTituloAgregar.Size = new System.Drawing.Size(219, 28);
             this.LTituloAgregar.TabIndex = 0;
@@ -64,7 +64,7 @@
             // 
             // TNombreProducto
             // 
-            this.TNombreProducto.Location = new System.Drawing.Point(153, 96);
+            this.TNombreProducto.Location = new System.Drawing.Point(160, 96);
             this.TNombreProducto.Name = "TNombreProducto";
             this.TNombreProducto.Size = new System.Drawing.Size(205, 20);
             this.TNombreProducto.TabIndex = 1;
@@ -74,7 +74,7 @@
             // 
             this.LNombreProducto.AutoSize = true;
             this.LNombreProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LNombreProducto.Location = new System.Drawing.Point(72, 99);
+            this.LNombreProducto.Location = new System.Drawing.Point(79, 99);
             this.LNombreProducto.Name = "LNombreProducto";
             this.LNombreProducto.Size = new System.Drawing.Size(61, 17);
             this.LNombreProducto.TabIndex = 2;
@@ -84,7 +84,7 @@
             // 
             this.LPrecio.AutoSize = true;
             this.LPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LPrecio.Location = new System.Drawing.Point(72, 152);
+            this.LPrecio.Location = new System.Drawing.Point(79, 152);
             this.LPrecio.Name = "LPrecio";
             this.LPrecio.Size = new System.Drawing.Size(48, 17);
             this.LPrecio.TabIndex = 3;
@@ -94,7 +94,7 @@
             // 
             this.LCategoria.AutoSize = true;
             this.LCategoria.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LCategoria.Location = new System.Drawing.Point(72, 204);
+            this.LCategoria.Location = new System.Drawing.Point(79, 204);
             this.LCategoria.Name = "LCategoria";
             this.LCategoria.Size = new System.Drawing.Size(75, 17);
             this.LCategoria.TabIndex = 4;
@@ -104,7 +104,7 @@
             // 
             this.LStock.AutoSize = true;
             this.LStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LStock.Location = new System.Drawing.Point(72, 255);
+            this.LStock.Location = new System.Drawing.Point(79, 255);
             this.LStock.Name = "LStock";
             this.LStock.Size = new System.Drawing.Size(43, 17);
             this.LStock.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             // TPrecio
             // 
-            this.TPrecio.Location = new System.Drawing.Point(153, 149);
+            this.TPrecio.Location = new System.Drawing.Point(160, 149);
             this.TPrecio.Name = "TPrecio";
             this.TPrecio.Size = new System.Drawing.Size(205, 20);
             this.TPrecio.TabIndex = 6;
@@ -121,7 +121,7 @@
             // CBCategoria
             // 
             this.CBCategoria.FormattingEnabled = true;
-            this.CBCategoria.Location = new System.Drawing.Point(153, 200);
+            this.CBCategoria.Location = new System.Drawing.Point(160, 200);
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(205, 21);
             this.CBCategoria.TabIndex = 7;
@@ -129,7 +129,7 @@
             // 
             // TStock
             // 
-            this.TStock.Location = new System.Drawing.Point(153, 252);
+            this.TStock.Location = new System.Drawing.Point(160, 252);
             this.TStock.Name = "TStock";
             this.TStock.Size = new System.Drawing.Size(205, 20);
             this.TStock.TabIndex = 8;
@@ -139,7 +139,7 @@
             // 
             this.LImagen.AutoSize = true;
             this.LImagen.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LImagen.Location = new System.Drawing.Point(72, 307);
+            this.LImagen.Location = new System.Drawing.Point(79, 307);
             this.LImagen.Name = "LImagen";
             this.LImagen.Size = new System.Drawing.Size(58, 17);
             this.LImagen.TabIndex = 9;
@@ -149,14 +149,14 @@
             // 
             this.BSalir.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BSalir.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BSalir.Image = global::ProyectoTaller.Properties.Resources.Salir;
             this.BSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BSalir.Location = new System.Drawing.Point(543, 415);
+            this.BSalir.Location = new System.Drawing.Point(550, 415);
             this.BSalir.Name = "BSalir";
-            this.BSalir.Size = new System.Drawing.Size(114, 52);
+            this.BSalir.Size = new System.Drawing.Size(123, 52);
             this.BSalir.TabIndex = 13;
-            this.BSalir.Text = "Salir       ";
+            this.BSalir.Text = "Salir         ";
             this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSalir.UseVisualStyleBackColor = true;
             this.BSalir.Click += new System.EventHandler(this.BSalir_Click);
@@ -167,13 +167,13 @@
             this.BBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BBorrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BBorrar.FlatAppearance.BorderSize = 0;
-            this.BBorrar.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
             this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrar.Location = new System.Drawing.Point(543, 274);
+            this.BBorrar.Location = new System.Drawing.Point(550, 274);
             this.BBorrar.Name = "BBorrar";
-            this.BBorrar.Size = new System.Drawing.Size(114, 52);
+            this.BBorrar.Size = new System.Drawing.Size(123, 52);
             this.BBorrar.TabIndex = 12;
             this.BBorrar.Text = "Borrar Todo";
             this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -184,12 +184,12 @@
             // 
             this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BAgregar.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.Disco;
             this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(543, 344);
+            this.BAgregar.Location = new System.Drawing.Point(550, 344);
             this.BAgregar.Name = "BAgregar";
-            this.BAgregar.Size = new System.Drawing.Size(114, 52);
+            this.BAgregar.Size = new System.Drawing.Size(123, 52);
             this.BAgregar.TabIndex = 11;
             this.BAgregar.Text = "Agregar    ";
             this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -201,7 +201,7 @@
             this.PBImagen.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.PBImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PBImagen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PBImagen.Location = new System.Drawing.Point(153, 307);
+            this.PBImagen.Location = new System.Drawing.Point(160, 307);
             this.PBImagen.Name = "PBImagen";
             this.PBImagen.Size = new System.Drawing.Size(205, 152);
             this.PBImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -216,7 +216,7 @@
             this.LValiNombre.Enabled = false;
             this.LValiNombre.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValiNombre.ForeColor = System.Drawing.Color.Firebrick;
-            this.LValiNombre.Location = new System.Drawing.Point(153, 122);
+            this.LValiNombre.Location = new System.Drawing.Point(160, 122);
             this.LValiNombre.Multiline = true;
             this.LValiNombre.Name = "LValiNombre";
             this.LValiNombre.ReadOnly = true;
@@ -232,7 +232,7 @@
             this.LValiPrecio.Enabled = false;
             this.LValiPrecio.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValiPrecio.ForeColor = System.Drawing.Color.Firebrick;
-            this.LValiPrecio.Location = new System.Drawing.Point(153, 175);
+            this.LValiPrecio.Location = new System.Drawing.Point(160, 175);
             this.LValiPrecio.Multiline = true;
             this.LValiPrecio.Name = "LValiPrecio";
             this.LValiPrecio.ReadOnly = true;
@@ -248,7 +248,7 @@
             this.LValiCate.Enabled = false;
             this.LValiCate.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValiCate.ForeColor = System.Drawing.Color.Firebrick;
-            this.LValiCate.Location = new System.Drawing.Point(153, 227);
+            this.LValiCate.Location = new System.Drawing.Point(160, 227);
             this.LValiCate.Multiline = true;
             this.LValiCate.Name = "LValiCate";
             this.LValiCate.ReadOnly = true;
@@ -264,7 +264,7 @@
             this.LValiStock.Enabled = false;
             this.LValiStock.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValiStock.ForeColor = System.Drawing.Color.Firebrick;
-            this.LValiStock.Location = new System.Drawing.Point(153, 280);
+            this.LValiStock.Location = new System.Drawing.Point(160, 280);
             this.LValiStock.Multiline = true;
             this.LValiStock.Name = "LValiStock";
             this.LValiStock.ReadOnly = true;
@@ -280,7 +280,7 @@
             this.LValido.Enabled = false;
             this.LValido.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.LValido.ForeColor = System.Drawing.Color.Chartreuse;
-            this.LValido.Location = new System.Drawing.Point(278, 56);
+            this.LValido.Location = new System.Drawing.Point(285, 56);
             this.LValido.Multiline = true;
             this.LValido.Name = "LValido";
             this.LValido.ReadOnly = true;
@@ -291,9 +291,10 @@
             // 
             // BAgregarImagen
             // 
-            this.BAgregarImagen.Location = new System.Drawing.Point(364, 307);
+            this.BAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAgregarImagen.Location = new System.Drawing.Point(371, 307);
             this.BAgregarImagen.Name = "BAgregarImagen";
-            this.BAgregarImagen.Size = new System.Drawing.Size(98, 30);
+            this.BAgregarImagen.Size = new System.Drawing.Size(113, 34);
             this.BAgregarImagen.TabIndex = 25;
             this.BAgregarImagen.Text = "Agregar Imagen";
             this.BAgregarImagen.UseVisualStyleBackColor = true;
@@ -306,7 +307,7 @@
             this.LValiImagen.Enabled = false;
             this.LValiImagen.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValiImagen.ForeColor = System.Drawing.Color.Firebrick;
-            this.LValiImagen.Location = new System.Drawing.Point(153, 465);
+            this.LValiImagen.Location = new System.Drawing.Point(160, 465);
             this.LValiImagen.Multiline = true;
             this.LValiImagen.Name = "LValiImagen";
             this.LValiImagen.ReadOnly = true;
@@ -344,6 +345,7 @@
             this.Controls.Add(this.LTituloAgregar);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "AgregarProducto";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarProducto";
             ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).EndInit();
