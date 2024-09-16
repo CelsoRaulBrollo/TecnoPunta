@@ -35,12 +35,12 @@
             this.LDatos = new System.Windows.Forms.Label();
             this.LUsuario = new System.Windows.Forms.Label();
             this.LContraseña = new System.Windows.Forms.Label();
-            this.TUsuario = new System.Windows.Forms.TextBox();
-            this.TContraseña = new System.Windows.Forms.TextBox();
             this.BInicioSesion = new System.Windows.Forms.Button();
             this.BSalir = new System.Windows.Forms.Button();
             this.LSub = new System.Windows.Forms.Label();
             this.LValidaciones = new System.Windows.Forms.TextBox();
+            this.TUsuario = new System.Windows.Forms.TextBox();
+            this.TContraseña = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenLogin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,29 +113,10 @@
             this.LContraseña.TabIndex = 7;
             this.LContraseña.Text = "Contraseña";
             // 
-            // TUsuario
-            // 
-            this.TUsuario.Location = new System.Drawing.Point(453, 260);
-            this.TUsuario.Name = "TUsuario";
-            this.TUsuario.Size = new System.Drawing.Size(272, 27);
-            this.TUsuario.TabIndex = 8;
-            this.TUsuario.TextChanged += new System.EventHandler(this.TUsuario_TextChanged);
-            // 
-            // TContraseña
-            // 
-            this.TContraseña.Location = new System.Drawing.Point(453, 336);
-            this.TContraseña.MaxLength = 20;
-            this.TContraseña.Name = "TContraseña";
-            this.TContraseña.Size = new System.Drawing.Size(272, 27);
-            this.TContraseña.TabIndex = 7;
-            this.TContraseña.UseSystemPasswordChar = true;
-            this.TContraseña.TextChanged += new System.EventHandler(this.TContraseña_TextChanged);
-            // 
             // BInicioSesion
             // 
             this.BInicioSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(190)))), ((int)(((byte)(37)))));
             this.BInicioSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BInicioSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BInicioSesion.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.BInicioSesion.FlatAppearance.BorderSize = 0;
             this.BInicioSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -152,7 +133,6 @@
             // 
             this.BSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(24)))), ((int)(((byte)(86)))));
             this.BSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BSalir.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BSalir.FlatAppearance.BorderSize = 0;
             this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -181,7 +161,7 @@
             this.LValidaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LValidaciones.Enabled = false;
             this.LValidaciones.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.LValidaciones.ForeColor = System.Drawing.Color.Firebrick;
+            this.LValidaciones.ForeColor = System.Drawing.Color.Red;
             this.LValidaciones.Location = new System.Drawing.Point(435, 371);
             this.LValidaciones.Multiline = true;
             this.LValidaciones.Name = "LValidaciones";
@@ -191,18 +171,32 @@
             this.LValidaciones.TabStop = false;
             this.LValidaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // TUsuario
+            // 
+            this.TUsuario.Location = new System.Drawing.Point(452, 260);
+            this.TUsuario.Name = "TUsuario";
+            this.TUsuario.Size = new System.Drawing.Size(265, 27);
+            this.TUsuario.TabIndex = 20;
+            // 
+            // TContraseña
+            // 
+            this.TContraseña.Location = new System.Drawing.Point(453, 336);
+            this.TContraseña.Name = "TContraseña";
+            this.TContraseña.Size = new System.Drawing.Size(265, 27);
+            this.TContraseña.TabIndex = 21;
+            // 
             // FormularioInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(753, 511);
+            this.Controls.Add(this.TContraseña);
+            this.Controls.Add(this.TUsuario);
             this.Controls.Add(this.LValidaciones);
             this.Controls.Add(this.LSub);
             this.Controls.Add(this.BSalir);
             this.Controls.Add(this.BInicioSesion);
-            this.Controls.Add(this.TContraseña);
-            this.Controls.Add(this.TUsuario);
             this.Controls.Add(this.LContraseña);
             this.Controls.Add(this.LUsuario);
             this.Controls.Add(this.LDatos);
@@ -212,7 +206,6 @@
             this.Controls.Add(this.PBImagenLogin);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormularioInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -232,12 +225,12 @@
         private System.Windows.Forms.Label LDatos;
         private System.Windows.Forms.Label LUsuario;
         private System.Windows.Forms.Label LContraseña;
-        private System.Windows.Forms.TextBox TUsuario;
-        private System.Windows.Forms.TextBox TContraseña;
         private System.Windows.Forms.Button BInicioSesion;
         private System.Windows.Forms.Button BSalir;
         private System.Windows.Forms.Label LSub;
         private System.Windows.Forms.TextBox LValidaciones;
+        private System.Windows.Forms.TextBox TUsuario;
+        private System.Windows.Forms.TextBox TContraseña;
     }
 }
 

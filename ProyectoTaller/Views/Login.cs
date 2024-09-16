@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTaller.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,6 @@ namespace ProyectoTaller
 {
     public partial class FormularioInicio : Form
     {
-        private const string NombrePrueba = "brollo";
-        private const string ContraPrueba = "capay";
-
         public FormularioInicio()
         {
             InitializeComponent();
@@ -25,21 +23,40 @@ namespace ProyectoTaller
             this.Close();
         }
 
-        private void BInicioSesion_Click(object sender, EventArgs e)
+        public void BInicioSesion_Click(object sender, EventArgs e)
         {
             string nombre = TUsuario.Text;
             string contraseña = TContraseña.Text;
 
+            LValidaciones.Text = "";
+
             ValidarLogin(nombre, contraseña);
+
+            if (string.IsNullOrWhiteSpace(LValidaciones.Text))
+            {
+                // Validar usuario y contraseña correctos
+                if ((nombre == "Admin" && contraseña == "12345") || (nombre == "Vendedor" && contraseña == "45678"))
+                {
+                    MenuPrincipal menu = new MenuPrincipal(this, nombre);
+                    menu.Show();
+
+                    this.Hide();
+                }
+                else
+                {
+                    LValidaciones.Text = "Usuario o contraseña incorrectos.";
+                    LValidaciones.ForeColor = Color.Red;
+                }
+            }
         }
 
-        private void ValidarLogin(string nombre, string contraseña)
+        public void ValidarLogin(string nombre, string contraseña)
         {
             // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(nombre) && string.IsNullOrWhiteSpace(contraseña))
             {
                 LValidaciones.Text = "Por favor, ingrese su nombre y contraseña.";
-                LValidaciones.ForeColor = Color.Red; // Cambiar el color del texto si es un error
+                LValidaciones.ForeColor = Color.Red;
                 return;
             }
 
@@ -86,36 +103,24 @@ namespace ProyectoTaller
                 LValidaciones.ForeColor = Color.Red;
                 return;
             }
-
-            // Validación de nombre y contraseña correctos
-            if (nombre == NombrePrueba && contraseña == ContraPrueba)
-            {
-                LValidaciones.Text = "¡Acceso concedido!";
-                LValidaciones.ForeColor = Color.Green; // Cambiar a verde si es correcto
-            }
-            else
-            {
-                LValidaciones.Text = "Usuario o contraseña incorrectos.";
-                LValidaciones.ForeColor = Color.Red;
-            }
         }
 
-        private bool TieneNumero(string input)
+        public bool TieneNumero(string input)
         {
             return input.Any(char.IsDigit);
         }
 
-        private bool TieneMayuscula(string input)
+        public bool TieneMayuscula(string input)
         {
             return input.Any(char.IsUpper);
         }
 
-        private void TUsuario_TextChanged(object sender, EventArgs e)
+        public void TUsuario_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void TContraseña_TextChanged(object sender, EventArgs e)
+        public void TContraseña_TextChanged(object sender, EventArgs e)
         {
 
         }
