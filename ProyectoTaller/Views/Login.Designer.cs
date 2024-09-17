@@ -184,6 +184,7 @@
             this.TContraseña.Name = "TContraseña";
             this.TContraseña.Size = new System.Drawing.Size(265, 27);
             this.TContraseña.TabIndex = 21;
+            this.TContraseña.UseSystemPasswordChar = true;
             // 
             // FormularioInicio
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTaller.Views.Administradores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,11 +19,15 @@ namespace ProyectoTaller.Views
         private FormularioInicio _formularioInicio;
         private string _rolUsuario;
 
+        public static Form FormularioActivo;
+
         public MenuPrincipal(FormularioInicio formularioInicio, string rolUsuario)
         {
             InitializeComponent();
             _formularioInicio = formularioInicio;
             _rolUsuario = rolUsuario;
+
+            FormularioActivo = null;
 
             BotonesMenu();
         }
@@ -50,11 +55,6 @@ namespace ProyectoTaller.Views
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BAgregar_Click(object sender, EventArgs e)
         {
 
         }
@@ -109,6 +109,36 @@ namespace ProyectoTaller.Views
 
                 _formularioInicio.Show();
             }
+        }
+
+        private void MostrarFormularioEnPanel(Form formulario)
+        {
+            // Si hay un formulario activo, ciérralo
+            if (FormularioActivo != null)
+            {
+                FormularioActivo.Close();
+            }
+
+            FormularioActivo = formulario;
+
+            // Configura el formulario para que se muestre dentro del panel
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+
+            // Limpia el contenido anterior del panel y añade el nuevo formulario
+            PContenedor.Controls.Clear();
+            PContenedor.Controls.Add(formulario);
+
+            formulario.Show();
+        }
+
+        private void BAgregar_Click(object sender, EventArgs e)
+        {
+            // Crea una instancia del formulario AgregarProducto
+            Form agregarProductoForm = new AgregarProducto();
+            // Muestra el formulario en el panel PContenedor
+            MostrarFormularioEnPanel(agregarProductoForm);
         }
 
         private void BEditar_Click(object sender, EventArgs e)

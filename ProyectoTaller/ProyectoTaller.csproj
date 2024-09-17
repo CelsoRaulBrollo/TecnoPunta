@@ -179,5 +179,8 @@
   <ItemGroup>
     <None Include="Resources\Consulta.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AgregarMenu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

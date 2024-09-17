@@ -30,6 +30,7 @@ namespace ProyectoTaller.Views.Administradores
 
             if (string.IsNullOrWhiteSpace(nombreProducto))
             {
+                LValiNombre.ForeColor = Color.Red;
                 LValiNombre.Text = "Ingrese el nombre del producto.";
                 valido = false;
             }
@@ -37,21 +38,18 @@ namespace ProyectoTaller.Views.Administradores
             if (string.IsNullOrWhiteSpace(precioTexto) || !decimal.TryParse(precioTexto, out decimal precio) || precio <= 0)
             {
                 LValiPrecio.Text = "Ingrese un precio válido.";
-                LValiPrecio.ForeColor = Color.Red;
                 valido = false;
             }
 
             if (string.IsNullOrWhiteSpace(stockTexto) || !int.TryParse(stockTexto, out int stock) || stock < 0)
             {
                 LValiStock.Text = "Ingrese un stock válido.";
-                LValiStock.ForeColor = Color.Red;
                 valido = false;
             }
 
             if (string.IsNullOrEmpty(categoria))
             {
                 LValiCate.Text = "Seleccione una categoría.";
-                LValiCate.ForeColor = Color.Red;
                 valido = false;
             }
 
@@ -59,14 +57,12 @@ namespace ProyectoTaller.Views.Administradores
             if (PBImagen.Image == null)
             {
                 LValiImagen.Text = "Por favor, agregue una imagen.";
-                LValiImagen.ForeColor = Color.Red;
                 valido = false;
             }
 
             if (valido)
             {
                 LValido.Text = "Producto agregado exitosamente.";
-                LValido.ForeColor = Color.Green;
             }
         }
 

@@ -46,6 +46,7 @@ namespace ProyectoTaller.Views
             this.LTitulo = new System.Windows.Forms.Label();
             this.LSubtitulo = new System.Windows.Forms.Label();
             this.BCerrarSesion = new System.Windows.Forms.Button();
+            this.PContenedor = new System.Windows.Forms.Panel();
             this.MenuTitulo.SuspendLayout();
             this.MMenuOpciones.SuspendLayout();
             this.DragControl.SuspendLayout();
@@ -107,6 +108,7 @@ namespace ProyectoTaller.Views
             this.BAgregar.Size = new System.Drawing.Size(110, 55);
             this.BAgregar.Text = "Agregar";
             this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
             // 
             // BEditar
             // 
@@ -233,7 +235,7 @@ namespace ProyectoTaller.Views
             this.LTitulo.AutoSize = true;
             this.LTitulo.BackColor = System.Drawing.Color.Teal;
             this.LTitulo.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTitulo.Location = new System.Drawing.Point(361, 44);
+            this.LTitulo.Location = new System.Drawing.Point(375, 44);
             this.LTitulo.Name = "LTitulo";
             this.LTitulo.Size = new System.Drawing.Size(310, 56);
             this.LTitulo.TabIndex = 10;
@@ -244,7 +246,7 @@ namespace ProyectoTaller.Views
             this.LSubtitulo.AutoSize = true;
             this.LSubtitulo.BackColor = System.Drawing.Color.Teal;
             this.LSubtitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSubtitulo.Location = new System.Drawing.Point(476, 100);
+            this.LSubtitulo.Location = new System.Drawing.Point(527, 100);
             this.LSubtitulo.Name = "LSubtitulo";
             this.LSubtitulo.Size = new System.Drawing.Size(177, 22);
             this.LSubtitulo.TabIndex = 11;
@@ -263,11 +265,20 @@ namespace ProyectoTaller.Views
             this.BCerrarSesion.UseVisualStyleBackColor = false;
             this.BCerrarSesion.Click += new System.EventHandler(this.BCerrarSesion_Click);
             // 
+            // PContenedor
+            // 
+            this.PContenedor.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PContenedor.Location = new System.Drawing.Point(141, 146);
+            this.PContenedor.Name = "PContenedor";
+            this.PContenedor.Size = new System.Drawing.Size(886, 476);
+            this.PContenedor.TabIndex = 12;
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1027, 622);
+            this.Controls.Add(this.PContenedor);
             this.Controls.Add(this.LSubtitulo);
             this.Controls.Add(this.LTitulo);
             this.Controls.Add(this.BCerrarSesion);
@@ -309,5 +320,6 @@ namespace ProyectoTaller.Views
         private System.Windows.Forms.Label LTitulo;
         private System.Windows.Forms.Label LSubtitulo;
         private ToolStripMenuItem BAgregar;
+        private Panel PContenedor;
     }
 }
