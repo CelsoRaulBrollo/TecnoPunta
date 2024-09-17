@@ -103,6 +103,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Celulares {
+            get {
+                object obj = ResourceManager.GetObject("Celulares", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerrar_ventana {
             get {
                 object obj = ResourceManager.GetObject("cerrar_ventana", resourceCulture);
@@ -166,6 +176,16 @@ namespace ProyectoTaller.Properties {
         internal static System.Drawing.Bitmap Eliminar {
             get {
                 object obj = ResourceManager.GetObject("Eliminar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GuardarProducto {
+            get {
+                object obj = ResourceManager.GetObject("GuardarProducto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

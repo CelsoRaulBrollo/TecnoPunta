@@ -182,5 +182,11 @@
   <ItemGroup>
     <None Include="Resources\AgregarMenu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Celulares.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardarProducto.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

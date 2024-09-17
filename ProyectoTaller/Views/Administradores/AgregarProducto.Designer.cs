@@ -39,35 +39,44 @@
             this.CBCategoria = new System.Windows.Forms.ComboBox();
             this.TStock = new System.Windows.Forms.TextBox();
             this.LImagen = new System.Windows.Forms.Label();
-            this.BBorrar = new System.Windows.Forms.Button();
-            this.BAgregar = new System.Windows.Forms.Button();
-            this.PBImagen = new System.Windows.Forms.PictureBox();
             this.BAgregarImagen = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.PBImagenAgregar = new System.Windows.Forms.PictureBox();
             this.LValiNombre = new System.Windows.Forms.Label();
             this.LValiPrecio = new System.Windows.Forms.Label();
             this.LValiCate = new System.Windows.Forms.Label();
             this.LValiStock = new System.Windows.Forms.Label();
             this.LValiImagen = new System.Windows.Forms.Label();
             this.LValido = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).BeginInit();
+            this.BEliminar = new System.Windows.Forms.Button();
+            this.BEditar = new System.Windows.Forms.Button();
+            this.PBImagenAgregar = new System.Windows.Forms.PictureBox();
+            this.BBorrar = new System.Windows.Forms.Button();
+            this.BAgregar = new System.Windows.Forms.Button();
+            this.PBImagen = new System.Windows.Forms.PictureBox();
+            this.DGProductos = new System.Windows.Forms.DataGridView();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CImagen = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenAgregar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // LTituloAgregar
             // 
             this.LTituloAgregar.AutoSize = true;
             this.LTituloAgregar.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloAgregar.Location = new System.Drawing.Point(276, 17);
+            this.LTituloAgregar.Location = new System.Drawing.Point(73, 24);
             this.LTituloAgregar.Name = "LTituloAgregar";
-            this.LTituloAgregar.Size = new System.Drawing.Size(265, 36);
+            this.LTituloAgregar.Size = new System.Drawing.Size(155, 36);
             this.LTituloAgregar.TabIndex = 0;
-            this.LTituloAgregar.Text = "Agregar Producto";
+            this.LTituloAgregar.Text = "Productos";
             // 
             // TNombreProducto
             // 
-            this.TNombreProducto.Location = new System.Drawing.Point(185, 94);
+            this.TNombreProducto.Location = new System.Drawing.Point(221, 66);
             this.TNombreProducto.Name = "TNombreProducto";
             this.TNombreProducto.Size = new System.Drawing.Size(205, 20);
             this.TNombreProducto.TabIndex = 1;
@@ -77,7 +86,7 @@
             // 
             this.LNombreProducto.AutoSize = true;
             this.LNombreProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LNombreProducto.Location = new System.Drawing.Point(104, 97);
+            this.LNombreProducto.Location = new System.Drawing.Point(140, 69);
             this.LNombreProducto.Name = "LNombreProducto";
             this.LNombreProducto.Size = new System.Drawing.Size(61, 17);
             this.LNombreProducto.TabIndex = 2;
@@ -87,7 +96,7 @@
             // 
             this.LPrecio.AutoSize = true;
             this.LPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LPrecio.Location = new System.Drawing.Point(104, 150);
+            this.LPrecio.Location = new System.Drawing.Point(140, 113);
             this.LPrecio.Name = "LPrecio";
             this.LPrecio.Size = new System.Drawing.Size(48, 17);
             this.LPrecio.TabIndex = 3;
@@ -97,7 +106,7 @@
             // 
             this.LCategoria.AutoSize = true;
             this.LCategoria.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LCategoria.Location = new System.Drawing.Point(104, 202);
+            this.LCategoria.Location = new System.Drawing.Point(458, 69);
             this.LCategoria.Name = "LCategoria";
             this.LCategoria.Size = new System.Drawing.Size(75, 17);
             this.LCategoria.TabIndex = 4;
@@ -107,7 +116,7 @@
             // 
             this.LStock.AutoSize = true;
             this.LStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LStock.Location = new System.Drawing.Point(104, 253);
+            this.LStock.Location = new System.Drawing.Point(458, 111);
             this.LStock.Name = "LStock";
             this.LStock.Size = new System.Drawing.Size(43, 17);
             this.LStock.TabIndex = 5;
@@ -115,7 +124,7 @@
             // 
             // TPrecio
             // 
-            this.TPrecio.Location = new System.Drawing.Point(185, 147);
+            this.TPrecio.Location = new System.Drawing.Point(221, 110);
             this.TPrecio.Name = "TPrecio";
             this.TPrecio.Size = new System.Drawing.Size(205, 20);
             this.TPrecio.TabIndex = 6;
@@ -130,7 +139,7 @@
             "Xiaomi",
             "Huawei",
             "Motorola"});
-            this.CBCategoria.Location = new System.Drawing.Point(185, 198);
+            this.CBCategoria.Location = new System.Drawing.Point(539, 65);
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(205, 21);
             this.CBCategoria.TabIndex = 7;
@@ -139,7 +148,7 @@
             // 
             // TStock
             // 
-            this.TStock.Location = new System.Drawing.Point(185, 250);
+            this.TStock.Location = new System.Drawing.Point(539, 108);
             this.TStock.Name = "TStock";
             this.TStock.Size = new System.Drawing.Size(205, 20);
             this.TStock.TabIndex = 8;
@@ -149,64 +158,16 @@
             // 
             this.LImagen.AutoSize = true;
             this.LImagen.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LImagen.Location = new System.Drawing.Point(104, 305);
+            this.LImagen.Location = new System.Drawing.Point(140, 157);
             this.LImagen.Name = "LImagen";
             this.LImagen.Size = new System.Drawing.Size(58, 17);
             this.LImagen.TabIndex = 9;
             this.LImagen.Text = "Imagen";
             // 
-            // BBorrar
-            // 
-            this.BBorrar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BBorrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BBorrar.FlatAppearance.BorderSize = 0;
-            this.BBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
-            this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrar.Location = new System.Drawing.Point(525, 287);
-            this.BBorrar.Name = "BBorrar";
-            this.BBorrar.Size = new System.Drawing.Size(123, 52);
-            this.BBorrar.TabIndex = 12;
-            this.BBorrar.Text = "Borrar Todo";
-            this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BBorrar.UseVisualStyleBackColor = true;
-            this.BBorrar.Click += new System.EventHandler(this.BBorrar_Click);
-            // 
-            // BAgregar
-            // 
-            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.Disco;
-            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(525, 357);
-            this.BAgregar.Name = "BAgregar";
-            this.BAgregar.Size = new System.Drawing.Size(123, 52);
-            this.BAgregar.TabIndex = 11;
-            this.BAgregar.Text = "Agregar    ";
-            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAgregar.UseVisualStyleBackColor = true;
-            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
-            // 
-            // PBImagen
-            // 
-            this.PBImagen.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.PBImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PBImagen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PBImagen.Location = new System.Drawing.Point(240, 305);
-            this.PBImagen.Name = "PBImagen";
-            this.PBImagen.Size = new System.Drawing.Size(150, 116);
-            this.PBImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PBImagen.TabIndex = 10;
-            this.PBImagen.TabStop = false;
-            this.PBImagen.Click += new System.EventHandler(this.PBImagen_Click);
-            // 
             // BAgregarImagen
             // 
             this.BAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BAgregarImagen.Location = new System.Drawing.Point(107, 325);
+            this.BAgregarImagen.Location = new System.Drawing.Point(143, 177);
             this.BAgregarImagen.Name = "BAgregarImagen";
             this.BAgregarImagen.Size = new System.Drawing.Size(113, 34);
             this.BAgregarImagen.TabIndex = 25;
@@ -220,21 +181,12 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // PBImagenAgregar
-            // 
-            this.PBImagenAgregar.Image = global::ProyectoTaller.Properties.Resources.AgregarMenu;
-            this.PBImagenAgregar.Location = new System.Drawing.Point(559, 12);
-            this.PBImagenAgregar.Name = "PBImagenAgregar";
-            this.PBImagenAgregar.Size = new System.Drawing.Size(65, 67);
-            this.PBImagenAgregar.TabIndex = 27;
-            this.PBImagenAgregar.TabStop = false;
-            // 
             // LValiNombre
             // 
             this.LValiNombre.AutoSize = true;
             this.LValiNombre.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.LValiNombre.ForeColor = System.Drawing.Color.Red;
-            this.LValiNombre.Location = new System.Drawing.Point(185, 117);
+            this.LValiNombre.Location = new System.Drawing.Point(221, 89);
             this.LValiNombre.Name = "LValiNombre";
             this.LValiNombre.Size = new System.Drawing.Size(0, 13);
             this.LValiNombre.TabIndex = 28;
@@ -243,7 +195,7 @@
             // 
             this.LValiPrecio.AutoSize = true;
             this.LValiPrecio.ForeColor = System.Drawing.Color.Red;
-            this.LValiPrecio.Location = new System.Drawing.Point(185, 170);
+            this.LValiPrecio.Location = new System.Drawing.Point(221, 133);
             this.LValiPrecio.Name = "LValiPrecio";
             this.LValiPrecio.Size = new System.Drawing.Size(0, 13);
             this.LValiPrecio.TabIndex = 29;
@@ -252,7 +204,7 @@
             // 
             this.LValiCate.AutoSize = true;
             this.LValiCate.ForeColor = System.Drawing.Color.Red;
-            this.LValiCate.Location = new System.Drawing.Point(185, 222);
+            this.LValiCate.Location = new System.Drawing.Point(539, 89);
             this.LValiCate.Name = "LValiCate";
             this.LValiCate.Size = new System.Drawing.Size(0, 13);
             this.LValiCate.TabIndex = 30;
@@ -261,7 +213,7 @@
             // 
             this.LValiStock.AutoSize = true;
             this.LValiStock.ForeColor = System.Drawing.Color.Red;
-            this.LValiStock.Location = new System.Drawing.Point(185, 273);
+            this.LValiStock.Location = new System.Drawing.Point(539, 131);
             this.LValiStock.Name = "LValiStock";
             this.LValiStock.Size = new System.Drawing.Size(0, 13);
             this.LValiStock.TabIndex = 31;
@@ -270,7 +222,7 @@
             // 
             this.LValiImagen.AutoSize = true;
             this.LValiImagen.ForeColor = System.Drawing.Color.Red;
-            this.LValiImagen.Location = new System.Drawing.Point(237, 424);
+            this.LValiImagen.Location = new System.Drawing.Point(273, 276);
             this.LValiImagen.Name = "LValiImagen";
             this.LValiImagen.Size = new System.Drawing.Size(0, 13);
             this.LValiImagen.TabIndex = 32;
@@ -280,17 +232,165 @@
             this.LValido.AutoSize = true;
             this.LValido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValido.ForeColor = System.Drawing.Color.Green;
-            this.LValido.Location = new System.Drawing.Point(269, 58);
+            this.LValido.Location = new System.Drawing.Point(295, 24);
             this.LValido.Name = "LValido";
             this.LValido.Size = new System.Drawing.Size(0, 21);
             this.LValido.TabIndex = 33;
+            // 
+            // BEliminar
+            // 
+            this.BEliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BEliminar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BEliminar.FlatAppearance.BorderSize = 0;
+            this.BEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar;
+            this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BEliminar.Location = new System.Drawing.Point(719, 221);
+            this.BEliminar.Name = "BEliminar";
+            this.BEliminar.Size = new System.Drawing.Size(123, 52);
+            this.BEliminar.TabIndex = 35;
+            this.BEliminar.Text = "Eliminar";
+            this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEliminar.UseVisualStyleBackColor = true;
+            this.BEliminar.Click += new System.EventHandler(this.BEliminar_Click);
+            // 
+            // BEditar
+            // 
+            this.BEditar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEditar.Image = global::ProyectoTaller.Properties.Resources.editar2;
+            this.BEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BEditar.Location = new System.Drawing.Point(590, 221);
+            this.BEditar.Name = "BEditar";
+            this.BEditar.Size = new System.Drawing.Size(123, 52);
+            this.BEditar.TabIndex = 34;
+            this.BEditar.Text = "Editar    ";
+            this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEditar.UseVisualStyleBackColor = true;
+            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
+            // 
+            // PBImagenAgregar
+            // 
+            this.PBImagenAgregar.Image = global::ProyectoTaller.Properties.Resources.AgregarMenu;
+            this.PBImagenAgregar.Location = new System.Drawing.Point(5, 5);
+            this.PBImagenAgregar.Name = "PBImagenAgregar";
+            this.PBImagenAgregar.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenAgregar.TabIndex = 27;
+            this.PBImagenAgregar.TabStop = false;
+            // 
+            // BBorrar
+            // 
+            this.BBorrar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BBorrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BBorrar.FlatAppearance.BorderSize = 0;
+            this.BBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
+            this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BBorrar.Location = new System.Drawing.Point(461, 157);
+            this.BBorrar.Name = "BBorrar";
+            this.BBorrar.Size = new System.Drawing.Size(123, 52);
+            this.BBorrar.TabIndex = 12;
+            this.BBorrar.Text = "Borrar Todo";
+            this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BBorrar.UseVisualStyleBackColor = true;
+            this.BBorrar.Click += new System.EventHandler(this.BBorrar_Click);
+            // 
+            // BAgregar
+            // 
+            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
+            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BAgregar.Location = new System.Drawing.Point(461, 221);
+            this.BAgregar.Name = "BAgregar";
+            this.BAgregar.Size = new System.Drawing.Size(123, 52);
+            this.BAgregar.TabIndex = 11;
+            this.BAgregar.Text = "Agregar    ";
+            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregar.UseVisualStyleBackColor = true;
+            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
+            // 
+            // PBImagen
+            // 
+            this.PBImagen.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PBImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PBImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PBImagen.Location = new System.Drawing.Point(287, 157);
+            this.PBImagen.Name = "PBImagen";
+            this.PBImagen.Size = new System.Drawing.Size(139, 116);
+            this.PBImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBImagen.TabIndex = 10;
+            this.PBImagen.TabStop = false;
+            this.PBImagen.Click += new System.EventHandler(this.PBImagen_Click);
+            // 
+            // DGProductos
+            // 
+            this.DGProductos.AllowUserToAddRows = false;
+            this.DGProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CNombre,
+            this.CPrecio,
+            this.CCategoria,
+            this.CStock,
+            this.CImagen});
+            this.DGProductos.Location = new System.Drawing.Point(12, 332);
+            this.DGProductos.Name = "DGProductos";
+            this.DGProductos.Size = new System.Drawing.Size(863, 163);
+            this.DGProductos.TabIndex = 36;
+            // 
+            // CNombre
+            // 
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.MinimumWidth = 15;
+            this.CNombre.Name = "CNombre";
+            this.CNombre.Width = 220;
+            // 
+            // CPrecio
+            // 
+            this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.MinimumWidth = 25;
+            this.CPrecio.Name = "CPrecio";
+            this.CPrecio.Width = 150;
+            // 
+            // CCategoria
+            // 
+            this.CCategoria.HeaderText = "Categoría";
+            this.CCategoria.Name = "CCategoria";
+            this.CCategoria.Width = 200;
+            // 
+            // CStock
+            // 
+            this.CStock.HeaderText = "Stock";
+            this.CStock.Name = "CStock";
+            this.CStock.Width = 115;
+            // 
+            // CImagen
+            // 
+            this.CImagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CImagen.HeaderText = "Imagen";
+            this.CImagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.CImagen.Name = "CImagen";
+            this.CImagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CImagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CImagen.Width = 135;
             // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(800, 506);
+            this.ClientSize = new System.Drawing.Size(887, 507);
+            this.Controls.Add(this.DGProductos);
+            this.Controls.Add(this.BEliminar);
+            this.Controls.Add(this.BEditar);
             this.Controls.Add(this.LValido);
             this.Controls.Add(this.LValiImagen);
             this.Controls.Add(this.LValiStock);
@@ -317,8 +417,9 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarProducto";
-            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenAgregar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,5 +449,13 @@
         private System.Windows.Forms.Label LValiStock;
         private System.Windows.Forms.Label LValiImagen;
         private System.Windows.Forms.Label LValido;
+        private System.Windows.Forms.Button BEditar;
+        private System.Windows.Forms.Button BEliminar;
+        private System.Windows.Forms.DataGridView DGProductos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CStock;
+        private System.Windows.Forms.DataGridViewImageColumn CImagen;
     }
 }

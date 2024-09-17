@@ -41,9 +41,7 @@ namespace ProyectoTaller.Views
 
             if (_rolUsuario == "Admin")
             {
-               BAgregar.Visible = true;
-               BEditar.Visible = true;
-               BEliminar.Visible = true;
+               BProductos.Visible = true;
                BVentas.Visible = true;
                BConsultas.Visible = true;
                BUsuarios.Visible = true;
@@ -133,17 +131,12 @@ namespace ProyectoTaller.Views
             formulario.Show();
         }
 
-        private void BAgregar_Click(object sender, EventArgs e)
+        private void BProductos_Click(object sender, EventArgs e)
         {
             // Crea una instancia del formulario AgregarProducto
             Form agregarProductoForm = new AgregarProducto();
             // Muestra el formulario en el panel PContenedor
             MostrarFormularioEnPanel(agregarProductoForm);
-        }
-
-        private void BEditar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
