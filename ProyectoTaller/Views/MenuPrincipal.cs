@@ -94,7 +94,6 @@ namespace ProyectoTaller.Views
 
         private void BCerrarSesion_Click(object sender, EventArgs e)
         {
-            // Mostrar un cuadro de mensaje para confirmar la acción
             DialogResult result = MessageBox.Show(
                 "¿Estás seguro de que deseas cerrar sesión?",
                 "Confirmar cierre de sesión",
@@ -103,7 +102,7 @@ namespace ProyectoTaller.Views
 
             if (result == DialogResult.Yes)
             {
-                this.Close();  // Cerrar el formulario MenuPrincipal
+                this.Close();
 
                 _formularioInicio.Show();
             }
@@ -133,10 +132,28 @@ namespace ProyectoTaller.Views
 
         private void BProductos_Click(object sender, EventArgs e)
         {
-            // Crea una instancia del formulario AgregarProducto
             Form agregarProductoForm = new AgregarProducto();
-            // Muestra el formulario en el panel PContenedor
+
             MostrarFormularioEnPanel(agregarProductoForm);
+        }
+
+        private void BInicio_Click(object sender, EventArgs e)
+        {
+            PContenedor.Controls.Clear();
+
+            PContenedor.Visible = true;
+        }
+
+        private void BVentas_Click(object sender, EventArgs e)
+        {
+            Form agregarProductoForm = new VerVentas();
+
+            MostrarFormularioEnPanel(agregarProductoForm);
+        }
+
+        private void BConsultas_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

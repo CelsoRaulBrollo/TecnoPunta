@@ -333,6 +333,26 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap VentasTitulo {
+            get {
+                object obj = ResourceManager.GetObject("VentasTitulo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ver_detalle {
+            get {
+                object obj = ResourceManager.GetObject("Ver detalle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Weekend_Reading_06292017 {
             get {
                 object obj = ResourceManager.GetObject("Weekend-Reading-06292017", resourceCulture);

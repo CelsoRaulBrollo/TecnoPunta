@@ -47,28 +47,28 @@
             this.LValiStock = new System.Windows.Forms.Label();
             this.LValiImagen = new System.Windows.Forms.Label();
             this.LValido = new System.Windows.Forms.Label();
-            this.BEliminar = new System.Windows.Forms.Button();
-            this.BEditar = new System.Windows.Forms.Button();
-            this.PBImagenAgregar = new System.Windows.Forms.PictureBox();
-            this.BBorrar = new System.Windows.Forms.Button();
-            this.BAgregar = new System.Windows.Forms.Button();
-            this.PBImagen = new System.Windows.Forms.PictureBox();
             this.DGProductos = new System.Windows.Forms.DataGridView();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CImagen = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.PBImagenAgregar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).BeginInit();
+            this.BEliminar = new System.Windows.Forms.Button();
+            this.BEditar = new System.Windows.Forms.Button();
+            this.PBImagenTitulo = new System.Windows.Forms.PictureBox();
+            this.BBorrar = new System.Windows.Forms.Button();
+            this.BAgregar = new System.Windows.Forms.Button();
+            this.PBImagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // LTituloAgregar
             // 
             this.LTituloAgregar.AutoSize = true;
             this.LTituloAgregar.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloAgregar.Location = new System.Drawing.Point(73, 24);
+            this.LTituloAgregar.Location = new System.Drawing.Point(83, 11);
             this.LTituloAgregar.Name = "LTituloAgregar";
             this.LTituloAgregar.Size = new System.Drawing.Size(155, 36);
             this.LTituloAgregar.TabIndex = 0;
@@ -237,98 +237,6 @@
             this.LValido.Size = new System.Drawing.Size(0, 21);
             this.LValido.TabIndex = 33;
             // 
-            // BEliminar
-            // 
-            this.BEliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BEliminar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BEliminar.FlatAppearance.BorderSize = 0;
-            this.BEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar;
-            this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BEliminar.Location = new System.Drawing.Point(719, 221);
-            this.BEliminar.Name = "BEliminar";
-            this.BEliminar.Size = new System.Drawing.Size(123, 52);
-            this.BEliminar.TabIndex = 35;
-            this.BEliminar.Text = "Eliminar";
-            this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BEliminar.UseVisualStyleBackColor = true;
-            this.BEliminar.Click += new System.EventHandler(this.BEliminar_Click);
-            // 
-            // BEditar
-            // 
-            this.BEditar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BEditar.Image = global::ProyectoTaller.Properties.Resources.editar2;
-            this.BEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BEditar.Location = new System.Drawing.Point(590, 221);
-            this.BEditar.Name = "BEditar";
-            this.BEditar.Size = new System.Drawing.Size(123, 52);
-            this.BEditar.TabIndex = 34;
-            this.BEditar.Text = "Editar    ";
-            this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BEditar.UseVisualStyleBackColor = true;
-            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
-            // 
-            // PBImagenAgregar
-            // 
-            this.PBImagenAgregar.Image = global::ProyectoTaller.Properties.Resources.AgregarMenu;
-            this.PBImagenAgregar.Location = new System.Drawing.Point(5, 5);
-            this.PBImagenAgregar.Name = "PBImagenAgregar";
-            this.PBImagenAgregar.Size = new System.Drawing.Size(65, 67);
-            this.PBImagenAgregar.TabIndex = 27;
-            this.PBImagenAgregar.TabStop = false;
-            // 
-            // BBorrar
-            // 
-            this.BBorrar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BBorrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BBorrar.FlatAppearance.BorderSize = 0;
-            this.BBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
-            this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrar.Location = new System.Drawing.Point(461, 157);
-            this.BBorrar.Name = "BBorrar";
-            this.BBorrar.Size = new System.Drawing.Size(123, 52);
-            this.BBorrar.TabIndex = 12;
-            this.BBorrar.Text = "Borrar Todo";
-            this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BBorrar.UseVisualStyleBackColor = true;
-            this.BBorrar.Click += new System.EventHandler(this.BBorrar_Click);
-            // 
-            // BAgregar
-            // 
-            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
-            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(461, 221);
-            this.BAgregar.Name = "BAgregar";
-            this.BAgregar.Size = new System.Drawing.Size(123, 52);
-            this.BAgregar.TabIndex = 11;
-            this.BAgregar.Text = "Agregar    ";
-            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAgregar.UseVisualStyleBackColor = true;
-            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
-            // 
-            // PBImagen
-            // 
-            this.PBImagen.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.PBImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PBImagen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PBImagen.Location = new System.Drawing.Point(287, 157);
-            this.PBImagen.Name = "PBImagen";
-            this.PBImagen.Size = new System.Drawing.Size(139, 116);
-            this.PBImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PBImagen.TabIndex = 10;
-            this.PBImagen.TabStop = false;
-            this.PBImagen.Click += new System.EventHandler(this.PBImagen_Click);
-            // 
             // DGProductos
             // 
             this.DGProductos.AllowUserToAddRows = false;
@@ -382,6 +290,98 @@
             this.CImagen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.CImagen.Width = 135;
             // 
+            // BEliminar
+            // 
+            this.BEliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BEliminar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BEliminar.FlatAppearance.BorderSize = 0;
+            this.BEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar;
+            this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BEliminar.Location = new System.Drawing.Point(719, 221);
+            this.BEliminar.Name = "BEliminar";
+            this.BEliminar.Size = new System.Drawing.Size(123, 52);
+            this.BEliminar.TabIndex = 35;
+            this.BEliminar.Text = "Eliminar";
+            this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEliminar.UseVisualStyleBackColor = true;
+            this.BEliminar.Click += new System.EventHandler(this.BEliminar_Click);
+            // 
+            // BEditar
+            // 
+            this.BEditar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEditar.Image = global::ProyectoTaller.Properties.Resources.editar2;
+            this.BEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BEditar.Location = new System.Drawing.Point(590, 221);
+            this.BEditar.Name = "BEditar";
+            this.BEditar.Size = new System.Drawing.Size(123, 52);
+            this.BEditar.TabIndex = 34;
+            this.BEditar.Text = "Editar    ";
+            this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEditar.UseVisualStyleBackColor = true;
+            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
+            // 
+            // PBImagenTitulo
+            // 
+            this.PBImagenTitulo.Image = global::ProyectoTaller.Properties.Resources.AgregarMenu;
+            this.PBImagenTitulo.Location = new System.Drawing.Point(12, 12);
+            this.PBImagenTitulo.Name = "PBImagenTitulo";
+            this.PBImagenTitulo.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenTitulo.TabIndex = 27;
+            this.PBImagenTitulo.TabStop = false;
+            // 
+            // BBorrar
+            // 
+            this.BBorrar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BBorrar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BBorrar.FlatAppearance.BorderSize = 0;
+            this.BBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
+            this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BBorrar.Location = new System.Drawing.Point(461, 157);
+            this.BBorrar.Name = "BBorrar";
+            this.BBorrar.Size = new System.Drawing.Size(123, 52);
+            this.BBorrar.TabIndex = 12;
+            this.BBorrar.Text = "Borrar Todo";
+            this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BBorrar.UseVisualStyleBackColor = true;
+            this.BBorrar.Click += new System.EventHandler(this.BBorrar_Click);
+            // 
+            // BAgregar
+            // 
+            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
+            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BAgregar.Location = new System.Drawing.Point(461, 221);
+            this.BAgregar.Name = "BAgregar";
+            this.BAgregar.Size = new System.Drawing.Size(123, 52);
+            this.BAgregar.TabIndex = 11;
+            this.BAgregar.Text = "Agregar    ";
+            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregar.UseVisualStyleBackColor = true;
+            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
+            // 
+            // PBImagen
+            // 
+            this.PBImagen.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PBImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PBImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PBImagen.Location = new System.Drawing.Point(287, 157);
+            this.PBImagen.Name = "PBImagen";
+            this.PBImagen.Size = new System.Drawing.Size(139, 116);
+            this.PBImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBImagen.TabIndex = 10;
+            this.PBImagen.TabStop = false;
+            this.PBImagen.Click += new System.EventHandler(this.PBImagen_Click);
+            // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,7 +397,7 @@
             this.Controls.Add(this.LValiCate);
             this.Controls.Add(this.LValiPrecio);
             this.Controls.Add(this.LValiNombre);
-            this.Controls.Add(this.PBImagenAgregar);
+            this.Controls.Add(this.PBImagenTitulo);
             this.Controls.Add(this.BAgregarImagen);
             this.Controls.Add(this.BBorrar);
             this.Controls.Add(this.BAgregar);
@@ -417,9 +417,9 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarProducto";
-            ((System.ComponentModel.ISupportInitialize)(this.PBImagenAgregar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,7 +442,7 @@
         private System.Windows.Forms.Button BBorrar;
         private System.Windows.Forms.Button BAgregarImagen;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.PictureBox PBImagenAgregar;
+        private System.Windows.Forms.PictureBox PBImagenTitulo;
         private System.Windows.Forms.Label LValiNombre;
         private System.Windows.Forms.Label LValiPrecio;
         private System.Windows.Forms.Label LValiCate;

@@ -36,6 +36,7 @@ namespace ProyectoTaller.Views
             this.LTitulo = new System.Windows.Forms.Label();
             this.LSubtitulo = new System.Windows.Forms.Label();
             this.PContenedor = new System.Windows.Forms.Panel();
+            this.LBienvenido = new System.Windows.Forms.Label();
             this.BCerrarSesion = new System.Windows.Forms.Button();
             this.BProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.BVentas = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@ namespace ProyectoTaller.Views
             this.MenuTitulo.SuspendLayout();
             this.MMenuOpciones.SuspendLayout();
             this.DragControl.SuspendLayout();
+            this.PContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuTitulo
@@ -122,10 +124,22 @@ namespace ProyectoTaller.Views
             // PContenedor
             // 
             this.PContenedor.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PContenedor.Controls.Add(this.LBienvenido);
             this.PContenedor.Location = new System.Drawing.Point(141, 163);
             this.PContenedor.Name = "PContenedor";
             this.PContenedor.Size = new System.Drawing.Size(886, 507);
             this.PContenedor.TabIndex = 12;
+            // 
+            // LBienvenido
+            // 
+            this.LBienvenido.AutoSize = true;
+            this.LBienvenido.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.LBienvenido.Font = new System.Drawing.Font("Century Gothic", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBienvenido.Location = new System.Drawing.Point(225, 202);
+            this.LBienvenido.Name = "LBienvenido";
+            this.LBienvenido.Size = new System.Drawing.Size(434, 80);
+            this.LBienvenido.TabIndex = 13;
+            this.LBienvenido.Text = "Bienvenido!!";
             // 
             // BCerrarSesion
             // 
@@ -164,6 +178,7 @@ namespace ProyectoTaller.Views
             this.BVentas.Size = new System.Drawing.Size(110, 55);
             this.BVentas.Text = " Ventas";
             this.BVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BVentas.Click += new System.EventHandler(this.BVentas_Click);
             // 
             // BConsultas
             // 
@@ -176,6 +191,7 @@ namespace ProyectoTaller.Views
             this.BConsultas.Size = new System.Drawing.Size(110, 55);
             this.BConsultas.Text = "Consultas";
             this.BConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BConsultas.Click += new System.EventHandler(this.BConsultas_Click);
             // 
             // BUsuarios
             // 
@@ -200,6 +216,7 @@ namespace ProyectoTaller.Views
             this.BInicio.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BInicio.Size = new System.Drawing.Size(75, 75);
             this.BInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BInicio.Click += new System.EventHandler(this.BInicio_Click);
             // 
             // BMinimizar
             // 
@@ -268,6 +285,8 @@ namespace ProyectoTaller.Views
             this.MMenuOpciones.ResumeLayout(false);
             this.MMenuOpciones.PerformLayout();
             this.DragControl.ResumeLayout(false);
+            this.PContenedor.ResumeLayout(false);
+            this.PContenedor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +309,6 @@ namespace ProyectoTaller.Views
         private System.Windows.Forms.Label LSubtitulo;
         private Panel PContenedor;
         private ToolStripMenuItem BProductos;
+        private Label LBienvenido;
     }
 }

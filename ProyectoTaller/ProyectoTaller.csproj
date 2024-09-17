@@ -54,11 +54,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administradores\AdministrarConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administradores\AdministrarConsultas.Designer.cs">
+      <DependentUpon>AdministrarConsultas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administradores\AgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Administradores\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administradores\VerVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administradores\VerVentas.Designer.cs">
+      <DependentUpon>VerVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -79,8 +91,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administradores\AdministrarConsultas.resx">
+      <DependentUpon>AdministrarConsultas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Administradores\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administradores\VerVentas.resx">
+      <DependentUpon>VerVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -187,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GuardarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VentasTitulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ver detalle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
