@@ -32,6 +32,7 @@
             this.TVentas = new System.Windows.Forms.TextBox();
             this.BBuscarVentas = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CIdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CMedioPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +49,7 @@
             // 
             this.LTituloVentas.AutoSize = true;
             this.LTituloVentas.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloVentas.Location = new System.Drawing.Point(83, 12);
+            this.LTituloVentas.Location = new System.Drawing.Point(82, 12);
             this.LTituloVentas.Name = "LTituloVentas";
             this.LTituloVentas.Size = new System.Drawing.Size(112, 36);
             this.LTituloVentas.TabIndex = 1;
@@ -75,6 +76,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CIdVenta,
             this.CNombreCliente,
             this.CFecha,
             this.CMedioPago,
@@ -85,19 +87,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(863, 374);
             this.dataGridView1.TabIndex = 31;
             // 
+            // CIdVenta
+            // 
+            this.CIdVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CIdVenta.HeaderText = "ID Venta";
+            this.CIdVenta.Name = "CIdVenta";
+            this.CIdVenta.Width = 110;
+            // 
             // CNombreCliente
             // 
             this.CNombreCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CNombreCliente.HeaderText = "Nombre Cliente";
             this.CNombreCliente.Name = "CNombreCliente";
-            this.CNombreCliente.Width = 210;
+            this.CNombreCliente.Width = 180;
             // 
             // CFecha
             // 
             this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CFecha.HeaderText = "Fecha";
             this.CFecha.Name = "CFecha";
-            this.CFecha.Width = 150;
+            this.CFecha.Width = 120;
             // 
             // CMedioPago
             // 
@@ -118,7 +127,6 @@
             this.CSubtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CSubtotal.HeaderText = "Subtotal";
             this.CSubtotal.Name = "CSubtotal";
-            this.CSubtotal.Width = 150;
             // 
             // label1
             // 
@@ -148,7 +156,7 @@
             // PBImagenTitulo
             // 
             this.PBImagenTitulo.Image = global::ProyectoTaller.Properties.Resources.VentasTitulo;
-            this.PBImagenTitulo.Location = new System.Drawing.Point(12, 12);
+            this.PBImagenTitulo.Location = new System.Drawing.Point(12, 7);
             this.PBImagenTitulo.Name = "PBImagenTitulo";
             this.PBImagenTitulo.Size = new System.Drawing.Size(65, 67);
             this.PBImagenTitulo.TabIndex = 28;
@@ -184,12 +192,13 @@
         private System.Windows.Forms.TextBox TVentas;
         private System.Windows.Forms.Button BBuscarVentas;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BVerDetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombreCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMedioPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn CProductosComprados;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSubtotal;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BVerDetalle;
     }
 }

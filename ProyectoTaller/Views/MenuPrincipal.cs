@@ -153,7 +153,9 @@ namespace ProyectoTaller.Views
 
         private void BConsultas_Click(object sender, EventArgs e)
         {
+            Form agregarProductoForm = new AdministrarConsultas();
 
+            MostrarFormularioEnPanel(agregarProductoForm);
         }
     }
 }

@@ -123,6 +123,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Check {
+            get {
+                object obj = ResourceManager.GetObject("Check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Consulta {
             get {
                 object obj = ResourceManager.GetObject("Consulta", resourceCulture);
@@ -136,6 +146,16 @@ namespace ProyectoTaller.Properties {
         internal static System.Drawing.Bitmap consultas {
             get {
                 object obj = ResourceManager.GetObject("consultas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ConsultasTitulo {
+            get {
+                object obj = ResourceManager.GetObject("ConsultasTitulo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
