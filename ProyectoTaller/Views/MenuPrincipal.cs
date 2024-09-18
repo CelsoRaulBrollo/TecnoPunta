@@ -44,7 +44,6 @@ namespace ProyectoTaller.Views
                BProductos.Visible = true;
                BVentas.Visible = true;
                BConsultas.Visible = true;
-               BUsuarios.Visible = true;
             }
             else if (_rolUsuario == "Vendedor")
             {
