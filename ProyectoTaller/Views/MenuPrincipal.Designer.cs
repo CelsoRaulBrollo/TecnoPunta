@@ -43,7 +43,6 @@ namespace ProyectoTaller.Views
             this.DragControl = new System.Windows.Forms.Panel();
             this.BMinimizar = new System.Windows.Forms.Button();
             this.BCerrar = new System.Windows.Forms.Button();
-            this.BMaximizar = new System.Windows.Forms.Button();
             this.LTitulo = new System.Windows.Forms.Label();
             this.LSubtitulo = new System.Windows.Forms.Label();
             this.PContenedor = new System.Windows.Forms.Panel();
@@ -197,7 +196,6 @@ namespace ProyectoTaller.Views
             this.DragControl.BackColor = System.Drawing.Color.LightSlateGray;
             this.DragControl.Controls.Add(this.BMinimizar);
             this.DragControl.Controls.Add(this.BCerrar);
-            this.DragControl.Controls.Add(this.BMaximizar);
             this.DragControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.DragControl.Location = new System.Drawing.Point(0, 0);
             this.DragControl.Name = "DragControl";
@@ -214,13 +212,14 @@ namespace ProyectoTaller.Views
             this.BMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
             this.BMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BMinimizar.Image = global::ProyectoTaller.Properties.Resources.minimizar_ventana;
-            this.BMinimizar.Location = new System.Drawing.Point(898, 1);
+            this.BMinimizar.Location = new System.Drawing.Point(945, 1);
             this.BMinimizar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.BMinimizar.Name = "BMinimizar";
             this.BMinimizar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.BMinimizar.Size = new System.Drawing.Size(40, 40);
             this.BMinimizar.TabIndex = 8;
             this.BMinimizar.UseVisualStyleBackColor = false;
+            this.BMinimizar.Click += new System.EventHandler(this.BMinimizar_Click);
             // 
             // BCerrar
             // 
@@ -236,20 +235,6 @@ namespace ProyectoTaller.Views
             this.BCerrar.TabIndex = 7;
             this.BCerrar.UseVisualStyleBackColor = false;
             this.BCerrar.Click += new System.EventHandler(this.BCerrar_Click);
-            // 
-            // BMaximizar
-            // 
-            this.BMaximizar.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
-            this.BMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BMaximizar.Image = global::ProyectoTaller.Properties.Resources.Maximizar;
-            this.BMaximizar.Location = new System.Drawing.Point(941, 1);
-            this.BMaximizar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.BMaximizar.Name = "BMaximizar";
-            this.BMaximizar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.BMaximizar.Size = new System.Drawing.Size(40, 40);
-            this.BMaximizar.TabIndex = 6;
-            this.BMaximizar.UseVisualStyleBackColor = false;
             // 
             // LTitulo
             // 
@@ -346,7 +331,6 @@ namespace ProyectoTaller.Views
         private System.Windows.Forms.ToolStripMenuItem BConsultas;
         private System.Windows.Forms.ToolStripMenuItem BUsuarios;
         private System.Windows.Forms.Button BCerrarSesion;
-        private System.Windows.Forms.Button BMaximizar;
         private System.Windows.Forms.Button BMinimizar;
         private System.Windows.Forms.Button BCerrar;
         private System.Windows.Forms.Panel DragControl;
