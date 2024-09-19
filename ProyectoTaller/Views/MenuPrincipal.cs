@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller.Views.Administradores;
+using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,9 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Vendedor")
             {
-
+                BCliente.Visible = true;
+                BCarrito.Visible = true;
+                BConsultarProd.Visible = true;
             }
         }
 
@@ -145,16 +148,37 @@ namespace ProyectoTaller.Views
 
         private void BVentas_Click(object sender, EventArgs e)
         {
-            Form agregarProductoForm = new VerVentas();
+            Form ventasForm = new VerVentas();
 
-            MostrarFormularioEnPanel(agregarProductoForm);
+            MostrarFormularioEnPanel(ventasForm);
         }
 
         private void BConsultas_Click(object sender, EventArgs e)
         {
-            Form agregarProductoForm = new AdministrarConsultas();
+            Form consultasForm = new AdministrarConsultas();
 
-            MostrarFormularioEnPanel(agregarProductoForm);
+            MostrarFormularioEnPanel(consultasForm);
+        }
+
+        private void BCliente_Click(object sender, EventArgs e)
+        {
+            Form agregarClienteForm = new AgregarCliente();
+
+            MostrarFormularioEnPanel(agregarClienteForm);
+        }
+
+        private void BCarrito_Click(object sender, EventArgs e)
+        {
+            Form carritoForm = new Carrito();
+
+            MostrarFormularioEnPanel(carritoForm);
+        }
+
+        private void BConsultarProd_Click(object sender, EventArgs e)
+        {
+            Form consultarProductoForm = new ConsultarProducto();
+
+            MostrarFormularioEnPanel(consultarProductoForm);
         }
     }
 }

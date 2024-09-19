@@ -147,7 +147,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Vendedores\" />
+    <Folder Include="Views\Gerentes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Weekend-Reading-06292017.jpg" />
@@ -244,6 +244,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NuevoCliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Carro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CelularesTitulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AgregarCliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Carrito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProductosCelulares.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
