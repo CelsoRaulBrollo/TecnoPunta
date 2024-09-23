@@ -451,5 +451,10 @@ namespace ProyectoTaller.Views.Administradores
                 MessageBox.Show("Seleccione una fila para eliminar.", "Error de eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void AgregarProducto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

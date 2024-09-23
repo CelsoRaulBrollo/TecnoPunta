@@ -1,6 +1,6 @@
 ﻿namespace ProyectoTaller.Views.Vendedor
 {
-    partial class ConsultarProducto
+    partial class TConsultarProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -29,28 +29,44 @@
         private void InitializeComponent()
         {
             this.LTituloAgregar = new System.Windows.Forms.Label();
-            this.BBuscarProducto = new System.Windows.Forms.Button();
-            this.TDescripcion = new System.Windows.Forms.TextBox();
-            this.LDescipcion = new System.Windows.Forms.Label();
-            this.LValiCate = new System.Windows.Forms.Label();
-            this.CBCategoria = new System.Windows.Forms.ComboBox();
-            this.LCategoriaProducto = new System.Windows.Forms.Label();
             this.LCodigoProducto = new System.Windows.Forms.Label();
             this.TCodigoProducto = new System.Windows.Forms.TextBox();
-            this.LPrecioProducto = new System.Windows.Forms.Label();
-            this.TPrecioProducto = new System.Windows.Forms.TextBox();
             this.DGProductos = new System.Windows.Forms.DataGridView();
-            this.CBDesc = new System.Windows.Forms.CheckBox();
-            this.CBEnStock = new System.Windows.Forms.CheckBox();
-            this.CBAsc = new System.Windows.Forms.CheckBox();
-            this.PBImagenProductos = new System.Windows.Forms.PictureBox();
-            this.LDatosProducto = new System.Windows.Forms.Label();
-            this.BLimpiarCarrito = new System.Windows.Forms.Button();
             this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MemoriaRam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SistemaOperativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Agregar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CBPrecioDesc = new System.Windows.Forms.CheckBox();
+            this.CBEnStock = new System.Windows.Forms.CheckBox();
+            this.CBPrecioAsc = new System.Windows.Forms.CheckBox();
+            this.PBImagenProductos = new System.Windows.Forms.PictureBox();
+            this.BLimpiarFiltros = new System.Windows.Forms.Button();
+            this.CBMarca = new System.Windows.Forms.ComboBox();
+            this.LValiMarca = new System.Windows.Forms.Label();
+            this.LMarca = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TNombreProducto = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TModelo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TMemoriaRam = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TSistemaOperativo = new System.Windows.Forms.TextBox();
+            this.LValiCodigoProd = new System.Windows.Forms.Label();
+            this.LValiMarcaP = new System.Windows.Forms.Label();
+            this.LValiNombreP = new System.Windows.Forms.Label();
+            this.LValiModeloP = new System.Windows.Forms.Label();
+            this.LValiSistOpe = new System.Windows.Forms.Label();
+            this.TAlmacenamiento = new System.Windows.Forms.TextBox();
+            this.LValiAllmac = new System.Windows.Forms.Label();
+            this.LValiRamp = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.BBuscarProducto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenProductos)).BeginInit();
             this.SuspendLayout();
@@ -59,107 +75,33 @@
             // 
             this.LTituloAgregar.AutoSize = true;
             this.LTituloAgregar.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloAgregar.Location = new System.Drawing.Point(85, 8);
+            this.LTituloAgregar.Location = new System.Drawing.Point(113, 10);
+            this.LTituloAgregar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTituloAgregar.Name = "LTituloAgregar";
-            this.LTituloAgregar.Size = new System.Drawing.Size(155, 36);
+            this.LTituloAgregar.Size = new System.Drawing.Size(197, 44);
             this.LTituloAgregar.TabIndex = 37;
             this.LTituloAgregar.Text = "Productos";
-            // 
-            // BBuscarProducto
-            // 
-            this.BBuscarProducto.Location = new System.Drawing.Point(584, 201);
-            this.BBuscarProducto.Name = "BBuscarProducto";
-            this.BBuscarProducto.Size = new System.Drawing.Size(75, 23);
-            this.BBuscarProducto.TabIndex = 39;
-            this.BBuscarProducto.Text = "Buscar";
-            this.BBuscarProducto.UseVisualStyleBackColor = true;
-            // 
-            // TDescripcion
-            // 
-            this.TDescripcion.Location = new System.Drawing.Point(291, 204);
-            this.TDescripcion.Name = "TDescripcion";
-            this.TDescripcion.Size = new System.Drawing.Size(277, 20);
-            this.TDescripcion.TabIndex = 38;
-            // 
-            // LDescipcion
-            // 
-            this.LDescipcion.AutoSize = true;
-            this.LDescipcion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDescipcion.Location = new System.Drawing.Point(396, 184);
-            this.LDescipcion.Name = "LDescipcion";
-            this.LDescipcion.Size = new System.Drawing.Size(83, 17);
-            this.LDescipcion.TabIndex = 40;
-            this.LDescipcion.Text = "Descripcion";
-            // 
-            // LValiCate
-            // 
-            this.LValiCate.AutoSize = true;
-            this.LValiCate.ForeColor = System.Drawing.Color.Red;
-            this.LValiCate.Location = new System.Drawing.Point(660, 141);
-            this.LValiCate.Name = "LValiCate";
-            this.LValiCate.Size = new System.Drawing.Size(0, 13);
-            this.LValiCate.TabIndex = 43;
-            // 
-            // CBCategoria
-            // 
-            this.CBCategoria.FormattingEnabled = true;
-            this.CBCategoria.Items.AddRange(new object[] {
-            "Apple",
-            "Samsung",
-            "Xiaomi",
-            "Huawei",
-            "Motorola"});
-            this.CBCategoria.Location = new System.Drawing.Point(619, 142);
-            this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(205, 21);
-            this.CBCategoria.TabIndex = 42;
-            this.CBCategoria.Text = "Seleccione una categoría";
-            // 
-            // LCategoriaProducto
-            // 
-            this.LCategoriaProducto.AutoSize = true;
-            this.LCategoriaProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LCategoriaProducto.Location = new System.Drawing.Point(680, 121);
-            this.LCategoriaProducto.Name = "LCategoriaProducto";
-            this.LCategoriaProducto.Size = new System.Drawing.Size(75, 17);
-            this.LCategoriaProducto.TabIndex = 41;
-            this.LCategoriaProducto.Text = "Categoría";
             // 
             // LCodigoProducto
             // 
             this.LCodigoProducto.AutoSize = true;
             this.LCodigoProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LCodigoProducto.Location = new System.Drawing.Point(98, 121);
+            this.LCodigoProducto.Location = new System.Drawing.Point(149, 99);
+            this.LCodigoProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LCodigoProducto.Name = "LCodigoProducto";
-            this.LCodigoProducto.Size = new System.Drawing.Size(118, 17);
+            this.LCodigoProducto.Size = new System.Drawing.Size(149, 21);
             this.LCodigoProducto.TabIndex = 46;
             this.LCodigoProducto.Text = "CodigoProducto";
             this.LCodigoProducto.Click += new System.EventHandler(this.label1_Click);
             // 
             // TCodigoProducto
             // 
-            this.TCodigoProducto.Location = new System.Drawing.Point(74, 141);
+            this.TCodigoProducto.Location = new System.Drawing.Point(306, 98);
+            this.TCodigoProducto.Margin = new System.Windows.Forms.Padding(4);
             this.TCodigoProducto.Name = "TCodigoProducto";
-            this.TCodigoProducto.Size = new System.Drawing.Size(177, 20);
+            this.TCodigoProducto.Size = new System.Drawing.Size(235, 22);
             this.TCodigoProducto.TabIndex = 45;
             this.TCodigoProducto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // LPrecioProducto
-            // 
-            this.LPrecioProducto.AutoSize = true;
-            this.LPrecioProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LPrecioProducto.Location = new System.Drawing.Point(417, 121);
-            this.LPrecioProducto.Name = "LPrecioProducto";
-            this.LPrecioProducto.Size = new System.Drawing.Size(48, 17);
-            this.LPrecioProducto.TabIndex = 48;
-            this.LPrecioProducto.Text = "Precio";
-            // 
-            // TPrecioProducto
-            // 
-            this.TPrecioProducto.Location = new System.Drawing.Point(351, 141);
-            this.TPrecioProducto.Name = "TPrecioProducto";
-            this.TPrecioProducto.Size = new System.Drawing.Size(177, 20);
-            this.TPrecioProducto.TabIndex = 47;
             // 
             // DGProductos
             // 
@@ -167,84 +109,21 @@
             this.DGProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoProducto,
-            this.Descripcion,
+            this.Marca,
+            this.Nombre,
+            this.Modelo,
+            this.MemoriaRam,
+            this.SistemaOperativo,
             this.Stock,
             this.Precio,
             this.Agregar});
-            this.DGProductos.Location = new System.Drawing.Point(11, 280);
-            this.DGProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DGProductos.Location = new System.Drawing.Point(15, 345);
+            this.DGProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGProductos.Name = "DGProductos";
             this.DGProductos.RowHeadersWidth = 51;
             this.DGProductos.RowTemplate.Height = 24;
-            this.DGProductos.Size = new System.Drawing.Size(865, 216);
+            this.DGProductos.Size = new System.Drawing.Size(1153, 266);
             this.DGProductos.TabIndex = 49;
-            // 
-            // CBDesc
-            // 
-            this.CBDesc.AutoSize = true;
-            this.CBDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBDesc.Location = new System.Drawing.Point(154, 255);
-            this.CBDesc.Name = "CBDesc";
-            this.CBDesc.Size = new System.Drawing.Size(54, 19);
-            this.CBDesc.TabIndex = 51;
-            this.CBDesc.Text = "Desc";
-            this.CBDesc.UseVisualStyleBackColor = true;
-            // 
-            // CBEnStock
-            // 
-            this.CBEnStock.AutoSize = true;
-            this.CBEnStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBEnStock.Location = new System.Drawing.Point(74, 253);
-            this.CBEnStock.Name = "CBEnStock";
-            this.CBEnStock.Size = new System.Drawing.Size(74, 19);
-            this.CBEnStock.TabIndex = 50;
-            this.CBEnStock.Text = "En Stock";
-            this.CBEnStock.UseVisualStyleBackColor = true;
-            // 
-            // CBAsc
-            // 
-            this.CBAsc.AutoSize = true;
-            this.CBAsc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBAsc.Location = new System.Drawing.Point(214, 256);
-            this.CBAsc.Name = "CBAsc";
-            this.CBAsc.Size = new System.Drawing.Size(45, 19);
-            this.CBAsc.TabIndex = 52;
-            this.CBAsc.Text = "Asc";
-            this.CBAsc.UseVisualStyleBackColor = true;
-            // 
-            // PBImagenProductos
-            // 
-            this.PBImagenProductos.Image = global::ProyectoTaller.Properties.Resources.CelularesTitulo;
-            this.PBImagenProductos.Location = new System.Drawing.Point(11, 9);
-            this.PBImagenProductos.Name = "PBImagenProductos";
-            this.PBImagenProductos.Size = new System.Drawing.Size(65, 67);
-            this.PBImagenProductos.TabIndex = 68;
-            this.PBImagenProductos.TabStop = false;
-            // 
-            // LDatosProducto
-            // 
-            this.LDatosProducto.AutoSize = true;
-            this.LDatosProducto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDatosProducto.Location = new System.Drawing.Point(354, 69);
-            this.LDatosProducto.Name = "LDatosProducto";
-            this.LDatosProducto.Size = new System.Drawing.Size(169, 23);
-            this.LDatosProducto.TabIndex = 69;
-            this.LDatosProducto.Text = "Ingrese los Datos:";
-            // 
-            // BLimpiarCarrito
-            // 
-            this.BLimpiarCarrito.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BLimpiarCarrito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BLimpiarCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BLimpiarCarrito.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
-            this.BLimpiarCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BLimpiarCarrito.Location = new System.Drawing.Point(752, 220);
-            this.BLimpiarCarrito.Name = "BLimpiarCarrito";
-            this.BLimpiarCarrito.Size = new System.Drawing.Size(123, 52);
-            this.BLimpiarCarrito.TabIndex = 70;
-            this.BLimpiarCarrito.Text = "Limpiar Carro";
-            this.BLimpiarCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BLimpiarCarrito.UseVisualStyleBackColor = true;
             // 
             // CodigoProducto
             // 
@@ -254,12 +133,40 @@
             this.CodigoProducto.Name = "CodigoProducto";
             this.CodigoProducto.Width = 120;
             // 
-            // Descripcion
+            // Marca
             // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 315;
+            this.Marca.HeaderText = "Marca";
+            this.Marca.MinimumWidth = 6;
+            this.Marca.Name = "Marca";
+            this.Marca.Width = 125;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 125;
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.MinimumWidth = 6;
+            this.Modelo.Name = "Modelo";
+            this.Modelo.Width = 125;
+            // 
+            // MemoriaRam
+            // 
+            this.MemoriaRam.HeaderText = "Memoria Ram";
+            this.MemoriaRam.MinimumWidth = 6;
+            this.MemoriaRam.Name = "MemoriaRam";
+            this.MemoriaRam.Width = 125;
+            // 
+            // SistemaOperativo
+            // 
+            this.SistemaOperativo.HeaderText = "Sistema Operativo";
+            this.SistemaOperativo.MinimumWidth = 6;
+            this.SistemaOperativo.Name = "SistemaOperativo";
+            this.SistemaOperativo.Width = 125;
             // 
             // Stock
             // 
@@ -282,33 +189,326 @@
             this.Agregar.Name = "Agregar";
             this.Agregar.Width = 125;
             // 
-            // ConsultarProducto
+            // CBPrecioDesc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.CBPrecioDesc.AutoSize = true;
+            this.CBPrecioDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBPrecioDesc.Location = new System.Drawing.Point(205, 314);
+            this.CBPrecioDesc.Margin = new System.Windows.Forms.Padding(4);
+            this.CBPrecioDesc.Name = "CBPrecioDesc";
+            this.CBPrecioDesc.Size = new System.Drawing.Size(112, 22);
+            this.CBPrecioDesc.TabIndex = 51;
+            this.CBPrecioDesc.Text = "Precio Desc";
+            this.CBPrecioDesc.UseVisualStyleBackColor = true;
+            this.CBPrecioDesc.CheckedChanged += new System.EventHandler(this.CBPrecioDesc_CheckedChanged);
+            // 
+            // CBEnStock
+            // 
+            this.CBEnStock.AutoSize = true;
+            this.CBEnStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBEnStock.Location = new System.Drawing.Point(93, 313);
+            this.CBEnStock.Margin = new System.Windows.Forms.Padding(4);
+            this.CBEnStock.Name = "CBEnStock";
+            this.CBEnStock.Size = new System.Drawing.Size(91, 22);
+            this.CBEnStock.TabIndex = 50;
+            this.CBEnStock.Text = "En Stock";
+            this.CBEnStock.UseVisualStyleBackColor = true;
+            this.CBEnStock.CheckedChanged += new System.EventHandler(this.CBEnStock_CheckedChanged);
+            // 
+            // CBPrecioAsc
+            // 
+            this.CBPrecioAsc.AutoSize = true;
+            this.CBPrecioAsc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBPrecioAsc.Location = new System.Drawing.Point(325, 313);
+            this.CBPrecioAsc.Margin = new System.Windows.Forms.Padding(4);
+            this.CBPrecioAsc.Name = "CBPrecioAsc";
+            this.CBPrecioAsc.Size = new System.Drawing.Size(102, 22);
+            this.CBPrecioAsc.TabIndex = 52;
+            this.CBPrecioAsc.Text = "Precio Asc";
+            this.CBPrecioAsc.UseVisualStyleBackColor = true;
+            this.CBPrecioAsc.CheckedChanged += new System.EventHandler(this.CBPrecioAsc_CheckedChanged);
+            // 
+            // PBImagenProductos
+            // 
+            this.PBImagenProductos.Image = global::ProyectoTaller.Properties.Resources.CelularesTitulo;
+            this.PBImagenProductos.Location = new System.Drawing.Point(15, 11);
+            this.PBImagenProductos.Margin = new System.Windows.Forms.Padding(4);
+            this.PBImagenProductos.Name = "PBImagenProductos";
+            this.PBImagenProductos.Size = new System.Drawing.Size(87, 82);
+            this.PBImagenProductos.TabIndex = 68;
+            this.PBImagenProductos.TabStop = false;
+            // 
+            // BLimpiarFiltros
+            // 
+            this.BLimpiarFiltros.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BLimpiarFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BLimpiarFiltros.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
+            this.BLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BLimpiarFiltros.Location = new System.Drawing.Point(1004, 271);
+            this.BLimpiarFiltros.Margin = new System.Windows.Forms.Padding(4);
+            this.BLimpiarFiltros.Name = "BLimpiarFiltros";
+            this.BLimpiarFiltros.Size = new System.Drawing.Size(164, 64);
+            this.BLimpiarFiltros.TabIndex = 70;
+            this.BLimpiarFiltros.Text = "Limpiar Filtros";
+            this.BLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BLimpiarFiltros.UseVisualStyleBackColor = true;
+            this.BLimpiarFiltros.Click += new System.EventHandler(this.BLimpiarFiltros_Click);
+            // 
+            // CBMarca
+            // 
+            this.CBMarca.FormattingEnabled = true;
+            this.CBMarca.Items.AddRange(new object[] {
+            "Apple",
+            "Samsung",
+            "Xiaomi",
+            "Huawei",
+            "Motorola"});
+            this.CBMarca.Location = new System.Drawing.Point(306, 145);
+            this.CBMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.CBMarca.Name = "CBMarca";
+            this.CBMarca.Size = new System.Drawing.Size(235, 24);
+            this.CBMarca.TabIndex = 73;
+            this.CBMarca.Text = "Seleccione la Marca";
+            // 
+            // LValiMarca
+            // 
+            this.LValiMarca.AutoSize = true;
+            this.LValiMarca.ForeColor = System.Drawing.Color.Red;
+            this.LValiMarca.Location = new System.Drawing.Point(509, 319);
+            this.LValiMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiMarca.Name = "LValiMarca";
+            this.LValiMarca.Size = new System.Drawing.Size(0, 16);
+            this.LValiMarca.TabIndex = 72;
+            // 
+            // LMarca
+            // 
+            this.LMarca.AutoSize = true;
+            this.LMarca.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LMarca.Location = new System.Drawing.Point(149, 148);
+            this.LMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LMarca.Name = "LMarca";
+            this.LMarca.Size = new System.Drawing.Size(67, 21);
+            this.LMarca.TabIndex = 71;
+            this.LMarca.Text = "Marca";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(149, 201);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 21);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "Nombre";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // TNombreProducto
+            // 
+            this.TNombreProducto.Location = new System.Drawing.Point(306, 200);
+            this.TNombreProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.TNombreProducto.Name = "TNombreProducto";
+            this.TNombreProducto.Size = new System.Drawing.Size(235, 22);
+            this.TNombreProducto.TabIndex = 74;
+            this.TNombreProducto.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(149, 252);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 21);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "Modelo";
+            // 
+            // TModelo
+            // 
+            this.TModelo.Location = new System.Drawing.Point(306, 251);
+            this.TModelo.Margin = new System.Windows.Forms.Padding(4);
+            this.TModelo.Name = "TModelo";
+            this.TModelo.Size = new System.Drawing.Size(235, 22);
+            this.TModelo.TabIndex = 76;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(642, 99);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 21);
+            this.label3.TabIndex = 79;
+            this.label3.Text = "Memoria Ram";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // TMemoriaRam
+            // 
+            this.TMemoriaRam.Location = new System.Drawing.Point(815, 98);
+            this.TMemoriaRam.Margin = new System.Windows.Forms.Padding(4);
+            this.TMemoriaRam.Name = "TMemoriaRam";
+            this.TMemoriaRam.Size = new System.Drawing.Size(235, 22);
+            this.TMemoriaRam.TabIndex = 78;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(642, 199);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(165, 21);
+            this.label5.TabIndex = 83;
+            this.label5.Text = "Sistema Operativo";
+            // 
+            // TSistemaOperativo
+            // 
+            this.TSistemaOperativo.Location = new System.Drawing.Point(815, 200);
+            this.TSistemaOperativo.Margin = new System.Windows.Forms.Padding(4);
+            this.TSistemaOperativo.Name = "TSistemaOperativo";
+            this.TSistemaOperativo.Size = new System.Drawing.Size(235, 22);
+            this.TSistemaOperativo.TabIndex = 82;
+            // 
+            // LValiCodigoProd
+            // 
+            this.LValiCodigoProd.AutoSize = true;
+            this.LValiCodigoProd.ForeColor = System.Drawing.Color.Red;
+            this.LValiCodigoProd.Location = new System.Drawing.Point(305, 124);
+            this.LValiCodigoProd.Name = "LValiCodigoProd";
+            this.LValiCodigoProd.Size = new System.Drawing.Size(0, 16);
+            this.LValiCodigoProd.TabIndex = 86;
+            // 
+            // LValiMarcaP
+            // 
+            this.LValiMarcaP.AutoSize = true;
+            this.LValiMarcaP.Location = new System.Drawing.Point(305, 175);
+            this.LValiMarcaP.Name = "LValiMarcaP";
+            this.LValiMarcaP.Size = new System.Drawing.Size(0, 16);
+            this.LValiMarcaP.TabIndex = 87;
+            // 
+            // LValiNombreP
+            // 
+            this.LValiNombreP.AutoSize = true;
+            this.LValiNombreP.ForeColor = System.Drawing.Color.Red;
+            this.LValiNombreP.Location = new System.Drawing.Point(305, 226);
+            this.LValiNombreP.Name = "LValiNombreP";
+            this.LValiNombreP.Size = new System.Drawing.Size(0, 16);
+            this.LValiNombreP.TabIndex = 88;
+            // 
+            // LValiModeloP
+            // 
+            this.LValiModeloP.AutoSize = true;
+            this.LValiModeloP.ForeColor = System.Drawing.Color.Red;
+            this.LValiModeloP.Location = new System.Drawing.Point(305, 277);
+            this.LValiModeloP.Name = "LValiModeloP";
+            this.LValiModeloP.Size = new System.Drawing.Size(0, 16);
+            this.LValiModeloP.TabIndex = 89;
+            // 
+            // LValiSistOpe
+            // 
+            this.LValiSistOpe.AutoSize = true;
+            this.LValiSistOpe.ForeColor = System.Drawing.Color.Red;
+            this.LValiSistOpe.Location = new System.Drawing.Point(816, 226);
+            this.LValiSistOpe.Name = "LValiSistOpe";
+            this.LValiSistOpe.Size = new System.Drawing.Size(0, 16);
+            this.LValiSistOpe.TabIndex = 90;
+            // 
+            // TAlmacenamiento
+            // 
+            this.TAlmacenamiento.Location = new System.Drawing.Point(815, 149);
+            this.TAlmacenamiento.Margin = new System.Windows.Forms.Padding(4);
+            this.TAlmacenamiento.Name = "TAlmacenamiento";
+            this.TAlmacenamiento.Size = new System.Drawing.Size(235, 22);
+            this.TAlmacenamiento.TabIndex = 80;
+            // 
+            // LValiAllmac
+            // 
+            this.LValiAllmac.AutoSize = true;
+            this.LValiAllmac.ForeColor = System.Drawing.Color.Red;
+            this.LValiAllmac.Location = new System.Drawing.Point(816, 175);
+            this.LValiAllmac.Name = "LValiAllmac";
+            this.LValiAllmac.Size = new System.Drawing.Size(0, 16);
+            this.LValiAllmac.TabIndex = 85;
+            // 
+            // LValiRamp
+            // 
+            this.LValiRamp.AutoSize = true;
+            this.LValiRamp.ForeColor = System.Drawing.Color.Red;
+            this.LValiRamp.Location = new System.Drawing.Point(816, 124);
+            this.LValiRamp.Name = "LValiRamp";
+            this.LValiRamp.Size = new System.Drawing.Size(0, 16);
+            this.LValiRamp.TabIndex = 84;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(642, 148);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(154, 21);
+            this.label4.TabIndex = 81;
+            this.label4.Text = "Almacenamiento";
+            // 
+            // BBuscarProducto
+            // 
+            this.BBuscarProducto.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BBuscarProducto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBuscarProducto.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
+            this.BBuscarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BBuscarProducto.Location = new System.Drawing.Point(815, 271);
+            this.BBuscarProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.BBuscarProducto.Name = "BBuscarProducto";
+            this.BBuscarProducto.Size = new System.Drawing.Size(164, 64);
+            this.BBuscarProducto.TabIndex = 91;
+            this.BBuscarProducto.Text = "Buscar";
+            this.BBuscarProducto.UseVisualStyleBackColor = true;
+            this.BBuscarProducto.Click += new System.EventHandler(this.BBuscarProducto_Click);
+            // 
+            // TConsultarProducto
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(887, 507);
-            this.Controls.Add(this.BLimpiarCarrito);
-            this.Controls.Add(this.LDatosProducto);
+            this.ClientSize = new System.Drawing.Size(1183, 624);
+            this.Controls.Add(this.BBuscarProducto);
+            this.Controls.Add(this.LValiSistOpe);
+            this.Controls.Add(this.LValiModeloP);
+            this.Controls.Add(this.LValiNombreP);
+            this.Controls.Add(this.LValiMarcaP);
+            this.Controls.Add(this.LValiCodigoProd);
+            this.Controls.Add(this.LValiAllmac);
+            this.Controls.Add(this.LValiRamp);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.TSistemaOperativo);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.TAlmacenamiento);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TMemoriaRam);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TModelo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TNombreProducto);
+            this.Controls.Add(this.CBMarca);
+            this.Controls.Add(this.LValiMarca);
+            this.Controls.Add(this.LMarca);
+            this.Controls.Add(this.BLimpiarFiltros);
             this.Controls.Add(this.PBImagenProductos);
-            this.Controls.Add(this.CBAsc);
-            this.Controls.Add(this.CBDesc);
+            this.Controls.Add(this.CBPrecioAsc);
+            this.Controls.Add(this.CBPrecioDesc);
             this.Controls.Add(this.CBEnStock);
             this.Controls.Add(this.DGProductos);
-            this.Controls.Add(this.LPrecioProducto);
-            this.Controls.Add(this.TPrecioProducto);
             this.Controls.Add(this.LCodigoProducto);
             this.Controls.Add(this.TCodigoProducto);
-            this.Controls.Add(this.LValiCate);
-            this.Controls.Add(this.CBCategoria);
-            this.Controls.Add(this.LCategoriaProducto);
-            this.Controls.Add(this.LDescipcion);
-            this.Controls.Add(this.BBuscarProducto);
-            this.Controls.Add(this.TDescripcion);
             this.Controls.Add(this.LTituloAgregar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "ConsultarProducto";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "TConsultarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarProducto";
+            this.Load += new System.EventHandler(this.ConsultarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenProductos)).EndInit();
             this.ResumeLayout(false);
@@ -319,27 +519,43 @@
         #endregion
 
         private System.Windows.Forms.Label LTituloAgregar;
-        private System.Windows.Forms.Button BBuscarProducto;
-        private System.Windows.Forms.TextBox TDescripcion;
-        private System.Windows.Forms.Label LDescipcion;
-        private System.Windows.Forms.Label LValiCate;
-        private System.Windows.Forms.ComboBox CBCategoria;
-        private System.Windows.Forms.Label LCategoriaProducto;
         private System.Windows.Forms.Label LCodigoProducto;
         private System.Windows.Forms.TextBox TCodigoProducto;
-        private System.Windows.Forms.Label LPrecioProducto;
-        private System.Windows.Forms.TextBox TPrecioProducto;
         private System.Windows.Forms.DataGridView DGProductos;
-        private System.Windows.Forms.CheckBox CBDesc;
+        private System.Windows.Forms.CheckBox CBPrecioDesc;
         private System.Windows.Forms.CheckBox CBEnStock;
-        private System.Windows.Forms.CheckBox CBAsc;
+        private System.Windows.Forms.CheckBox CBPrecioAsc;
         private System.Windows.Forms.PictureBox PBImagenProductos;
-        private System.Windows.Forms.Label LDatosProducto;
-        private System.Windows.Forms.Button BLimpiarCarrito;
+        private System.Windows.Forms.Button BLimpiarFiltros;
+        private System.Windows.Forms.ComboBox CBMarca;
+        private System.Windows.Forms.Label LValiMarca;
+        private System.Windows.Forms.Label LMarca;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TNombreProducto;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TModelo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TMemoriaRam;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TSistemaOperativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MemoriaRam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SistemaOperativo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewButtonColumn Agregar;
+        private System.Windows.Forms.Label LValiCodigoProd;
+        private System.Windows.Forms.Label LValiMarcaP;
+        private System.Windows.Forms.Label LValiNombreP;
+        private System.Windows.Forms.Label LValiModeloP;
+        private System.Windows.Forms.Label LValiSistOpe;
+        private System.Windows.Forms.TextBox TAlmacenamiento;
+        private System.Windows.Forms.Label LValiAllmac;
+        private System.Windows.Forms.Label LValiRamp;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button BBuscarProducto;
     }
 }

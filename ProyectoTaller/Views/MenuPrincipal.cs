@@ -181,7 +181,8 @@ namespace ProyectoTaller.Views
 
         private void BConsultarProd_Click(object sender, EventArgs e)
         {
-            Form consultarProductoForm = new ConsultarProducto();
+            Form consultarProductoForm = new TConsultarProducto();
+         
 
             MostrarFormularioEnPanel(consultarProductoForm);
         }
