@@ -73,6 +73,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AgregarCliente {
+            get {
+                object obj = ResourceManager.GetObject("AgregarCliente", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AgregarMenu {
             get {
                 object obj = ResourceManager.GetObject("AgregarMenu", resourceCulture);
@@ -103,9 +113,39 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Carrito {
+            get {
+                object obj = ResourceManager.GetObject("Carrito", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Carro {
+            get {
+                object obj = ResourceManager.GetObject("Carro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Celulares {
             get {
                 object obj = ResourceManager.GetObject("Celulares", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CelularesTitulo {
+            get {
+                object obj = ResourceManager.GetObject("CelularesTitulo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,6 +263,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Limpiar {
+            get {
+                object obj = ResourceManager.GetObject("Limpiar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Maximizar {
             get {
                 object obj = ResourceManager.GetObject("Maximizar", resourceCulture);
@@ -256,6 +306,26 @@ namespace ProyectoTaller.Properties {
         internal static System.Drawing.Bitmap minimizar_ventana {
             get {
                 object obj = ResourceManager.GetObject("minimizar_ventana", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NuevoCliente {
+            get {
+                object obj = ResourceManager.GetObject("NuevoCliente", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProductosCelulares {
+            get {
+                object obj = ResourceManager.GetObject("ProductosCelulares", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

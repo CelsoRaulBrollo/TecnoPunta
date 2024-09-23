@@ -31,21 +31,23 @@ namespace ProyectoTaller.Views
         private void InitializeComponent()
         {
             this.MenuTitulo = new System.Windows.Forms.MenuStrip();
+            this.BInicio = new System.Windows.Forms.ToolStripMenuItem();
             this.MMenuOpciones = new System.Windows.Forms.MenuStrip();
+            this.BProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.BVentas = new System.Windows.Forms.ToolStripMenuItem();
+            this.BConsultas = new System.Windows.Forms.ToolStripMenuItem();
+            this.BUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.BCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.BCarrito = new System.Windows.Forms.ToolStripMenuItem();
+            this.BConsultarProd = new System.Windows.Forms.ToolStripMenuItem();
             this.DragControl = new System.Windows.Forms.Panel();
+            this.BMinimizar = new System.Windows.Forms.Button();
+            this.BCerrar = new System.Windows.Forms.Button();
             this.LTitulo = new System.Windows.Forms.Label();
             this.LSubtitulo = new System.Windows.Forms.Label();
             this.PContenedor = new System.Windows.Forms.Panel();
             this.LBienvenido = new System.Windows.Forms.Label();
             this.BCerrarSesion = new System.Windows.Forms.Button();
-            this.BProductos = new System.Windows.Forms.ToolStripMenuItem();
-            this.BVentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.BConsultas = new System.Windows.Forms.ToolStripMenuItem();
-            this.BUsuarios = new System.Windows.Forms.ToolStripMenuItem();
-            this.BInicio = new System.Windows.Forms.ToolStripMenuItem();
-            this.BMinimizar = new System.Windows.Forms.Button();
-            this.BCerrar = new System.Windows.Forms.Button();
-            this.BMaximizar = new System.Windows.Forms.Button();
             this.MenuTitulo.SuspendLayout();
             this.MMenuOpciones.SuspendLayout();
             this.DragControl.SuspendLayout();
@@ -64,6 +66,19 @@ namespace ProyectoTaller.Views
             this.MenuTitulo.TabIndex = 1;
             this.MenuTitulo.Text = "Menu";
             // 
+            // BInicio
+            // 
+            this.BInicio.AutoSize = false;
+            this.BInicio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BInicio.Image = global::ProyectoTaller.Properties.Resources.smartPho;
+            this.BInicio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BInicio.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BInicio.Name = "BInicio";
+            this.BInicio.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BInicio.Size = new System.Drawing.Size(75, 75);
+            this.BInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BInicio.Click += new System.EventHandler(this.BInicio_Click);
+            // 
             // MMenuOpciones
             // 
             this.MMenuOpciones.AutoSize = false;
@@ -73,7 +88,10 @@ namespace ProyectoTaller.Views
             this.BProductos,
             this.BVentas,
             this.BConsultas,
-            this.BUsuarios});
+            this.BUsuarios,
+            this.BCliente,
+            this.BCarrito,
+            this.BConsultarProd});
             this.MMenuOpciones.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.MMenuOpciones.Location = new System.Drawing.Point(0, 163);
             this.MMenuOpciones.Margin = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -83,12 +101,101 @@ namespace ProyectoTaller.Views
             this.MMenuOpciones.TabIndex = 0;
             this.MMenuOpciones.Text = "MenuOpciones";
             // 
+            // BProductos
+            // 
+            this.BProductos.AutoSize = false;
+            this.BProductos.Image = global::ProyectoTaller.Properties.Resources.Celulares;
+            this.BProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BProductos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BProductos.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BProductos.Name = "BProductos";
+            this.BProductos.Size = new System.Drawing.Size(110, 55);
+            this.BProductos.Text = "    Gestionar";
+            this.BProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BProductos.Click += new System.EventHandler(this.BProductos_Click);
+            // 
+            // BVentas
+            // 
+            this.BVentas.AutoSize = false;
+            this.BVentas.Image = global::ProyectoTaller.Properties.Resources.Ventas;
+            this.BVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BVentas.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BVentas.Name = "BVentas";
+            this.BVentas.Size = new System.Drawing.Size(110, 55);
+            this.BVentas.Text = " Ventas";
+            this.BVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BVentas.Click += new System.EventHandler(this.BVentas_Click);
+            // 
+            // BConsultas
+            // 
+            this.BConsultas.AutoSize = false;
+            this.BConsultas.Image = global::ProyectoTaller.Properties.Resources.Consulta;
+            this.BConsultas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BConsultas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BConsultas.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BConsultas.Name = "BConsultas";
+            this.BConsultas.Size = new System.Drawing.Size(110, 55);
+            this.BConsultas.Text = "Consultas";
+            this.BConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BConsultas.Click += new System.EventHandler(this.BConsultas_Click);
+            // 
+            // BUsuarios
+            // 
+            this.BUsuarios.AutoSize = false;
+            this.BUsuarios.Image = global::ProyectoTaller.Properties.Resources.Usuarios;
+            this.BUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BUsuarios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BUsuarios.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BUsuarios.Name = "BUsuarios";
+            this.BUsuarios.Size = new System.Drawing.Size(110, 55);
+            this.BUsuarios.Text = "Usuarios";
+            this.BUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BCliente
+            // 
+            this.BCliente.AutoSize = false;
+            this.BCliente.Image = global::ProyectoTaller.Properties.Resources.AgregarCliente;
+            this.BCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BCliente.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BCliente.Name = "BCliente";
+            this.BCliente.Size = new System.Drawing.Size(110, 55);
+            this.BCliente.Text = "Clientes";
+            this.BCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BCliente.Click += new System.EventHandler(this.BCliente_Click);
+            // 
+            // BCarrito
+            // 
+            this.BCarrito.AutoSize = false;
+            this.BCarrito.Image = global::ProyectoTaller.Properties.Resources.Carrito;
+            this.BCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BCarrito.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BCarrito.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BCarrito.Name = "BCarrito";
+            this.BCarrito.Size = new System.Drawing.Size(110, 55);
+            this.BCarrito.Text = "Carrito";
+            this.BCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BCarrito.Click += new System.EventHandler(this.BCarrito_Click);
+            // 
+            // BConsultarProd
+            // 
+            this.BConsultarProd.AutoSize = false;
+            this.BConsultarProd.Image = global::ProyectoTaller.Properties.Resources.ProductosCelulares;
+            this.BConsultarProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BConsultarProd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BConsultarProd.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BConsultarProd.Name = "BConsultarProd";
+            this.BConsultarProd.Size = new System.Drawing.Size(110, 55);
+            this.BConsultarProd.Text = " Productos";
+            this.BConsultarProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BConsultarProd.Click += new System.EventHandler(this.BConsultarProd_Click);
+            // 
             // DragControl
             // 
             this.DragControl.BackColor = System.Drawing.Color.LightSlateGray;
             this.DragControl.Controls.Add(this.BMinimizar);
             this.DragControl.Controls.Add(this.BCerrar);
-            this.DragControl.Controls.Add(this.BMaximizar);
             this.DragControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.DragControl.Location = new System.Drawing.Point(0, 0);
             this.DragControl.Name = "DragControl";
@@ -98,6 +205,36 @@ namespace ProyectoTaller.Views
             this.DragControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown_event);
             this.DragControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove_event);
             this.DragControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp_event);
+            // 
+            // BMinimizar
+            // 
+            this.BMinimizar.BackColor = System.Drawing.Color.LightSlateGray;
+            this.BMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
+            this.BMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BMinimizar.Image = global::ProyectoTaller.Properties.Resources.minimizar_ventana;
+            this.BMinimizar.Location = new System.Drawing.Point(945, 1);
+            this.BMinimizar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.BMinimizar.Name = "BMinimizar";
+            this.BMinimizar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.BMinimizar.Size = new System.Drawing.Size(40, 40);
+            this.BMinimizar.TabIndex = 8;
+            this.BMinimizar.UseVisualStyleBackColor = false;
+            this.BMinimizar.Click += new System.EventHandler(this.BMinimizar_Click);
+            // 
+            // BCerrar
+            // 
+            this.BCerrar.BackColor = System.Drawing.Color.LightSlateGray;
+            this.BCerrar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
+            this.BCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCerrar.Image = global::ProyectoTaller.Properties.Resources.cerrar_ventana;
+            this.BCerrar.Location = new System.Drawing.Point(984, 1);
+            this.BCerrar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.BCerrar.Name = "BCerrar";
+            this.BCerrar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.BCerrar.Size = new System.Drawing.Size(40, 40);
+            this.BCerrar.TabIndex = 7;
+            this.BCerrar.UseVisualStyleBackColor = false;
+            this.BCerrar.Click += new System.EventHandler(this.BCerrar_Click);
             // 
             // LTitulo
             // 
@@ -154,113 +291,6 @@ namespace ProyectoTaller.Views
             this.BCerrarSesion.UseVisualStyleBackColor = false;
             this.BCerrarSesion.Click += new System.EventHandler(this.BCerrarSesion_Click);
             // 
-            // BProductos
-            // 
-            this.BProductos.AutoSize = false;
-            this.BProductos.Image = global::ProyectoTaller.Properties.Resources.Celulares;
-            this.BProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BProductos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BProductos.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
-            this.BProductos.Name = "BProductos";
-            this.BProductos.Size = new System.Drawing.Size(110, 55);
-            this.BProductos.Text = "    Gestionar";
-            this.BProductos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BProductos.Click += new System.EventHandler(this.BProductos_Click);
-            // 
-            // BVentas
-            // 
-            this.BVentas.AutoSize = false;
-            this.BVentas.Image = global::ProyectoTaller.Properties.Resources.Ventas;
-            this.BVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BVentas.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
-            this.BVentas.Name = "BVentas";
-            this.BVentas.Size = new System.Drawing.Size(110, 55);
-            this.BVentas.Text = " Ventas";
-            this.BVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BVentas.Click += new System.EventHandler(this.BVentas_Click);
-            // 
-            // BConsultas
-            // 
-            this.BConsultas.AutoSize = false;
-            this.BConsultas.Image = global::ProyectoTaller.Properties.Resources.Consulta;
-            this.BConsultas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BConsultas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BConsultas.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
-            this.BConsultas.Name = "BConsultas";
-            this.BConsultas.Size = new System.Drawing.Size(110, 55);
-            this.BConsultas.Text = "Consultas";
-            this.BConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BConsultas.Click += new System.EventHandler(this.BConsultas_Click);
-            // 
-            // BUsuarios
-            // 
-            this.BUsuarios.AutoSize = false;
-            this.BUsuarios.Image = global::ProyectoTaller.Properties.Resources.Usuarios;
-            this.BUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BUsuarios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BUsuarios.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
-            this.BUsuarios.Name = "BUsuarios";
-            this.BUsuarios.Size = new System.Drawing.Size(110, 55);
-            this.BUsuarios.Text = "Usuarios";
-            this.BUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BInicio
-            // 
-            this.BInicio.AutoSize = false;
-            this.BInicio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BInicio.Image = global::ProyectoTaller.Properties.Resources.smartPho;
-            this.BInicio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BInicio.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BInicio.Name = "BInicio";
-            this.BInicio.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BInicio.Size = new System.Drawing.Size(75, 75);
-            this.BInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BInicio.Click += new System.EventHandler(this.BInicio_Click);
-            // 
-            // BMinimizar
-            // 
-            this.BMinimizar.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
-            this.BMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BMinimizar.Image = global::ProyectoTaller.Properties.Resources.minimizar_ventana;
-            this.BMinimizar.Location = new System.Drawing.Point(898, 1);
-            this.BMinimizar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.BMinimizar.Name = "BMinimizar";
-            this.BMinimizar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.BMinimizar.Size = new System.Drawing.Size(40, 40);
-            this.BMinimizar.TabIndex = 8;
-            this.BMinimizar.UseVisualStyleBackColor = false;
-            // 
-            // BCerrar
-            // 
-            this.BCerrar.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BCerrar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
-            this.BCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCerrar.Image = global::ProyectoTaller.Properties.Resources.cerrar_ventana;
-            this.BCerrar.Location = new System.Drawing.Point(984, 1);
-            this.BCerrar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.BCerrar.Name = "BCerrar";
-            this.BCerrar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.BCerrar.Size = new System.Drawing.Size(40, 40);
-            this.BCerrar.TabIndex = 7;
-            this.BCerrar.UseVisualStyleBackColor = false;
-            this.BCerrar.Click += new System.EventHandler(this.BCerrar_Click);
-            // 
-            // BMaximizar
-            // 
-            this.BMaximizar.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
-            this.BMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BMaximizar.Image = global::ProyectoTaller.Properties.Resources.Maximizar;
-            this.BMaximizar.Location = new System.Drawing.Point(941, 1);
-            this.BMaximizar.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.BMaximizar.Name = "BMaximizar";
-            this.BMaximizar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.BMaximizar.Size = new System.Drawing.Size(40, 40);
-            this.BMaximizar.TabIndex = 6;
-            this.BMaximizar.UseVisualStyleBackColor = false;
-            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +331,6 @@ namespace ProyectoTaller.Views
         private System.Windows.Forms.ToolStripMenuItem BConsultas;
         private System.Windows.Forms.ToolStripMenuItem BUsuarios;
         private System.Windows.Forms.Button BCerrarSesion;
-        private System.Windows.Forms.Button BMaximizar;
         private System.Windows.Forms.Button BMinimizar;
         private System.Windows.Forms.Button BCerrar;
         private System.Windows.Forms.Panel DragControl;
@@ -310,5 +339,8 @@ namespace ProyectoTaller.Views
         private Panel PContenedor;
         private ToolStripMenuItem BProductos;
         private Label LBienvenido;
+        private ToolStripMenuItem BCliente;
+        private ToolStripMenuItem BCarrito;
+        private ToolStripMenuItem BConsultarProd;
     }
 }
