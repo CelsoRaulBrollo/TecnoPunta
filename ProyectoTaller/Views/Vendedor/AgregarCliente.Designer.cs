@@ -253,7 +253,7 @@
             this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
             this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrar.Location = new System.Drawing.Point(755, 315);
+            this.BBorrar.Location = new System.Drawing.Point(766, 315);
             this.BBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.BBorrar.Name = "BBorrar";
             this.BBorrar.Size = new System.Drawing.Size(164, 64);
