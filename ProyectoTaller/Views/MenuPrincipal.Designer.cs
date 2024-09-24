@@ -31,8 +31,13 @@ namespace ProyectoTaller.Views
         private void InitializeComponent()
         {
             this.MenuTitulo = new System.Windows.Forms.MenuStrip();
-            this.BInicio = new System.Windows.Forms.ToolStripMenuItem();
             this.MMenuOpciones = new System.Windows.Forms.MenuStrip();
+            this.DragControl = new System.Windows.Forms.Panel();
+            this.LTitulo = new System.Windows.Forms.Label();
+            this.LSubtitulo = new System.Windows.Forms.Label();
+            this.PContenedor = new System.Windows.Forms.Panel();
+            this.LBienvenido = new System.Windows.Forms.Label();
+            this.BCerrarSesion = new System.Windows.Forms.Button();
             this.BProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.BVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.BConsultas = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,14 +46,9 @@ namespace ProyectoTaller.Views
             this.BConsultarProd = new System.Windows.Forms.ToolStripMenuItem();
             this.BGraficos = new System.Windows.Forms.ToolStripMenuItem();
             this.BUsuarios = new System.Windows.Forms.ToolStripMenuItem();
-            this.DragControl = new System.Windows.Forms.Panel();
+            this.BInicio = new System.Windows.Forms.ToolStripMenuItem();
             this.BMinimizar = new System.Windows.Forms.Button();
             this.BCerrar = new System.Windows.Forms.Button();
-            this.LTitulo = new System.Windows.Forms.Label();
-            this.LSubtitulo = new System.Windows.Forms.Label();
-            this.PContenedor = new System.Windows.Forms.Panel();
-            this.LBienvenido = new System.Windows.Forms.Label();
-            this.BCerrarSesion = new System.Windows.Forms.Button();
             this.MenuTitulo.SuspendLayout();
             this.MMenuOpciones.SuspendLayout();
             this.DragControl.SuspendLayout();
@@ -66,19 +66,6 @@ namespace ProyectoTaller.Views
             this.MenuTitulo.Size = new System.Drawing.Size(1027, 119);
             this.MenuTitulo.TabIndex = 1;
             this.MenuTitulo.Text = "Menu";
-            // 
-            // BInicio
-            // 
-            this.BInicio.AutoSize = false;
-            this.BInicio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.BInicio.Image = global::ProyectoTaller.Properties.Resources.smartPho;
-            this.BInicio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BInicio.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.BInicio.Name = "BInicio";
-            this.BInicio.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BInicio.Size = new System.Drawing.Size(75, 75);
-            this.BInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BInicio.Click += new System.EventHandler(this.BInicio_Click);
             // 
             // MMenuOpciones
             // 
@@ -102,6 +89,76 @@ namespace ProyectoTaller.Views
             this.MMenuOpciones.Size = new System.Drawing.Size(141, 507);
             this.MMenuOpciones.TabIndex = 0;
             this.MMenuOpciones.Text = "MenuOpciones";
+            // 
+            // DragControl
+            // 
+            this.DragControl.BackColor = System.Drawing.Color.LightSlateGray;
+            this.DragControl.Controls.Add(this.BMinimizar);
+            this.DragControl.Controls.Add(this.BCerrar);
+            this.DragControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DragControl.Location = new System.Drawing.Point(0, 0);
+            this.DragControl.Name = "DragControl";
+            this.DragControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.DragControl.Size = new System.Drawing.Size(1027, 44);
+            this.DragControl.TabIndex = 9;
+            this.DragControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown_event);
+            this.DragControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove_event);
+            this.DragControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp_event);
+            // 
+            // LTitulo
+            // 
+            this.LTitulo.AutoSize = true;
+            this.LTitulo.BackColor = System.Drawing.Color.Teal;
+            this.LTitulo.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTitulo.Location = new System.Drawing.Point(370, 66);
+            this.LTitulo.Name = "LTitulo";
+            this.LTitulo.Size = new System.Drawing.Size(310, 56);
+            this.LTitulo.TabIndex = 10;
+            this.LTitulo.Text = "Tecno Punta";
+            // 
+            // LSubtitulo
+            // 
+            this.LSubtitulo.AutoSize = true;
+            this.LSubtitulo.BackColor = System.Drawing.Color.Teal;
+            this.LSubtitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LSubtitulo.Location = new System.Drawing.Point(530, 122);
+            this.LSubtitulo.Name = "LSubtitulo";
+            this.LSubtitulo.Size = new System.Drawing.Size(177, 22);
+            this.LSubtitulo.TabIndex = 11;
+            this.LSubtitulo.Text = "Sistema de ventas";
+            // 
+            // PContenedor
+            // 
+            this.PContenedor.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PContenedor.Controls.Add(this.LBienvenido);
+            this.PContenedor.Location = new System.Drawing.Point(141, 163);
+            this.PContenedor.Name = "PContenedor";
+            this.PContenedor.Size = new System.Drawing.Size(886, 507);
+            this.PContenedor.TabIndex = 12;
+            // 
+            // LBienvenido
+            // 
+            this.LBienvenido.AutoSize = true;
+            this.LBienvenido.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.LBienvenido.Font = new System.Drawing.Font("Century Gothic", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBienvenido.Location = new System.Drawing.Point(225, 202);
+            this.LBienvenido.Name = "LBienvenido";
+            this.LBienvenido.Size = new System.Drawing.Size(434, 80);
+            this.LBienvenido.TabIndex = 13;
+            this.LBienvenido.Text = "Bienvenido!!";
+            // 
+            // BCerrarSesion
+            // 
+            this.BCerrarSesion.BackColor = System.Drawing.Color.LightSlateGray;
+            this.BCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
+            this.BCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCerrarSesion.Image = global::ProyectoTaller.Properties.Resources.Salir;
+            this.BCerrarSesion.Location = new System.Drawing.Point(6, 630);
+            this.BCerrarSesion.Name = "BCerrarSesion";
+            this.BCerrarSesion.Size = new System.Drawing.Size(33, 35);
+            this.BCerrarSesion.TabIndex = 3;
+            this.BCerrarSesion.UseVisualStyleBackColor = false;
+            this.BCerrarSesion.Click += new System.EventHandler(this.BCerrarSesion_Click);
             // 
             // BProductos
             // 
@@ -205,21 +262,20 @@ namespace ProyectoTaller.Views
             this.BUsuarios.Size = new System.Drawing.Size(110, 55);
             this.BUsuarios.Text = "Usuarios";
             this.BUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BUsuarios.Click += new System.EventHandler(this.BUsuarios_Click);
             // 
-            // DragControl
+            // BInicio
             // 
-            this.DragControl.BackColor = System.Drawing.Color.LightSlateGray;
-            this.DragControl.Controls.Add(this.BMinimizar);
-            this.DragControl.Controls.Add(this.BCerrar);
-            this.DragControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DragControl.Location = new System.Drawing.Point(0, 0);
-            this.DragControl.Name = "DragControl";
-            this.DragControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.DragControl.Size = new System.Drawing.Size(1027, 44);
-            this.DragControl.TabIndex = 9;
-            this.DragControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseDown_event);
-            this.DragControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove_event);
-            this.DragControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp_event);
+            this.BInicio.AutoSize = false;
+            this.BInicio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BInicio.Image = global::ProyectoTaller.Properties.Resources.smartPho;
+            this.BInicio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BInicio.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.BInicio.Name = "BInicio";
+            this.BInicio.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BInicio.Size = new System.Drawing.Size(75, 75);
+            this.BInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BInicio.Click += new System.EventHandler(this.BInicio_Click);
             // 
             // BMinimizar
             // 
@@ -250,61 +306,6 @@ namespace ProyectoTaller.Views
             this.BCerrar.TabIndex = 7;
             this.BCerrar.UseVisualStyleBackColor = false;
             this.BCerrar.Click += new System.EventHandler(this.BCerrar_Click);
-            // 
-            // LTitulo
-            // 
-            this.LTitulo.AutoSize = true;
-            this.LTitulo.BackColor = System.Drawing.Color.Teal;
-            this.LTitulo.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTitulo.Location = new System.Drawing.Point(370, 66);
-            this.LTitulo.Name = "LTitulo";
-            this.LTitulo.Size = new System.Drawing.Size(310, 56);
-            this.LTitulo.TabIndex = 10;
-            this.LTitulo.Text = "Tecno Punta";
-            // 
-            // LSubtitulo
-            // 
-            this.LSubtitulo.AutoSize = true;
-            this.LSubtitulo.BackColor = System.Drawing.Color.Teal;
-            this.LSubtitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSubtitulo.Location = new System.Drawing.Point(530, 122);
-            this.LSubtitulo.Name = "LSubtitulo";
-            this.LSubtitulo.Size = new System.Drawing.Size(177, 22);
-            this.LSubtitulo.TabIndex = 11;
-            this.LSubtitulo.Text = "Sistema de ventas";
-            // 
-            // PContenedor
-            // 
-            this.PContenedor.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.PContenedor.Controls.Add(this.LBienvenido);
-            this.PContenedor.Location = new System.Drawing.Point(141, 163);
-            this.PContenedor.Name = "PContenedor";
-            this.PContenedor.Size = new System.Drawing.Size(886, 507);
-            this.PContenedor.TabIndex = 12;
-            // 
-            // LBienvenido
-            // 
-            this.LBienvenido.AutoSize = true;
-            this.LBienvenido.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.LBienvenido.Font = new System.Drawing.Font("Century Gothic", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBienvenido.Location = new System.Drawing.Point(225, 202);
-            this.LBienvenido.Name = "LBienvenido";
-            this.LBienvenido.Size = new System.Drawing.Size(434, 80);
-            this.LBienvenido.TabIndex = 13;
-            this.LBienvenido.Text = "Bienvenido!!";
-            // 
-            // BCerrarSesion
-            // 
-            this.BCerrarSesion.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.LightSlateGray;
-            this.BCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCerrarSesion.Image = global::ProyectoTaller.Properties.Resources.Salir;
-            this.BCerrarSesion.Location = new System.Drawing.Point(6, 630);
-            this.BCerrarSesion.Name = "BCerrarSesion";
-            this.BCerrarSesion.Size = new System.Drawing.Size(33, 35);
-            this.BCerrarSesion.TabIndex = 3;
-            this.BCerrarSesion.UseVisualStyleBackColor = false;
-            this.BCerrarSesion.Click += new System.EventHandler(this.BCerrarSesion_Click);
             // 
             // MenuPrincipal
             // 

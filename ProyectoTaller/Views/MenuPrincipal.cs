@@ -188,7 +188,6 @@ namespace ProyectoTaller.Views
         private void BConsultarProd_Click(object sender, EventArgs e)
         {
             Form consultarProductoForm = new TConsultarProducto();
-         
 
             MostrarFormularioEnPanel(consultarProductoForm);
         }
@@ -197,8 +196,14 @@ namespace ProyectoTaller.Views
         {
             Form Estadisticas = new EstadisticasGraficas();
 
-
             MostrarFormularioEnPanel(Estadisticas);
+        }
+
+        private void BUsuarios_Click(object sender, EventArgs e)
+        {
+            Form GestionUsuarios = new VerUsuarios();
+
+            MostrarFormularioEnPanel(GestionUsuarios);
         }
     }
 }
