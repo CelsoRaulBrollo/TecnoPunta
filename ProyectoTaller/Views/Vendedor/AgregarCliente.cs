@@ -230,6 +230,9 @@ namespace ProyectoTaller.Views.Vendedor
 
         }
 
-        
+        private void AgregarCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -266,5 +266,11 @@
   <ItemGroup>
     <None Include="Resources\ProductosCelulares.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Quitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graficos-estadisticas.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

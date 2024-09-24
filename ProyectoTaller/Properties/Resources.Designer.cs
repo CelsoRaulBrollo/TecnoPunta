@@ -243,6 +243,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap graficos_estadisticas {
+            get {
+                object obj = ResourceManager.GetObject("graficos-estadisticas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GuardarProducto {
             get {
                 object obj = ResourceManager.GetObject("GuardarProducto", resourceCulture);
@@ -326,6 +336,16 @@ namespace ProyectoTaller.Properties {
         internal static System.Drawing.Bitmap ProductosCelulares {
             get {
                 object obj = ResourceManager.GetObject("ProductosCelulares", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Quitar {
+            get {
+                object obj = ResourceManager.GetObject("Quitar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

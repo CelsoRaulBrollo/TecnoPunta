@@ -52,6 +52,11 @@ namespace ProyectoTaller.Views
                 BCarrito.Visible = true;
                 BConsultarProd.Visible = true;
             }
+            else if (_rolUsuario == "Gerente")
+            {
+                BGraficos.Visible = true;
+                BUsuarios.Visible = true;
+            }
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace ProyectoTaller
             if (string.IsNullOrWhiteSpace(LValidaciones.Text))
             {
                 // Validar usuario y contraseña correctos
-                if ((nombre == "Admin" && contraseña == "12345") || (nombre == "Vendedor" && contraseña == "45678"))
+                if ((nombre == "Admin" && contraseña == "12345") || (nombre == "Vendedor" && contraseña == "45678") || (nombre == "Gerente" && contraseña == "13579"))
                 {
                     MenuPrincipal menu = new MenuPrincipal(this, nombre);
                     menu.Show();
