@@ -72,6 +72,18 @@
     <Compile Include="Views\Administradores\VerVentas.Designer.cs">
       <DependentUpon>VerVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Gerentes\EstadisticasGraficas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerentes\EstadisticasGraficas.Designer.cs">
+      <DependentUpon>EstadisticasGraficas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerentes\VerUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerentes\VerUsuarios.Designer.cs">
+      <DependentUpon>VerUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +130,12 @@
     <EmbeddedResource Include="Views\Administradores\VerVentas.resx">
       <DependentUpon>VerVentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerentes\EstadisticasGraficas.resx">
+      <DependentUpon>EstadisticasGraficas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerentes\VerUsuarios.resx">
+      <DependentUpon>VerUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,9 +164,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Gerentes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Weekend-Reading-06292017.jpg" />
   </ItemGroup>
@@ -271,6 +287,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\graficos-estadisticas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Estadisticas1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller.Views.Administradores;
+using ProyectoTaller.Views.Gerentes;
 using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Collections.Generic;
@@ -190,6 +191,14 @@ namespace ProyectoTaller.Views
          
 
             MostrarFormularioEnPanel(consultarProductoForm);
+        }
+
+        private void BGraficos_Click(object sender, EventArgs e)
+        {
+            Form Estadisticas = new EstadisticasGraficas();
+
+
+            MostrarFormularioEnPanel(Estadisticas);
         }
     }
 }

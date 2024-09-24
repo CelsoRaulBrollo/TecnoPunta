@@ -243,6 +243,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Estadisticas {
+            get {
+                object obj = ResourceManager.GetObject("Estadisticas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap graficos_estadisticas {
             get {
                 object obj = ResourceManager.GetObject("graficos-estadisticas", resourceCulture);
