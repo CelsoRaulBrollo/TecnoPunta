@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProyectoTaller.Views.Gerentes
+namespace ProyectoTaller.Views.Administradores
 {
-    public partial class VerUsuarios : Form
+    public partial class GestionUsuarios : Form
     {
-        public VerUsuarios()
+        public GestionUsuarios()
         {
             InitializeComponent();
+        }
+
+        private void GestionUsuarios_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

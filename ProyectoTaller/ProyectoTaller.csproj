@@ -66,6 +66,18 @@
     <Compile Include="Views\Administradores\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administradores\GestionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administradores\GestionUsuarios.Designer.cs">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administradores\InformesAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administradores\InformesAdministrador.Designer.cs">
+      <DependentUpon>InformesAdministrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administradores\VerVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +90,11 @@
     <Compile Include="Views\Gerentes\EstadisticasGraficas.Designer.cs">
       <DependentUpon>EstadisticasGraficas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gerentes\VerUsuarios.cs">
+    <Compile Include="Views\Gerentes\InformesGerente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Gerentes\VerUsuarios.Designer.cs">
-      <DependentUpon>VerUsuarios.cs</DependentUpon>
+    <Compile Include="Views\Gerentes\InformesGerente.Designer.cs">
+      <DependentUpon>InformesGerente.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -139,14 +151,20 @@
     <EmbeddedResource Include="Views\Administradores\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administradores\GestionUsuarios.resx">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administradores\InformesAdministrador.resx">
+      <DependentUpon>InformesAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Administradores\VerVentas.resx">
       <DependentUpon>VerVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Gerentes\EstadisticasGraficas.resx">
       <DependentUpon>EstadisticasGraficas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Gerentes\VerUsuarios.resx">
-      <DependentUpon>VerUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Gerentes\InformesGerente.resx">
+      <DependentUpon>InformesGerente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
