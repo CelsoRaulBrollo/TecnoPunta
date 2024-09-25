@@ -46,6 +46,7 @@ namespace ProyectoTaller.Views
             this.BConsultarProd = new System.Windows.Forms.ToolStripMenuItem();
             this.BGraficos = new System.Windows.Forms.ToolStripMenuItem();
             this.BUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.BInformes = new System.Windows.Forms.ToolStripMenuItem();
             this.BInicio = new System.Windows.Forms.ToolStripMenuItem();
             this.BMinimizar = new System.Windows.Forms.Button();
             this.BCerrar = new System.Windows.Forms.Button();
@@ -74,13 +75,14 @@ namespace ProyectoTaller.Views
             this.MMenuOpciones.Dock = System.Windows.Forms.DockStyle.Left;
             this.MMenuOpciones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BProductos,
-            this.BVentas,
             this.BConsultas,
             this.BCliente,
             this.BCarrito,
             this.BConsultarProd,
+            this.BUsuarios,
+            this.BVentas,
             this.BGraficos,
-            this.BUsuarios});
+            this.BInformes});
             this.MMenuOpciones.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.MMenuOpciones.Location = new System.Drawing.Point(0, 163);
             this.MMenuOpciones.Margin = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -264,6 +266,19 @@ namespace ProyectoTaller.Views
             this.BUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BUsuarios.Click += new System.EventHandler(this.BUsuarios_Click);
             // 
+            // BInformes
+            // 
+            this.BInformes.AutoSize = false;
+            this.BInformes.Image = global::ProyectoTaller.Properties.Resources.informe_icon;
+            this.BInformes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BInformes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BInformes.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BInformes.Name = "BInformes";
+            this.BInformes.Size = new System.Drawing.Size(110, 55);
+            this.BInformes.Text = " Informes";
+            this.BInformes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BInformes.Click += new System.EventHandler(this.BInformes_Click);
+            // 
             // BInicio
             // 
             this.BInicio.AutoSize = false;
@@ -359,5 +374,6 @@ namespace ProyectoTaller.Views
         private ToolStripMenuItem BCarrito;
         private ToolStripMenuItem BConsultarProd;
         private ToolStripMenuItem BGraficos;
+        private ToolStripMenuItem BInformes;
     }
 }

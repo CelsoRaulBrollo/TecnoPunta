@@ -116,6 +116,18 @@
     <Compile Include="Views\Vendedor\ConsultarProducto.Designer.cs">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Vendedor\GestionVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\GestionVentas.Designer.cs">
+      <DependentUpon>GestionVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vendedor\InformesVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\InformesVendedor.Designer.cs">
+      <DependentUpon>InformesVendedor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -150,6 +162,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Vendedor\ConsultarProducto.resx">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\GestionVentas.resx">
+      <DependentUpon>GestionVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\InformesVendedor.resx">
+      <DependentUpon>InformesVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -292,6 +310,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Estadisticas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\informe icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\informe titulo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

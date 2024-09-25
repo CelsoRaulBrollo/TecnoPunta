@@ -43,15 +43,18 @@ namespace ProyectoTaller.Views
 
             if (_rolUsuario == "Admin")
             {
-               BProductos.Visible = true;
-               BVentas.Visible = true;
-               BConsultas.Visible = true;
+                BProductos.Visible = true;
+                BVentas.Visible = true;
+                BConsultas.Visible = true;
+                BInformes.Visible = true; 
             }
             else if (_rolUsuario == "Vendedor")
             {
                 BCliente.Visible = true;
                 BCarrito.Visible = true;
                 BConsultarProd.Visible = true;
+                BVentas.Visible = true;
+                BInformes.Visible = true;
             }
             else if (_rolUsuario == "Gerente")
             {
@@ -159,9 +162,22 @@ namespace ProyectoTaller.Views
 
         private void BVentas_Click(object sender, EventArgs e)
         {
-            Form ventasForm = new VerVentas();
+            if (_rolUsuario == "Admin")
+            {
+                Form ventasAdmin = new VerVentas();
 
-            MostrarFormularioEnPanel(ventasForm);
+                MostrarFormularioEnPanel(ventasAdmin);
+            }
+            else if (_rolUsuario == "Vendedor")
+            {
+                Form ventasVendedor = new GestionVentas();
+
+                MostrarFormularioEnPanel(ventasVendedor);
+            }
+            else if (_rolUsuario == "Gerente")
+            {
+
+            }
         }
 
         private void BConsultas_Click(object sender, EventArgs e)
@@ -204,6 +220,24 @@ namespace ProyectoTaller.Views
             Form GestionUsuarios = new VerUsuarios();
 
             MostrarFormularioEnPanel(GestionUsuarios);
+        }
+
+        private void BInformes_Click(object sender, EventArgs e)
+        {
+            if (_rolUsuario == "Admin")
+            {
+
+            }
+            else if (_rolUsuario == "Vendedor")
+            {
+                Form informeVendedor = new InformesVendedor();
+
+                MostrarFormularioEnPanel(informeVendedor);
+            }
+            else if (_rolUsuario == "Gerente")
+            {
+
+            }
         }
     }
 }
