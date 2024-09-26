@@ -122,12 +122,6 @@ namespace ProyectoTaller.Views.Administradores
                 LValiTelefono.Text = "Ingrese un Teléfono.";
                 valido = false;
             }
-            else if (!int.TryParse(telefonotexto, out int telefono))
-            {
-                LValiTelefono.ForeColor = Color.Red;
-                LValiTelefono.Text = "El Teléfono solo debe contener números.";
-                valido = false;
-            }
             else if (telefonotexto.Length < 8 || telefonotexto.Length > 15 || !telefonotexto.All(char.IsDigit))
             {
                 LValiTelefono.ForeColor = Color.Red;

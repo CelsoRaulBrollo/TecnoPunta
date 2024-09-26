@@ -409,9 +409,113 @@ namespace ProyectoTaller.Views.Administradores
             }
         }
 
+        private void TBuscarProducto_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = TBuscarProducto.Text.ToLower();
+            foreach (DataGridViewRow fila in DGProductos.Rows)
+            {
+                if (fila.Cells["CNombre"].Value != null)
+                {
+                    string nombreProducto = fila.Cells["CNombre"].Value.ToString().ToLower();
+                    string modeloProducto = fila.Cells["CModelo"].Value.ToString().ToLower();
+                    string marcaProducto = fila.Cells["CMarca"].Value.ToString().ToLower();
+                    string soProducto = fila.Cells["CSistemaOperativo"].Value.ToString().ToLower();
+
+                    if (nombreProducto.Contains(filtro) || modeloProducto.Contains(filtro) || marcaProducto.Contains(filtro) || soProducto.Contains(filtro))
+                    {
+                        fila.Visible = true;
+                    }
+                    else
+                    {
+                        fila.Visible = false;
+                    }
+                }
+            }
+        }
+
         private void AgregarProducto_Load(object sender, EventArgs e)
         {
+            DGProductos.Rows.Add("Samsung", "Galaxy S21", "SM-G991B", "Android 14", "128", "8", "50", "799.99", "Nuevo");
+            DGProductos.Rows.Add("Apple", "iPhone 13", "A2633", "iOS 16", "256", "4", "30", "1099.99", "Nuevo");
+            DGProductos.Rows.Add("Xiaomi", "Mi 11", "M2011K2C", "Android 11", "128", "8", "20", "699.99", "Nuevo");
+            DGProductos.Rows.Add("LG", "V60", "LM-V600", "Android", "128", "8", "10", "599.99", "Usado");
+            DGProductos.Rows.Add("Motorola", "G7", "XT1962", "Android", "64", "4", "15", "399.99", "Usado");
+            DGProductos.Rows.Add("Apple", "iPhone 12", "A2255", "iOS 15", "256", "4", "30", "1099.99", "Reacondicionado");
+        }
 
+        private void CBNuevo_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGProductos.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    if (CBNuevo.Checked)
+                    {
+                        if (fila.Cells["CEstado"].Value.ToString() == "Nuevo")
+                        {
+                            fila.Visible = true;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        fila.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void CBReacondicionado_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGProductos.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    if (CBReacondicionado.Checked)
+                    {
+                        if (fila.Cells["CEstado"].Value.ToString() == "Reacondicionado")
+                        {
+                            fila.Visible = true;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        fila.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void CBUsado_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGProductos.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    if (CBUsado.Checked)
+                    {
+                        if (fila.Cells["CEstado"].Value.ToString() == "Usado")
+                        {
+                            fila.Visible = true;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        fila.Visible = true;
+                    }
+                }
+            }
         }
     }
 }

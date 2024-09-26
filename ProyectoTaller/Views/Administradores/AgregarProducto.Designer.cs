@@ -64,7 +64,6 @@
             this.BBorrar = new System.Windows.Forms.Button();
             this.BAgregar = new System.Windows.Forms.Button();
             this.DGProductos = new System.Windows.Forms.DataGridView();
-            this.CBMarca = new System.Windows.Forms.ComboBox();
             this.CMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +73,7 @@
             this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CBMarca = new System.Windows.Forms.ComboBox();
             this.TBuscarProducto = new System.Windows.Forms.TextBox();
             this.LBuscarProducto = new System.Windows.Forms.Label();
             this.CBUsado = new System.Windows.Forms.CheckBox();
@@ -87,7 +87,7 @@
             // 
             this.LTituloAgregar.AutoSize = true;
             this.LTituloAgregar.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloAgregar.Location = new System.Drawing.Point(83, 11);
+            this.LTituloAgregar.Location = new System.Drawing.Point(82, 9);
             this.LTituloAgregar.Name = "LTituloAgregar";
             this.LTituloAgregar.Size = new System.Drawing.Size(155, 36);
             this.LTituloAgregar.TabIndex = 0;
@@ -95,7 +95,7 @@
             // 
             // TNombreProducto
             // 
-            this.TNombreProducto.Location = new System.Drawing.Point(209, 94);
+            this.TNombreProducto.Location = new System.Drawing.Point(187, 95);
             this.TNombreProducto.Name = "TNombreProducto";
             this.TNombreProducto.Size = new System.Drawing.Size(205, 20);
             this.TNombreProducto.TabIndex = 1;
@@ -105,7 +105,7 @@
             // 
             this.LNombreProducto.AutoSize = true;
             this.LNombreProducto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LNombreProducto.Location = new System.Drawing.Point(128, 97);
+            this.LNombreProducto.Location = new System.Drawing.Point(106, 98);
             this.LNombreProducto.Name = "LNombreProducto";
             this.LNombreProducto.Size = new System.Drawing.Size(61, 17);
             this.LNombreProducto.TabIndex = 2;
@@ -115,7 +115,7 @@
             // 
             this.LModelo.AutoSize = true;
             this.LModelo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LModelo.Location = new System.Drawing.Point(128, 141);
+            this.LModelo.Location = new System.Drawing.Point(106, 142);
             this.LModelo.Name = "LModelo";
             this.LModelo.Size = new System.Drawing.Size(57, 17);
             this.LModelo.TabIndex = 3;
@@ -125,7 +125,7 @@
             // 
             this.LMarca.AutoSize = true;
             this.LMarca.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LMarca.Location = new System.Drawing.Point(128, 53);
+            this.LMarca.Location = new System.Drawing.Point(106, 54);
             this.LMarca.Name = "LMarca";
             this.LMarca.Size = new System.Drawing.Size(49, 17);
             this.LMarca.TabIndex = 4;
@@ -135,7 +135,7 @@
             // 
             this.LStock.AutoSize = true;
             this.LStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LStock.Location = new System.Drawing.Point(442, 97);
+            this.LStock.Location = new System.Drawing.Point(420, 98);
             this.LStock.Name = "LStock";
             this.LStock.Size = new System.Drawing.Size(43, 17);
             this.LStock.TabIndex = 5;
@@ -143,7 +143,7 @@
             // 
             // TModelo
             // 
-            this.TModelo.Location = new System.Drawing.Point(209, 138);
+            this.TModelo.Location = new System.Drawing.Point(187, 139);
             this.TModelo.Name = "TModelo";
             this.TModelo.Size = new System.Drawing.Size(205, 20);
             this.TModelo.TabIndex = 6;
@@ -151,7 +151,7 @@
             // 
             // TSo
             // 
-            this.TSo.Location = new System.Drawing.Point(209, 182);
+            this.TSo.Location = new System.Drawing.Point(187, 183);
             this.TSo.Name = "TSo";
             this.TSo.Size = new System.Drawing.Size(205, 20);
             this.TSo.TabIndex = 8;
@@ -168,7 +168,7 @@
             this.LValiNombre.AutoSize = true;
             this.LValiNombre.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.LValiNombre.ForeColor = System.Drawing.Color.Red;
-            this.LValiNombre.Location = new System.Drawing.Point(209, 117);
+            this.LValiNombre.Location = new System.Drawing.Point(187, 118);
             this.LValiNombre.Name = "LValiNombre";
             this.LValiNombre.Size = new System.Drawing.Size(0, 13);
             this.LValiNombre.TabIndex = 28;
@@ -177,7 +177,7 @@
             // 
             this.LValiModelo.AutoSize = true;
             this.LValiModelo.ForeColor = System.Drawing.Color.Red;
-            this.LValiModelo.Location = new System.Drawing.Point(209, 161);
+            this.LValiModelo.Location = new System.Drawing.Point(187, 162);
             this.LValiModelo.Name = "LValiModelo";
             this.LValiModelo.Size = new System.Drawing.Size(0, 13);
             this.LValiModelo.TabIndex = 29;
@@ -186,7 +186,7 @@
             // 
             this.LValiMarca.AutoSize = true;
             this.LValiMarca.ForeColor = System.Drawing.Color.Red;
-            this.LValiMarca.Location = new System.Drawing.Point(209, 73);
+            this.LValiMarca.Location = new System.Drawing.Point(187, 74);
             this.LValiMarca.Name = "LValiMarca";
             this.LValiMarca.Size = new System.Drawing.Size(0, 13);
             this.LValiMarca.TabIndex = 30;
@@ -195,7 +195,7 @@
             // 
             this.LValiStock.AutoSize = true;
             this.LValiStock.ForeColor = System.Drawing.Color.Red;
-            this.LValiStock.Location = new System.Drawing.Point(523, 116);
+            this.LValiStock.Location = new System.Drawing.Point(501, 117);
             this.LValiStock.Name = "LValiStock";
             this.LValiStock.Size = new System.Drawing.Size(0, 13);
             this.LValiStock.TabIndex = 31;
@@ -223,14 +223,14 @@
             // 
             this.LValiSo.AutoSize = true;
             this.LValiSo.ForeColor = System.Drawing.Color.Red;
-            this.LValiSo.Location = new System.Drawing.Point(209, 203);
+            this.LValiSo.Location = new System.Drawing.Point(187, 204);
             this.LValiSo.Name = "LValiSo";
             this.LValiSo.Size = new System.Drawing.Size(0, 13);
             this.LValiSo.TabIndex = 39;
             // 
             // TAlmacenamiento
             // 
-            this.TAlmacenamiento.Location = new System.Drawing.Point(209, 226);
+            this.TAlmacenamiento.Location = new System.Drawing.Point(187, 227);
             this.TAlmacenamiento.Name = "TAlmacenamiento";
             this.TAlmacenamiento.Size = new System.Drawing.Size(205, 20);
             this.TAlmacenamiento.TabIndex = 38;
@@ -239,7 +239,7 @@
             // 
             this.LSo.AutoSize = true;
             this.LSo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSo.Location = new System.Drawing.Point(128, 183);
+            this.LSo.Location = new System.Drawing.Point(106, 184);
             this.LSo.Name = "LSo";
             this.LSo.Size = new System.Drawing.Size(55, 17);
             this.LSo.TabIndex = 37;
@@ -249,14 +249,14 @@
             // 
             this.LValiAlmacenamiento.AutoSize = true;
             this.LValiAlmacenamiento.ForeColor = System.Drawing.Color.Red;
-            this.LValiAlmacenamiento.Location = new System.Drawing.Point(209, 247);
+            this.LValiAlmacenamiento.Location = new System.Drawing.Point(187, 248);
             this.LValiAlmacenamiento.Name = "LValiAlmacenamiento";
             this.LValiAlmacenamiento.Size = new System.Drawing.Size(0, 13);
             this.LValiAlmacenamiento.TabIndex = 42;
             // 
             // TRam
             // 
-            this.TRam.Location = new System.Drawing.Point(522, 53);
+            this.TRam.Location = new System.Drawing.Point(500, 54);
             this.TRam.Name = "TRam";
             this.TRam.Size = new System.Drawing.Size(205, 20);
             this.TRam.TabIndex = 41;
@@ -265,7 +265,7 @@
             // 
             this.LAlmacenamiento.AutoSize = true;
             this.LAlmacenamiento.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LAlmacenamiento.Location = new System.Drawing.Point(128, 227);
+            this.LAlmacenamiento.Location = new System.Drawing.Point(106, 228);
             this.LAlmacenamiento.Name = "LAlmacenamiento";
             this.LAlmacenamiento.Size = new System.Drawing.Size(79, 17);
             this.LAlmacenamiento.TabIndex = 40;
@@ -275,14 +275,14 @@
             // 
             this.LValiRam.AutoSize = true;
             this.LValiRam.ForeColor = System.Drawing.Color.Red;
-            this.LValiRam.Location = new System.Drawing.Point(523, 73);
+            this.LValiRam.Location = new System.Drawing.Point(501, 74);
             this.LValiRam.Name = "LValiRam";
             this.LValiRam.Size = new System.Drawing.Size(0, 13);
             this.LValiRam.TabIndex = 45;
             // 
             // TStock
             // 
-            this.TStock.Location = new System.Drawing.Point(523, 94);
+            this.TStock.Location = new System.Drawing.Point(501, 95);
             this.TStock.Name = "TStock";
             this.TStock.Size = new System.Drawing.Size(205, 20);
             this.TStock.TabIndex = 44;
@@ -291,7 +291,7 @@
             // 
             this.LRam.AutoSize = true;
             this.LRam.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LRam.Location = new System.Drawing.Point(442, 53);
+            this.LRam.Location = new System.Drawing.Point(420, 54);
             this.LRam.Name = "LRam";
             this.LRam.Size = new System.Drawing.Size(38, 17);
             this.LRam.TabIndex = 43;
@@ -301,14 +301,14 @@
             // 
             this.LValiPrecio.AutoSize = true;
             this.LValiPrecio.ForeColor = System.Drawing.Color.Red;
-            this.LValiPrecio.Location = new System.Drawing.Point(523, 160);
+            this.LValiPrecio.Location = new System.Drawing.Point(501, 161);
             this.LValiPrecio.Name = "LValiPrecio";
             this.LValiPrecio.Size = new System.Drawing.Size(0, 13);
             this.LValiPrecio.TabIndex = 48;
             // 
             // TPrecio
             // 
-            this.TPrecio.Location = new System.Drawing.Point(523, 137);
+            this.TPrecio.Location = new System.Drawing.Point(501, 138);
             this.TPrecio.Name = "TPrecio";
             this.TPrecio.Size = new System.Drawing.Size(205, 20);
             this.TPrecio.TabIndex = 47;
@@ -317,7 +317,7 @@
             // 
             this.LPrecio.AutoSize = true;
             this.LPrecio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LPrecio.Location = new System.Drawing.Point(442, 141);
+            this.LPrecio.Location = new System.Drawing.Point(420, 142);
             this.LPrecio.Name = "LPrecio";
             this.LPrecio.Size = new System.Drawing.Size(48, 17);
             this.LPrecio.TabIndex = 46;
@@ -327,7 +327,7 @@
             // 
             this.LValiEstado.AutoSize = true;
             this.LValiEstado.ForeColor = System.Drawing.Color.Red;
-            this.LValiEstado.Location = new System.Drawing.Point(523, 205);
+            this.LValiEstado.Location = new System.Drawing.Point(501, 206);
             this.LValiEstado.Name = "LValiEstado";
             this.LValiEstado.Size = new System.Drawing.Size(0, 13);
             this.LValiEstado.TabIndex = 51;
@@ -336,7 +336,7 @@
             // 
             this.LEstado.AutoSize = true;
             this.LEstado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LEstado.Location = new System.Drawing.Point(442, 185);
+            this.LEstado.Location = new System.Drawing.Point(420, 186);
             this.LEstado.Name = "LEstado";
             this.LEstado.Size = new System.Drawing.Size(52, 17);
             this.LEstado.TabIndex = 49;
@@ -349,7 +349,7 @@
             "Nuevo",
             "Reacondicionado",
             "Usado"});
-            this.CBEstado.Location = new System.Drawing.Point(523, 180);
+            this.CBEstado.Location = new System.Drawing.Point(501, 181);
             this.CBEstado.Name = "CBEstado";
             this.CBEstado.Size = new System.Drawing.Size(205, 21);
             this.CBEstado.TabIndex = 52;
@@ -445,21 +445,6 @@
             this.DGProductos.Size = new System.Drawing.Size(863, 194);
             this.DGProductos.TabIndex = 58;
             // 
-            // CBMarca
-            // 
-            this.CBMarca.FormattingEnabled = true;
-            this.CBMarca.Items.AddRange(new object[] {
-            "Apple",
-            "Samsung",
-            "Xiaomi",
-            "Huawei",
-            "Motorola"});
-            this.CBMarca.Location = new System.Drawing.Point(209, 49);
-            this.CBMarca.Name = "CBMarca";
-            this.CBMarca.Size = new System.Drawing.Size(205, 21);
-            this.CBMarca.TabIndex = 59;
-            this.CBMarca.Text = "Seleccione la Marca";
-            // 
             // CMarca
             // 
             this.CMarca.HeaderText = "Marca";
@@ -525,12 +510,28 @@
             this.CEstado.Name = "CEstado";
             this.CEstado.Width = 125;
             // 
+            // CBMarca
+            // 
+            this.CBMarca.FormattingEnabled = true;
+            this.CBMarca.Items.AddRange(new object[] {
+            "Apple",
+            "Samsung",
+            "Xiaomi",
+            "Huawei",
+            "Motorola"});
+            this.CBMarca.Location = new System.Drawing.Point(187, 50);
+            this.CBMarca.Name = "CBMarca";
+            this.CBMarca.Size = new System.Drawing.Size(205, 21);
+            this.CBMarca.TabIndex = 59;
+            this.CBMarca.Text = "Seleccione la Marca";
+            // 
             // TBuscarProducto
             // 
             this.TBuscarProducto.Location = new System.Drawing.Point(176, 277);
             this.TBuscarProducto.Name = "TBuscarProducto";
             this.TBuscarProducto.Size = new System.Drawing.Size(277, 20);
             this.TBuscarProducto.TabIndex = 104;
+            this.TBuscarProducto.TextChanged += new System.EventHandler(this.TBuscarProducto_TextChanged);
             // 
             // LBuscarProducto
             // 
@@ -552,6 +553,7 @@
             this.CBUsado.TabIndex = 110;
             this.CBUsado.Text = "Usado";
             this.CBUsado.UseVisualStyleBackColor = true;
+            this.CBUsado.CheckedChanged += new System.EventHandler(this.CBUsado_CheckedChanged);
             // 
             // CBReacondicionado
             // 
@@ -563,6 +565,7 @@
             this.CBReacondicionado.TabIndex = 109;
             this.CBReacondicionado.Text = "Reacondicionado";
             this.CBReacondicionado.UseVisualStyleBackColor = true;
+            this.CBReacondicionado.CheckedChanged += new System.EventHandler(this.CBReacondicionado_CheckedChanged);
             // 
             // CBNuevo
             // 
@@ -574,6 +577,7 @@
             this.CBNuevo.TabIndex = 108;
             this.CBNuevo.Text = "Nuevo";
             this.CBNuevo.UseVisualStyleBackColor = true;
+            this.CBNuevo.CheckedChanged += new System.EventHandler(this.CBNuevo_CheckedChanged);
             // 
             // AgregarProducto
             // 

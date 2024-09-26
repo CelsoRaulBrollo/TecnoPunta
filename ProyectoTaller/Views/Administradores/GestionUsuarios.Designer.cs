@@ -51,6 +51,14 @@
             this.BAgregar = new System.Windows.Forms.Button();
             this.BEliminar = new System.Windows.Forms.Button();
             this.DGUsuarios = new System.Windows.Forms.DataGridView();
+            this.CPuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BBorrar = new System.Windows.Forms.Button();
             this.LSexo = new System.Windows.Forms.Label();
             this.LValiSexo = new System.Windows.Forms.Label();
@@ -65,14 +73,6 @@
             this.CBAdministrador = new System.Windows.Forms.CheckBox();
             this.BEditar = new System.Windows.Forms.Button();
             this.LValido = new System.Windows.Forms.Label();
-            this.CPuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +101,8 @@
             this.CBPuesto.FormattingEnabled = true;
             this.CBPuesto.Items.AddRange(new object[] {
             "Gerente",
-            "Vendedor"});
+            "Vendedor",
+            "Administrador"});
             this.CBPuesto.Location = new System.Drawing.Point(175, 72);
             this.CBPuesto.Name = "CBPuesto";
             this.CBPuesto.Size = new System.Drawing.Size(205, 21);
@@ -310,6 +311,51 @@
             this.DGUsuarios.Size = new System.Drawing.Size(863, 215);
             this.DGUsuarios.TabIndex = 94;
             // 
+            // CPuesto
+            // 
+            this.CPuesto.HeaderText = "Puesto";
+            this.CPuesto.Name = "CPuesto";
+            // 
+            // CDni
+            // 
+            this.CDni.HeaderText = "DNI";
+            this.CDni.Name = "CDni";
+            this.CDni.Width = 150;
+            // 
+            // CNombre
+            // 
+            this.CNombre.HeaderText = "Nombre";
+            this.CNombre.Name = "CNombre";
+            this.CNombre.Width = 130;
+            // 
+            // CApellido
+            // 
+            this.CApellido.HeaderText = "Apellido";
+            this.CApellido.Name = "CApellido";
+            this.CApellido.Width = 130;
+            // 
+            // CTelefono
+            // 
+            this.CTelefono.HeaderText = "Telefono";
+            this.CTelefono.Name = "CTelefono";
+            this.CTelefono.Width = 80;
+            // 
+            // CEmail
+            // 
+            this.CEmail.HeaderText = "Email";
+            this.CEmail.Name = "CEmail";
+            this.CEmail.Width = 140;
+            // 
+            // CSexo
+            // 
+            this.CSexo.HeaderText = "Sexo";
+            this.CSexo.Name = "CSexo";
+            // 
+            // CSueldo
+            // 
+            this.CSueldo.HeaderText = "Sueldo";
+            this.CSueldo.Name = "CSueldo";
+            // 
             // BBorrar
             // 
             this.BBorrar.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -460,51 +506,6 @@
             this.LValido.Name = "LValido";
             this.LValido.Size = new System.Drawing.Size(0, 21);
             this.LValido.TabIndex = 109;
-            // 
-            // CPuesto
-            // 
-            this.CPuesto.HeaderText = "Puesto";
-            this.CPuesto.Name = "CPuesto";
-            // 
-            // CDni
-            // 
-            this.CDni.HeaderText = "DNI";
-            this.CDni.Name = "CDni";
-            this.CDni.Width = 150;
-            // 
-            // CNombre
-            // 
-            this.CNombre.HeaderText = "Nombre";
-            this.CNombre.Name = "CNombre";
-            this.CNombre.Width = 130;
-            // 
-            // CApellido
-            // 
-            this.CApellido.HeaderText = "Apellido";
-            this.CApellido.Name = "CApellido";
-            this.CApellido.Width = 130;
-            // 
-            // CTelefono
-            // 
-            this.CTelefono.HeaderText = "Telefono";
-            this.CTelefono.Name = "CTelefono";
-            this.CTelefono.Width = 80;
-            // 
-            // CEmail
-            // 
-            this.CEmail.HeaderText = "Email";
-            this.CEmail.Name = "CEmail";
-            this.CEmail.Width = 140;
-            // 
-            // CSexo
-            // 
-            this.CSexo.HeaderText = "Sexo";
-            this.CSexo.Name = "CSexo";
-            // 
-            // CSueldo
-            // 
-            this.CSueldo.HeaderText = "Sueldo";
-            this.CSueldo.Name = "CSueldo";
             // 
             // GestionUsuarios
             // 
