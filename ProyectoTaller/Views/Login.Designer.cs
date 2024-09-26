@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioInicio));
             this.PBImagenLogin = new System.Windows.Forms.PictureBox();
             this.LTitulo = new System.Windows.Forms.Label();
             this.LSubtitulo = new System.Windows.Forms.Label();
@@ -207,6 +208,7 @@
             this.Controls.Add(this.PBImagenLogin);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormularioInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

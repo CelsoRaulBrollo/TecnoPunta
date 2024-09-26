@@ -36,13 +36,13 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PBImagenInformeAdmin = new System.Windows.Forms.PictureBox();
             this.LTituloInformeAdmin = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHMarcasVendidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHVentasMes = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LMarcasVendidas = new System.Windows.Forms.Label();
             this.LVentaMes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenInformeAdmin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHMarcasVendidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHVentasMes)).BeginInit();
             this.SuspendLayout();
             // 
             // PBImagenInformeAdmin
@@ -65,43 +65,45 @@
             this.LTituloInformeAdmin.Text = "Informes Estadisticos";
             this.LTituloInformeAdmin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // chart1
+            // CHMarcasVendidas
             // 
-            this.chart1.BackColor = System.Drawing.SystemColors.Control;
-            this.chart1.BorderlineColor = System.Drawing.SystemColors.Control;
+            this.CHMarcasVendidas.BackColor = System.Drawing.SystemColors.Control;
+            this.CHMarcasVendidas.BorderlineColor = System.Drawing.SystemColors.Control;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.CHMarcasVendidas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(479, 142);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.CHMarcasVendidas.Legends.Add(legend1);
+            this.CHMarcasVendidas.Location = new System.Drawing.Point(479, 142);
+            this.CHMarcasVendidas.Name = "CHMarcasVendidas";
+            this.CHMarcasVendidas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(396, 288);
-            this.chart1.TabIndex = 33;
-            this.chart1.Text = "chart1";
+            this.CHMarcasVendidas.Series.Add(series1);
+            this.CHMarcasVendidas.Size = new System.Drawing.Size(396, 288);
+            this.CHMarcasVendidas.TabIndex = 33;
+            this.CHMarcasVendidas.Text = "chart1";
+            this.CHMarcasVendidas.Click += new System.EventHandler(this.CHMarcasVendidas_Click);
             // 
-            // chart2
+            // CHVentasMes
             // 
-            this.chart2.BackColor = System.Drawing.SystemColors.Control;
+            this.CHVentasMes.BackColor = System.Drawing.SystemColors.Control;
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.CHVentasMes.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(12, 142);
-            this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.CHVentasMes.Legends.Add(legend2);
+            this.CHVentasMes.Location = new System.Drawing.Point(12, 142);
+            this.CHVentasMes.Name = "CHVentasMes";
+            this.CHVentasMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(396, 288);
-            this.chart2.TabIndex = 34;
-            this.chart2.Text = "chart2";
+            this.CHVentasMes.Series.Add(series2);
+            this.CHVentasMes.Size = new System.Drawing.Size(396, 288);
+            this.CHVentasMes.TabIndex = 34;
+            this.CHVentasMes.Text = "chart2";
+            this.CHVentasMes.Click += new System.EventHandler(this.CHVentasMes_Click);
             // 
             // LMarcasVendidas
             // 
@@ -131,16 +133,17 @@
             this.ClientSize = new System.Drawing.Size(887, 507);
             this.Controls.Add(this.LVentaMes);
             this.Controls.Add(this.LMarcasVendidas);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.CHVentasMes);
+            this.Controls.Add(this.CHMarcasVendidas);
             this.Controls.Add(this.LTituloInformeAdmin);
             this.Controls.Add(this.PBImagenInformeAdmin);
             this.Name = "InformesAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesAdministrador";
+            this.Load += new System.EventHandler(this.InformesAdministrador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenInformeAdmin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHMarcasVendidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHVentasMes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,8 +153,8 @@
 
         private System.Windows.Forms.PictureBox PBImagenInformeAdmin;
         private System.Windows.Forms.Label LTituloInformeAdmin;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHMarcasVendidas;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHVentasMes;
         private System.Windows.Forms.Label LMarcasVendidas;
         private System.Windows.Forms.Label LVentaMes;
     }

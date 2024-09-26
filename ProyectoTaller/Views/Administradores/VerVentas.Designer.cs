@@ -31,7 +31,7 @@
             this.LTituloVentas = new System.Windows.Forms.Label();
             this.TVentas = new System.Windows.Forms.TextBox();
             this.BBuscarVentas = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGVentas = new System.Windows.Forms.DataGridView();
             this.CIdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BVerDetalle = new System.Windows.Forms.Button();
             this.PBImagenTitulo = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,21 +71,21 @@
             this.BBuscarVentas.Text = "Buscar";
             this.BBuscarVentas.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // DGVentas
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DGVentas.AllowUserToAddRows = false;
+            this.DGVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CIdVenta,
             this.CNombreCliente,
             this.CFecha,
             this.CMedioPago,
             this.CProductosComprados,
             this.CSubtotal});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 121);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(863, 374);
-            this.dataGridView1.TabIndex = 31;
+            this.DGVentas.Location = new System.Drawing.Point(12, 121);
+            this.DGVentas.Name = "DGVentas";
+            this.DGVentas.Size = new System.Drawing.Size(863, 374);
+            this.DGVentas.TabIndex = 31;
             // 
             // CIdVenta
             // 
@@ -170,7 +170,7 @@
             this.ClientSize = new System.Drawing.Size(887, 507);
             this.Controls.Add(this.BVerDetalle);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DGVentas);
             this.Controls.Add(this.BBuscarVentas);
             this.Controls.Add(this.TVentas);
             this.Controls.Add(this.PBImagenTitulo);
@@ -178,7 +178,7 @@
             this.Name = "VerVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerVentas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,7 +191,7 @@
         private System.Windows.Forms.PictureBox PBImagenTitulo;
         private System.Windows.Forms.TextBox TVentas;
         private System.Windows.Forms.Button BBuscarVentas;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGVentas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BVerDetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn CIdVenta;
