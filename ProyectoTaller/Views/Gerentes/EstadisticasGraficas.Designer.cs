@@ -39,16 +39,16 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.LTituloEstadisticas = new System.Windows.Forms.Label();
             this.PBImagenEstadisticas = new System.Windows.Forms.PictureBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHTelefonosStock = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHMesesVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHMarcasValoradas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LTelefonosStock = new System.Windows.Forms.Label();
             this.LMarcasValoradas = new System.Windows.Forms.Label();
             this.LMesesVentas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenEstadisticas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHTelefonosStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHMesesVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHMarcasValoradas)).BeginInit();
             this.SuspendLayout();
             // 
             // LTituloEstadisticas
@@ -70,58 +70,64 @@
             this.PBImagenEstadisticas.TabIndex = 29;
             this.PBImagenEstadisticas.TabStop = false;
             // 
-            // chart1
+            // CHTelefonosStock
             // 
+            this.CHTelefonosStock.BackColor = System.Drawing.SystemColors.ButtonFace;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.CHTelefonosStock.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(105, 89);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.CHTelefonosStock.Legends.Add(legend1);
+            this.CHTelefonosStock.Location = new System.Drawing.Point(105, 89);
+            this.CHTelefonosStock.Name = "CHTelefonosStock";
+            this.CHTelefonosStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(293, 189);
-            this.chart1.TabIndex = 31;
-            this.chart1.Text = "chart1";
+            this.CHTelefonosStock.Series.Add(series1);
+            this.CHTelefonosStock.Size = new System.Drawing.Size(293, 189);
+            this.CHTelefonosStock.TabIndex = 31;
+            this.CHTelefonosStock.Text = "chart1";
+            this.CHTelefonosStock.Click += new System.EventHandler(this.CHTelefonosStock_Click);
             // 
-            // chart2
+            // CHMesesVentas
             // 
+            this.CHMesesVentas.BackColor = System.Drawing.SystemColors.ButtonFace;
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.CHMesesVentas.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(12, 328);
-            this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.CHMesesVentas.Legends.Add(legend2);
+            this.CHMesesVentas.Location = new System.Drawing.Point(12, 328);
+            this.CHMesesVentas.Name = "CHMesesVentas";
+            this.CHMesesVentas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(863, 167);
-            this.chart2.TabIndex = 32;
-            this.chart2.Text = "chart2";
+            this.CHMesesVentas.Series.Add(series2);
+            this.CHMesesVentas.Size = new System.Drawing.Size(863, 167);
+            this.CHMesesVentas.TabIndex = 32;
+            this.CHMesesVentas.Text = "chart2";
+            this.CHMesesVentas.Click += new System.EventHandler(this.CHMesesVentas_Click);
             // 
-            // chart3
+            // CHMarcasValoradas
             // 
+            this.CHMarcasValoradas.BackColor = System.Drawing.SystemColors.ButtonFace;
             chartArea3.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea3);
+            this.CHMarcasValoradas.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
-            this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(506, 89);
-            this.chart3.Name = "chart3";
-            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.CHMarcasValoradas.Legends.Add(legend3);
+            this.CHMarcasValoradas.Location = new System.Drawing.Point(506, 89);
+            this.CHMarcasValoradas.Name = "CHMarcasValoradas";
+            this.CHMarcasValoradas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
-            this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(293, 189);
-            this.chart3.TabIndex = 33;
-            this.chart3.Text = "chart3";
+            this.CHMarcasValoradas.Series.Add(series3);
+            this.CHMarcasValoradas.Size = new System.Drawing.Size(293, 189);
+            this.CHMarcasValoradas.TabIndex = 33;
+            this.CHMarcasValoradas.Text = "chart3";
+            this.CHMarcasValoradas.Click += new System.EventHandler(this.CHMarcasValoradas_Click);
             // 
             // LTelefonosStock
             // 
@@ -162,18 +168,19 @@
             this.Controls.Add(this.LMesesVentas);
             this.Controls.Add(this.LMarcasValoradas);
             this.Controls.Add(this.LTelefonosStock);
-            this.Controls.Add(this.chart3);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.CHMarcasValoradas);
+            this.Controls.Add(this.CHMesesVentas);
+            this.Controls.Add(this.CHTelefonosStock);
             this.Controls.Add(this.LTituloEstadisticas);
             this.Controls.Add(this.PBImagenEstadisticas);
             this.Name = "EstadisticasGraficas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EstadisticasGraficas";
+            this.Load += new System.EventHandler(this.EstadisticasGraficas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenEstadisticas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHTelefonosStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHMesesVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHMarcasValoradas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,9 +190,9 @@
 
         private System.Windows.Forms.PictureBox PBImagenEstadisticas;
         private System.Windows.Forms.Label LTituloEstadisticas;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHTelefonosStock;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHMesesVentas;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHMarcasValoradas;
         private System.Windows.Forms.Label LTelefonosStock;
         private System.Windows.Forms.Label LMarcasValoradas;
         private System.Windows.Forms.Label LMesesVentas;

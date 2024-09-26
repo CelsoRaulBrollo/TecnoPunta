@@ -213,6 +213,26 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Contraseñas48 {
+            get {
+                object obj = ResourceManager.GetObject("Contraseñas48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Contraseñas64 {
+            get {
+                object obj = ResourceManager.GetObject("Contraseñas64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Disco {
             get {
                 object obj = ResourceManager.GetObject("Disco", resourceCulture);
@@ -396,6 +416,16 @@ namespace ProyectoTaller.Properties {
         internal static System.Drawing.Bitmap Salir {
             get {
                 object obj = ResourceManager.GetObject("Salir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Seleccionar {
+            get {
+                object obj = ResourceManager.GetObject("Seleccionar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

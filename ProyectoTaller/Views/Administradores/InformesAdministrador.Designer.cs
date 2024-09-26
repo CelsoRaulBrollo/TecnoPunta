@@ -37,12 +37,12 @@
             this.PBImagenInformeAdmin = new System.Windows.Forms.PictureBox();
             this.LTituloInformeAdmin = new System.Windows.Forms.Label();
             this.CHMarcasVendidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.CHVentasMes = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHCantidadUsuarios = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LMarcasVendidas = new System.Windows.Forms.Label();
-            this.LVentaMes = new System.Windows.Forms.Label();
+            this.LCantidadUsuarios = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenInformeAdmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CHMarcasVendidas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CHVentasMes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHCantidadUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // PBImagenInformeAdmin
@@ -86,24 +86,24 @@
             this.CHMarcasVendidas.Text = "chart1";
             this.CHMarcasVendidas.Click += new System.EventHandler(this.CHMarcasVendidas_Click);
             // 
-            // CHVentasMes
+            // CHCantidadUsuarios
             // 
-            this.CHVentasMes.BackColor = System.Drawing.SystemColors.Control;
+            this.CHCantidadUsuarios.BackColor = System.Drawing.SystemColors.Control;
             chartArea2.Name = "ChartArea1";
-            this.CHVentasMes.ChartAreas.Add(chartArea2);
+            this.CHCantidadUsuarios.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.CHVentasMes.Legends.Add(legend2);
-            this.CHVentasMes.Location = new System.Drawing.Point(12, 142);
-            this.CHVentasMes.Name = "CHVentasMes";
-            this.CHVentasMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.CHCantidadUsuarios.Legends.Add(legend2);
+            this.CHCantidadUsuarios.Location = new System.Drawing.Point(12, 142);
+            this.CHCantidadUsuarios.Name = "CHCantidadUsuarios";
+            this.CHCantidadUsuarios.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.CHVentasMes.Series.Add(series2);
-            this.CHVentasMes.Size = new System.Drawing.Size(396, 288);
-            this.CHVentasMes.TabIndex = 34;
-            this.CHVentasMes.Text = "chart2";
-            this.CHVentasMes.Click += new System.EventHandler(this.CHVentasMes_Click);
+            this.CHCantidadUsuarios.Series.Add(series2);
+            this.CHCantidadUsuarios.Size = new System.Drawing.Size(396, 288);
+            this.CHCantidadUsuarios.TabIndex = 34;
+            this.CHCantidadUsuarios.Text = "chart2";
+            this.CHCantidadUsuarios.Click += new System.EventHandler(this.CHCantidadUsuarios_Click);
             // 
             // LMarcasVendidas
             // 
@@ -115,15 +115,15 @@
             this.LMarcasVendidas.TabIndex = 35;
             this.LMarcasVendidas.Text = "Marca mas vendidas";
             // 
-            // LVentaMes
+            // LCantidadUsuarios
             // 
-            this.LVentaMes.AutoSize = true;
-            this.LVentaMes.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LVentaMes.Location = new System.Drawing.Point(12, 116);
-            this.LVentaMes.Name = "LVentaMes";
-            this.LVentaMes.Size = new System.Drawing.Size(116, 23);
-            this.LVentaMes.TabIndex = 36;
-            this.LVentaMes.Text = "Ventas mes";
+            this.LCantidadUsuarios.AutoSize = true;
+            this.LCantidadUsuarios.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LCantidadUsuarios.Location = new System.Drawing.Point(12, 116);
+            this.LCantidadUsuarios.Name = "LCantidadUsuarios";
+            this.LCantidadUsuarios.Size = new System.Drawing.Size(208, 23);
+            this.LCantidadUsuarios.TabIndex = 36;
+            this.LCantidadUsuarios.Text = "Cantidad de usuarios";
             // 
             // InformesAdministrador
             // 
@@ -131,9 +131,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(887, 507);
-            this.Controls.Add(this.LVentaMes);
+            this.Controls.Add(this.LCantidadUsuarios);
             this.Controls.Add(this.LMarcasVendidas);
-            this.Controls.Add(this.CHVentasMes);
+            this.Controls.Add(this.CHCantidadUsuarios);
             this.Controls.Add(this.CHMarcasVendidas);
             this.Controls.Add(this.LTituloInformeAdmin);
             this.Controls.Add(this.PBImagenInformeAdmin);
@@ -143,7 +143,7 @@
             this.Load += new System.EventHandler(this.InformesAdministrador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenInformeAdmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CHMarcasVendidas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CHVentasMes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHCantidadUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,8 +154,8 @@
         private System.Windows.Forms.PictureBox PBImagenInformeAdmin;
         private System.Windows.Forms.Label LTituloInformeAdmin;
         private System.Windows.Forms.DataVisualization.Charting.Chart CHMarcasVendidas;
-        private System.Windows.Forms.DataVisualization.Charting.Chart CHVentasMes;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHCantidadUsuarios;
         private System.Windows.Forms.Label LMarcasVendidas;
-        private System.Windows.Forms.Label LVentaMes;
+        private System.Windows.Forms.Label LCantidadUsuarios;
     }
 }

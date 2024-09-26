@@ -61,6 +61,7 @@ namespace ProyectoTaller.Views
             {
                 BGraficos.Visible = true;
                 BInformes.Visible = true;
+                BContraseñas.Visible = true;
             }
         }
 
@@ -243,6 +244,13 @@ namespace ProyectoTaller.Views
 
                 MostrarFormularioEnPanel(informeGerente);
             }
+        }
+
+        private void BContraseñas_Click(object sender, EventArgs e)
+        {
+            Form contraseñasGestion = new GestionarContraseñas();
+
+            MostrarFormularioEnPanel(contraseñasGestion);
         }
     }
 }

@@ -34,21 +34,18 @@ namespace ProyectoTaller.Views.Administradores
             CHMarcasVendidas.Series.Add(series);
         }
 
-        private void CHVentasMes_Click(object sender, EventArgs e)
+        private void CHCantidadUsuarios_Click(object sender, EventArgs e)
         {
-            CHVentasMes.Series.Clear();
+            CHCantidadUsuarios.Series.Clear();
 
-            var series = new Series("Ventas Últimos 6 Meses");
+            var series = new Series("Cantidad de Usuarios");
             series.ChartType = SeriesChartType.Column;
 
-            series.Points.AddXY("Abril", 120);
-            series.Points.AddXY("Mayo", 150);
-            series.Points.AddXY("Junio", 180);
-            series.Points.AddXY("Julio", 140);
-            series.Points.AddXY("Agosto", 200);
-            series.Points.AddXY("Septiembre", 170);
+            series.Points.AddXY("Administradores", 200);
+            series.Points.AddXY("Gerentes", 50);
+            series.Points.AddXY("Vendedores", 350);
 
-            CHVentasMes.Series.Add(series);
+            CHCantidadUsuarios.Series.Add(series);
         }
 
         private void InformesAdministrador_Load(object sender, EventArgs e)
@@ -66,19 +63,16 @@ namespace ProyectoTaller.Views.Administradores
 
             CHMarcasVendidas.Series.Add(seriesMarcas);
 
-            CHVentasMes.Series.Clear();
+            CHCantidadUsuarios.Series.Clear();
 
-            var seriesVentasMes = new Series("Ventas Últimos 6 Meses");
-            seriesVentasMes.ChartType = SeriesChartType.Column;
+            var seriesCantidadUsuarios = new Series("Cantidad de Usuarios");
+            seriesCantidadUsuarios.ChartType = SeriesChartType.Column;
 
-            seriesVentasMes.Points.AddXY("Abril", 120);
-            seriesVentasMes.Points.AddXY("Mayo", 150);
-            seriesVentasMes.Points.AddXY("Junio", 180);
-            seriesVentasMes.Points.AddXY("Julio", 140);
-            seriesVentasMes.Points.AddXY("Agosto", 200);
-            seriesVentasMes.Points.AddXY("Septiembre", 170);
+            seriesCantidadUsuarios.Points.AddXY("Administradores", 200);
+            seriesCantidadUsuarios.Points.AddXY("Gerentes", 50);
+            seriesCantidadUsuarios.Points.AddXY("Vendedores", 350);
 
-            CHVentasMes.Series.Add(seriesVentasMes);
+            CHCantidadUsuarios.Series.Add(seriesCantidadUsuarios);
         }
     }
 }
