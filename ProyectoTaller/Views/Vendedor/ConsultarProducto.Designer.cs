@@ -44,8 +44,6 @@
             this.CBPrecioDesc = new System.Windows.Forms.CheckBox();
             this.CBEnStock = new System.Windows.Forms.CheckBox();
             this.CBPrecioAsc = new System.Windows.Forms.CheckBox();
-            this.PBImagenProductos = new System.Windows.Forms.PictureBox();
-            this.BLimpiarFiltros = new System.Windows.Forms.Button();
             this.CBMarca = new System.Windows.Forms.ComboBox();
             this.LValiMarca = new System.Windows.Forms.Label();
             this.LMarca = new System.Windows.Forms.Label();
@@ -67,6 +65,8 @@
             this.LValiRamp = new System.Windows.Forms.Label();
             this.LAlmacenamiento = new System.Windows.Forms.Label();
             this.BBuscarProducto = new System.Windows.Forms.Button();
+            this.BLimpiarFiltros = new System.Windows.Forms.Button();
+            this.PBImagenProductos = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenProductos)).BeginInit();
             this.SuspendLayout();
@@ -115,7 +115,7 @@
             this.Precio,
             this.Agregar});
             this.DGProductos.Location = new System.Drawing.Point(11, 280);
-            this.DGProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DGProductos.Margin = new System.Windows.Forms.Padding(2);
             this.DGProductos.Name = "DGProductos";
             this.DGProductos.RowHeadersWidth = 51;
             this.DGProductos.RowTemplate.Height = 24;
@@ -221,31 +221,6 @@
             this.CBPrecioAsc.Text = "Precio Asc";
             this.CBPrecioAsc.UseVisualStyleBackColor = true;
             this.CBPrecioAsc.CheckedChanged += new System.EventHandler(this.CBPrecioAsc_CheckedChanged);
-            // 
-            // PBImagenProductos
-            // 
-            this.PBImagenProductos.Image = global::ProyectoTaller.Properties.Resources.CelularesTitulo;
-            this.PBImagenProductos.Location = new System.Drawing.Point(11, 9);
-            this.PBImagenProductos.Name = "PBImagenProductos";
-            this.PBImagenProductos.Size = new System.Drawing.Size(65, 67);
-            this.PBImagenProductos.TabIndex = 68;
-            this.PBImagenProductos.TabStop = false;
-            // 
-            // BLimpiarFiltros
-            // 
-            this.BLimpiarFiltros.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BLimpiarFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BLimpiarFiltros.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
-            this.BLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BLimpiarFiltros.Location = new System.Drawing.Point(753, 220);
-            this.BLimpiarFiltros.Name = "BLimpiarFiltros";
-            this.BLimpiarFiltros.Size = new System.Drawing.Size(123, 52);
-            this.BLimpiarFiltros.TabIndex = 70;
-            this.BLimpiarFiltros.Text = "Limpiar Filtros";
-            this.BLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BLimpiarFiltros.UseVisualStyleBackColor = true;
-            this.BLimpiarFiltros.Click += new System.EventHandler(this.BLimpiarFiltros_Click);
             // 
             // CBMarca
             // 
@@ -443,15 +418,40 @@
             this.BBuscarProducto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BBuscarProducto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BBuscarProducto.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
+            this.BBuscarProducto.Image = global::ProyectoTaller.Properties.Resources.buscar;
             this.BBuscarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BBuscarProducto.Location = new System.Drawing.Point(611, 220);
             this.BBuscarProducto.Name = "BBuscarProducto";
             this.BBuscarProducto.Size = new System.Drawing.Size(123, 52);
             this.BBuscarProducto.TabIndex = 91;
-            this.BBuscarProducto.Text = "Buscar";
+            this.BBuscarProducto.Text = "       Buscar";
             this.BBuscarProducto.UseVisualStyleBackColor = true;
             this.BBuscarProducto.Click += new System.EventHandler(this.BBuscarProducto_Click);
+            // 
+            // BLimpiarFiltros
+            // 
+            this.BLimpiarFiltros.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BLimpiarFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BLimpiarFiltros.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
+            this.BLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BLimpiarFiltros.Location = new System.Drawing.Point(753, 220);
+            this.BLimpiarFiltros.Name = "BLimpiarFiltros";
+            this.BLimpiarFiltros.Size = new System.Drawing.Size(123, 52);
+            this.BLimpiarFiltros.TabIndex = 70;
+            this.BLimpiarFiltros.Text = "Limpiar Filtros";
+            this.BLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BLimpiarFiltros.UseVisualStyleBackColor = true;
+            this.BLimpiarFiltros.Click += new System.EventHandler(this.BLimpiarFiltros_Click);
+            // 
+            // PBImagenProductos
+            // 
+            this.PBImagenProductos.Image = global::ProyectoTaller.Properties.Resources.CelularesTitulo;
+            this.PBImagenProductos.Location = new System.Drawing.Point(11, 9);
+            this.PBImagenProductos.Name = "PBImagenProductos";
+            this.PBImagenProductos.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenProductos.TabIndex = 68;
+            this.PBImagenProductos.TabStop = false;
             // 
             // TConsultarProducto
             // 
@@ -489,7 +489,7 @@
             this.Controls.Add(this.LCodigoProducto);
             this.Controls.Add(this.TCodigoProducto);
             this.Controls.Add(this.LTituloProductos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TConsultarProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarProducto";
