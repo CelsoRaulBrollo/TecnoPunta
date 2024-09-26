@@ -214,17 +214,6 @@ namespace ProyectoTaller.Views.Administradores
                 LValiEstado.Text = string.Empty;
             }
 
-            if (PBImagen.Image == null)
-            {
-                LValiImagen.ForeColor = Color.Red;
-                LValiImagen.Text = "Por favor, agregue una imagen.";
-                valido = false;
-            }
-            else
-            {
-                LValiImagen.Text = string.Empty;
-            }
-
             if (valido)
             {
                 LimpiarMensajesDeValidacion();
@@ -241,7 +230,6 @@ namespace ProyectoTaller.Views.Administradores
                     filaSeleccionada.Cells["CEstado"].Value = CBEstado.SelectedItem.ToString();
                     filaSeleccionada.Cells["CStock"].Value = TStock.Text;
                     filaSeleccionada.Cells["CPrecio"].Value = TPrecio.Text;
-                    filaSeleccionada.Cells["CImagen"].Value = PBImagen.Image;
 
                     LValido.Text = "Producto editado exitosamente.";
 
@@ -249,7 +237,7 @@ namespace ProyectoTaller.Views.Administradores
                 }
                 else
                 {
-                    DGProductos.Rows.Add(CBMarca.SelectedItem.ToString(), TNombreProducto.Text, TModelo.Text, TSo.Text, TAlmacenamiento.Text, TRam.Text, TStock.Text, TPrecio.Text, CBEstado.SelectedItem.ToString(), TPrecio.Text, PBImagen.Image);
+                    DGProductos.Rows.Add(CBMarca.SelectedItem.ToString(), TNombreProducto.Text, TModelo.Text, TSo.Text, TAlmacenamiento.Text, TRam.Text, TStock.Text, TPrecio.Text, CBEstado.SelectedItem.ToString(), TPrecio.Text);
 
                     LValido.Text = "Producto agregado exitosamente.";
                 }
@@ -263,7 +251,6 @@ namespace ProyectoTaller.Views.Administradores
                 CBEstado.SelectedIndex = -1;
                 TSo.Clear();
                 TPrecio.Clear();
-                PBImagen.Image = null;
             }
         }
 
@@ -278,7 +265,6 @@ namespace ProyectoTaller.Views.Administradores
             CBEstado.SelectedIndex = -1;
             TStock.Clear();
             TPrecio.Clear();
-            PBImagen.Image = null;
 
             LValido.Text = string.Empty;
             LimpiarMensajesDeValidacion();
@@ -295,7 +281,6 @@ namespace ProyectoTaller.Views.Administradores
             LValiEstado.Text = string.Empty;
             LValiStock.Text = string.Empty;
             LValiPrecio.Text = string.Empty;
-            LValiImagen.Text = string.Empty;
         }
 
         private void CBMarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -370,33 +355,10 @@ namespace ProyectoTaller.Views.Administradores
             }
         }
 
-        private void PBImagen_Click(object sender, EventArgs e)
-        {
-        }
-
         // Evento del botón "Salir"
         private void BSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        // Evento del botón "Agregar Imagen"
-        private void BAgregarImagen_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Title = "Seleccione una imagen",
-                Filter = "Archivos de imagen (*.jpg; *.jpeg; *.png; *.bmp)|*.jpg;*.jpeg;*.png;*.bmp"
-            };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                PBImagen.Image = Image.FromFile(openFileDialog.FileName);
-
-                PBImagen.SizeMode = PictureBoxSizeMode.Zoom;
-
-                LValiImagen.Text = string.Empty;
-            }
         }
 
         private void BEditar_Click(object sender, EventArgs e)
@@ -415,11 +377,6 @@ namespace ProyectoTaller.Views.Administradores
                 TStock.Text = filaSeleccionada.Cells["CStock"].Value.ToString();
                 TPrecio.Text = filaSeleccionada.Cells["CPrecio"].Value.ToString();
                 CBEstado.SelectedItem = filaSeleccionada.Cells["CEstado"].Value.ToString();
-
-                if (filaSeleccionada.Cells["CImagen"].Value is Image imagen)
-                {
-                    PBImagen.Image = imagen;
-                }
 
                 editando = true;
             }

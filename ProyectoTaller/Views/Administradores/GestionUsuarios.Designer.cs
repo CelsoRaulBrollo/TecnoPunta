@@ -50,7 +50,7 @@
             this.LValiApellido = new System.Windows.Forms.Label();
             this.BAgregar = new System.Windows.Forms.Button();
             this.BEliminar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGUsuarios = new System.Windows.Forms.DataGridView();
             this.BBorrar = new System.Windows.Forms.Button();
             this.LSexo = new System.Windows.Forms.Label();
             this.LValiSexo = new System.Windows.Forms.Label();
@@ -58,8 +58,15 @@
             this.LSueldo = new System.Windows.Forms.Label();
             this.LValiSueldo = new System.Windows.Forms.Label();
             this.CBSexo = new System.Windows.Forms.ComboBox();
-            this.CDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TBuscarUsuarios = new System.Windows.Forms.TextBox();
+            this.LBuscarUsuario = new System.Windows.Forms.Label();
+            this.CBGerente = new System.Windows.Forms.CheckBox();
+            this.CBVendedor = new System.Windows.Forms.CheckBox();
+            this.CBAdministrador = new System.Windows.Forms.CheckBox();
+            this.BEditar = new System.Windows.Forms.Button();
+            this.LValido = new System.Windows.Forms.Label();
             this.CPuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +74,7 @@
             this.CSexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenUsuarios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // PBImagenUsuarios
@@ -258,13 +265,14 @@
             this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
             this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(722, 205);
+            this.BAgregar.Location = new System.Drawing.Point(732, 99);
             this.BAgregar.Name = "BAgregar";
             this.BAgregar.Size = new System.Drawing.Size(123, 52);
             this.BAgregar.TabIndex = 92;
             this.BAgregar.Text = "Agregar    ";
             this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BAgregar.UseVisualStyleBackColor = true;
+            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
             // 
             // BEliminar
             // 
@@ -276,7 +284,7 @@
             this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar;
             this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BEliminar.Location = new System.Drawing.Point(722, 140);
+            this.BEliminar.Location = new System.Drawing.Point(732, 215);
             this.BEliminar.Name = "BEliminar";
             this.BEliminar.Size = new System.Drawing.Size(123, 52);
             this.BEliminar.TabIndex = 93;
@@ -284,23 +292,23 @@
             this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEliminar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // DGUsuarios
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CDni,
+            this.DGUsuarios.AllowUserToAddRows = false;
+            this.DGUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CPuesto,
+            this.CDni,
             this.CNombre,
             this.CApellido,
             this.CTelefono,
             this.CEmail,
             this.CSexo,
             this.CSueldo});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 280);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(863, 215);
-            this.dataGridView1.TabIndex = 94;
+            this.DGUsuarios.Location = new System.Drawing.Point(12, 280);
+            this.DGUsuarios.Name = "DGUsuarios";
+            this.DGUsuarios.Size = new System.Drawing.Size(863, 215);
+            this.DGUsuarios.TabIndex = 94;
             // 
             // BBorrar
             // 
@@ -312,7 +320,7 @@
             this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
             this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrar.Location = new System.Drawing.Point(722, 72);
+            this.BBorrar.Location = new System.Drawing.Point(732, 41);
             this.BBorrar.Name = "BBorrar";
             this.BBorrar.Size = new System.Drawing.Size(123, 52);
             this.BBorrar.TabIndex = 95;
@@ -377,16 +385,92 @@
             this.CBSexo.TabIndex = 102;
             this.CBSexo.Text = "Seleccione el sexo";
             // 
-            // CDni
+            // TBuscarUsuarios
             // 
-            this.CDni.HeaderText = "DNI";
-            this.CDni.Name = "CDni";
-            this.CDni.Width = 150;
+            this.TBuscarUsuarios.Location = new System.Drawing.Point(157, 256);
+            this.TBuscarUsuarios.Name = "TBuscarUsuarios";
+            this.TBuscarUsuarios.Size = new System.Drawing.Size(277, 20);
+            this.TBuscarUsuarios.TabIndex = 103;
+            // 
+            // LBuscarUsuario
+            // 
+            this.LBuscarUsuario.AutoSize = true;
+            this.LBuscarUsuario.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBuscarUsuario.Location = new System.Drawing.Point(10, 253);
+            this.LBuscarUsuario.Name = "LBuscarUsuario";
+            this.LBuscarUsuario.Size = new System.Drawing.Size(144, 23);
+            this.LBuscarUsuario.TabIndex = 104;
+            this.LBuscarUsuario.Text = "Buscar Usuario";
+            // 
+            // CBGerente
+            // 
+            this.CBGerente.AutoSize = true;
+            this.CBGerente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBGerente.Location = new System.Drawing.Point(443, 257);
+            this.CBGerente.Name = "CBGerente";
+            this.CBGerente.Size = new System.Drawing.Size(70, 19);
+            this.CBGerente.TabIndex = 105;
+            this.CBGerente.Text = "Gerente";
+            this.CBGerente.UseVisualStyleBackColor = true;
+            // 
+            // CBVendedor
+            // 
+            this.CBVendedor.AutoSize = true;
+            this.CBVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBVendedor.Location = new System.Drawing.Point(519, 257);
+            this.CBVendedor.Name = "CBVendedor";
+            this.CBVendedor.Size = new System.Drawing.Size(79, 19);
+            this.CBVendedor.TabIndex = 106;
+            this.CBVendedor.Text = "Vendedor";
+            this.CBVendedor.UseVisualStyleBackColor = true;
+            // 
+            // CBAdministrador
+            // 
+            this.CBAdministrador.AutoSize = true;
+            this.CBAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBAdministrador.Location = new System.Drawing.Point(604, 257);
+            this.CBAdministrador.Name = "CBAdministrador";
+            this.CBAdministrador.Size = new System.Drawing.Size(64, 19);
+            this.CBAdministrador.TabIndex = 107;
+            this.CBAdministrador.Text = "Admin.";
+            this.CBAdministrador.UseVisualStyleBackColor = true;
+            // 
+            // BEditar
+            // 
+            this.BEditar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEditar.Image = global::ProyectoTaller.Properties.Resources.editar2;
+            this.BEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BEditar.Location = new System.Drawing.Point(732, 157);
+            this.BEditar.Name = "BEditar";
+            this.BEditar.Size = new System.Drawing.Size(123, 52);
+            this.BEditar.TabIndex = 108;
+            this.BEditar.Text = "Editar    ";
+            this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEditar.UseVisualStyleBackColor = true;
+            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
+            // 
+            // LValido
+            // 
+            this.LValido.AutoSize = true;
+            this.LValido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LValido.ForeColor = System.Drawing.Color.Green;
+            this.LValido.Location = new System.Drawing.Point(307, 48);
+            this.LValido.Name = "LValido";
+            this.LValido.Size = new System.Drawing.Size(0, 21);
+            this.LValido.TabIndex = 109;
             // 
             // CPuesto
             // 
             this.CPuesto.HeaderText = "Puesto";
             this.CPuesto.Name = "CPuesto";
+            // 
+            // CDni
+            // 
+            this.CDni.HeaderText = "DNI";
+            this.CDni.Name = "CDni";
+            this.CDni.Width = 150;
             // 
             // CNombre
             // 
@@ -428,6 +512,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(887, 507);
+            this.Controls.Add(this.LValido);
+            this.Controls.Add(this.BEditar);
+            this.Controls.Add(this.CBAdministrador);
+            this.Controls.Add(this.CBVendedor);
+            this.Controls.Add(this.CBGerente);
+            this.Controls.Add(this.LBuscarUsuario);
+            this.Controls.Add(this.TBuscarUsuarios);
             this.Controls.Add(this.CBSexo);
             this.Controls.Add(this.TSueldo);
             this.Controls.Add(this.LSueldo);
@@ -435,7 +526,7 @@
             this.Controls.Add(this.LSexo);
             this.Controls.Add(this.LValiSexo);
             this.Controls.Add(this.BBorrar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DGUsuarios);
             this.Controls.Add(this.BEliminar);
             this.Controls.Add(this.BAgregar);
             this.Controls.Add(this.LValiApellido);
@@ -461,9 +552,8 @@
             this.Name = "GestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionUsuarios";
-            this.Load += new System.EventHandler(this.GestionUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenUsuarios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,7 +583,7 @@
         private System.Windows.Forms.Label LValiApellido;
         private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.Button BEliminar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGUsuarios;
         private System.Windows.Forms.Button BBorrar;
         private System.Windows.Forms.Label LSexo;
         private System.Windows.Forms.Label LValiSexo;
@@ -501,8 +591,15 @@
         private System.Windows.Forms.Label LSueldo;
         private System.Windows.Forms.Label LValiSueldo;
         private System.Windows.Forms.ComboBox CBSexo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CDni;
+        private System.Windows.Forms.TextBox TBuscarUsuarios;
+        private System.Windows.Forms.Label LBuscarUsuario;
+        private System.Windows.Forms.CheckBox CBGerente;
+        private System.Windows.Forms.CheckBox CBVendedor;
+        private System.Windows.Forms.CheckBox CBAdministrador;
+        private System.Windows.Forms.Button BEditar;
+        private System.Windows.Forms.Label LValido;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CDni;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn CApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTelefono;
