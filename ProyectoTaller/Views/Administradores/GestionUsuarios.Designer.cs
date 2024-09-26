@@ -292,6 +292,7 @@
             this.BEliminar.Text = "Eliminar";
             this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEliminar.UseVisualStyleBackColor = true;
+            this.BEliminar.Click += new System.EventHandler(this.BEliminar_Click);
             // 
             // DGUsuarios
             // 
@@ -373,6 +374,7 @@
             this.BBorrar.Text = "Borrar Todo";
             this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBorrar.UseVisualStyleBackColor = true;
+            this.BBorrar.Click += new System.EventHandler(this.BBorrar_Click);
             // 
             // LSexo
             // 
@@ -437,6 +439,7 @@
             this.TBuscarUsuarios.Name = "TBuscarUsuarios";
             this.TBuscarUsuarios.Size = new System.Drawing.Size(277, 20);
             this.TBuscarUsuarios.TabIndex = 103;
+            this.TBuscarUsuarios.TextChanged += new System.EventHandler(this.TBuscarUsuarios_TextChanged);
             // 
             // LBuscarUsuario
             // 
@@ -454,32 +457,35 @@
             this.CBGerente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBGerente.Location = new System.Drawing.Point(443, 257);
             this.CBGerente.Name = "CBGerente";
-            this.CBGerente.Size = new System.Drawing.Size(70, 19);
+            this.CBGerente.Size = new System.Drawing.Size(76, 19);
             this.CBGerente.TabIndex = 105;
-            this.CBGerente.Text = "Gerente";
+            this.CBGerente.Text = "Gerentes";
             this.CBGerente.UseVisualStyleBackColor = true;
+            this.CBGerente.CheckedChanged += new System.EventHandler(this.CBGerente_CheckedChanged);
             // 
             // CBVendedor
             // 
             this.CBVendedor.AutoSize = true;
             this.CBVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBVendedor.Location = new System.Drawing.Point(519, 257);
+            this.CBVendedor.Location = new System.Drawing.Point(520, 257);
             this.CBVendedor.Name = "CBVendedor";
             this.CBVendedor.Size = new System.Drawing.Size(79, 19);
             this.CBVendedor.TabIndex = 106;
             this.CBVendedor.Text = "Vendedor";
             this.CBVendedor.UseVisualStyleBackColor = true;
+            this.CBVendedor.CheckedChanged += new System.EventHandler(this.CBVendedor_CheckedChanged);
             // 
             // CBAdministrador
             // 
             this.CBAdministrador.AutoSize = true;
             this.CBAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBAdministrador.Location = new System.Drawing.Point(604, 257);
+            this.CBAdministrador.Location = new System.Drawing.Point(605, 257);
             this.CBAdministrador.Name = "CBAdministrador";
             this.CBAdministrador.Size = new System.Drawing.Size(64, 19);
             this.CBAdministrador.TabIndex = 107;
             this.CBAdministrador.Text = "Admin.";
             this.CBAdministrador.UseVisualStyleBackColor = true;
+            this.CBAdministrador.CheckedChanged += new System.EventHandler(this.CBAdministrador_CheckedChanged);
             // 
             // BEditar
             // 
@@ -553,6 +559,7 @@
             this.Name = "GestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionUsuarios";
+            this.Load += new System.EventHandler(this.GestionUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).EndInit();
             this.ResumeLayout(false);

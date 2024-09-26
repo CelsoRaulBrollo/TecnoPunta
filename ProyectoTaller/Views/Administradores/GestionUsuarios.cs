@@ -204,6 +204,21 @@ namespace ProyectoTaller.Views.Administradores
             }
         }
 
+        private void BBorrar_Click(object sender, EventArgs e)
+        {
+            CBPuesto.SelectedIndex = -1;
+            TDni.Clear();
+            TNombre.Clear();
+            TApellido.Clear();
+            TTelefono.Clear();
+            TEmail.Clear();
+            CBSexo.SelectedIndex = -1;
+            TSueldo.Clear();
+
+            LValido.Text = string.Empty;
+            LimpiarMensajesDeValidacion();
+        }
+
         private void LimpiarMensajesDeValidacion()
         {
             LValiPuesto.Text = string.Empty;
@@ -237,6 +252,138 @@ namespace ProyectoTaller.Views.Administradores
             else
             {
                 MessageBox.Show("Seleccione una fila para editar.", "Error de edición", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BEliminar_Click(object sender, EventArgs e)
+        {
+            if (DGUsuarios.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar la fila seleccionada?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in DGUsuarios.SelectedRows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            DGUsuarios.Rows.Remove(row);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila para eliminar.", "Error de eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GestionUsuarios_Load(object sender, EventArgs e)
+        {
+            DGUsuarios.Rows.Add("Administrador", "42733217", "Celso", "Brollo", "3624274989", "celsobrollo@gmail.com", "Masculino", "500000");
+            DGUsuarios.Rows.Add("Vendedor", "37654321", "María", "González", "0987654321", "mariagonzalez@gmail.com", "Femenino", "40000");
+            DGUsuarios.Rows.Add("Gerente", "11223344", "Carlos", "Fernández", "1231231234", "carlosfernandez@gmail.com", "Masculino", "60000");
+            DGUsuarios.Rows.Add("Gerente", "44332211", "Ana", "Martínez", "3213214321", "anamartinez@hotmail.com", "Femenino", "35000");
+            DGUsuarios.Rows.Add("Vendedor", "45667788", "Pedro", "Sánchez", "6546546546", "pedrosanchez@gmail.com", "Masculino", "45000");
+        }
+
+        private void TBuscarUsuarios_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = TBuscarUsuarios.Text.ToLower();
+            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            {
+                if (fila.Cells["CNombre"].Value != null)
+                {
+                    string dni = fila.Cells["CDni"].Value.ToString().ToLower();
+                    string nombre = fila.Cells["CNombre"].Value.ToString().ToLower();
+                    string apellido = fila.Cells["CApellido"].Value.ToString().ToLower();
+                    string telefono = fila.Cells["CTelefono"].Value.ToString().ToLower();
+                    string email = fila.Cells["CEmail"].Value.ToString().ToLower();
+
+                    if (dni.Contains(filtro) || nombre.Contains(filtro) || apellido.Contains(filtro) || telefono.Contains(filtro) || email.Contains(filtro))
+                    {
+                        fila.Visible = true;
+                    }
+                    else
+                    {
+                        fila.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void CBGerente_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    if (CBGerente.Checked)
+                    {
+                        if (fila.Cells["CPuesto"].Value.ToString() == "Gerente")
+                        {
+                            fila.Visible = true;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        fila.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void CBVendedor_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    if (CBVendedor.Checked)
+                    {
+                        if (fila.Cells["CPuesto"].Value.ToString() == "Vendedor")
+                        {
+                            fila.Visible = true;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        fila.Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void CBAdministrador_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    if (CBAdministrador.Checked)
+                    {
+                        if (fila.Cells["CPuesto"].Value.ToString() == "Administrador")
+                        {
+                            fila.Visible = true;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        fila.Visible = true;
+                    }
+                }
             }
         }
     }
