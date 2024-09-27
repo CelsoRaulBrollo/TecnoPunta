@@ -73,12 +73,12 @@
             this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CBMarca = new System.Windows.Forms.ComboBox();
             this.TBuscarProducto = new System.Windows.Forms.TextBox();
             this.LBuscarProducto = new System.Windows.Forms.Label();
             this.CBUsado = new System.Windows.Forms.CheckBox();
             this.CBReacondicionado = new System.Windows.Forms.CheckBox();
             this.CBNuevo = new System.Windows.Forms.CheckBox();
+            this.CBMarca = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).BeginInit();
             this.SuspendLayout();
@@ -353,7 +353,7 @@
             this.CBEstado.Name = "CBEstado";
             this.CBEstado.Size = new System.Drawing.Size(205, 21);
             this.CBEstado.TabIndex = 52;
-            this.CBEstado.Text = "Seleccione el Estado";
+            this.CBEstado.Text = "Seleccione el estado";
             // 
             // BEliminar
             // 
@@ -510,21 +510,6 @@
             this.CEstado.Name = "CEstado";
             this.CEstado.Width = 125;
             // 
-            // CBMarca
-            // 
-            this.CBMarca.FormattingEnabled = true;
-            this.CBMarca.Items.AddRange(new object[] {
-            "Apple",
-            "Samsung",
-            "Xiaomi",
-            "Huawei",
-            "Motorola"});
-            this.CBMarca.Location = new System.Drawing.Point(187, 50);
-            this.CBMarca.Name = "CBMarca";
-            this.CBMarca.Size = new System.Drawing.Size(205, 21);
-            this.CBMarca.TabIndex = 59;
-            this.CBMarca.Text = "Seleccione la Marca";
-            // 
             // TBuscarProducto
             // 
             this.TBuscarProducto.Location = new System.Drawing.Point(176, 277);
@@ -579,18 +564,33 @@
             this.CBNuevo.UseVisualStyleBackColor = true;
             this.CBNuevo.CheckedChanged += new System.EventHandler(this.CBNuevo_CheckedChanged);
             // 
+            // CBMarca
+            // 
+            this.CBMarca.FormattingEnabled = true;
+            this.CBMarca.Items.AddRange(new object[] {
+            "Apple",
+            "Samsung",
+            "Xiaomi",
+            "Huawei",
+            "Motorola"});
+            this.CBMarca.Location = new System.Drawing.Point(187, 53);
+            this.CBMarca.Name = "CBMarca";
+            this.CBMarca.Size = new System.Drawing.Size(205, 21);
+            this.CBMarca.TabIndex = 111;
+            this.CBMarca.Text = "Seleccione la marca";
+            // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(887, 507);
+            this.Controls.Add(this.CBMarca);
             this.Controls.Add(this.CBUsado);
             this.Controls.Add(this.CBReacondicionado);
             this.Controls.Add(this.CBNuevo);
             this.Controls.Add(this.LBuscarProducto);
             this.Controls.Add(this.TBuscarProducto);
-            this.Controls.Add(this.CBMarca);
             this.Controls.Add(this.DGProductos);
             this.Controls.Add(this.BEliminar);
             this.Controls.Add(this.BEditar);
@@ -629,7 +629,7 @@
             this.Name = "AgregarProducto";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "v";
+            this.Text = "GestionProductos";
             this.Load += new System.EventHandler(this.AgregarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).EndInit();
@@ -675,7 +675,6 @@
         private System.Windows.Forms.Button BBorrar;
         private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.DataGridView DGProductos;
-        private System.Windows.Forms.ComboBox CBMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn CModelo;
@@ -690,5 +689,6 @@
         private System.Windows.Forms.CheckBox CBUsado;
         private System.Windows.Forms.CheckBox CBReacondicionado;
         private System.Windows.Forms.CheckBox CBNuevo;
+        private System.Windows.Forms.ComboBox CBMarca;
     }
 }

@@ -30,7 +30,6 @@
         {
             this.LTituloVentas = new System.Windows.Forms.Label();
             this.TVentas = new System.Windows.Forms.TextBox();
-            this.BBuscarVentas = new System.Windows.Forms.Button();
             this.DGVentas = new System.Windows.Forms.DataGridView();
             this.CIdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +39,7 @@
             this.CSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.BVerDetalle = new System.Windows.Forms.Button();
+            this.BVerFactura = new System.Windows.Forms.Button();
             this.PBImagenTitulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenTitulo)).BeginInit();
@@ -57,19 +57,10 @@
             // 
             // TVentas
             // 
-            this.TVentas.Location = new System.Drawing.Point(294, 78);
+            this.TVentas.Location = new System.Drawing.Point(315, 65);
             this.TVentas.Name = "TVentas";
             this.TVentas.Size = new System.Drawing.Size(277, 20);
             this.TVentas.TabIndex = 29;
-            // 
-            // BBuscarVentas
-            // 
-            this.BBuscarVentas.Location = new System.Drawing.Point(577, 75);
-            this.BBuscarVentas.Name = "BBuscarVentas";
-            this.BBuscarVentas.Size = new System.Drawing.Size(75, 23);
-            this.BBuscarVentas.TabIndex = 30;
-            this.BBuscarVentas.Text = "Buscar";
-            this.BBuscarVentas.UseVisualStyleBackColor = true;
             // 
             // DGVentas
             // 
@@ -132,7 +123,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(374, 41);
+            this.label1.Location = new System.Drawing.Point(389, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 23);
             this.label1.TabIndex = 32;
@@ -145,13 +136,28 @@
             this.BVerDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BVerDetalle.Image = global::ProyectoTaller.Properties.Resources.Ver_detalle;
             this.BVerDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BVerDetalle.Location = new System.Drawing.Point(752, 60);
+            this.BVerDetalle.Location = new System.Drawing.Point(623, 60);
             this.BVerDetalle.Name = "BVerDetalle";
             this.BVerDetalle.Size = new System.Drawing.Size(123, 52);
-            this.BVerDetalle.TabIndex = 33;
+            this.BVerDetalle.TabIndex = 34;
             this.BVerDetalle.Text = "Ver Detalle ";
             this.BVerDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BVerDetalle.UseVisualStyleBackColor = true;
+            // 
+            // BVerFactura
+            // 
+            this.BVerFactura.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BVerFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BVerFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BVerFactura.Image = global::ProyectoTaller.Properties.Resources.factura;
+            this.BVerFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BVerFactura.Location = new System.Drawing.Point(752, 60);
+            this.BVerFactura.Name = "BVerFactura";
+            this.BVerFactura.Size = new System.Drawing.Size(123, 52);
+            this.BVerFactura.TabIndex = 33;
+            this.BVerFactura.Text = "Factura     ";
+            this.BVerFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BVerFactura.UseVisualStyleBackColor = true;
             // 
             // PBImagenTitulo
             // 
@@ -169,9 +175,9 @@
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(887, 507);
             this.Controls.Add(this.BVerDetalle);
+            this.Controls.Add(this.BVerFactura);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DGVentas);
-            this.Controls.Add(this.BBuscarVentas);
             this.Controls.Add(this.TVentas);
             this.Controls.Add(this.PBImagenTitulo);
             this.Controls.Add(this.LTituloVentas);
@@ -190,15 +196,15 @@
         private System.Windows.Forms.Label LTituloVentas;
         private System.Windows.Forms.PictureBox PBImagenTitulo;
         private System.Windows.Forms.TextBox TVentas;
-        private System.Windows.Forms.Button BBuscarVentas;
         private System.Windows.Forms.DataGridView DGVentas;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BVerDetalle;
+        private System.Windows.Forms.Button BVerFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn CIdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombreCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn CFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn CMedioPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn CProductosComprados;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSubtotal;
+        private System.Windows.Forms.Button BVerDetalle;
     }
 }

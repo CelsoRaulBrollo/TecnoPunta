@@ -25,6 +25,7 @@ namespace ProyectoTaller.Views.Administradores
         private void BAgregar_Click(object sender, EventArgs e)
         {
             string puesto = CBPuesto.SelectedItem?.ToString();
+            string usuario = TUsuario.Text;
             string dnitexto = TDni.Text;
             string nombre = TNombre.Text;
             string apellido = TApellido.Text;
@@ -32,6 +33,7 @@ namespace ProyectoTaller.Views.Administradores
             string email = TEmail.Text;
             string sexo = CBSexo.SelectedItem?.ToString();
             string sueldotexto = TSueldo.Text;
+            string contraseña = TContraseña.Text;
 
             bool valido = true;
 
@@ -166,6 +168,52 @@ namespace ProyectoTaller.Views.Administradores
                 LValiSueldo.Text = string.Empty;
             }
 
+            if (string.IsNullOrWhiteSpace(usuario))
+            {
+                LValiUsuario.ForeColor = Color.Red;
+                LValiUsuario.Text = "Ingrese el Usuario.";
+                valido = false;
+            }
+            else if (usuario.Length < 4)
+            {
+                LValiUsuario.ForeColor = Color.Red;
+                LValiUsuario.Text = "Usuario de al menos 4 caracteres.";
+                valido = false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(usuario, @"^[a-zA-Z]"))
+            {
+                LValiUsuario.ForeColor = Color.Red;
+                LValiUsuario.Text = "El Usuario debe contener solo letras.";
+                valido = false;
+            }
+            else
+            {
+                LValiNombre.Text = string.Empty;
+            }
+
+            if (string.IsNullOrWhiteSpace(contraseña))
+            {
+                LValiContraseña.ForeColor = Color.Red;
+                LValiContraseña.Text = "Ingrese una Contraseña.";
+                valido = false;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(contraseña, @"^[a-zA-Z0-9]"))
+            {
+                LValiContraseña.ForeColor = Color.Red;
+                LValiContraseña.Text = "La Contraseña debe contener solo letras y números.";
+                valido = false;
+            }
+            else if (contraseña.Length < 5 || contraseña.Length > 20)
+            {
+                LValiContraseña.ForeColor = Color.Red;
+                LValiContraseña.Text = "Contraseña de 5 a 20 caracteres.";
+                valido = false;
+            }
+            else
+            {
+                LValiContraseña.Text = string.Empty;
+            }
+
             if (valido)
             {
                 LimpiarMensajesDeValidacion();
@@ -174,13 +222,15 @@ namespace ProyectoTaller.Views.Administradores
                 {
                     DataGridViewRow filaSeleccionada = DGUsuarios.Rows[filaSeleccionadaIndex];
                     filaSeleccionada.Cells["CPuesto"].Value = CBPuesto.SelectedItem.ToString();
+                    filaSeleccionada.Cells["CUsuario"].Value = TUsuario.Text;
                     filaSeleccionada.Cells["CDni"].Value = TDni.Text;
                     filaSeleccionada.Cells["CNombre"].Value = TNombre.Text;
                     filaSeleccionada.Cells["CApellido"].Value = TApellido.Text;
-                    filaSeleccionada.Cells["CTelefono"].Value = TTelefono.Text;
                     filaSeleccionada.Cells["CEmail"].Value = TEmail.Text;
                     filaSeleccionada.Cells["CSexo"].Value = CBSexo.SelectedItem.ToString();
                     filaSeleccionada.Cells["CSueldo"].Value = TSueldo.Text;
+                    filaSeleccionada.Cells["CTelefono"].Value = TTelefono.Text;
+                    filaSeleccionada.Cells["CContraseña"].Value = TContraseña.Text;
 
                     LValido.Text = "Usuario editado exitosamente.";
 
@@ -188,32 +238,36 @@ namespace ProyectoTaller.Views.Administradores
                 }
                 else
                 {
-                    DGUsuarios.Rows.Add(CBPuesto.SelectedItem.ToString(), TDni.Text, TNombre.Text, TApellido.Text, TTelefono.Text, TEmail.Text, CBSexo.SelectedItem.ToString(), TSueldo.Text);
+                    DGUsuarios.Rows.Add(CBPuesto.SelectedItem.ToString(), TUsuario.Text, TDni.Text, TNombre.Text, TApellido.Text, TEmail.Text, CBSexo.SelectedItem.ToString(), TSueldo.Text, TTelefono.Text, TContraseña.Text);
 
                     LValido.Text = "Usuario agregado exitosamente.";
                 }
 
                 CBPuesto.SelectedIndex = -1;
+                TUsuario.Clear();
                 TDni.Clear();
                 TNombre.Clear();
                 TApellido.Clear();
-                TTelefono.Clear();
                 TEmail.Clear();
                 CBSexo.SelectedIndex = -1;
                 TSueldo.Clear();
+                TTelefono.Clear();
+                TContraseña.Clear();
             }
         }
 
         private void BBorrar_Click(object sender, EventArgs e)
         {
             CBPuesto.SelectedIndex = -1;
+            TUsuario.Clear();
             TDni.Clear();
             TNombre.Clear();
             TApellido.Clear();
-            TTelefono.Clear();
             TEmail.Clear();
             CBSexo.SelectedIndex = -1;
             TSueldo.Clear();
+            TTelefono.Clear();
+            TContraseña.Clear();
 
             LValido.Text = string.Empty;
             LimpiarMensajesDeValidacion();
@@ -222,13 +276,15 @@ namespace ProyectoTaller.Views.Administradores
         private void LimpiarMensajesDeValidacion()
         {
             LValiPuesto.Text = string.Empty;
+            LValiUsuario.Text = string.Empty;
             LValiDni.Text = string.Empty;
             LValiNombre.Text = string.Empty;
             LValiApellido.Text = string.Empty;
-            LValiTelefono.Text = string.Empty;
             LValiEmail.Text = string.Empty;
             LValiSexo.Text = string.Empty;
             LValiSueldo.Text = string.Empty;
+            LValiTelefono.Text = string.Empty;
+            LValiContraseña.Text = string.Empty;
         }
 
         private void BEditar_Click(object sender, EventArgs e)
@@ -239,13 +295,15 @@ namespace ProyectoTaller.Views.Administradores
                 filaSeleccionadaIndex = filaSeleccionada.Index;
 
                 CBPuesto.SelectedItem = filaSeleccionada.Cells["CPuesto"].Value.ToString();
+                TUsuario.Text = filaSeleccionada.Cells["CUsuario"].Value.ToString();
                 TDni.Text = filaSeleccionada.Cells["CDni"].Value.ToString();
                 TNombre.Text = filaSeleccionada.Cells["CNombre"].Value.ToString();
                 TApellido.Text = filaSeleccionada.Cells["CApellido"].Value.ToString();
-                TTelefono.Text = filaSeleccionada.Cells["CTelefono"].Value.ToString();
                 TEmail.Text = filaSeleccionada.Cells["CEmail"].Value.ToString();
                 CBSexo.SelectedItem = filaSeleccionada.Cells["CSexo"].Value.ToString();
                 TSueldo.Text = filaSeleccionada.Cells["CSueldo"].Value.ToString();
+                TTelefono.Text = filaSeleccionada.Cells["CTelefono"].Value.ToString();
+                TContraseña.Text = filaSeleccionada.Cells["CContraseña"].Value.ToString();
 
                 editando = true;
             }
@@ -280,11 +338,11 @@ namespace ProyectoTaller.Views.Administradores
 
         private void GestionUsuarios_Load(object sender, EventArgs e)
         {
-            DGUsuarios.Rows.Add("Administrador", "42733217", "Celso", "Brollo", "3624274989", "celsobrollo@gmail.com", "Masculino", "500000");
-            DGUsuarios.Rows.Add("Vendedor", "37654321", "María", "González", "0987654321", "mariagonzalez@gmail.com", "Femenino", "40000");
-            DGUsuarios.Rows.Add("Gerente", "11223344", "Carlos", "Fernández", "1231231234", "carlosfernandez@gmail.com", "Masculino", "60000");
-            DGUsuarios.Rows.Add("Gerente", "44332211", "Ana", "Martínez", "3213214321", "anamartinez@hotmail.com", "Femenino", "35000");
-            DGUsuarios.Rows.Add("Vendedor", "45667788", "Pedro", "Sánchez", "6546546546", "pedrosanchez@gmail.com", "Masculino", "45000");
+            DGUsuarios.Rows.Add("Administrador", "CelsoBro", "42733217", "Celso", "Brollo", "celsobrollo@gmail.com", "Masculino", "500000", "3624274989", "12345");
+            DGUsuarios.Rows.Add("Vendedor", "MariaGon", "37654321", "María", "González", "mariagonzalez@gmail.com", "Femenino", "40000", "0987654321", "37654321");
+            DGUsuarios.Rows.Add("Gerente", "CarlosFernan", "11223344", "Carlos", "Fernández", "carlosfernandez@gmail.com", "Masculino", "60000", "1231231234", "784512963");
+            DGUsuarios.Rows.Add("Gerente", "AnaMarti", "44332211", "Ana", "Martínez", "anamartinez@hotmail.com", "Femenino", "35000", "3213214321", "Ana5588");
+            DGUsuarios.Rows.Add("Vendedor", "PedroSan", "45667788", "Pedro", "Sánchez", "pedrosanchez@gmail.com", "Masculino", "45000", "6546546546", "35687qwe");
         }
 
         private void TBuscarUsuarios_TextChanged(object sender, EventArgs e)
@@ -294,13 +352,14 @@ namespace ProyectoTaller.Views.Administradores
             {
                 if (fila.Cells["CNombre"].Value != null)
                 {
+                    string usuario = fila.Cells["CUsuario"].Value.ToString().ToLower();
                     string dni = fila.Cells["CDni"].Value.ToString().ToLower();
                     string nombre = fila.Cells["CNombre"].Value.ToString().ToLower();
                     string apellido = fila.Cells["CApellido"].Value.ToString().ToLower();
                     string telefono = fila.Cells["CTelefono"].Value.ToString().ToLower();
                     string email = fila.Cells["CEmail"].Value.ToString().ToLower();
 
-                    if (dni.Contains(filtro) || nombre.Contains(filtro) || apellido.Contains(filtro) || telefono.Contains(filtro) || email.Contains(filtro))
+                    if (usuario.Contains(filtro) || dni.Contains(filtro) || nombre.Contains(filtro) || apellido.Contains(filtro) || telefono.Contains(filtro) || email.Contains(filtro))
                     {
                         fila.Visible = true;
                     }
