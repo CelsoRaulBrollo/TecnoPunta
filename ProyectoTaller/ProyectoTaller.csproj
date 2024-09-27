@@ -97,17 +97,29 @@
     <Compile Include="Views\Gerentes\EstadisticasGraficas.Designer.cs">
       <DependentUpon>EstadisticasGraficas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Gerentes\GestionarContraseñas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Gerentes\GestionarContraseñas.Designer.cs">
-      <DependentUpon>GestionarContraseñas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Gerentes\InformesGerente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Gerentes\InformesGerente.Designer.cs">
       <DependentUpon>InformesGerente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerentes\ReporteClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerentes\ReporteClientes.Designer.cs">
+      <DependentUpon>ReporteClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerentes\ReporteProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerentes\ReporteProductos.Designer.cs">
+      <DependentUpon>ReporteProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gerentes\ReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gerentes\ReporteVentas.Designer.cs">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -185,11 +197,17 @@
     <EmbeddedResource Include="Views\Gerentes\EstadisticasGraficas.resx">
       <DependentUpon>EstadisticasGraficas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Gerentes\GestionarContraseñas.resx">
-      <DependentUpon>GestionarContraseñas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Gerentes\InformesGerente.resx">
       <DependentUpon>InformesGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerentes\ReporteClientes.resx">
+      <DependentUpon>ReporteClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerentes\ReporteProductos.resx">
+      <DependentUpon>ReporteProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gerentes\ReporteVentas.resx">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

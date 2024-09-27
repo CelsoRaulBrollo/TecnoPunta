@@ -52,17 +52,19 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Vendedor")
             {
+                BProductos.Visible = true;
                 BCliente.Visible = true;
                 BCarrito.Visible = true;
-                BConsultarProd.Visible = true;
                 BVentas.Visible = true;
                 BInformes.Visible = true;
             }
             else if (_rolUsuario == "Gerente")
             {
+                BProductos.Visible = true;
+                BVentas.Visible = true;
+                BCliente.Visible = true;
                 BGraficos.Visible = true;
                 BInformes.Visible = true;
-                BContraseñas.Visible = true;
             }
         }
 
@@ -151,9 +153,24 @@ namespace ProyectoTaller.Views
 
         private void BProductos_Click(object sender, EventArgs e)
         {
-            Form agregarProductoForm = new AgregarProducto();
+            if (_rolUsuario == "Admin")
+            {
+                Form agregarProductoForm = new AgregarProducto();
 
-            MostrarFormularioEnPanel(agregarProductoForm);
+                MostrarFormularioEnPanel(agregarProductoForm);
+            }
+            else if (_rolUsuario == "Vendedor")
+            {
+                Form consultarProductoForm = new TConsultarProducto();
+
+                MostrarFormularioEnPanel(consultarProductoForm);
+            }
+            else if (_rolUsuario == "Gerente")
+            {
+                Form reporteProductos = new ReporteProductos();
+
+                MostrarFormularioEnPanel(reporteProductos);
+            }
         }
 
         private void BInicio_Click(object sender, EventArgs e)
@@ -179,7 +196,9 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Gerente")
             {
+                Form reporteVentas = new ReporteVentas();
 
+                MostrarFormularioEnPanel(reporteVentas);
             }
         }
 
@@ -204,6 +223,12 @@ namespace ProyectoTaller.Views
 
                 MostrarFormularioEnPanel(agregarClienteForm);
             }
+            else if (_rolUsuario == "Gerente")
+            {
+                Form reporteClientes = new ReporteClientes();
+
+                MostrarFormularioEnPanel(reporteClientes);
+            }
         }
 
         private void BCarrito_Click(object sender, EventArgs e)
@@ -211,13 +236,6 @@ namespace ProyectoTaller.Views
             Form carritoForm = new Carrito();
 
             MostrarFormularioEnPanel(carritoForm);
-        }
-
-        private void BConsultarProd_Click(object sender, EventArgs e)
-        {
-            Form consultarProductoForm = new TConsultarProducto();
-
-            MostrarFormularioEnPanel(consultarProductoForm);
         }
 
         private void BGraficos_Click(object sender, EventArgs e)
@@ -254,13 +272,6 @@ namespace ProyectoTaller.Views
 
                 MostrarFormularioEnPanel(informeGerente);
             }
-        }
-
-        private void BContraseñas_Click(object sender, EventArgs e)
-        {
-            Form contraseñasGestion = new GestionarContraseñas();
-
-            MostrarFormularioEnPanel(contraseñasGestion);
         }
     }
 }
