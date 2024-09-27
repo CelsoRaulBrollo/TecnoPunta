@@ -55,6 +55,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administradores\AdministrarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Administradores\AdministrarClientes.Designer.cs">
+      <DependentUpon>AdministrarClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administradores\AdministrarConsultas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Administradores\AdministrarClientes.resx">
+      <DependentUpon>AdministrarClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Administradores\AdministrarConsultas.resx">
       <DependentUpon>AdministrarConsultas.cs</DependentUpon>

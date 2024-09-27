@@ -49,7 +49,11 @@ namespace ProyectoTaller.Views.Administradores
                 LValiPuesto.Text = string.Empty;
             }
 
-            if (string.IsNullOrWhiteSpace(dnitexto))
+            if (!ValidarDni(dnitexto))
+            {
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(dnitexto))
             {
                 LValiDni.ForeColor = Color.Red;
                 LValiDni.Text = "Ingrese un número de DNI.";
@@ -254,6 +258,22 @@ namespace ProyectoTaller.Views.Administradores
                 TTelefono.Clear();
                 TContraseña.Clear();
             }
+        }
+
+        private bool ValidarDni(string dniTexto)
+        {
+            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            {
+                if (fila.Cells["CDni"].Value != null && fila.Cells["CDni"].Value.ToString() == dniTexto)
+                {
+                    LValiDni.ForeColor = Color.Red;
+                    LValiDni.Text = "El DNI ya está registrado.";
+                    return false;
+                }
+            }
+
+            LValiDni.Text = string.Empty;
+            return true;
         }
 
         private void BBorrar_Click(object sender, EventArgs e)

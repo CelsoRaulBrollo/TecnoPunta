@@ -46,8 +46,9 @@ namespace ProyectoTaller.Views
                 BProductos.Visible = true;
                 BVentas.Visible = true;
                 BConsultas.Visible = true;
+                BCliente.Visible = true;
                 BUsuarios.Visible = true;
-                BInformes.Visible = true; 
+                BInformes.Visible = true;
             }
             else if (_rolUsuario == "Vendedor")
             {
@@ -72,7 +73,7 @@ namespace ProyectoTaller.Views
 
         private void mouseDown_event(object sender, MouseEventArgs e)
         {
-            offset.X = e.X; 
+            offset.X = e.X;
             offset.Y = e.Y;
             mouseDown = true;
         }
@@ -88,7 +89,7 @@ namespace ProyectoTaller.Views
 
         private void mouseUp_event(object sender, MouseEventArgs e)
         {
-            mouseDown = false; 
+            mouseDown = false;
         }
 
         private void BCerrar_Click(object sender, EventArgs e)
@@ -190,10 +191,19 @@ namespace ProyectoTaller.Views
         }
 
         private void BCliente_Click(object sender, EventArgs e)
-        {
-            Form agregarClienteForm = new AgregarCliente();
+        { 
+            if (_rolUsuario == "Admin")
+            {
+                Form AdminClientes = new AdministrarClientes();
 
-            MostrarFormularioEnPanel(agregarClienteForm);
+                MostrarFormularioEnPanel(AdminClientes);
+            }
+            else if (_rolUsuario == "Vendedor")
+            {
+                Form agregarClienteForm = new AgregarCliente();
+
+                MostrarFormularioEnPanel(agregarClienteForm);
+            }
         }
 
         private void BCarrito_Click(object sender, EventArgs e)

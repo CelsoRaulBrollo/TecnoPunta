@@ -71,7 +71,11 @@ namespace ProyectoTaller.Views.Administradores
                 LValiNombre.Text = string.Empty;
             }
 
-            if (string.IsNullOrWhiteSpace(modelo))
+            if (!ValidarModelo(modelo))
+            {
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(modelo))
             {
                 LValiModelo.ForeColor = Color.Red;
                 LValiModelo.Text = "Ingrese un modelo.";
@@ -252,6 +256,22 @@ namespace ProyectoTaller.Views.Administradores
                 TSo.Clear();
                 TPrecio.Clear();
             }
+        }
+
+        private bool ValidarModelo(string modelo)
+        {
+            foreach (DataGridViewRow fila in DGProductos.Rows)
+            {
+                if (fila.Cells["CModelo"].Value != null && fila.Cells["CModelo"].Value.ToString() == modelo)
+                {
+                    LValiModelo.ForeColor = Color.Red;
+                    LValiModelo.Text = "El Modelo ya está registrado.";
+                    return false;
+                }
+            }
+
+            LValiModelo.Text = string.Empty;
+            return true;
         }
 
         private void BBorrar_Click(object sender, EventArgs e)
