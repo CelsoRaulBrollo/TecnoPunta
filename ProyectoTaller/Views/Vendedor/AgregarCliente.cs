@@ -20,9 +20,10 @@ namespace ProyectoTaller.Views.Vendedor
         private void BAgregar_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
-            if (ValidacionFormulario())
+            if (!ValidacionFormulario())
             {
-                //Implementacion SQL.CREATE 
+                LRespuestaNuevoCliente.Text = "Registrado Exitosamente!";
+                
             }
             else
             {
@@ -47,6 +48,7 @@ namespace ProyectoTaller.Views.Vendedor
             LValiNombre.Text = string.Empty;
             LValiTelefono.Text = string.Empty;
             LValidDNI.Text = string.Empty;
+            LValiDireccionCliente.Text = string.Empty;
            
         }
 
@@ -57,7 +59,7 @@ namespace ProyectoTaller.Views.Vendedor
                 String dniCliente = TDNICliente.Text;
                 String telefonoCliente = TTelefonoCliente.Text;
                 String correoCliente = TCorreoCliente.Text;
-
+                String direccionCliente = TDireccionCliente.Text;
                 bool respuesta = true;
 
                 if (string.IsNullOrEmpty(nombreCliente))
@@ -67,6 +69,9 @@ namespace ProyectoTaller.Views.Vendedor
                 else if (nombreCliente.Length < 30)
                 {
                     respuesta = false;
+                }else
+                {
+                    respuesta = true;
                 }
 
 
@@ -77,6 +82,10 @@ namespace ProyectoTaller.Views.Vendedor
                 else if (nombreCliente.Length < 30)
                 {
                     respuesta = false;
+                }
+                else
+                {
+                    respuesta = true;
                 }
 
 
@@ -92,6 +101,10 @@ namespace ProyectoTaller.Views.Vendedor
                 {
                     respuesta = false;
                 }
+                else
+                {
+                    respuesta = true;
+                }
 
 
                 if (string.IsNullOrEmpty(telefonoCliente))
@@ -106,6 +119,10 @@ namespace ProyectoTaller.Views.Vendedor
                 {
                     respuesta = false;
                 }
+                else
+                {
+                    respuesta = true;
+                }
 
 
                 if (string.IsNullOrEmpty(correoCliente))
@@ -116,6 +133,18 @@ namespace ProyectoTaller.Views.Vendedor
                 else if (correoCliente.Length < 100)
                 {
                     respuesta = false;
+                }
+
+                if (!string.IsNullOrEmpty(direccionCliente))
+                {
+                    respuesta = false;
+                }
+                else if (direccionCliente.Length > 200) {
+                    respuesta = false;
+                }
+                else
+                {
+                    respuesta = true;
                 }
 
                 return respuesta;
@@ -130,6 +159,7 @@ namespace ProyectoTaller.Views.Vendedor
             String dniCliente = TDNICliente.Text;
             String telefonoCliente = TTelefonoCliente.Text;
             String correoCliente = TCorreoCliente.Text;
+            String direccionCliente = TDireccionCliente.Text;
 
             if (string.IsNullOrEmpty(nombreCliente))
             {
@@ -216,6 +246,20 @@ namespace ProyectoTaller.Views.Vendedor
             else
             {
                 LValiCorreo.Text = string.Empty;
+            }
+            
+
+            if (string.IsNullOrEmpty(direccionCliente))
+            {
+                LValiDireccionCliente.Text = "Ingrese la direccion del Cliente";
+            }
+            else if (direccionCliente.Length > 200)
+            {
+                LValiDireccionCliente.Text = "Ingrese una direccion con menos caracteres";
+            }
+            else
+            {
+                LValiDireccionCliente.Text = string.Empty;
             }
 
         }

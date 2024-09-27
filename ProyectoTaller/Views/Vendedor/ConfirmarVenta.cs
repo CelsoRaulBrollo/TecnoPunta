@@ -10,18 +10,21 @@ using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
 {
-    public partial class Carrito : Form
+    public partial class ConfirmarVenta : Form
     {
-        public Carrito()
+        public ConfirmarVenta()
         {
             InitializeComponent();
         }
 
-        private void BFinalizarCompra_Click(object sender, EventArgs e)
+        private void ConfirmarVenta_Load(object sender, EventArgs e)
         {
-            ConfirmarVenta confirmarVenta = new ConfirmarVenta();
 
-            confirmarVenta.Show();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

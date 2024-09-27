@@ -129,6 +129,12 @@
     <Compile Include="Views\Vendedor\Carrito.Designer.cs">
       <DependentUpon>Carrito.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Vendedor\ConfirmarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\ConfirmarVenta.Designer.cs">
+      <DependentUpon>ConfirmarVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Vendedor\ConsultarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Vendedor\Carrito.resx">
       <DependentUpon>Carrito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Vendedor\ConfirmarVenta.resx">
+      <DependentUpon>ConfirmarVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Vendedor\ConsultarProducto.resx">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
