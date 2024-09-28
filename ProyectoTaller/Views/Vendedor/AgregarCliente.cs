@@ -17,13 +17,85 @@ namespace ProyectoTaller.Views.Vendedor
             InitializeComponent();
         }
 
+        bool editando = false;
+        private void BEditarCliente_Click(object sender, EventArgs e)
+        {
+            if (DGClientes.SelectedRows.Count > 0)
+            {
+                // Cargar la fila seleccionada
+                DataGridViewRow fila = DGClientes.SelectedRows[0]; 
+                
+                if(string.IsNullOrWhiteSpace(TNombreCliente.Text) ||
+                    string.IsNullOrWhiteSpace(TApellidosCliente.Text) ||
+                    string.IsNullOrWhiteSpace(TDNIClienteS.Text) ||
+                    string.IsNullOrWhiteSpace(TCorreoCliente.Text) ||
+                    string.IsNullOrWhiteSpace(TDireccionCliente.Text) ||
+                    string.IsNullOrWhiteSpace(TTelefonoCliente.Text))
+                {
+                    // Cargar los valores de la fila en los TextBox
+                    TNombreCliente.Text = fila.Cells["CNombreCliente"].Value.ToString();
+                    TApellidosCliente.Text = fila.Cells["CApellidoCliente"].Value.ToString();
+                    TDNIClienteS.Text = fila.Cells["CDNI"].Value.ToString();
+                    TCorreoCliente.Text = fila.Cells["CCorreoCliente"].Value.ToString();
+                    TDireccionCliente.Text = fila.Cells["CDireccionCliente"].Value.ToString();
+                    TTelefonoCliente.Text = fila.Cells["CTelefonoCliente"].Value.ToString();
+
+                }
+                else
+                {
+                    LimpiarMensajesDeValidacion();
+                    if (ValidacionFormulario())
+                    {
+                        // Actualizar la fila con los datos de los TextBox
+                        fila.Cells["CNombreCliente"].Value = TNombreCliente.Text;
+                        fila.Cells["CApellidoCliente"].Value = TApellidosCliente.Text;
+                        fila.Cells["CDNI"].Value = TDNIClienteS.Text;
+                        fila.Cells["CCorreoCliente"].Value = TCorreoCliente.Text;
+                        fila.Cells["CDireccionCliente"].Value = TDireccionCliente.Text;
+                        fila.Cells["CTelefonoCliente"].Value = TTelefonoCliente.Text;
+                        LRespuestaNuevoCliente.Text = "Editado Exitosamente!";
+
+                    }
+                    else
+                    {
+                        ValidarFormularioLabel();
+                    }
+                    
+                }
+                    
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una fila para editar.");
+            }
+
+        }
+
+
         private void BAgregar_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
-            if (!ValidacionFormulario())
+            if (ValidacionFormulario())
             {
+                DGClientes.Rows.Add(
+                    TDNIClienteS.Text,
+                    TNombreCliente.Text,
+                    TApellidosCliente.Text,
+                    TTelefonoCliente.Text,
+                    TCorreoCliente.Text,
+                    TDireccionCliente.Text
+
+                    );
                 LRespuestaNuevoCliente.Text = "Registrado Exitosamente!";
-                
+                TNombreCliente.Clear();
+                TApellidosCliente.Clear();
+                TDNIClienteS.Clear();
+                TTelefonoCliente.Clear();
+                TCorreoCliente.Clear();
+                TDireccionCliente.Clear();
+                LimpiarMensajesDeValidacion();
+
+
             }
             else
             {
@@ -34,9 +106,11 @@ namespace ProyectoTaller.Views.Vendedor
         {
             TNombreCliente.Clear();
             TApellidosCliente.Clear(); 
-            TDNICliente.Clear();
+            TDNIClienteS.Clear();
             TTelefonoCliente.Clear();
             TCorreoCliente.Clear();
+            TDireccionCliente.Clear();
+            TBuscarCliente.Clear();
             LimpiarMensajesDeValidacion();
 
         }
@@ -49,102 +123,42 @@ namespace ProyectoTaller.Views.Vendedor
             LValiTelefono.Text = string.Empty;
             LValidDNI.Text = string.Empty;
             LValiDireccionCliente.Text = string.Empty;
+            LRespuestaNuevoCliente.Text= string.Empty;
            
         }
 
         private bool ValidacionFormulario() {
             {
-                String nombreCliente = TNombreCliente.Text;
-                String appellidosCliente = TApellidosCliente.Text;
-                String dniCliente = TDNICliente.Text;
-                String telefonoCliente = TTelefonoCliente.Text;
-                String correoCliente = TCorreoCliente.Text;
-                String direccionCliente = TDireccionCliente.Text;
                 bool respuesta = true;
 
-                if (string.IsNullOrEmpty(nombreCliente))
-                {
-                    respuesta = false;
-                }
-                else if (nombreCliente.Length < 30)
-                {
-                    respuesta = false;
-                }else
-                {
-                    respuesta = true;
-                }
-
-
-                if (string.IsNullOrEmpty(appellidosCliente))
-                {
-                    respuesta = false;
-                }
-                else if (nombreCliente.Length < 30)
-                {
-                    respuesta = false;
-                }
-                else
-                {
-                    respuesta = true;
-                }
-
-
-                if (string.IsNullOrEmpty(dniCliente))
-                {
-                    respuesta = false;
-                }
-                else if (!int.TryParse(dniCliente, out int almacenamiento))
-                {
-                    respuesta = false;
-                }
-                else if (dniCliente.Length < 9)
-                {
-                    respuesta = false;
-                }
-                else
-                {
-                    respuesta = true;
-                }
-
-
-                if (string.IsNullOrEmpty(telefonoCliente))
-                {
-                    respuesta = false;
-                }
-                else if (!int.TryParse(telefonoCliente, out int almacenamiento))
-                {
-                    respuesta = false;
-                }
-                else if (telefonoCliente.Length < 12)
-                {
-                    respuesta = false;
-                }
-                else
-                {
-                    respuesta = true;
-                }
-
-
-                if (string.IsNullOrEmpty(correoCliente))
-                {
-
-                    respuesta = false;
-                }
-                else if (correoCliente.Length < 100)
+                if (string.IsNullOrEmpty(TNombreCliente.Text) || TNombreCliente.Text.Length > 30)
                 {
                     respuesta = false;
                 }
 
-                if (!string.IsNullOrEmpty(direccionCliente))
+                if (string.IsNullOrEmpty(TApellidosCliente.Text) || TApellidosCliente.Text.Length > 30)
                 {
                     respuesta = false;
                 }
-                else if (direccionCliente.Length > 200) {
+
+                if (string.IsNullOrEmpty(TDNIClienteS.Text) || !int.TryParse(TDNIClienteS.Text, out _) || TDNIClienteS.Text.Length > 9)
+                {
                     respuesta = false;
                 }
-                else
+
+                if (string.IsNullOrEmpty(TTelefonoCliente.Text) || !int.TryParse(TTelefonoCliente.Text, out _) || TTelefonoCliente.Text.Length > 12)
                 {
-                    respuesta = true;
+                    respuesta = false;
+                }
+
+                if (string.IsNullOrEmpty(TCorreoCliente.Text) || TCorreoCliente.Text.Length > 100)
+                {
+                    respuesta = false;
+                }
+
+                if (string.IsNullOrEmpty(TDireccionCliente.Text) || TDireccionCliente.Text.Length > 200)
+                {
+                    respuesta = false;
                 }
 
                 return respuesta;
@@ -156,7 +170,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             String nombreCliente = TNombreCliente.Text;
             String appellidosCliente = TApellidosCliente.Text;
-            String dniCliente = TDNICliente.Text;
+            String dniCliente = TDNIClienteS.Text;
             String telefonoCliente = TTelefonoCliente.Text;
             String correoCliente = TCorreoCliente.Text;
             String direccionCliente = TDireccionCliente.Text;
@@ -278,5 +292,37 @@ namespace ProyectoTaller.Views.Vendedor
         {
 
         }
+
+        private void BBuscarCliente_Click(object sender, EventArgs e)
+        {
+            string dniBuscado = TBuscarCliente.Text.Trim();
+            DGClientes.ClearSelection();
+
+            if (!int.TryParse(dniBuscado, out int almacenamiento))
+            {
+                LValiBuscarCliente.Text = "Ingrese un numero";
+            }
+            else
+            {
+                foreach (DataGridViewRow fila in DGClientes.Rows)
+                {
+                    var dniCellValue = fila.Cells["CDNI"].Value;
+                    // Comparar el DNI en la fila con el DNI buscado
+                    if (dniCellValue != null && dniCellValue.ToString().Equals(dniBuscado, StringComparison.OrdinalIgnoreCase))
+                    {
+
+                        // Seleccionar la fila encontrada
+                        fila.Selected = true;
+                        fila.Cells["CDNI"].Selected = true; // Para resaltar la celda también
+                        DGClientes.FirstDisplayedScrollingRowIndex = fila.Index; // Desplazar la vista
+                        return; // Salir del método después de encontrar el DNI
+                    }
+                }
+
+                // Si no se encontró el DNI, mostrar un mensaje
+                MessageBox.Show("DNI no encontrado.");
+            }
+        }
     }
+    
 }
