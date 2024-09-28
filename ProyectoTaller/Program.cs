@@ -1,5 +1,4 @@
-﻿using ProyectoTaller.Views.Administradores;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace ProyectoTaller

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Administradores
@@ -24,6 +17,8 @@ namespace ProyectoTaller.Views.Administradores
 
         private void BAgregar_Click(object sender, EventArgs e)
         {
+            BAgregar.Text = "Agregar";
+
             string puesto = CBPuesto.SelectedItem?.ToString();
             string usuario = TUsuario.Text;
             string dnitexto = TDni.Text;
@@ -49,11 +44,8 @@ namespace ProyectoTaller.Views.Administradores
                 LValiPuesto.Text = string.Empty;
             }
 
-            if (!ValidarDni(dnitexto))
-            {
-                return;
-            }
-            else if (string.IsNullOrWhiteSpace(dnitexto))
+            
+            if (string.IsNullOrWhiteSpace(dnitexto))
             {
                 LValiDni.ForeColor = Color.Red;
                 LValiDni.Text = "Ingrese un número de DNI.";
@@ -224,24 +216,33 @@ namespace ProyectoTaller.Views.Administradores
 
                 if (editando)
                 {
-                    DataGridViewRow filaSeleccionada = DGUsuarios.Rows[filaSeleccionadaIndex];
-                    filaSeleccionada.Cells["CPuesto"].Value = CBPuesto.SelectedItem.ToString();
-                    filaSeleccionada.Cells["CUsuario"].Value = TUsuario.Text;
-                    filaSeleccionada.Cells["CDni"].Value = TDni.Text;
-                    filaSeleccionada.Cells["CNombre"].Value = TNombre.Text;
-                    filaSeleccionada.Cells["CApellido"].Value = TApellido.Text;
-                    filaSeleccionada.Cells["CEmail"].Value = TEmail.Text;
-                    filaSeleccionada.Cells["CSexo"].Value = CBSexo.SelectedItem.ToString();
-                    filaSeleccionada.Cells["CSueldo"].Value = TSueldo.Text;
-                    filaSeleccionada.Cells["CTelefono"].Value = TTelefono.Text;
-                    filaSeleccionada.Cells["CContraseña"].Value = TContraseña.Text;
+                    if (filaSeleccionadaIndex >= 0)
+                    {
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CPuesto"].Value = CBPuesto.SelectedItem.ToString();
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CUsuario"].Value = TUsuario.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CDni"].Value = TDni.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombre.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CApellido"].Value = TApellido.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CEmail"].Value = TEmail.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSexo"].Value = CBSexo.SelectedItem.ToString();
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSueldo"].Value = TSueldo.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CTelefono"].Value = TTelefono.Text;
+                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CContraseña"].Value = TContraseña.Text;
 
-                    LValido.Text = "Usuario editado exitosamente.";
+                        LimpiarMensajesDeValidacion();
+                        LValido.Text = "Usuario editado exitosamente.";
 
-                    editando = false;
+                        editando = false;
+                        filaSeleccionadaIndex = -1;
+                    }
                 }
                 else
                 {
+                    if (!ValidarDni(TDni.Text))
+                    {
+                        return;
+                    }
+
                     DGUsuarios.Rows.Add(CBPuesto.SelectedItem.ToString(), TUsuario.Text, TDni.Text, TNombre.Text, TApellido.Text, TEmail.Text, CBSexo.SelectedItem.ToString(), TSueldo.Text, TTelefono.Text, TContraseña.Text);
 
                     LValido.Text = "Usuario agregado exitosamente.";
@@ -278,19 +279,39 @@ namespace ProyectoTaller.Views.Administradores
 
         private void BBorrar_Click(object sender, EventArgs e)
         {
-            CBPuesto.SelectedIndex = -1;
-            TUsuario.Clear();
-            TDni.Clear();
-            TNombre.Clear();
-            TApellido.Clear();
-            TEmail.Clear();
-            CBSexo.SelectedIndex = -1;
-            TSueldo.Clear();
-            TTelefono.Clear();
-            TContraseña.Clear();
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea borrar todos los datos?", "Confirmar Borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            LValido.Text = string.Empty;
-            LimpiarMensajesDeValidacion();
+            if (result == DialogResult.Yes)
+            {
+                if (editando)
+                {
+                    CBPuesto.SelectedIndex = -1;
+                    TUsuario.Clear();
+                    TNombre.Clear();
+                    TApellido.Clear();
+                    TEmail.Clear();
+                    CBSexo.SelectedIndex = -1;
+                    TSueldo.Clear();
+                    TTelefono.Clear();
+                    TContraseña.Clear();
+                }
+                else
+                {
+                    CBPuesto.SelectedIndex = -1;
+                    TUsuario.Clear();
+                    TDni.Clear();
+                    TNombre.Clear();
+                    TApellido.Clear();
+                    TEmail.Clear();
+                    CBSexo.SelectedIndex = -1;
+                    TSueldo.Clear();
+                    TTelefono.Clear();
+                    TContraseña.Clear();
+                }
+
+                LValido.Text = string.Empty;
+                LimpiarMensajesDeValidacion();
+            }
         }
 
         private void LimpiarMensajesDeValidacion()
@@ -309,23 +330,35 @@ namespace ProyectoTaller.Views.Administradores
 
         private void BEditar_Click(object sender, EventArgs e)
         {
+            LimpiarMensajesDeValidacion();
+
             if (DGUsuarios.SelectedRows.Count > 0)
             {
-                DataGridViewRow filaSeleccionada = DGUsuarios.SelectedRows[0];
-                filaSeleccionadaIndex = filaSeleccionada.Index;
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea editar el usuario seleccionado?", "Confirmar edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                CBPuesto.SelectedItem = filaSeleccionada.Cells["CPuesto"].Value.ToString();
-                TUsuario.Text = filaSeleccionada.Cells["CUsuario"].Value.ToString();
-                TDni.Text = filaSeleccionada.Cells["CDni"].Value.ToString();
-                TNombre.Text = filaSeleccionada.Cells["CNombre"].Value.ToString();
-                TApellido.Text = filaSeleccionada.Cells["CApellido"].Value.ToString();
-                TEmail.Text = filaSeleccionada.Cells["CEmail"].Value.ToString();
-                CBSexo.SelectedItem = filaSeleccionada.Cells["CSexo"].Value.ToString();
-                TSueldo.Text = filaSeleccionada.Cells["CSueldo"].Value.ToString();
-                TTelefono.Text = filaSeleccionada.Cells["CTelefono"].Value.ToString();
-                TContraseña.Text = filaSeleccionada.Cells["CContraseña"].Value.ToString();
 
-                editando = true;
+                if (result == DialogResult.Yes)
+                {
+                    DataGridViewRow filaSeleccionada = DGUsuarios.SelectedRows[0];
+                    filaSeleccionadaIndex = filaSeleccionada.Index;
+
+                    CBPuesto.SelectedItem = filaSeleccionada.Cells["CPuesto"].Value.ToString();
+                    TUsuario.Text = filaSeleccionada.Cells["CUsuario"].Value.ToString();
+                    TDni.Text = filaSeleccionada.Cells["CDni"].Value.ToString();
+                    TNombre.Text = filaSeleccionada.Cells["CNombre"].Value.ToString();
+                    TApellido.Text = filaSeleccionada.Cells["CApellido"].Value.ToString();
+                    TEmail.Text = filaSeleccionada.Cells["CEmail"].Value.ToString();
+                    CBSexo.SelectedItem = filaSeleccionada.Cells["CSexo"].Value.ToString();
+                    TSueldo.Text = filaSeleccionada.Cells["CSueldo"].Value.ToString();
+                    TTelefono.Text = filaSeleccionada.Cells["CTelefono"].Value.ToString();
+                    TContraseña.Text = filaSeleccionada.Cells["CContraseña"].Value.ToString();
+
+                    TDni.ReadOnly = true;
+                    TDni.BackColor = Color.LightGray;
+                    editando = true;
+
+                    BAgregar.Text = "Modificar";
+                }
             }
             else
             {
@@ -337,7 +370,7 @@ namespace ProyectoTaller.Views.Administradores
         {
             if (DGUsuarios.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar la fila seleccionada?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el usuario seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -345,6 +378,7 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         if (!row.IsNewRow)
                         {
+                            MessageBox.Show("Usuario eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DGUsuarios.Rows.Remove(row);
                         }
                     }
@@ -393,74 +427,67 @@ namespace ProyectoTaller.Views.Administradores
 
         private void CBGerente_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            // Desmarcar otros CheckBoxes si CBGerente está seleccionado
+            if (CBGerente.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBGerente.Checked)
-                    {
-                        if (fila.Cells["CPuesto"].Value.ToString() == "Gerente")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBVendedor.Checked = false;
+                CBAdministrador.Checked = false;
             }
+
+            FiltrarPorPuesto();
         }
 
         private void CBVendedor_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            // Desmarcar otros CheckBoxes si CBVendedor está seleccionado
+            if (CBVendedor.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBVendedor.Checked)
-                    {
-                        if (fila.Cells["CPuesto"].Value.ToString() == "Vendedor")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBGerente.Checked = false;
+                CBAdministrador.Checked = false;
             }
+
+            FiltrarPorPuesto();
         }
 
         private void CBAdministrador_CheckedChanged(object sender, EventArgs e)
         {
+            // Desmarcar otros CheckBoxes si CBAdministrador está seleccionado
+            if (CBAdministrador.Checked)
+            {
+                CBGerente.Checked = false;
+                CBVendedor.Checked = false;
+            }
+
+            FiltrarPorPuesto();
+        }
+
+        private void FiltrarPorPuesto()
+        {
+            bool hayFiltroActivo = CBGerente.Checked || CBVendedor.Checked || CBAdministrador.Checked;
+
             foreach (DataGridViewRow fila in DGUsuarios.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    if (CBAdministrador.Checked)
+                    if (!hayFiltroActivo)
                     {
-                        if (fila.Cells["CPuesto"].Value.ToString() == "Administrador")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
+                        fila.Visible = true;
+                    }
+                    else if (CBGerente.Checked && fila.Cells["CPuesto"].Value.ToString() == "Gerente")
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBVendedor.Checked && fila.Cells["CPuesto"].Value.ToString() == "Vendedor")
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBAdministrador.Checked && fila.Cells["CPuesto"].Value.ToString() == "Administrador")
+                    {
+                        fila.Visible = true;
                     }
                     else
                     {
-                        fila.Visible = true;
+                        fila.Visible = false;
                     }
                 }
             }

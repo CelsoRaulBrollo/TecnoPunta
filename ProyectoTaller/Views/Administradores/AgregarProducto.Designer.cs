@@ -420,7 +420,7 @@
             this.BAgregar.Name = "BAgregar";
             this.BAgregar.Size = new System.Drawing.Size(123, 52);
             this.BAgregar.TabIndex = 53;
-            this.BAgregar.Text = "Agregar    ";
+            this.BAgregar.Text = "   Agregar    ";
             this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BAgregar.UseVisualStyleBackColor = true;
             this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);

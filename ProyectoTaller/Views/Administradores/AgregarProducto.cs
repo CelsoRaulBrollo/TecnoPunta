@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Administradores
@@ -24,6 +17,9 @@ namespace ProyectoTaller.Views.Administradores
         // Evento del botón "Agregar"
         private void BAgregar_Click(object sender, EventArgs e)
         {
+            LimpiarMensajesDeValidacion();
+            BAgregar.Text = "Agregar";
+
             string marca = CBMarca.SelectedItem?.ToString();
             string nombreProducto = TNombreProducto.Text;
             string modelo = TModelo.Text;
@@ -71,11 +67,7 @@ namespace ProyectoTaller.Views.Administradores
                 LValiNombre.Text = string.Empty;
             }
 
-            if (!ValidarModelo(modelo))
-            {
-                return;
-            }
-            else if (string.IsNullOrWhiteSpace(modelo))
+            if (string.IsNullOrWhiteSpace(modelo))
             {
                 LValiModelo.ForeColor = Color.Red;
                 LValiModelo.Text = "Ingrese un modelo.";
@@ -224,23 +216,32 @@ namespace ProyectoTaller.Views.Administradores
 
                 if (editando)
                 {
-                    DataGridViewRow filaSeleccionada = DGProductos.Rows[filaSeleccionadaIndex];
-                    filaSeleccionada.Cells["CMarca"].Value = CBMarca.SelectedItem.ToString();
-                    filaSeleccionada.Cells["CNombre"].Value = TNombreProducto.Text;
-                    filaSeleccionada.Cells["CModelo"].Value = TModelo.Text;
-                    filaSeleccionada.Cells["CSistemaOperativo"].Value = TSo.Text;
-                    filaSeleccionada.Cells["CAlmacenamiento"].Value = TAlmacenamiento.Text;
-                    filaSeleccionada.Cells["CRam"].Value = TRam.Text;
-                    filaSeleccionada.Cells["CEstado"].Value = CBEstado.SelectedItem.ToString();
-                    filaSeleccionada.Cells["CStock"].Value = TStock.Text;
-                    filaSeleccionada.Cells["CPrecio"].Value = TPrecio.Text;
+                    if (filaSeleccionadaIndex >= 0)
+                    {
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CMarca"].Value = CBMarca.SelectedItem.ToString();
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombreProducto.Text;
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CModelo"].Value = TModelo.Text;
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CSistemaOperativo"].Value = TSo.Text;
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CAlmacenamiento"].Value = TAlmacenamiento.Text;
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CRam"].Value = TRam.Text;
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CEstado"].Value = CBEstado.SelectedItem.ToString();
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CStock"].Value = TStock.Text;
+                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CPrecio"].Value = TPrecio.Text;
 
-                    LValido.Text = "Producto editado exitosamente.";
+                        LimpiarMensajesDeValidacion();
+                        LValido.Text = "Producto editado exitosamente.";
 
-                    editando = false;
+                        editando = false;
+                        filaSeleccionadaIndex = -1;
+                    }
                 }
                 else
                 {
+                    if (!ValidarModelo(TModelo.Text))
+                    {
+                        return;
+                    }
+
                     DGProductos.Rows.Add(CBMarca.SelectedItem.ToString(), TNombreProducto.Text, TModelo.Text, TSo.Text, TAlmacenamiento.Text, TRam.Text, TStock.Text, TPrecio.Text, CBEstado.SelectedItem.ToString(), TPrecio.Text);
 
                     LValido.Text = "Producto agregado exitosamente.";
@@ -260,9 +261,15 @@ namespace ProyectoTaller.Views.Administradores
 
         private bool ValidarModelo(string modelo)
         {
+            int filaSeleccionadaIndex = DGProductos.SelectedCells.Count > 0
+                ? DGProductos.SelectedCells[0].RowIndex
+                : -1;
+
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
-                if (fila.Cells["CModelo"].Value != null && fila.Cells["CModelo"].Value.ToString() == modelo)
+                if (fila.Index != filaSeleccionadaIndex &&
+                    fila.Cells["CModelo"].Value != null &&
+                    fila.Cells["CModelo"].Value.ToString() == modelo)
                 {
                     LValiModelo.ForeColor = Color.Red;
                     LValiModelo.Text = "El Modelo ya está registrado.";
@@ -276,18 +283,38 @@ namespace ProyectoTaller.Views.Administradores
 
         private void BBorrar_Click(object sender, EventArgs e)
         {
-            CBMarca.SelectedIndex = -1;
-            TNombreProducto.Clear();
-            TModelo.Clear();
-            TSo.Clear();
-            TAlmacenamiento.Clear();
-            TRam.Clear();
-            CBEstado.SelectedIndex = -1;
-            TStock.Clear();
-            TPrecio.Clear();
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea borrar todos los datos?", "Confirmar Borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            LValido.Text = string.Empty;
-            LimpiarMensajesDeValidacion();
+            if (result == DialogResult.Yes)
+            {
+
+                if (editando)
+                {
+                    CBMarca.SelectedIndex = -1;
+                    TNombreProducto.Clear();
+                    TSo.Clear();
+                    TAlmacenamiento.Clear();
+                    TRam.Clear();
+                    CBEstado.SelectedIndex = -1;
+                    TStock.Clear();
+                    TPrecio.Clear();
+                }
+                else
+                {
+                    CBMarca.SelectedIndex = -1;
+                    TNombreProducto.Clear();
+                    TModelo.Clear();
+                    TSo.Clear();
+                    TAlmacenamiento.Clear();
+                    TRam.Clear();
+                    CBEstado.SelectedIndex = -1;
+                    TStock.Clear();
+                    TPrecio.Clear();
+                }
+
+                LValido.Text = string.Empty;
+                LimpiarMensajesDeValidacion();
+            }
         }
 
         private void LimpiarMensajesDeValidacion()
@@ -353,15 +380,15 @@ namespace ProyectoTaller.Views.Administradores
 
         private void TPrecio_TextChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(TModelo.Text, out decimal precio) && precio > 0)
+            if (decimal.TryParse(TPrecio.Text, out decimal precio) && precio > 0)
             {
-                LValiModelo.Text = string.Empty;
+                LValiPrecio.Text = string.Empty;
             }
         }
 
         private void TStock_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(TSo.Text, out int stock) && stock >= 0)
+            if (int.TryParse(TStock.Text, out int stock) && stock >= 0)
             {
                 LValiStock.Text = string.Empty;
             }
@@ -383,22 +410,33 @@ namespace ProyectoTaller.Views.Administradores
 
         private void BEditar_Click(object sender, EventArgs e)
         {
+            LimpiarMensajesDeValidacion();
+
             if (DGProductos.SelectedRows.Count > 0)
             {
-                DataGridViewRow filaSeleccionada = DGProductos.SelectedRows[0];
-                filaSeleccionadaIndex = filaSeleccionada.Index;
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea editar el producto seleccionado?", "Confirmar edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                CBMarca.SelectedItem = filaSeleccionada.Cells["CMarca"].Value.ToString();
-                TNombreProducto.Text = filaSeleccionada.Cells["CNombre"].Value.ToString();
-                TModelo.Text = filaSeleccionada.Cells["CModelo"].Value.ToString();
-                TSo.Text = filaSeleccionada.Cells["CSistemaOperativo"].Value.ToString();
-                TAlmacenamiento.Text = filaSeleccionada.Cells["CAlmacenamiento"].Value.ToString();
-                TRam.Text = filaSeleccionada.Cells["CRam"].Value.ToString();
-                TStock.Text = filaSeleccionada.Cells["CStock"].Value.ToString();
-                TPrecio.Text = filaSeleccionada.Cells["CPrecio"].Value.ToString();
-                CBEstado.SelectedItem = filaSeleccionada.Cells["CEstado"].Value.ToString();
 
-                editando = true;
+                if (result == DialogResult.Yes)
+                {
+                    filaSeleccionadaIndex = DGProductos.SelectedRows[0].Index;
+
+                    CBMarca.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["CMarca"].Value.ToString();
+                    TNombreProducto.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value.ToString();
+                    TModelo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CModelo"].Value.ToString();
+                    TSo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CSistemaOperativo"].Value.ToString();
+                    TAlmacenamiento.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CAlmacenamiento"].Value.ToString();
+                    TRam.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CRam"].Value.ToString();
+                    TStock.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CStock"].Value.ToString();
+                    TPrecio.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CPrecio"].Value.ToString();
+                    CBEstado.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["CEstado"].Value.ToString();
+
+                    TModelo.ReadOnly = true;
+                    TModelo.BackColor = Color.LightGray;
+                    editando = true;
+
+                    BAgregar.Text = "Modificar";
+                }
             }
             else
             {
@@ -410,7 +448,7 @@ namespace ProyectoTaller.Views.Administradores
         {
             if (DGProductos.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar la fila seleccionada?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el producto seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -418,6 +456,7 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         if (!row.IsNewRow)
                         {
+                            MessageBox.Show("Producto eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DGProductos.Rows.Remove(row);
                         }
                     }
@@ -465,74 +504,67 @@ namespace ProyectoTaller.Views.Administradores
 
         private void CBNuevo_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGProductos.Rows)
+            // Desmarcar otros CheckBoxes si CBNuevo está seleccionado
+            if (CBNuevo.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBNuevo.Checked)
-                    {
-                        if (fila.Cells["CEstado"].Value.ToString() == "Nuevo")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBReacondicionado.Checked = false;
+                CBUsado.Checked = false;
             }
+
+            FiltrarPorEstado();
         }
 
         private void CBReacondicionado_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGProductos.Rows)
+            // Desmarcar otros CheckBoxes si CBReacondicionado está seleccionado
+            if (CBReacondicionado.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBReacondicionado.Checked)
-                    {
-                        if (fila.Cells["CEstado"].Value.ToString() == "Reacondicionado")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBNuevo.Checked = false;
+                CBUsado.Checked = false;
             }
+
+            FiltrarPorEstado();
         }
 
         private void CBUsado_CheckedChanged(object sender, EventArgs e)
         {
+            // Desmarcar otros CheckBoxes si CBUsado está seleccionado
+            if (CBUsado.Checked)
+            {
+                CBNuevo.Checked = false;
+                CBReacondicionado.Checked = false;
+            }
+
+            FiltrarPorEstado();
+        }
+
+        private void FiltrarPorEstado()
+        {
+            bool hayFiltroActivo = CBNuevo.Checked || CBReacondicionado.Checked || CBUsado.Checked;
+
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    if (CBUsado.Checked)
+                    if (!hayFiltroActivo)
                     {
-                        if (fila.Cells["CEstado"].Value.ToString() == "Usado")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
+                        fila.Visible = true;
+                    }
+                    else if (CBNuevo.Checked && fila.Cells["CEstado"].Value.ToString() == "Nuevo")
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBReacondicionado.Checked && fila.Cells["CEstado"].Value.ToString() == "Reacondicionado")
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBUsado.Checked && fila.Cells["CEstado"].Value.ToString() == "Usado")
+                    {
+                        fila.Visible = true;
                     }
                     else
                     {
-                        fila.Visible = true;
+                        fila.Visible = false;
                     }
                 }
             }

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
@@ -30,7 +23,7 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 ValidacionesConsultaProductoLabel();
             }
-            
+
         }
 
         private void BLimpiarFiltros_Click(object sender, EventArgs e)
@@ -54,7 +47,7 @@ namespace ProyectoTaller.Views.Vendedor
             LValiSistOpe.Text = string.Empty;
             LValiAllmac.Text = string.Empty;
             LValiRamp.Text = string.Empty;
-           
+
         }
 
         private bool ValidacionesConsultaProducto()
@@ -68,41 +61,41 @@ namespace ProyectoTaller.Views.Vendedor
 
             bool valido = true;
 
-            if(nombreProducto.Length < 5 )
+            if (nombreProducto.Length < 5)
             {
-               
+
                 valido = false;
             }
             else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreProducto, @"^[a-zA-Z0-9]"))
             {
-                
+
                 valido = false;
             }
 
-            if(modelo.Length < 3 || modelo.Length > 12)
+            if (modelo.Length < 3 || modelo.Length > 12)
             {
 
-               
+
                 valido = false;
 
             }
             else if (!System.Text.RegularExpressions.Regex.IsMatch(modelo, @"^[a-zA-Z0-9]"))
             {
-           
+
                 valido = false;
 
             }
             if (!System.Text.RegularExpressions.Regex.IsMatch(sistemaOperativo, @"^[a-zA-Z0-9]"))
             {
 
-              
+
                 valido = false;
 
 
             }
             else if (sistemaOperativo.Length < 2 || sistemaOperativo.Length > 20)
             {
-             
+
                 valido = false;
 
 
@@ -110,12 +103,12 @@ namespace ProyectoTaller.Views.Vendedor
             if (!int.TryParse(almacenamientoTexto, out int almacenamiento))
             {
 
-              
+
                 valido = false;
             }
             else if (almacenamiento <= 32 || almacenamiento > 1024)
             {
-            
+
                 valido = false;
             }
             if (!int.TryParse(ramTexto, out int ram))
@@ -125,7 +118,7 @@ namespace ProyectoTaller.Views.Vendedor
             }
             else if (ram <= 1 || ram > 32)
             {
-             
+
                 valido = false;
             }
 
@@ -167,19 +160,19 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiModeloP.Text = string.Empty;
 
             }
-            else if(modelo.Length < 3 || modelo.Length > 12)
+            else if (modelo.Length < 3 || modelo.Length > 12)
             {
 
                 LValiModeloP.ForeColor = Color.Red;
                 LValiModeloP.Text = "Modelo de 3 a 12 caracteres.";
-               
+
 
             }
             else if (!System.Text.RegularExpressions.Regex.IsMatch(modelo, @"^[a-zA-Z0-9]"))
             {
                 LValiModeloP.ForeColor = Color.Red;
                 LValiModeloP.Text = "El modelo debe contener solo letras y números.";
-               
+
 
             }
 
@@ -194,14 +187,14 @@ namespace ProyectoTaller.Views.Vendedor
 
                 LValiSistOpe.ForeColor = Color.Red;
                 LValiSistOpe.Text = "El S.O debe contener solo letras y números.";
-              
+
 
             }
             else if (sistemaOperativo.Length < 2 || sistemaOperativo.Length > 20)
             {
                 LValiSistOpe.ForeColor = Color.Red;
                 LValiSistOpe.Text = "S.O de 2 a 20 caracteres.";
-                
+
 
 
             }
@@ -217,13 +210,13 @@ namespace ProyectoTaller.Views.Vendedor
 
                 LValiAllmac.ForeColor = Color.Red;
                 LValiAllmac.Text = "El almacenamiento debe ser un número entero.";
-              
+
             }
             else if (almacenamiento <= 32 || almacenamiento > 1024)
             {
                 LValiAllmac.ForeColor = Color.Red;
                 LValiAllmac.Text = "El almacenamiento debe estar entre 32 y 1024 GB.";
-            
+
             }
 
             if (string.IsNullOrWhiteSpace(ramTexto))
@@ -237,16 +230,16 @@ namespace ProyectoTaller.Views.Vendedor
 
                 LValiRamp.ForeColor = Color.Red;
                 LValiRamp.Text = "La Ram debe ser un número entero.";
-                
+
             }
             else if (ram <= 1 || ram > 32)
             {
                 LValiRamp.ForeColor = Color.Red;
                 LValiRamp.Text = "La Ram debe estar entre 1 y 32 GB.";
-                
+
             }
 
-          
+
         }
 
         private void CBEnStock_CheckedChanged(object sender, EventArgs e)
@@ -303,6 +296,6 @@ namespace ProyectoTaller.Views.Vendedor
 
         }
 
-        
+
     }
 }
