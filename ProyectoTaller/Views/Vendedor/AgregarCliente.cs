@@ -20,16 +20,16 @@ namespace ProyectoTaller.Views.Vendedor
                 DataGridViewRow fila = DGClientes.SelectedRows[0];
 
                 if (string.IsNullOrWhiteSpace(TNombreCliente.Text) ||
-                    string.IsNullOrWhiteSpace(TApellidosCliente.Text) ||
-                    string.IsNullOrWhiteSpace(TDNIClienteS.Text) ||
+                    string.IsNullOrWhiteSpace(TApellidoCliente.Text) ||
+                    string.IsNullOrWhiteSpace(TDNICliente.Text) ||
                     string.IsNullOrWhiteSpace(TCorreoCliente.Text) ||
                     string.IsNullOrWhiteSpace(TDireccionCliente.Text) ||
                     string.IsNullOrWhiteSpace(TTelefonoCliente.Text))
                 {
                     // Cargar los valores de la fila en los TextBox
                     TNombreCliente.Text = fila.Cells["CNombreCliente"].Value.ToString();
-                    TApellidosCliente.Text = fila.Cells["CApellidoCliente"].Value.ToString();
-                    TDNIClienteS.Text = fila.Cells["CDNI"].Value.ToString();
+                    TApellidoCliente.Text = fila.Cells["CApellidoCliente"].Value.ToString();
+                    TDNICliente.Text = fila.Cells["CDNI"].Value.ToString();
                     TCorreoCliente.Text = fila.Cells["CCorreoCliente"].Value.ToString();
                     TDireccionCliente.Text = fila.Cells["CDireccionCliente"].Value.ToString();
                     TTelefonoCliente.Text = fila.Cells["CTelefonoCliente"].Value.ToString();
@@ -42,8 +42,8 @@ namespace ProyectoTaller.Views.Vendedor
                     {
                         // Actualizar la fila con los datos de los TextBox
                         fila.Cells["CNombreCliente"].Value = TNombreCliente.Text;
-                        fila.Cells["CApellidoCliente"].Value = TApellidosCliente.Text;
-                        fila.Cells["CDNI"].Value = TDNIClienteS.Text;
+                        fila.Cells["CApellidoCliente"].Value = TApellidoCliente.Text;
+                        fila.Cells["CDNI"].Value = TDNICliente.Text;
                         fila.Cells["CCorreoCliente"].Value = TCorreoCliente.Text;
                         fila.Cells["CDireccionCliente"].Value = TDireccionCliente.Text;
                         fila.Cells["CTelefonoCliente"].Value = TTelefonoCliente.Text;
@@ -72,9 +72,9 @@ namespace ProyectoTaller.Views.Vendedor
             if (ValidacionFormulario())
             {
                 DGClientes.Rows.Add(
-                    TDNIClienteS.Text,
+                    TDNICliente.Text,
                     TNombreCliente.Text,
-                    TApellidosCliente.Text,
+                    TApellidoCliente.Text,
                     TTelefonoCliente.Text,
                     TCorreoCliente.Text,
                     TDireccionCliente.Text
@@ -82,8 +82,8 @@ namespace ProyectoTaller.Views.Vendedor
                     );
                 LRespuestaNuevoCliente.Text = "Registrado Exitosamente!";
                 TNombreCliente.Clear();
-                TApellidosCliente.Clear();
-                TDNIClienteS.Clear();
+                TApellidoCliente.Clear();
+                TDNICliente.Clear();
                 TTelefonoCliente.Clear();
                 TCorreoCliente.Clear();
                 TDireccionCliente.Clear();
@@ -99,8 +99,8 @@ namespace ProyectoTaller.Views.Vendedor
         private void BBorrar_Click(object sender, EventArgs e)
         {
             TNombreCliente.Clear();
-            TApellidosCliente.Clear();
-            TDNIClienteS.Clear();
+            TApellidoCliente.Clear();
+            TDNICliente.Clear();
             TTelefonoCliente.Clear();
             TCorreoCliente.Clear();
             TDireccionCliente.Clear();
@@ -111,7 +111,7 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void LimpiarMensajesDeValidacion()
         {
-            LValiAppelidoCliente.Text = string.Empty;
+            LValiApellidoCliente.Text = string.Empty;
             LValiCorreo.Text = string.Empty;
             LValiNombre.Text = string.Empty;
             LValiTelefono.Text = string.Empty;
@@ -131,12 +131,12 @@ namespace ProyectoTaller.Views.Vendedor
                     respuesta = false;
                 }
 
-                if (string.IsNullOrEmpty(TApellidosCliente.Text) || TApellidosCliente.Text.Length > 30)
+                if (string.IsNullOrEmpty(TApellidoCliente.Text) || TApellidoCliente.Text.Length > 30)
                 {
                     respuesta = false;
                 }
 
-                if (string.IsNullOrEmpty(TDNIClienteS.Text) || !int.TryParse(TDNIClienteS.Text, out _) || TDNIClienteS.Text.Length > 9)
+                if (string.IsNullOrEmpty(TDNICliente.Text) || !int.TryParse(TDNICliente.Text, out _) || TDNICliente.Text.Length > 9)
                 {
                     respuesta = false;
                 }
@@ -164,8 +164,8 @@ namespace ProyectoTaller.Views.Vendedor
         private void ValidarFormularioLabel()
         {
             String nombreCliente = TNombreCliente.Text;
-            String appellidosCliente = TApellidosCliente.Text;
-            String dniCliente = TDNIClienteS.Text;
+            String appellidosCliente = TApellidoCliente.Text;
+            String dniCliente = TDNICliente.Text;
             String telefonoCliente = TTelefonoCliente.Text;
             String correoCliente = TCorreoCliente.Text;
             String direccionCliente = TDireccionCliente.Text;
@@ -187,17 +187,17 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (string.IsNullOrEmpty(appellidosCliente))
             {
-                LValiAppelidoCliente.ForeColor = Color.Red;
-                LValiAppelidoCliente.Text = "Ingrese el apellido del cliente.";
+                LValiApellidoCliente.ForeColor = Color.Red;
+                LValiApellidoCliente.Text = "Ingrese el apellido del cliente.";
             }
             else if (appellidosCliente.Length > 30)
             {
-                LValiAppelidoCliente.ForeColor = Color.Red;
-                LValiAppelidoCliente.Text = "Ingrese menos de 30 caracteres.";
+                LValiApellidoCliente.ForeColor = Color.Red;
+                LValiApellidoCliente.Text = "Ingrese menos de 30 caracteres.";
             }
             else
             {
-                LValiAppelidoCliente.Text = string.Empty;
+                LValiApellidoCliente.Text = string.Empty;
             }
 
             if (string.IsNullOrEmpty(dniCliente))

@@ -58,16 +58,31 @@ namespace ProyectoTaller.Views.Administradores
 
         private void CBEfectivo_CheckedChanged(object sender, EventArgs e)
         {
+            if (CBEfectivo.Checked)
+            {
+                CBTarjeta.Checked = false;
+                CBTransferencia.Checked = false;
+            }
             FiltrarPorMedioPago();
         }
 
         private void CBTarjeta_CheckedChanged(object sender, EventArgs e)
         {
+            if (CBTarjeta.Checked)
+            {
+                CBEfectivo.Checked = false;
+                CBTransferencia.Checked = false;
+            }
             FiltrarPorMedioPago();
         }
 
         private void CBTransferencia_CheckedChanged(object sender, EventArgs e)
         {
+            if (CBTransferencia.Checked)
+            {
+                CBEfectivo.Checked = false;
+                CBTarjeta.Checked = false;
+            }
             FiltrarPorMedioPago();
         }
 
@@ -95,32 +110,6 @@ namespace ProyectoTaller.Views.Administradores
                     }
 
                     fila.Visible = mostrarFila;
-                }
-            }
-        }
-
-        private void FiltrarPorMetodoPago()
-        {
-            foreach (DataGridViewRow fila in DGVentas.Rows)
-            {
-                if (!fila.IsNewRow)
-                {
-                    if (CBEfectivo.Checked && fila.Cells["CMedioPago"].Value.ToString() == "Efectivo")
-                    {
-                        fila.Visible = true;
-                    }
-                    else if (CBTarjeta.Checked && fila.Cells["CMedioPago"].Value.ToString() == "Tarjeta")
-                    {
-                        fila.Visible = true;
-                    }
-                    else if (CBTransferencia.Checked && fila.Cells["CMedioPago"].Value.ToString() == "Transferencia")
-                    {
-                        fila.Visible = true;
-                    }
-                    else
-                    {
-                        fila.Visible = false;
-                    }
                 }
             }
         }
