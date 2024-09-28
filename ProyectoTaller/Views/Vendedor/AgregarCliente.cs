@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
@@ -23,9 +17,9 @@ namespace ProyectoTaller.Views.Vendedor
             if (DGClientes.SelectedRows.Count > 0)
             {
                 // Cargar la fila seleccionada
-                DataGridViewRow fila = DGClientes.SelectedRows[0]; 
-                
-                if(string.IsNullOrWhiteSpace(TNombreCliente.Text) ||
+                DataGridViewRow fila = DGClientes.SelectedRows[0];
+
+                if (string.IsNullOrWhiteSpace(TNombreCliente.Text) ||
                     string.IsNullOrWhiteSpace(TApellidosCliente.Text) ||
                     string.IsNullOrWhiteSpace(TDNIClienteS.Text) ||
                     string.IsNullOrWhiteSpace(TCorreoCliente.Text) ||
@@ -60,9 +54,9 @@ namespace ProyectoTaller.Views.Vendedor
                     {
                         ValidarFormularioLabel();
                     }
-                    
+
                 }
-                    
+
             }
             else
             {
@@ -105,7 +99,7 @@ namespace ProyectoTaller.Views.Vendedor
         private void BBorrar_Click(object sender, EventArgs e)
         {
             TNombreCliente.Clear();
-            TApellidosCliente.Clear(); 
+            TApellidosCliente.Clear();
             TDNIClienteS.Clear();
             TTelefonoCliente.Clear();
             TCorreoCliente.Clear();
@@ -123,11 +117,12 @@ namespace ProyectoTaller.Views.Vendedor
             LValiTelefono.Text = string.Empty;
             LValidDNI.Text = string.Empty;
             LValiDireccionCliente.Text = string.Empty;
-            LRespuestaNuevoCliente.Text= string.Empty;
-           
+            LRespuestaNuevoCliente.Text = string.Empty;
+
         }
 
-        private bool ValidacionFormulario() {
+        private bool ValidacionFormulario()
+        {
             {
                 bool respuesta = true;
 
@@ -261,7 +256,7 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 LValiCorreo.Text = string.Empty;
             }
-            
+
 
             if (string.IsNullOrEmpty(direccionCliente))
             {
@@ -324,5 +319,5 @@ namespace ProyectoTaller.Views.Vendedor
             }
         }
     }
-    
+
 }

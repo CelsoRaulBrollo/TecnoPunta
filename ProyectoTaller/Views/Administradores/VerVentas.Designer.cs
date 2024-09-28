@@ -57,7 +57,7 @@
             // 
             // TVentas
             // 
-            this.TVentas.Location = new System.Drawing.Point(315, 65);
+            this.TVentas.Location = new System.Drawing.Point(317, 65);
             this.TVentas.Name = "TVentas";
             this.TVentas.Size = new System.Drawing.Size(277, 20);
             this.TVentas.TabIndex = 29;

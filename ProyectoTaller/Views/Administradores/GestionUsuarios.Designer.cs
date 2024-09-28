@@ -57,7 +57,6 @@
             this.LSueldo = new System.Windows.Forms.Label();
             this.LValido = new System.Windows.Forms.Label();
             this.CBPuesto = new System.Windows.Forms.ComboBox();
-            this.BAgregar = new System.Windows.Forms.Button();
             this.BEliminar = new System.Windows.Forms.Button();
             this.BBorrar = new System.Windows.Forms.Button();
             this.BEditar = new System.Windows.Forms.Button();
@@ -82,6 +81,7 @@
             this.CBGerente = new System.Windows.Forms.CheckBox();
             this.TBuscarUsuarios = new System.Windows.Forms.TextBox();
             this.LBuscarUsuario = new System.Windows.Forms.Label();
+            this.BAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -338,22 +338,6 @@
             this.CBPuesto.TabIndex = 115;
             this.CBPuesto.Text = "Seleccione el puesto";
             // 
-            // BAgregar
-            // 
-            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
-            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(734, 103);
-            this.BAgregar.Name = "BAgregar";
-            this.BAgregar.Size = new System.Drawing.Size(123, 52);
-            this.BAgregar.TabIndex = 92;
-            this.BAgregar.Text = "Agregar ";
-            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAgregar.UseVisualStyleBackColor = true;
-            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
-            // 
             // BEliminar
             // 
             this.BEliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -595,12 +579,30 @@
             this.LBuscarUsuario.TabIndex = 133;
             this.LBuscarUsuario.Text = "Buscar Usuario";
             // 
+            // BAgregar
+            // 
+            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BAgregar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
+            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BAgregar.Location = new System.Drawing.Point(734, 103);
+            this.BAgregar.Name = "BAgregar";
+            this.BAgregar.Size = new System.Drawing.Size(123, 52);
+            this.BAgregar.TabIndex = 138;
+            this.BAgregar.Text = "Agregar";
+            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregar.UseVisualStyleBackColor = true;
+            this.BAgregar.Click += new System.EventHandler(this.BAgregar_Click);
+            // 
             // GestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(887, 507);
+            this.Controls.Add(this.BAgregar);
             this.Controls.Add(this.CBAdministrador);
             this.Controls.Add(this.CBVendedor);
             this.Controls.Add(this.CBGerente);
@@ -630,7 +632,6 @@
             this.Controls.Add(this.BBorrar);
             this.Controls.Add(this.DGUsuarios);
             this.Controls.Add(this.BEliminar);
-            this.Controls.Add(this.BAgregar);
             this.Controls.Add(this.LValiNombre);
             this.Controls.Add(this.LEmail);
             this.Controls.Add(this.LValiEmail);
@@ -677,7 +678,6 @@
         private System.Windows.Forms.Label LSueldo;
         private System.Windows.Forms.Label LValido;
         private System.Windows.Forms.ComboBox CBPuesto;
-        private System.Windows.Forms.Button BAgregar;
         private System.Windows.Forms.Button BEliminar;
         private System.Windows.Forms.Button BBorrar;
         private System.Windows.Forms.Button BEditar;
@@ -712,5 +712,6 @@
         private System.Windows.Forms.CheckBox CBGerente;
         private System.Windows.Forms.TextBox TBuscarUsuarios;
         private System.Windows.Forms.Label LBuscarUsuario;
+        private System.Windows.Forms.Button BAgregar;
     }
 }
