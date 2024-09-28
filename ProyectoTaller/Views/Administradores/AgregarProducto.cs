@@ -540,11 +540,17 @@ namespace ProyectoTaller.Views.Administradores
 
         private void FiltrarPorEstado()
         {
+            bool hayFiltroActivo = CBNuevo.Checked || CBReacondicionado.Checked || CBUsado.Checked;
+
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    if (CBNuevo.Checked && fila.Cells["CEstado"].Value.ToString() == "Nuevo")
+                    if (!hayFiltroActivo)
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBNuevo.Checked && fila.Cells["CEstado"].Value.ToString() == "Nuevo")
                     {
                         fila.Visible = true;
                     }

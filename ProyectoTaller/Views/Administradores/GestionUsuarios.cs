@@ -463,11 +463,17 @@ namespace ProyectoTaller.Views.Administradores
 
         private void FiltrarPorPuesto()
         {
+            bool hayFiltroActivo = CBGerente.Checked || CBVendedor.Checked || CBAdministrador.Checked;
+
             foreach (DataGridViewRow fila in DGUsuarios.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    if (CBGerente.Checked && fila.Cells["CPuesto"].Value.ToString() == "Gerente")
+                    if (!hayFiltroActivo)
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBGerente.Checked && fila.Cells["CPuesto"].Value.ToString() == "Gerente")
                     {
                         fila.Visible = true;
                     }

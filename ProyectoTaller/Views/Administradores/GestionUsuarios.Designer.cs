@@ -529,11 +529,11 @@
             // 
             this.CBAdministrador.AutoSize = true;
             this.CBAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBAdministrador.Location = new System.Drawing.Point(610, 296);
+            this.CBAdministrador.Location = new System.Drawing.Point(625, 296);
             this.CBAdministrador.Name = "CBAdministrador";
-            this.CBAdministrador.Size = new System.Drawing.Size(64, 19);
+            this.CBAdministrador.Size = new System.Drawing.Size(106, 19);
             this.CBAdministrador.TabIndex = 137;
-            this.CBAdministrador.Text = "Admin.";
+            this.CBAdministrador.Text = "Admintradores";
             this.CBAdministrador.UseVisualStyleBackColor = true;
             this.CBAdministrador.CheckedChanged += new System.EventHandler(this.CBAdministrador_CheckedChanged);
             // 
@@ -541,11 +541,11 @@
             // 
             this.CBVendedor.AutoSize = true;
             this.CBVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBVendedor.Location = new System.Drawing.Point(525, 296);
+            this.CBVendedor.Location = new System.Drawing.Point(530, 296);
             this.CBVendedor.Name = "CBVendedor";
-            this.CBVendedor.Size = new System.Drawing.Size(79, 19);
+            this.CBVendedor.Size = new System.Drawing.Size(92, 19);
             this.CBVendedor.TabIndex = 136;
-            this.CBVendedor.Text = "Vendedor";
+            this.CBVendedor.Text = "Vendedores";
             this.CBVendedor.UseVisualStyleBackColor = true;
             this.CBVendedor.CheckedChanged += new System.EventHandler(this.CBVendedor_CheckedChanged);
             // 
