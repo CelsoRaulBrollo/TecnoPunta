@@ -368,7 +368,7 @@
             this.label10.Location = new System.Drawing.Point(87, 601);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 40);
+            this.label10.Size = new System.Drawing.Size(101, 39);
             this.label10.TabIndex = 74;
             this.label10.Text = "Total:";
             // 
@@ -379,7 +379,7 @@
             this.LTotalFinalizarCompra.Location = new System.Drawing.Point(197, 601);
             this.LTotalFinalizarCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTotalFinalizarCompra.Name = "LTotalFinalizarCompra";
-            this.LTotalFinalizarCompra.Size = new System.Drawing.Size(0, 40);
+            this.LTotalFinalizarCompra.Size = new System.Drawing.Size(0, 39);
             this.LTotalFinalizarCompra.TabIndex = 75;
             // 
             // BBuscarClienteFinalizarCompra
@@ -406,6 +406,7 @@
             this.BConfirmarCompraFinalizarCompra.Text = "Confirmar Compra";
             this.BConfirmarCompraFinalizarCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BConfirmarCompraFinalizarCompra.UseVisualStyleBackColor = true;
+            this.BConfirmarCompraFinalizarCompra.Click += new System.EventHandler(this.BConfirmarCompraFinalizarCompra_Click);
             // 
             // BValiBuscarCliente
             // 

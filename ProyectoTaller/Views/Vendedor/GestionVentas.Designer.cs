@@ -170,6 +170,7 @@
             this.BVerDetalle.Text = "Ver Detalle ";
             this.BVerDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BVerDetalle.UseVisualStyleBackColor = true;
+            this.BVerDetalle.Click += new System.EventHandler(this.BVerDetalle_Click);
             // 
             // GestionVentas
             // 

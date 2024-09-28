@@ -10,17 +10,21 @@ using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
 {
-    public partial class GestionVentas : Form
+    public partial class VentaDetalle : Form
     {
-        public GestionVentas()
+        public VentaDetalle()
         {
             InitializeComponent();
         }
 
-        private void BVerDetalle_Click(object sender, EventArgs e)
+        private void CBBilleteraVirtual_CheckedChanged(object sender, EventArgs e)
         {
-            VentaDetalle ventana = new VentaDetalle();
-            ventana.Show();
+
+        }
+
+        private void BImprimirDetalle_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
