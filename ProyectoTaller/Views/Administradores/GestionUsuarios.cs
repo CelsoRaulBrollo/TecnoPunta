@@ -370,7 +370,7 @@ namespace ProyectoTaller.Views.Administradores
         {
             if (DGUsuarios.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el cliente seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar el usuario seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -378,6 +378,7 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         if (!row.IsNewRow)
                         {
+                            MessageBox.Show("Usuario eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DGUsuarios.Rows.Remove(row);
                         }
                     }
@@ -426,74 +427,61 @@ namespace ProyectoTaller.Views.Administradores
 
         private void CBGerente_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            // Desmarcar otros CheckBoxes si CBGerente está seleccionado
+            if (CBGerente.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBGerente.Checked)
-                    {
-                        if (fila.Cells["CPuesto"].Value.ToString() == "Gerente")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBVendedor.Checked = false;
+                CBAdministrador.Checked = false;
             }
+
+            FiltrarPorPuesto();
         }
 
         private void CBVendedor_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            // Desmarcar otros CheckBoxes si CBVendedor está seleccionado
+            if (CBVendedor.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBVendedor.Checked)
-                    {
-                        if (fila.Cells["CPuesto"].Value.ToString() == "Vendedor")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBGerente.Checked = false;
+                CBAdministrador.Checked = false;
             }
+
+            FiltrarPorPuesto();
         }
 
         private void CBAdministrador_CheckedChanged(object sender, EventArgs e)
+        {
+            // Desmarcar otros CheckBoxes si CBAdministrador está seleccionado
+            if (CBAdministrador.Checked)
+            {
+                CBGerente.Checked = false;
+                CBVendedor.Checked = false;
+            }
+
+            FiltrarPorPuesto();
+        }
+
+        private void FiltrarPorPuesto()
         {
             foreach (DataGridViewRow fila in DGUsuarios.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    if (CBAdministrador.Checked)
+                    if (CBGerente.Checked && fila.Cells["CPuesto"].Value.ToString() == "Gerente")
                     {
-                        if (fila.Cells["CPuesto"].Value.ToString() == "Administrador")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
+                        fila.Visible = true;
+                    }
+                    else if (CBVendedor.Checked && fila.Cells["CPuesto"].Value.ToString() == "Vendedor")
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBAdministrador.Checked && fila.Cells["CPuesto"].Value.ToString() == "Administrador")
+                    {
+                        fila.Visible = true;
                     }
                     else
                     {
-                        fila.Visible = true;
+                        fila.Visible = false;
                     }
                 }
             }

@@ -456,6 +456,7 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         if (!row.IsNewRow)
                         {
+                            MessageBox.Show("Producto eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DGProductos.Rows.Remove(row);
                         }
                     }
@@ -503,74 +504,61 @@ namespace ProyectoTaller.Views.Administradores
 
         private void CBNuevo_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGProductos.Rows)
+            // Desmarcar otros CheckBoxes si CBNuevo está seleccionado
+            if (CBNuevo.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBNuevo.Checked)
-                    {
-                        if (fila.Cells["CEstado"].Value.ToString() == "Nuevo")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBReacondicionado.Checked = false;
+                CBUsado.Checked = false;
             }
+
+            FiltrarPorEstado();
         }
 
         private void CBReacondicionado_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow fila in DGProductos.Rows)
+            // Desmarcar otros CheckBoxes si CBReacondicionado está seleccionado
+            if (CBReacondicionado.Checked)
             {
-                if (!fila.IsNewRow)
-                {
-                    if (CBReacondicionado.Checked)
-                    {
-                        if (fila.Cells["CEstado"].Value.ToString() == "Reacondicionado")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        fila.Visible = true;
-                    }
-                }
+                CBNuevo.Checked = false;
+                CBUsado.Checked = false;
             }
+
+            FiltrarPorEstado();
         }
 
         private void CBUsado_CheckedChanged(object sender, EventArgs e)
+        {
+            // Desmarcar otros CheckBoxes si CBUsado está seleccionado
+            if (CBUsado.Checked)
+            {
+                CBNuevo.Checked = false;
+                CBReacondicionado.Checked = false;
+            }
+
+            FiltrarPorEstado();
+        }
+
+        private void FiltrarPorEstado()
         {
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    if (CBUsado.Checked)
+                    if (CBNuevo.Checked && fila.Cells["CEstado"].Value.ToString() == "Nuevo")
                     {
-                        if (fila.Cells["CEstado"].Value.ToString() == "Usado")
-                        {
-                            fila.Visible = true;
-                        }
-                        else
-                        {
-                            fila.Visible = false;
-                        }
+                        fila.Visible = true;
+                    }
+                    else if (CBReacondicionado.Checked && fila.Cells["CEstado"].Value.ToString() == "Reacondicionado")
+                    {
+                        fila.Visible = true;
+                    }
+                    else if (CBUsado.Checked && fila.Cells["CEstado"].Value.ToString() == "Usado")
+                    {
+                        fila.Visible = true;
                     }
                     else
                     {
-                        fila.Visible = true;
+                        fila.Visible = false;
                     }
                 }
             }
