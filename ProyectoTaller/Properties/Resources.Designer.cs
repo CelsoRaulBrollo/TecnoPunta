@@ -103,6 +103,16 @@ namespace ProyectoTaller.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BackupButton {
+            get {
+                object obj = ResourceManager.GetObject("BackupButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BackUpTitulo {
             get {
                 object obj = ResourceManager.GetObject("BackUpTitulo", resourceCulture);
@@ -436,6 +446,16 @@ namespace ProyectoTaller.Properties {
         internal static System.Drawing.Bitmap Quitar {
             get {
                 object obj = ResourceManager.GetObject("Quitar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Restaurar {
+            get {
+                object obj = ResourceManager.GetObject("Restaurar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
