@@ -42,6 +42,7 @@ namespace ProyectoTaller.Views
             this.BVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.BGraficos = new System.Windows.Forms.ToolStripMenuItem();
             this.BInformes = new System.Windows.Forms.ToolStripMenuItem();
+            this.BBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.DragControl = new System.Windows.Forms.Panel();
             this.BMinimizar = new System.Windows.Forms.Button();
             this.BCerrar = new System.Windows.Forms.Button();
@@ -94,7 +95,8 @@ namespace ProyectoTaller.Views
             this.BUsuarios,
             this.BVentas,
             this.BGraficos,
-            this.BInformes});
+            this.BInformes,
+            this.BBackup});
             this.MMenuOpciones.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.MMenuOpciones.Location = new System.Drawing.Point(0, 163);
             this.MMenuOpciones.Margin = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -207,6 +209,19 @@ namespace ProyectoTaller.Views
             this.BInformes.Text = " Informes";
             this.BInformes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BInformes.Click += new System.EventHandler(this.BInformes_Click);
+            // 
+            // BBackup
+            // 
+            this.BBackup.AutoSize = false;
+            this.BBackup.Image = global::ProyectoTaller.Properties.Resources.Backup;
+            this.BBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BBackup.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BBackup.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BBackup.Name = "BBackup";
+            this.BBackup.Size = new System.Drawing.Size(110, 55);
+            this.BBackup.Text = "  Backup";
+            this.BBackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BBackup.Click += new System.EventHandler(this.BBackup_Click);
             // 
             // DragControl
             // 
@@ -361,5 +376,6 @@ namespace ProyectoTaller.Views
         private ToolStripMenuItem BCarrito;
         private ToolStripMenuItem BGraficos;
         private ToolStripMenuItem BInformes;
+        private ToolStripMenuItem BBackup;
     }
 }

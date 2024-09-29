@@ -43,6 +43,7 @@ namespace ProyectoTaller.Views
                 BCliente.Visible = true;
                 BUsuarios.Visible = true;
                 BInformes.Visible = true;
+                BBackup.Visible = true;
             }
             else if (_rolUsuario == "Vendedor")
             {
@@ -266,6 +267,13 @@ namespace ProyectoTaller.Views
 
                 MostrarFormularioEnPanel(informeGerente);
             }
+        }
+
+        private void BBackup_Click(object sender, EventArgs e)
+        {
+            Form restaurarBaseDatos = new Backup();
+
+            MostrarFormularioEnPanel(restaurarBaseDatos);
         }
     }
 }
