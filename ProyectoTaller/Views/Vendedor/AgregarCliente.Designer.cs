@@ -126,7 +126,6 @@
             this.LNombreCliente.Size = new System.Drawing.Size(66, 17);
             this.LNombreCliente.TabIndex = 38;
             this.LNombreCliente.Text = "Nombres";
-            this.LNombreCliente.Click += new System.EventHandler(this.LNombreProducto_Click);
             // 
             // LTituloCliente
             // 
@@ -137,7 +136,6 @@
             this.LTituloCliente.Size = new System.Drawing.Size(129, 36);
             this.LTituloCliente.TabIndex = 36;
             this.LTituloCliente.Text = "Clientes";
-            this.LTituloCliente.Click += new System.EventHandler(this.LTituloAgregar_Click);
             // 
             // LValiApellidoCliente
             // 
@@ -454,7 +452,6 @@
             this.Name = "AgregarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarCliente";
-            this.Load += new System.EventHandler(this.AgregarCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGClientes)).EndInit();
             this.ResumeLayout(false);
