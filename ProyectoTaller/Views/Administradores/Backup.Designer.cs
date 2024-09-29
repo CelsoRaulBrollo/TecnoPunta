@@ -28,7 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.PBImagenBackUp = new System.Windows.Forms.PictureBox();
+            this.LTituloBackup = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagenBackUp)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PBImagenBackUp
+            // 
+            this.PBImagenBackUp.Image = global::ProyectoTaller.Properties.Resources.BackUpTitulo;
+            this.PBImagenBackUp.Location = new System.Drawing.Point(12, 12);
+            this.PBImagenBackUp.Name = "PBImagenBackUp";
+            this.PBImagenBackUp.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenBackUp.TabIndex = 28;
+            this.PBImagenBackUp.TabStop = false;
+            // 
+            // LTituloBackup
+            // 
+            this.LTituloBackup.AutoSize = true;
+            this.LTituloBackup.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTituloBackup.Location = new System.Drawing.Point(77, 13);
+            this.LTituloBackup.Name = "LTituloBackup";
+            this.LTituloBackup.Size = new System.Drawing.Size(123, 36);
+            this.LTituloBackup.TabIndex = 29;
+            this.LTituloBackup.Text = "Backup";
             // 
             // Backup
             // 
@@ -36,13 +58,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(887, 507);
+            this.Controls.Add(this.LTituloBackup);
+            this.Controls.Add(this.PBImagenBackUp);
             this.Name = "Backup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Backup";
+            ((System.ComponentModel.ISupportInitialize)(this.PBImagenBackUp)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox PBImagenBackUp;
+        private System.Windows.Forms.Label LTituloBackup;
     }
 }
