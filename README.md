@@ -1,14 +1,22 @@
-TALLER DE PROGRAMACION II   UNNE
-Proyecto: TecnoPunta
-Sistema de Venta
+# Taller de Programacion II [Tecno Punta]
 
 
-Credenciales
-	TIPO USUARIO		  Contraseña
-	Administrador		  12345
-	Vendedor		      45678
-	Gerente			      13579
 
-El archivo SQL se encuentra en la carpeta raíz. 
+## Credenciales
 
-	Archivo			TecnoPuntaBD.sql
+|Tipo de usuario| Contraseña|
+|--|--|
+| Administrador |12345  |
+| Vendedor |45678  |
+| Gerente |13579 |
+
+## Archivo SQL
+
+El archivo necesario para la creación de la base de datos se encuentra en la carpeta raiz. 
+TecnoPuntaBD.sql
+
+
+
+## Autores
+@[CelsoRaulBrollo](https://github.com/CelsoRaulBrollo)
+@[Gabrielcapay](https://github.com/gabrielcapay)
