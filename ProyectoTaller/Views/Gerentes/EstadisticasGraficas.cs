@@ -9,98 +9,106 @@ namespace ProyectoTaller.Views.Gerentes
         public EstadisticasGraficas()
         {
             InitializeComponent();
+            CargarGrafico();
+            ChartEvolucionDelStockIncializar();
         }
 
-        private void CHMarcasValoradas_Click(object sender, EventArgs e)
+        private void CargarGrafico()
         {
-            CHMarcasValoradas.Series.Clear();
 
-            var series = new Series("Marcas Valoradas");
-            series.ChartType = SeriesChartType.Doughnut;
+         
+            var marcas = new string[] { "Apple", "Motorola", "Samsung", "Xiaomi", "Huawei" };
+            var stock = new int[] { 50, 30, 70, 40, 20 }; 
 
-            series.Points.AddXY("Samsung", 45);
-            series.Points.AddXY("Apple", 50);
-            series.Points.AddXY("Xiaomi", 20);
-            series.Points.AddXY("Huawei", 10);
-            series.Points.AddXY("Motorola", 25);
+          
+            ChartTelefonosStock.Series.Clear();
+            ChartTelefonosStock.ChartAreas.Clear();
 
-            CHMarcasValoradas.Series.Add(series);
+        
+            ChartArea chartArea = new ChartArea();
+            ChartTelefonosStock.ChartAreas.Add(chartArea);
+
+            Series series = new Series
+            {
+                Name = "Stock",
+                Color = System.Drawing.Color.Green,
+                ChartType = SeriesChartType.Column,
+                IsVisibleInLegend = false
+            };
+
+     
+            for (int i = 0; i < marcas.Length; i++)
+            {
+                series.Points.AddXY(marcas[i], stock[i]);
+            }
+
+            ChartTelefonosStock.Series.Add(series);
+           
+
+
+            ChartTelefonosStock.Titles.Clear();
+          
+
+
         }
 
-        private void CHTelefonosStock_Click(object sender, EventArgs e)
+        private void ChartEvolucionDelStockIncializar()
         {
-            CHTelefonosStock.Series.Clear();
+       
+            ChartEvolucionDelStock.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea();
+            ChartEvolucionDelStock.ChartAreas.Add(chartArea);
 
-            var series = new Series("Telefonos en Stock");
-            series.ChartType = SeriesChartType.Column;
+            ChartEvolucionDelStock.Series.Clear();
+            AddSeries("Apple", new double[] { 20, 30, 25, 40, 35, 50, 45, 60, 55, 70, 65, 80 });
+            AddSeries("Motorola", new double[] { 15, 25, 20, 30, 25, 35, 30, 45, 40, 50, 45, 55 });
+            AddSeries("Samsung", new double[] { 25, 35, 30, 50, 45, 60, 55, 70, 65, 80, 75, 90 });
+            AddSeries("Xiaomi", new double[] { 10, 20, 15, 25, 20, 30, 25, 35, 30, 45, 40, 50 });
+            AddSeries("Huawei", new double[] { 5, 15, 10, 20, 15, 25, 20, 30, 25, 35, 30, 40 });
 
-            series.Points.AddXY("Samsung", 10);
-            series.Points.AddXY("Apple", 20);
-            series.Points.AddXY("Xiaomi", 45);
-            series.Points.AddXY("Huawei", 25);
-            series.Points.AddXY("Motorola", 45);
+        
+            ChartEvolucionDelStock.Titles.Add("Evolución del Stock de Marcas");
+            ChartEvolucionDelStock.Legends.Add(new Legend("Marcas"));
+            ChartEvolucionDelStock.Legends[0].Docking = Docking.Top;
 
-            CHTelefonosStock.Series.Add(series);
+       
+            ChartEvolucionDelStock.ChartAreas[0].AxisX.Title = "Día del Mes";
+            ChartEvolucionDelStock.ChartAreas[0].AxisY.Title = "Stock";
         }
 
-        private void CHMesesVentas_Click(object sender, EventArgs e)
+        private void AddSeries(string seriesName, double[] data)
         {
-            CHMesesVentas.Series.Clear();
+            Series series = new Series(seriesName)
+            {
+                ChartType = SeriesChartType.Line,
+                BorderWidth = 3,
+                Color = GetSeriesColor(seriesName)
+            };
 
-            var series = new Series("Ventas Últimos 6 Meses");
-            series.ChartType = SeriesChartType.Bar;
+            for (int i = 0; i < data.Length; i++)
+            {
+                series.Points.AddXY(i + 1, data[i]);
+            }
 
-            series.Points.AddXY("Abril", 120);
-            series.Points.AddXY("Mayo", 150);
-            series.Points.AddXY("Junio", 180);
-            series.Points.AddXY("Julio", 140);
-            series.Points.AddXY("Agosto", 200);
-            series.Points.AddXY("Septiembre", 170);
-
-            CHMesesVentas.Series.Add(series);
+            ChartEvolucionDelStock.Series.Add(series);
         }
 
-        private void EstadisticasGraficas_Load(object sender, EventArgs e)
+        private System.Drawing.Color GetSeriesColor(string seriesName)
         {
-            CHMarcasValoradas.Series.Clear();
-
-            var seriesMarcas = new Series("Marcas Valoradas");
-            seriesMarcas.ChartType = SeriesChartType.Doughnut;
-
-            seriesMarcas.Points.AddXY("Samsung", 45);
-            seriesMarcas.Points.AddXY("Apple", 50);
-            seriesMarcas.Points.AddXY("Xiaomi", 20);
-            seriesMarcas.Points.AddXY("Huawei", 10);
-            seriesMarcas.Points.AddXY("Motorola", 25);
-
-            CHMarcasValoradas.Series.Add(seriesMarcas);
-
-            CHTelefonosStock.Series.Clear();
-
-            var seriesStock = new Series("Marcas en Stock");
-            seriesStock.ChartType = SeriesChartType.Column;
-
-            seriesStock.Points.AddXY("Samsung", 10);
-            seriesStock.Points.AddXY("Apple", 20);
-            seriesStock.Points.AddXY("Xiaomi", 45);
-            seriesStock.Points.AddXY("Huawei", 25);
-            seriesStock.Points.AddXY("Motorola", 45);
-
-            CHTelefonosStock.Series.Add(seriesStock);
-
-            CHMesesVentas.Series.Clear();
-
-            var seriesMeses = new Series("Ventas ultimos 6 meses");
-            seriesMeses.ChartType = SeriesChartType.Bar;
-
-            seriesMeses.Points.AddXY("Abril", 120);
-            seriesMeses.Points.AddXY("Mayo", 150);
-            seriesMeses.Points.AddXY("Junio", 180);
-            seriesMeses.Points.AddXY("Julio", 140);
-            seriesMeses.Points.AddXY("Agosto", 200);
-            seriesMeses.Points.AddXY("Septiembre", 170);
-
-            CHMesesVentas.Series.Add(seriesMeses);
+            switch (seriesName)
+            {
+                case "Apple": return System.Drawing.Color.Red;
+                case "Motorola": return System.Drawing.Color.Green;
+                case "Samsung": return System.Drawing.Color.Blue;
+                case "Xiaomi": return System.Drawing.Color.Orange;
+                case "Huawei": return System.Drawing.Color.Purple;
+                default: return System.Drawing.Color.Black;
+            }
         }
     }
-}
+
+
+
+   
+ }
+

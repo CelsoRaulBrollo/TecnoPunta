@@ -27,7 +27,7 @@ namespace ProyectoTaller.Views.Gerentes
         private void CargarGrafico()
         {
             // Datos de ejemplo de las marcas más vendidas
-            string[] marcas = { "Marca A", "Marca B", "Marca C", "Marca D" };
+            string[] marcas = { "Motorola", "Apple", "Samsung", "Xiaomi" };
             int[] ventas = { 30, 25, 20, 25 };
 
             // Configuración del gráfico
