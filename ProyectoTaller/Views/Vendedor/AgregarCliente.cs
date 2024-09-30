@@ -21,7 +21,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             try
             {
-                using (var contexto = new BaseTecnoPuntaEntities())
+                using (var contexto = new TecnoPuntaBDEntities())
                 {
                     var clientes = contexto.Clientes.ToList();
 
@@ -30,12 +30,12 @@ namespace ProyectoTaller.Views.Vendedor
                     foreach (var cliente in clientes)
                     {
                         DGClientes.Rows.Add(
-                            cliente.DNI,
-                            cliente.Nombre,
-                            cliente.Apellido,
-                            cliente.Telefono,
-                            cliente.Correo,
-                            cliente.Direccion
+                            cliente.DNI_Cliente,
+                            cliente.Nombre_Cliente,
+                            cliente.Apellido_Cliente,
+                            cliente.Telefono_Cliente,
+                            cliente.Correo_Cliente,
+                            cliente.Direccion_Cliente
                         );
                     }
                 }
@@ -52,7 +52,7 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 try
                 {
-                    using (var contexto = new BaseTecnoPuntaEntities())
+                    using (var contexto = new TecnoPuntaBDEntities())
                     {
                         contexto.Clientes.Add(cliente);
                         contexto.SaveChanges();
@@ -70,16 +70,16 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 try
                 {
-                    using (var contexto = new BaseTecnoPuntaEntities())
+                    using (var contexto = new TecnoPuntaBDEntities())
                     {
-                        var clienteExistente = contexto.Clientes.FirstOrDefault(c => c.DNI == cliente.DNI);
+                        var clienteExistente = contexto.Clientes.FirstOrDefault(c => c.DNI_Cliente == cliente.DNI_Cliente);
                         if (clienteExistente != null)
                         {
-                            clienteExistente.Nombre = cliente.Nombre;
-                            clienteExistente.Apellido = cliente.Apellido;
-                            clienteExistente.Telefono = cliente.Telefono;
-                            clienteExistente.Correo = cliente.Correo;
-                            clienteExistente.Direccion = cliente.Direccion;
+                            clienteExistente.Nombre_Cliente = cliente.Nombre_Cliente;
+                            clienteExistente.Apellido_Cliente = cliente.Apellido_Cliente;
+                            clienteExistente.Telefono_Cliente = cliente.Telefono_Cliente;
+                            clienteExistente.Correo_Cliente = cliente.Correo_Cliente;
+                            clienteExistente.Direccion_Cliente = cliente.Direccion_Cliente;
 
                             contexto.SaveChanges();
                             return true;
@@ -98,9 +98,9 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 try
                 {
-                    using (var contexto = new BaseTecnoPuntaEntities())
+                    using (var contexto = new TecnoPuntaBDEntities())
                     {
-                        var cliente = contexto.Clientes.FirstOrDefault(c => c.DNI == dni);
+                        var cliente = contexto.Clientes.FirstOrDefault(c => c.DNI_Cliente == dni);
                         if (cliente != null)
                         {
                             contexto.Clientes.Remove(cliente);
@@ -128,12 +128,12 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 Clientes cliente = new Clientes
                 {
-                    DNI = int.Parse(TDNICliente.Text),
-                    Nombre = TNombreCliente.Text,
-                    Apellido = TApellidoCliente.Text,
-                    Telefono = int.Parse(TTelefonoCliente.Text),
-                    Correo = TCorreoCliente.Text,
-                    Direccion = TDireccionCliente.Text
+                    DNI_Cliente = int.Parse(TDNICliente.Text),
+                    Nombre_Cliente = TNombreCliente.Text,
+                    Apellido_Cliente = TApellidoCliente.Text,
+                    Telefono_Cliente = TTelefonoCliente.Text,
+                    Correo_Cliente = TCorreoCliente.Text,
+                    Direccion_Cliente = TDireccionCliente.Text
                 };
 
                 if (editando)
@@ -141,12 +141,12 @@ namespace ProyectoTaller.Views.Vendedor
                     if (clienteDatos.ActualizarCliente(cliente))
                     {
                         DataGridViewRow fila = DGClientes.SelectedRows[0];
-                        fila.Cells["CDNI"].Value = cliente.DNI;
-                        fila.Cells["CNombreCliente"].Value = cliente.Nombre;
-                        fila.Cells["CApellidoCliente"].Value = cliente.Apellido;
-                        fila.Cells["CTelefonoCliente"].Value = cliente.Telefono;
-                        fila.Cells["CCorreoCliente"].Value = cliente.Correo;
-                        fila.Cells["CDireccionCliente"].Value = cliente.Direccion;
+                        fila.Cells["CDNI"].Value = cliente.DNI_Cliente;
+                        fila.Cells["CNombreCliente"].Value = cliente.Nombre_Cliente;
+                        fila.Cells["CApellidoCliente"].Value = cliente.Apellido_Cliente;
+                        fila.Cells["CTelefonoCliente"].Value = cliente.Telefono_Cliente;
+                        fila.Cells["CCorreoCliente"].Value = cliente.Correo_Cliente;
+                        fila.Cells["CDireccionCliente"].Value = cliente.Direccion_Cliente;
                         LRespuestaNuevoCliente.Text = "Editado Exitosamente!";
                         LimpiarCampos();
                         editando = false;
@@ -167,12 +167,12 @@ namespace ProyectoTaller.Views.Vendedor
                     if (clienteDatos.AgregarCliente(cliente))
                     {
                         DGClientes.Rows.Add(
-                            cliente.DNI,
-                            cliente.Nombre,
-                            cliente.Apellido,
-                            cliente.Telefono,
-                            cliente.Correo,
-                            cliente.Direccion
+                            cliente.DNI_Cliente,
+                            cliente.Nombre_Cliente,
+                            cliente.Apellido_Cliente,
+                            cliente.Telefono_Cliente,
+                            cliente.Correo_Cliente,
+                            cliente.Direccion_Cliente
                         );
                         LRespuestaNuevoCliente.Text = "Registrado Exitosamente!";
                         LimpiarCampos();
@@ -268,6 +268,11 @@ namespace ProyectoTaller.Views.Vendedor
         {
             bool respuesta = true;
 
+            if (string.IsNullOrEmpty(TDNICliente.Text) || !TDNICliente.Text.All(char.IsDigit) || TDNICliente.Text.Length < 7 || TDNICliente.Text.Length > 8)
+            {
+                respuesta = false;
+            }
+
             if (string.IsNullOrEmpty(TNombreCliente.Text) || TNombreCliente.Text.Length > 30)
             {
                 respuesta = false;
@@ -278,17 +283,12 @@ namespace ProyectoTaller.Views.Vendedor
                 respuesta = false;
             }
 
-            if (string.IsNullOrEmpty(TDNICliente.Text) || !int.TryParse(TDNICliente.Text, out _) || TDNICliente.Text.Length > 9)
+            if (string.IsNullOrEmpty(TTelefonoCliente.Text) || !TTelefonoCliente.Text.All(char.IsDigit) || TTelefonoCliente.Text.Length < 10 || TTelefonoCliente.Text.Length > 12)
             {
                 respuesta = false;
             }
 
-            if (string.IsNullOrEmpty(TTelefonoCliente.Text) || !int.TryParse(TTelefonoCliente.Text, out _) || TTelefonoCliente.Text.Length > 12)
-            {
-                respuesta = false;
-            }
-
-            if (string.IsNullOrEmpty(TCorreoCliente.Text) || TCorreoCliente.Text.Length > 100)
+            if (string.IsNullOrEmpty(TCorreoCliente.Text) || !TCorreoCliente.Text.Contains("@") || !TCorreoCliente.Text.Contains(".") || TCorreoCliente.Text.Length > 100)
             {
                 respuesta = false;
             }
@@ -301,69 +301,40 @@ namespace ProyectoTaller.Views.Vendedor
             return respuesta;
         }
 
+
         private void ValidarFormularioLabel()
         {
             string nombreCliente = TNombreCliente.Text;
-            string appellidosCliente = TApellidoCliente.Text;
+            string apellidoCliente = TApellidoCliente.Text;
             string dniCliente = TDNICliente.Text;
             string telefonoCliente = TTelefonoCliente.Text;
             string correoCliente = TCorreoCliente.Text;
             string direccionCliente = TDireccionCliente.Text;
 
-            if (string.IsNullOrEmpty(nombreCliente))
-            {
-                LValiNombre.ForeColor = Color.Red;
-                LValiNombre.Text = "Ingrese el nombre del cliente.";
-            }
-            else if (nombreCliente.Length > 30)
-            {
-                LValiNombre.ForeColor = Color.Red;
-                LValiNombre.Text = "Ingrese menos de 30 caracteres.";
-            }
-            else
-            {
-                LValiNombre.Text = string.Empty;
-            }
-
-            if (string.IsNullOrEmpty(appellidosCliente))
-            {
-                LValiApellidoCliente.ForeColor = Color.Red;
-                LValiApellidoCliente.Text = "Ingrese el apellido del cliente.";
-            }
-            else if (appellidosCliente.Length > 30)
-            {
-                LValiApellidoCliente.ForeColor = Color.Red;
-                LValiApellidoCliente.Text = "Ingrese menos de 30 caracteres.";
-            }
-            else
-            {
-                LValiApellidoCliente.Text = string.Empty;
-            }
-
-            if (string.IsNullOrEmpty(dniCliente) || !int.TryParse(dniCliente, out _))
+            if (string.IsNullOrEmpty(dniCliente) || !dniCliente.All(char.IsDigit))
             {
                 LValidDNI.ForeColor = Color.Red;
-                LValidDNI.Text = "Ingrese un DNI válido.";
+                LValidDNI.Text = "Ingrese un DNI válido (solo números).";
             }
-            else if (dniCliente.Length > 9)
+            else if (dniCliente.Length < 7 || dniCliente.Length > 8)
             {
                 LValidDNI.ForeColor = Color.Red;
-                LValidDNI.Text = "Ingrese menos de 9 caracteres.";
+                LValidDNI.Text = "El DNI debe tener entre 7 y 8 caracteres.";
             }
             else
             {
                 LValidDNI.Text = string.Empty;
             }
 
-            if (string.IsNullOrEmpty(telefonoCliente) || !int.TryParse(telefonoCliente, out _))
+            if (string.IsNullOrEmpty(telefonoCliente) || !telefonoCliente.All(char.IsDigit))
             {
                 LValiTelefono.ForeColor = Color.Red;
-                LValiTelefono.Text = "Ingrese un teléfono válido.";
+                LValiTelefono.Text = "Ingrese un teléfono válido (solo números).";
             }
-            else if (telefonoCliente.Length > 12)
+            else if (telefonoCliente.Length < 10 || telefonoCliente.Length > 12)
             {
                 LValiTelefono.ForeColor = Color.Red;
-                LValiTelefono.Text = "Ingrese menos de 12 caracteres.";
+                LValiTelefono.Text = "El teléfono debe tener entre 10 y 12 caracteres.";
             }
             else
             {
@@ -375,14 +346,65 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiCorreo.ForeColor = Color.Red;
                 LValiCorreo.Text = "Ingrese un correo.";
             }
+            else if (correoCliente.Contains(" "))
+            {
+                LValiCorreo.ForeColor = Color.Red;
+                LValiCorreo.Text = "El correo no debe contener espacios.";
+            }
+            else if (!correoCliente.Contains("@") || !correoCliente.Contains("."))
+            {
+                LValiCorreo.ForeColor = Color.Red;
+                LValiCorreo.Text = "El correo debe contener '@' y '.'.";
+            }
             else if (correoCliente.Length > 100)
             {
                 LValiCorreo.ForeColor = Color.Red;
-                LValiCorreo.Text = "Ingrese menos de 100 caracteres.";
+                LValiCorreo.Text = "El correo debe tener menos de 100 caracteres.";
             }
             else
             {
                 LValiCorreo.Text = string.Empty;
+            }
+
+
+            if (string.IsNullOrEmpty(nombreCliente))
+            {
+                LValiNombre.ForeColor = Color.Red;
+                LValiNombre.Text = "Ingrese el nombre del cliente.";
+            }
+            else if (nombreCliente.Length > 30)
+            {
+                LValiNombre.ForeColor = Color.Red;
+                LValiNombre.Text = "Ingrese menos de 30 caracteres.";
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreCliente, @"^[a-zA-Z]"))
+            {
+                LValiNombre.ForeColor = Color.Red;
+                LValiNombre.Text = "El nombre solo debe contener letras.";
+            }
+            else
+            {
+                LValiNombre.Text = string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(apellidoCliente))
+            {
+                LValiApellidoCliente.ForeColor = Color.Red;
+                LValiApellidoCliente.Text = "Ingrese el apellido del cliente.";
+            }
+            else if (apellidoCliente.Length > 30)
+            {
+                LValiApellidoCliente.ForeColor = Color.Red;
+                LValiApellidoCliente.Text = "Ingrese menos de 30 caracteres.";
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(apellidoCliente, @"^[a-zA-Z]"))
+            {
+                LValiApellidoCliente.ForeColor = Color.Red;
+                LValiApellidoCliente.Text = "El apellido solo debe contener letras.";
+            }
+            else
+            {
+                LValiApellidoCliente.Text = string.Empty;
             }
 
             if (string.IsNullOrEmpty(direccionCliente))
@@ -400,5 +422,6 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiDireccionCliente.Text = string.Empty;
             }
         }
+
     }
 }

@@ -13,10 +13,10 @@ namespace ProyectoTaller
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BaseTecnoPuntaEntities : DbContext
+    public partial class TecnoPuntaBDEntities : DbContext
     {
-        public BaseTecnoPuntaEntities()
-            : base("name=BaseTecnoPuntaEntities")
+        public TecnoPuntaBDEntities()
+            : base("name=TecnoPuntaBDEntities")
         {
         }
     
@@ -26,5 +26,9 @@ namespace ProyectoTaller
         }
     
         public virtual DbSet<Clientes> Clientes { get; set; }
+        public virtual DbSet<Detalle_Factura> Detalle_Factura { get; set; }
+        public virtual DbSet<Factura> Factura { get; set; }
+        public virtual DbSet<Productos> Productos { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

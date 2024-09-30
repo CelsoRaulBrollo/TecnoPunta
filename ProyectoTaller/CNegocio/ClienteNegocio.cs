@@ -44,13 +44,24 @@ namespace ProyectoTaller.CNegocio
 
         public void BorrarCliente(int dni)
         {
+            if (dni <= 0)
+            {
+                throw new ArgumentException("DNI no puede ser menor o igual a cero.");
+            }
+
             clienteDatos.BorrarCliente(dni);
         }
 
         private bool ValidarCliente(int dni, string nombre, string apellido, int telefono, string correo, string direccion)
         {
-            return dni > 0 && !string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido);
+            bool isDniValid = dni > 0;
+            bool isNombreValid = !string.IsNullOrEmpty(nombre) && nombre.Length <= 100;
+            bool isApellidoValid = !string.IsNullOrEmpty(apellido) && apellido.Length <= 100;
+            bool isTelefonoValid = telefono > 0;
+            bool isCorreoValid = !string.IsNullOrEmpty(correo) && correo.Length <= 150;
+            bool isDireccionValid = !string.IsNullOrEmpty(direccion) && direccion.Length <= 150;
+
+            return isDniValid && isNombreValid && isApellidoValid && isTelefonoValid && isCorreoValid && isDireccionValid;
         }
     }
 }
-

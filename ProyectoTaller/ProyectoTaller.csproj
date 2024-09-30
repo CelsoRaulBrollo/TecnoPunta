@@ -64,28 +64,40 @@
   <ItemGroup>
     <Compile Include="CDatos\ClienteDatos.cs" />
     <Compile Include="Clientes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TecnoPuntaBD.tt</DependentUpon>
     </Compile>
     <Compile Include="CNegocio\ClienteNegocio.cs" />
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+    <Compile Include="Detalle_Factura.cs">
+      <DependentUpon>TecnoPuntaBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Factura.cs">
+      <DependentUpon>TecnoPuntaBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="BaseTecnoPunta.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseTecnoPunta.edmx</DependentUpon>
+    <Compile Include="Productos.cs">
+      <DependentUpon>TecnoPuntaBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TecnoPuntaBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TecnoPuntaBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TecnoPuntaBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TecnoPuntaBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TecnoPuntaBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TecnoPuntaBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>TecnoPuntaBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\Administradores\AdministrarClientes.cs">
       <SubType>Form</SubType>
@@ -283,13 +295,6 @@
     <EmbeddedResource Include="Views\Vendedor\VentaDetalle.resx">
       <DependentUpon>VentaDetalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="BaseTecnoPunta.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BaseTecnoPunta.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="BaseTecnoPunta.edmx.diagram">
-      <DependentUpon>BaseTecnoPunta.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -300,6 +305,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="TecnoPuntaBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TecnoPuntaBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TecnoPuntaBD.edmx.diagram">
+      <DependentUpon>TecnoPuntaBD.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -467,19 +479,19 @@
     <None Include="Resources\BackupButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>BaseTecnoPunta.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseTecnoPunta.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="TecnoPuntaBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TecnoPuntaBD.edmx</DependentUpon>
+      <LastGenOutput>TecnoPuntaBD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TecnoPuntaBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TecnoPuntaBD.edmx</DependentUpon>
+      <LastGenOutput>TecnoPuntaBD.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

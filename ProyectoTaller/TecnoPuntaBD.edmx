@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TecnoPuntaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="DNI_cliente" />
+          </Key>
+          <Property Name="DNI_cliente" Type="int" Nullable="false" />
+          <Property Name="Nombre_Cliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido_Cliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono_Cliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo_Cliente" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Direccion_Cliente" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalle_Factura">
+          <Key>
+            <PropertyRef Name="ID_Detalle" />
+          </Key>
+          <Property Name="ID_Detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DNI_Vendedor" Type="int" Nullable="false" />
+          <Property Name="DNI_Cliente" Type="int" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ID_Factura" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="ID_Factura" />
+          </Key>
+          <Property Name="ID_Factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DNI_Cliente" Type="int" Nullable="false" />
+          <Property Name="DNI_Vendedor" Type="int" Nullable="false" />
+          <Property Name="FechaFactura" Type="date" Nullable="false" />
+          <Property Name="MedioPago" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="Modelo_Producto" />
+          </Key>
+          <Property Name="Modelo_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Marca_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nombre_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SistemaOperativo_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Almacenamiento_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ram_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Stock_Producto" Type="int" Nullable="false" />
+          <Property Name="Precio_Producto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Estado_Producto" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="DNI_Usuario" />
+          </Key>
+          <Property Name="DNI_Usuario" Type="int" Nullable="false" />
+          <Property Name="Puesto_Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido_Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo_Usuario" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Sexo_Usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sueldo_Usuario" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Telefono_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Detalle_Cliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="DNI_cliente" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="DNI_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Producto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="Modelo_Producto" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="Modelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Vendedor">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="DNI_Usuario" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="DNI_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleFactura_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="ID_Factura" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="ID_Factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Cliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="DNI_cliente" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="DNI_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Vendedor">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="DNI_Usuario" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="DNI_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TecnoPuntaBDModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Factura" EntityType="Self.Detalle_Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Detalle_Cliente" Association="Self.FK_Detalle_Cliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Producto" Association="Self.FK_Detalle_Producto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Vendedor" Association="Self.FK_Detalle_Vendedor">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleFactura_Factura" Association="Self.FK_DetalleFactura_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Vendedor" Association="Self.FK_Factura_Vendedor">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TecnoPuntaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="DNI_Cliente" />
+          </Key>
+          <Property Name="DNI_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono_Cliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo_Cliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion_Cliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Detalle_Factura" Relationship="Self.FK_Detalle_Cliente" FromRole="Clientes" ToRole="Detalle_Factura" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_Factura_Cliente" FromRole="Clientes" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Detalle_Factura">
+          <Key>
+            <PropertyRef Name="ID_Detalle" />
+          </Key>
+          <Property Name="ID_Detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DNI_Vendedor" Type="Int32" Nullable="false" />
+          <Property Name="DNI_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ID_Factura" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Detalle_Cliente" FromRole="Detalle_Factura" ToRole="Clientes" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Detalle_Producto" FromRole="Detalle_Factura" ToRole="Productos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Detalle_Vendedor" FromRole="Detalle_Factura" ToRole="Usuarios" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_DetalleFactura_Factura" FromRole="Detalle_Factura" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="ID_Factura" />
+          </Key>
+          <Property Name="ID_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DNI_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="DNI_Vendedor" Type="Int32" Nullable="false" />
+          <Property Name="FechaFactura" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MedioPago" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Factura_Cliente" FromRole="Factura" ToRole="Clientes" />
+          <NavigationProperty Name="Detalle_Factura" Relationship="Self.FK_DetalleFactura_Factura" FromRole="Factura" ToRole="Detalle_Factura" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Factura_Vendedor" FromRole="Factura" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="Modelo_Producto" />
+          </Key>
+          <Property Name="Modelo_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marca_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SistemaOperativo_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Almacenamiento_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ram_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stock_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Precio_Producto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Estado_Producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Detalle_Factura" Relationship="Self.FK_Detalle_Producto" FromRole="Productos" ToRole="Detalle_Factura" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="DNI_Usuario" />
+          </Key>
+          <Property Name="DNI_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Puesto_Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido_Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo_Usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo_Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sueldo_Usuario" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Telefono_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Detalle_Factura" Relationship="Self.FK_Detalle_Vendedor" FromRole="Usuarios" ToRole="Detalle_Factura" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_Factura_Vendedor" FromRole="Usuarios" ToRole="Factura" />
+        </EntityType>
+        <Association Name="FK_Detalle_Cliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="DNI_Cliente" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="DNI_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Cliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="DNI_Cliente" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="DNI_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Producto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="Modelo_Producto" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="Modelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Vendedor">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="DNI_Usuario" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="DNI_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleFactura_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+          <End Role="Detalle_Factura" Type="Self.Detalle_Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="ID_Factura" />
+            </Principal>
+            <Dependent Role="Detalle_Factura">
+              <PropertyRef Name="ID_Factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Vendedor">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="DNI_Usuario" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="DNI_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TecnoPuntaBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Detalle_Factura" EntityType="Self.Detalle_Factura" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Detalle_Cliente" Association="Self.FK_Detalle_Cliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Producto" Association="Self.FK_Detalle_Producto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Vendedor" Association="Self.FK_Detalle_Vendedor">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleFactura_Factura" Association="Self.FK_DetalleFactura_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="Detalle_Factura" EntitySet="Detalle_Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Vendedor" Association="Self.FK_Factura_Vendedor">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TecnoPuntaBDModelStoreContainer" CdmEntityContainer="TecnoPuntaBDEntities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="TecnoPuntaBDModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="DNI_Cliente" ColumnName="DNI_cliente" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+                <ScalarProperty Name="Telefono_Cliente" ColumnName="Telefono_Cliente" />
+                <ScalarProperty Name="Correo_Cliente" ColumnName="Correo_Cliente" />
+                <ScalarProperty Name="Direccion_Cliente" ColumnName="Direccion_Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Factura">
+            <EntityTypeMapping TypeName="TecnoPuntaBDModel.Detalle_Factura">
+              <MappingFragment StoreEntitySet="Detalle_Factura">
+                <ScalarProperty Name="ID_Detalle" ColumnName="ID_Detalle" />
+                <ScalarProperty Name="DNI_Vendedor" ColumnName="DNI_Vendedor" />
+                <ScalarProperty Name="DNI_Cliente" ColumnName="DNI_Cliente" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="ID_Factura" ColumnName="ID_Factura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="TecnoPuntaBDModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="ID_Factura" ColumnName="ID_Factura" />
+                <ScalarProperty Name="DNI_Cliente" ColumnName="DNI_Cliente" />
+                <ScalarProperty Name="DNI_Vendedor" ColumnName="DNI_Vendedor" />
+                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+                <ScalarProperty Name="MedioPago" ColumnName="MedioPago" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="TecnoPuntaBDModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="Modelo_Producto" ColumnName="Modelo_Producto" />
+                <ScalarProperty Name="Marca_Producto" ColumnName="Marca_Producto" />
+                <ScalarProperty Name="Nombre_Producto" ColumnName="Nombre_Producto" />
+                <ScalarProperty Name="SistemaOperativo_Producto" ColumnName="SistemaOperativo_Producto" />
+                <ScalarProperty Name="Almacenamiento_Producto" ColumnName="Almacenamiento_Producto" />
+                <ScalarProperty Name="Ram_Producto" ColumnName="Ram_Producto" />
+                <ScalarProperty Name="Stock_Producto" ColumnName="Stock_Producto" />
+                <ScalarProperty Name="Precio_Producto" ColumnName="Precio_Producto" />
+                <ScalarProperty Name="Estado_Producto" ColumnName="Estado_Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="TecnoPuntaBDModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="DNI_Usuario" ColumnName="DNI_Usuario" />
+                <ScalarProperty Name="Puesto_Usuario" ColumnName="Puesto_Usuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="Apellido_Usuario" ColumnName="Apellido_Usuario" />
+                <ScalarProperty Name="Correo_Usuario" ColumnName="Correo_Usuario" />
+                <ScalarProperty Name="Sexo_Usuario" ColumnName="Sexo_Usuario" />
+                <ScalarProperty Name="Sueldo_Usuario" ColumnName="Sueldo_Usuario" />
+                <ScalarProperty Name="Telefono_Usuario" ColumnName="Telefono_Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
