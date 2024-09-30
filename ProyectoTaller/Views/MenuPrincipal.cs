@@ -191,7 +191,7 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Gerente")
             {
-                Form reporteVentas = new ReporteVentas();
+                Form reporteVentas = new ReporteInformeGeneral();
 
                 MostrarFormularioEnPanel(reporteVentas);
             }
