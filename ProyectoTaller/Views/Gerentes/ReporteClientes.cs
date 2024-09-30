@@ -15,17 +15,21 @@ namespace ProyectoTaller.Views.Gerentes
 
             CBNuevoClientes.Items.Clear();
 
-            // Agregar opciones al ComboBox
+            CBNuevoClientes.Items.Add("Seleccione una opción");
             CBNuevoClientes.Items.Add("Nuevos Clientes");
             CBNuevoClientes.Items.Add("Nuevos Clientes Según Género");
 
-            // Seleccionar el primer elemento (opcional)
             CBNuevoClientes.SelectedIndex = 0;
 
-            CBGeneroReporte.Items.Add("Clientes según género");
-            CBGeneroReporte.Items.Add("Ventas anuales según género");
+            CBGeneroReporte.Items.Clear();
+            CBGeneroReporte.Items.Add("Seleccione una opción");
+            CBGeneroReporte.Items.Add("Clientes Según Género");
+            CBGeneroReporte.Items.Add("Ventas Anuales Según Género");
+
+            CBGeneroReporte.SelectedIndex = 0;
+
             CBGeneroReporte.SelectedIndexChanged += CBGeneroReporte_SelectedIndexChanged;
-            CBGeneroReporte.SelectedIndex = 0; 
+
             MostrarGraficoVentasAnualesSegunGenero();
         }
 

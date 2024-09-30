@@ -23,7 +23,6 @@ namespace ProyectoTaller.Views.Gerentes
             
 
         }
-        
 
         private void CargarGrafico()
         {

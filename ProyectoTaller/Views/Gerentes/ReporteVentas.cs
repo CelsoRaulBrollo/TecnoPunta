@@ -3,9 +3,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ProyectoTaller.Views.Gerentes
 {
-    public partial class InformesGerente : Form
+    public partial class ReporteVentas : Form
     {
-        public InformesGerente()
+        public ReporteVentas()
         {
             InitializeComponent();
             CargarDatosGrafico();
@@ -68,11 +68,6 @@ namespace ProyectoTaller.Views.Gerentes
 
             // Agrega la serie al gráfico
             chart2.Series.Add(serieVentas);
-        }
-
-        private void LTituloInformeGerente_Click(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

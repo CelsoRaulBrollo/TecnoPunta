@@ -33,12 +33,12 @@
             this.CBEfectivo = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.BAgregar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BLimpiar = new System.Windows.Forms.Button();
+            this.BImprimir = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LDesde = new System.Windows.Forms.Label();
+            this.LHasta = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
@@ -49,10 +49,9 @@
             // 
             this.LTituloReporteVentas.AutoSize = true;
             this.LTituloReporteVentas.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloReporteVentas.Location = new System.Drawing.Point(108, 27);
-            this.LTituloReporteVentas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LTituloReporteVentas.Location = new System.Drawing.Point(78, 14);
             this.LTituloReporteVentas.Name = "LTituloReporteVentas";
-            this.LTituloReporteVentas.Size = new System.Drawing.Size(172, 44);
+            this.LTituloReporteVentas.Size = new System.Drawing.Size(135, 36);
             this.LTituloReporteVentas.TabIndex = 37;
             this.LTituloReporteVentas.Text = "Informes";
             this.LTituloReporteVentas.Click += new System.EventHandler(this.LTituloReporteVentas_Click);
@@ -60,10 +59,9 @@
             // PBImagenInformeGerente
             // 
             this.PBImagenInformeGerente.Image = global::ProyectoTaller.Properties.Resources.informe_titulo;
-            this.PBImagenInformeGerente.Location = new System.Drawing.Point(13, 13);
-            this.PBImagenInformeGerente.Margin = new System.Windows.Forms.Padding(4);
+            this.PBImagenInformeGerente.Location = new System.Drawing.Point(10, 11);
             this.PBImagenInformeGerente.Name = "PBImagenInformeGerente";
-            this.PBImagenInformeGerente.Size = new System.Drawing.Size(87, 82);
+            this.PBImagenInformeGerente.Size = new System.Drawing.Size(65, 67);
             this.PBImagenInformeGerente.TabIndex = 38;
             this.PBImagenInformeGerente.TabStop = false;
             // 
@@ -71,10 +69,9 @@
             // 
             this.CBEfectivo.AutoSize = true;
             this.CBEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBEfectivo.Location = new System.Drawing.Point(178, 154);
-            this.CBEfectivo.Margin = new System.Windows.Forms.Padding(4);
+            this.CBEfectivo.Location = new System.Drawing.Point(134, 125);
             this.CBEfectivo.Name = "CBEfectivo";
-            this.CBEfectivo.Size = new System.Drawing.Size(215, 29);
+            this.CBEfectivo.Size = new System.Drawing.Size(177, 24);
             this.CBEfectivo.TabIndex = 71;
             this.CBEfectivo.Text = "Reportes de Clientes";
             this.CBEfectivo.UseVisualStyleBackColor = true;
@@ -83,10 +80,9 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(178, 206);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Location = new System.Drawing.Point(134, 167);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(206, 29);
+            this.checkBox1.Size = new System.Drawing.Size(171, 24);
             this.checkBox1.TabIndex = 72;
             this.checkBox1.Text = "Reportes de Ventas";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -95,86 +91,88 @@
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(178, 260);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox3.Location = new System.Drawing.Point(134, 211);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(232, 29);
+            this.checkBox3.Size = new System.Drawing.Size(192, 24);
             this.checkBox3.TabIndex = 73;
             this.checkBox3.Text = "Reportes de Productos";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // BAgregar
+            // BLimpiar
             // 
-            this.BAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
-            this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(747, 376);
-            this.BAgregar.Margin = new System.Windows.Forms.Padding(4);
-            this.BAgregar.Name = "BAgregar";
-            this.BAgregar.Size = new System.Drawing.Size(164, 64);
-            this.BAgregar.TabIndex = 74;
-            this.BAgregar.Text = "Limpiar       ";
-            this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAgregar.UseVisualStyleBackColor = true;
+            this.BLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BLimpiar.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
+            this.BLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BLimpiar.Location = new System.Drawing.Point(326, 356);
+            this.BLimpiar.Name = "BLimpiar";
+            this.BLimpiar.Size = new System.Drawing.Size(123, 52);
+            this.BLimpiar.TabIndex = 74;
+            this.BLimpiar.Text = "Limpiar       ";
+            this.BLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BLimpiar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // BImprimir
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(941, 376);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 64);
-            this.button1.TabIndex = 75;
-            this.button1.Text = "Imprimir  ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BImprimir.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BImprimir.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
+            this.BImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BImprimir.Location = new System.Drawing.Point(472, 356);
+            this.BImprimir.Name = "BImprimir";
+            this.BImprimir.Size = new System.Drawing.Size(123, 52);
+            this.BImprimir.TabIndex = 75;
+            this.BImprimir.Text = "Imprimir  ";
+            this.BImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BImprimir.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(638, 175);
+            this.dateTimePicker1.Location = new System.Drawing.Point(478, 142);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
             this.dateTimePicker1.TabIndex = 76;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(893, 175);
+            this.dateTimePicker2.Location = new System.Drawing.Point(670, 142);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(151, 20);
             this.dateTimePicker2.TabIndex = 77;
             // 
-            // label1
+            // LDesde
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(709, 154);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Desde";
+            this.LDesde.AutoSize = true;
+            this.LDesde.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LDesde.Location = new System.Drawing.Point(525, 108);
+            this.LDesde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LDesde.Name = "LDesde";
+            this.LDesde.Size = new System.Drawing.Size(56, 20);
+            this.LDesde.TabIndex = 78;
+            this.LDesde.Text = "Desde";
             // 
-            // label2
+            // LHasta
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(965, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 79;
-            this.label2.Text = "Hasta";
+            this.LHasta.AutoSize = true;
+            this.LHasta.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LHasta.Location = new System.Drawing.Point(722, 108);
+            this.LHasta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LHasta.Name = "LHasta";
+            this.LHasta.Size = new System.Drawing.Size(50, 20);
+            this.LHasta.TabIndex = 79;
+            this.LHasta.Text = "Hasta";
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(638, 243);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox2.Location = new System.Drawing.Point(478, 197);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(94, 24);
+            this.checkBox2.Size = new System.Drawing.Size(80, 21);
             this.checkBox2.TabIndex = 80;
             this.checkBox2.Text = "Mensual";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -183,10 +181,9 @@
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(638, 275);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox4.Location = new System.Drawing.Point(478, 223);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(76, 24);
+            this.checkBox4.Size = new System.Drawing.Size(64, 21);
             this.checkBox4.TabIndex = 81;
             this.checkBox4.Text = "Diario";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -195,35 +192,33 @@
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox5.Location = new System.Drawing.Point(638, 211);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox5.Location = new System.Drawing.Point(478, 171);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(73, 24);
+            this.checkBox5.Size = new System.Drawing.Size(63, 21);
             this.checkBox5.TabIndex = 82;
             this.checkBox5.Text = "Anual";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // ReporteInformeGeneral
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1183, 499);
+            this.ClientSize = new System.Drawing.Size(887, 507);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LHasta);
+            this.Controls.Add(this.LDesde);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.BAgregar);
+            this.Controls.Add(this.BImprimir);
+            this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.CBEfectivo);
             this.Controls.Add(this.PBImagenInformeGerente);
             this.Controls.Add(this.LTituloReporteVentas);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ReporteInformeGeneral";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReporteVentas";
@@ -240,12 +235,12 @@
         private System.Windows.Forms.CheckBox CBEfectivo;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Button BAgregar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BLimpiar;
+        private System.Windows.Forms.Button BImprimir;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LDesde;
+        private System.Windows.Forms.Label LHasta;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
