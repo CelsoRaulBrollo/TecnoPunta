@@ -123,7 +123,6 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BAgregar_Click(object sender, EventArgs e)
         {
-            LimpiarMensajesDeValidacion();
             ClienteNegocio clienteNegocio = new ClienteNegocio();
 
             if (ValidacionFormulario())
@@ -150,55 +149,60 @@ namespace ProyectoTaller.Views.Vendedor
                     Direccion_Cliente = TDireccionCliente.Text
                 };
 
-                if (editando)
+                string mensaje = editando ? "¿Está seguro que desea modificar este cliente?" : "¿Está seguro que desea agregar este cliente?";
+                DialogResult resultado = MessageBox.Show(mensaje, "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
                 {
-                    if (clienteDatos.ActualizarCliente(cliente))
+                    if (editando)
                     {
-                        DataGridViewRow fila = DGClientes.SelectedRows[0];
-                        fila.Cells["CDNI"].Value = cliente.DNI_Cliente;
-                        fila.Cells["CNombreCliente"].Value = cliente.Nombre_Cliente;
-                        fila.Cells["CApellidoCliente"].Value = cliente.Apellido_Cliente;
-                        fila.Cells["CTelefonoCliente"].Value = cliente.Telefono_Cliente;
-                        fila.Cells["CCorreoCliente"].Value = cliente.Correo_Cliente;
-                        fila.Cells["CDireccionCliente"].Value = cliente.Direccion_Cliente;
-                        LRespuestaNuevoCliente.Text = "Editado Exitosamente!";
-                        LimpiarCampos();
-                        editando = false;
-                        BAgregar.Enabled = true;
+                        if (clienteDatos.ActualizarCliente(cliente))
+                        {
+                            DataGridViewRow fila = DGClientes.SelectedRows[0];
+                            fila.Cells["CDNI"].Value = cliente.DNI_Cliente;
+                            fila.Cells["CNombreCliente"].Value = cliente.Nombre_Cliente;
+                            fila.Cells["CApellidoCliente"].Value = cliente.Apellido_Cliente;
+                            fila.Cells["CTelefonoCliente"].Value = cliente.Telefono_Cliente;
+                            fila.Cells["CCorreoCliente"].Value = cliente.Correo_Cliente;
+                            fila.Cells["CDireccionCliente"].Value = cliente.Direccion_Cliente;
+                            LValido.Text = "Cliente editado exitosamente!";
+                            LimpiarCampos();
+                            editando = false;
+                            BAgregar.Enabled = true;
 
-                        TDNICliente.ReadOnly = false;
-                        TDNICliente.BackColor = Color.White;
+                            TDNICliente.ReadOnly = false;
+                            TDNICliente.BackColor = Color.White;
 
-                        BAgregar.Text = "Agregar";
+                            BAgregar.Text = "Agregar";
+                        }
+                        else
+                        {
+                            LValido.Text = "Error al editar el cliente.";
+                        }
                     }
                     else
                     {
-                        LRespuestaNuevoCliente.Text = "Error al editar el cliente.";
+                        if (clienteDatos.AgregarCliente(cliente))
+                        {
+                            DGClientes.Rows.Add(
+                                cliente.DNI_Cliente,
+                                cliente.Nombre_Cliente,
+                                cliente.Apellido_Cliente,
+                                cliente.Telefono_Cliente,
+                                cliente.Correo_Cliente,
+                                cliente.Direccion_Cliente
+                            );
+                            LValido.Text = "Cliente registrado exitosamente!";
+                            LimpiarCampos();
+                        }
+                        else
+                        {
+                            LValido.Text = "Error al registrar el cliente.";
+                        }
                     }
-                }
-                else
-                {
-                    if (clienteDatos.AgregarCliente(cliente))
-                    {
-                        DGClientes.Rows.Add(
-                            cliente.DNI_Cliente,
-                            cliente.Nombre_Cliente,
-                            cliente.Apellido_Cliente,
-                            cliente.Telefono_Cliente,
-                            cliente.Correo_Cliente,
-                            cliente.Direccion_Cliente
-                        );
-                        LRespuestaNuevoCliente.Text = "Registrado Exitosamente!";
-                        LimpiarCampos();
-                    }
-                    else
-                    {
-                        LRespuestaNuevoCliente.Text = "Error al registrar el cliente.";
-                    }
-                }
 
-                LimpiarMensajesDeValidacion();
-                LimpiarCampos();
+                    LimpiarCampos();
+                }
             }
             else
             {
@@ -210,21 +214,28 @@ namespace ProyectoTaller.Views.Vendedor
         {
             if (DGClientes.SelectedRows.Count > 0)
             {
-                DataGridViewRow fila = DGClientes.SelectedRows[0];
+                var result = MessageBox.Show("¿Estás seguro de que deseas editar este cliente?", "Confirmar Edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                TDNICliente.Text = fila.Cells["CDNI"].Value.ToString();
-                TNombreCliente.Text = fila.Cells["CNombreCliente"].Value.ToString();
-                TApellidoCliente.Text = fila.Cells["CApellidoCliente"].Value.ToString();
-                TTelefonoCliente.Text = fila.Cells["CTelefonoCliente"].Value.ToString();
-                TCorreoCliente.Text = fila.Cells["CCorreoCliente"].Value.ToString();
-                TDireccionCliente.Text = fila.Cells["CDireccionCliente"].Value.ToString();
+                if (result == DialogResult.Yes)
+                {
+                    LimpiarMensajesDeValidacion();
+                    LValido.Text = string.Empty;
+                    DataGridViewRow fila = DGClientes.SelectedRows[0];
 
-                BAgregar.Enabled = true;
-                TDNICliente.ReadOnly = true;
-                TDNICliente.BackColor = Color.LightGray;
-                editando = true;
+                    TDNICliente.Text = fila.Cells["CDNI"].Value.ToString();
+                    TNombreCliente.Text = fila.Cells["CNombreCliente"].Value.ToString();
+                    TApellidoCliente.Text = fila.Cells["CApellidoCliente"].Value.ToString();
+                    TTelefonoCliente.Text = fila.Cells["CTelefonoCliente"].Value.ToString();
+                    TCorreoCliente.Text = fila.Cells["CCorreoCliente"].Value.ToString();
+                    TDireccionCliente.Text = fila.Cells["CDireccionCliente"].Value.ToString();
 
-                BAgregar.Text = "Modificar";
+                    BAgregar.Enabled = true;
+                    TDNICliente.ReadOnly = true;
+                    TDNICliente.BackColor = Color.LightGray;
+                    editando = true;
+
+                    BAgregar.Text = "Modificar";
+                }
             }
             else
             {
@@ -241,6 +252,7 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 LimpiarCampos();
                 LimpiarMensajesDeValidacion();
+                MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -252,7 +264,6 @@ namespace ProyectoTaller.Views.Vendedor
             LValiTelefono.Text = string.Empty;
             LValidDNI.Text = string.Empty;
             LValiDireccionCliente.Text = string.Empty;
-            LRespuestaNuevoCliente.Text = string.Empty;
         }
 
         private void LimpiarCampos()
@@ -287,12 +298,12 @@ namespace ProyectoTaller.Views.Vendedor
                 respuesta = false;
             }
 
-            if (string.IsNullOrEmpty(TNombreCliente.Text) || TNombreCliente.Text.Length > 30)
+            if (string.IsNullOrEmpty(TNombreCliente.Text) || TNombreCliente.Text.Length > 30 || !System.Text.RegularExpressions.Regex.IsMatch(TNombreCliente.Text, @"^[a-zA-Z]+$"))
             {
                 respuesta = false;
             }
 
-            if (string.IsNullOrEmpty(TApellidoCliente.Text) || TApellidoCliente.Text.Length > 30)
+            if (string.IsNullOrEmpty(TApellidoCliente.Text) || TApellidoCliente.Text.Length > 30 || !System.Text.RegularExpressions.Regex.IsMatch(TApellidoCliente.Text, @"^[a-zA-Z]+$"))
             {
                 respuesta = false;
             }
@@ -318,8 +329,8 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void ValidarFormularioLabel()
         {
-            string nombreCliente = TNombreCliente.Text;
-            string apellidoCliente = TApellidoCliente.Text;
+            string nombreCliente = TNombreCliente.Text.Trim();
+            string apellidoCliente = TApellidoCliente.Text.Trim();
             string dniCliente = TDNICliente.Text;
             string telefonoCliente = TTelefonoCliente.Text;
             string correoCliente = TCorreoCliente.Text;
@@ -380,7 +391,6 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiCorreo.Text = string.Empty;
             }
 
-
             if (string.IsNullOrEmpty(nombreCliente))
             {
                 LValiNombre.ForeColor = Color.Red;
@@ -391,7 +401,7 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiNombre.ForeColor = Color.Red;
                 LValiNombre.Text = "Ingrese menos de 30 caracteres.";
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreCliente, @"^[a-zA-Z]"))
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreCliente, @"^[a-zA-Z]+$"))
             {
                 LValiNombre.ForeColor = Color.Red;
                 LValiNombre.Text = "El nombre solo debe contener letras.";
@@ -411,7 +421,7 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiApellidoCliente.ForeColor = Color.Red;
                 LValiApellidoCliente.Text = "Ingrese menos de 30 caracteres.";
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(apellidoCliente, @"^[a-zA-Z]"))
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(apellidoCliente, @"^[a-zA-Z]+$"))
             {
                 LValiApellidoCliente.ForeColor = Color.Red;
                 LValiApellidoCliente.Text = "El apellido solo debe contener letras.";
@@ -429,13 +439,12 @@ namespace ProyectoTaller.Views.Vendedor
             else if (direccionCliente.Length > 200)
             {
                 LValiDireccionCliente.ForeColor = Color.Red;
-                LValiDireccionCliente.Text = "Ingrese menos de 200 caracteres.";
+                LValiDireccionCliente.Text = "La dirección debe tener menos de 200 caracteres.";
             }
             else
             {
                 LValiDireccionCliente.Text = string.Empty;
             }
         }
-
     }
 }

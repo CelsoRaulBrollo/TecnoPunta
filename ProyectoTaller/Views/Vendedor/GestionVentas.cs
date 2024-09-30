@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
@@ -12,8 +13,15 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BVerDetalle_Click(object sender, EventArgs e)
         {
-            VentaDetalle ventana = new VentaDetalle();
-            ventana.Show();
+            if (Application.OpenForms.OfType<VentaDetalle>().Any())
+            {
+                Application.OpenForms.OfType<VentaDetalle>().First().Activate();
+            }
+            else
+            {
+                VentaDetalle ventana = new VentaDetalle();
+                ventana.Show();
+            }
         }
     }
 }

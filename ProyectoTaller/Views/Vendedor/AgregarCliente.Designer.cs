@@ -45,7 +45,6 @@
             this.BAgregar = new System.Windows.Forms.Button();
             this.LValidDNI = new System.Windows.Forms.Label();
             this.LDireccionCliente = new System.Windows.Forms.Label();
-            this.LRespuestaNuevoCliente = new System.Windows.Forms.Label();
             this.LValiDireccionCliente = new System.Windows.Forms.Label();
             this.BEditarCliente = new System.Windows.Forms.Button();
             this.DGClientes = new System.Windows.Forms.DataGridView();
@@ -73,7 +72,7 @@
             this.LValido.AutoSize = true;
             this.LValido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValido.ForeColor = System.Drawing.Color.Green;
-            this.LValido.Location = new System.Drawing.Point(262, 26);
+            this.LValido.Location = new System.Drawing.Point(319, 31);
             this.LValido.Name = "LValido";
             this.LValido.Size = new System.Drawing.Size(0, 21);
             this.LValido.TabIndex = 55;
@@ -179,7 +178,7 @@
             // 
             this.LDatosClientes.AutoSize = true;
             this.LDatosClientes.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDatosClientes.Location = new System.Drawing.Point(89, 70);
+            this.LDatosClientes.Location = new System.Drawing.Point(91, 70);
             this.LDatosClientes.Name = "LDatosClientes";
             this.LDatosClientes.Size = new System.Drawing.Size(173, 23);
             this.LDatosClientes.TabIndex = 67;
@@ -248,16 +247,6 @@
             this.LDireccionCliente.TabIndex = 69;
             this.LDireccionCliente.Text = "Direccion";
             // 
-            // LRespuestaNuevoCliente
-            // 
-            this.LRespuestaNuevoCliente.AutoSize = true;
-            this.LRespuestaNuevoCliente.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LRespuestaNuevoCliente.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LRespuestaNuevoCliente.Location = new System.Drawing.Point(262, 72);
-            this.LRespuestaNuevoCliente.Name = "LRespuestaNuevoCliente";
-            this.LRespuestaNuevoCliente.Size = new System.Drawing.Size(0, 22);
-            this.LRespuestaNuevoCliente.TabIndex = 72;
-            // 
             // LValiDireccionCliente
             // 
             this.LValiDireccionCliente.AutoSize = true;
@@ -286,6 +275,7 @@
             // DGClientes
             // 
             this.DGClientes.AllowUserToAddRows = false;
+            this.DGClientes.AllowUserToDeleteRows = false;
             this.DGClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CDNI,
@@ -437,7 +427,6 @@
             this.Controls.Add(this.DGClientes);
             this.Controls.Add(this.BEditarCliente);
             this.Controls.Add(this.LValiDireccionCliente);
-            this.Controls.Add(this.LRespuestaNuevoCliente);
             this.Controls.Add(this.LDireccionCliente);
             this.Controls.Add(this.LValidDNI);
             this.Controls.Add(this.LDatosClientes);
@@ -484,7 +473,6 @@
         private System.Windows.Forms.Label LDatosClientes;
         private System.Windows.Forms.Label LValidDNI;
         private System.Windows.Forms.Label LDireccionCliente;
-        private System.Windows.Forms.Label LRespuestaNuevoCliente;
         private System.Windows.Forms.Label LValiDireccionCliente;
         private System.Windows.Forms.Button BEditarCliente;
         private System.Windows.Forms.DataGridView DGClientes;

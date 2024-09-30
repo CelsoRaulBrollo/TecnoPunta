@@ -28,19 +28,32 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BLimpiarFiltros_Click(object sender, EventArgs e)
         {
-            TNombreProducto.Clear();
-            TCodigoProducto.Clear();
-            TMemoriaRam.Clear();
-            TModelo.Clear();
-            CBMarca.SelectedIndex = -1;
-            TAlmacenamiento.Clear();
-            TSistemaOperativo.Clear();
+            DialogResult resultado = MessageBox.Show(
+                "¿Desea limpiar todos los filtros?",
+                "Confirmar Limpiar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
+            if (resultado == DialogResult.Yes)
+            {
+                TNombreProducto.Clear();
+                TMemoriaRam.Clear();
+                TModelo.Clear();
+                CBMarca.SelectedIndex = -1;
+                TAlmacenamiento.Clear();
+                TSistemaOperativo.Clear();
+
+                CBEnStock.Checked = false;
+                CBPrecioAsc.Checked = false;
+                CBPrecioDesc.Checked = false;
+
+                MessageBox.Show("Filtros limpios.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void LimpiarMensajesDeValidacion()
         {
-            LValiCodigoProd.Text = string.Empty;
             LValiMarca.Text = string.Empty;
             LValiNombreP.Text = string.Empty;
             LValiModeloP.Text = string.Empty;
@@ -296,6 +309,19 @@ namespace ProyectoTaller.Views.Vendedor
 
         }
 
+        private void BAgregarProductoACarrito_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Desea agregar el producto al carrito?",
+                "Confirmar Agregar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("Producto agregado al carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
