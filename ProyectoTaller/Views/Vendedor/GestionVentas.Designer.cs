@@ -40,6 +40,7 @@
             this.CMedioPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BVerDetalle = new System.Windows.Forms.Button();
+            this.BImprimirInformeVentaVendedor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -172,12 +173,29 @@
             this.BVerDetalle.UseVisualStyleBackColor = true;
             this.BVerDetalle.Click += new System.EventHandler(this.BVerDetalle_Click);
             // 
+            // BImprimirInformeVentaVendedor
+            // 
+            this.BImprimirInformeVentaVendedor.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BImprimirInformeVentaVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BImprimirInformeVentaVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BImprimirInformeVentaVendedor.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
+            this.BImprimirInformeVentaVendedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BImprimirInformeVentaVendedor.Location = new System.Drawing.Point(969, 564);
+            this.BImprimirInformeVentaVendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.BImprimirInformeVentaVendedor.Name = "BImprimirInformeVentaVendedor";
+            this.BImprimirInformeVentaVendedor.Size = new System.Drawing.Size(164, 64);
+            this.BImprimirInformeVentaVendedor.TabIndex = 43;
+            this.BImprimirInformeVentaVendedor.Text = "Imprimir";
+            this.BImprimirInformeVentaVendedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BImprimirInformeVentaVendedor.UseVisualStyleBackColor = true;
+            // 
             // GestionVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1183, 624);
+            this.ClientSize = new System.Drawing.Size(1183, 641);
+            this.Controls.Add(this.BImprimirInformeVentaVendedor);
             this.Controls.Add(this.BVerDetalle);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
@@ -210,5 +228,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CMedioPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSubtotal;
         private System.Windows.Forms.Button BVerDetalle;
+        private System.Windows.Forms.Button BImprimirInformeVentaVendedor;
     }
 }
