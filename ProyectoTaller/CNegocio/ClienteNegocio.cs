@@ -13,45 +13,6 @@ namespace ProyectoTaller.CNegocio
             clienteDatos = new ClienteDatos();
         }
 
-        public DataTable ObtenerClientes()
-        {
-            return clienteDatos.ObtenerClientes();
-        }
-
-        public void AgregarCliente(int dni, string nombre, string apellido, int telefono, string correo, string direccion)
-        {
-            if (ValidarCliente(dni, nombre, apellido, telefono, correo, direccion))
-            {
-                clienteDatos.AgregarCliente(dni, nombre, apellido, telefono, correo, direccion);
-            }
-            else
-            {
-                throw new ArgumentException("Los datos del cliente no son válidos.");
-            }
-        }
-
-        public void EditarCliente(int dni, string nombre, string apellido, int telefono, string correo, string direccion)
-        {
-            if (ValidarCliente(dni, nombre, apellido, telefono, correo, direccion))
-            {
-                clienteDatos.EditarCliente(dni, nombre, apellido, telefono, correo, direccion);
-            }
-            else
-            {
-                throw new ArgumentException("Los datos del cliente no son válidos.");
-            }
-        }
-
-        public void BorrarCliente(int dni)
-        {
-            if (dni <= 0)
-            {
-                throw new ArgumentException("DNI no puede ser menor o igual a cero.");
-            }
-
-            clienteDatos.BorrarCliente(dni);
-        }
-
         private bool ValidarCliente(int dni, string nombre, string apellido, int telefono, string correo, string direccion)
         {
             bool isDniValid = dni > 0;

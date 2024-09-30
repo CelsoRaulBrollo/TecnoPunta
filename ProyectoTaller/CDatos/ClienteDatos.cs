@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTaller.CModelos;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,13 +8,13 @@ namespace ProyectoTaller.CDatos
 {
     public class ClienteDatos
     {
-        private string cadenaConexion = @"Server=CELSOBRO\SQLEXPRESS;Database=TecnoPuntaBD;Trusted_Connection=True;";
+        private readonly ConexionBD conexion = new ConexionBD();
 
         public DataTable ObtenerClientes()
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                using (SqlConnection connection = conexion.ObtenerConexion())
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Clientes", connection);
                     DataTable dt = new DataTable();
@@ -32,7 +33,7 @@ namespace ProyectoTaller.CDatos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                using (SqlConnection connection = conexion.ObtenerConexion())
                 {
                     string query = "INSERT INTO Clientes (DNI_cliente, Nombre_Cliente, Apellido_Cliente, Telefono_Cliente, Correo_Cliente, Direccion_Cliente) VALUES (@DNI_Cliente, @Nombre_Cliente, @Apellido_Cliente, @Telefono_Cliente, @Correo_Cliente, @Direccion_Cliente)";
                     SqlCommand command = new SqlCommand(query, connection);
@@ -57,7 +58,7 @@ namespace ProyectoTaller.CDatos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                using (SqlConnection connection = conexion.ObtenerConexion())
                 {
                     string query = "UPDATE Clientes SET Nombre_Cliente=@Nombre_Cliente, Apellido_Cliente=@Apellido_Cliente, Telefono_Cliente=@Telefono_Cliente, Correo_Cliente=@Correo_Cliente, Direccion_Cliente=@Direccion_Cliente WHERE DNI_cliente=@DNI_Cliente";
                     SqlCommand command = new SqlCommand(query, connection);
@@ -82,7 +83,7 @@ namespace ProyectoTaller.CDatos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                using (SqlConnection connection = conexion.ObtenerConexion())
                 {
                     string query = "DELETE FROM Clientes WHERE DNI_cliente=@DNI_Cliente";
                     SqlCommand command = new SqlCommand(query, connection);
@@ -100,17 +101,17 @@ namespace ProyectoTaller.CDatos
 
         public bool VerificarDNIExistente(int dniCliente)
         {
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection connection = conexion.ObtenerConexion())
             {
                 string query = "SELECT COUNT(1) FROM Clientes WHERE DNI_cliente = @DNICliente";
-                SqlCommand command = new SqlCommand(query, conexion);
-                command.Parameters.AddWithValue("@DNICliente", dniCliente);
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNICliente", dniCliente);
 
-                conexion.Open();
-                int count = Convert.ToInt32(command.ExecuteScalar());
-                conexion.Close();
-
-                return count > 0;
+                    connection.Open();
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0;
+                }
             }
         }
     }

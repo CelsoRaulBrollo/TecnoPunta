@@ -1,20 +1,23 @@
-﻿using System;
+﻿using ProyectoTaller.CDatos;
+using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ProyectoTaller.CDatos;
-using ProyectoTaller.CNegocio;
 
 namespace ProyectoTaller.Views.Vendedor
 {
     public partial class AgregarCliente : Form
     {
         private ClienteDatos clienteDatos;
+        private readonly ConexionBD conexion = new ConexionBD();
 
         public AgregarCliente()
         {
             InitializeComponent();
-            clienteDatos = new ClienteDatos();
+            ClienteDatos clienteDatos = new ClienteDatos();
             CargarClientes();
         }
 
@@ -22,22 +25,28 @@ namespace ProyectoTaller.Views.Vendedor
         {
             try
             {
-                using (var contexto = new TecnoPuntaBDEntities())
+                using (var con = conexion.ObtenerConexion())
                 {
-                    var clientes = contexto.Clientes.ToList();
+                    con.Open();
 
-                    DGClientes.Rows.Clear();
-
-                    foreach (var cliente in clientes)
+                    using (var cmd = new SqlCommand("SELECT * FROM Clientes", con))
                     {
-                        DGClientes.Rows.Add(
-                            cliente.DNI_Cliente,
-                            cliente.Nombre_Cliente,
-                            cliente.Apellido_Cliente,
-                            cliente.Telefono_Cliente,
-                            cliente.Correo_Cliente,
-                            cliente.Direccion_Cliente
-                        );
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            DGClientes.Rows.Clear();
+
+                            while (reader.Read())
+                            {
+                                DGClientes.Rows.Add(
+                                    reader["DNI_cliente"],
+                                    reader["Nombre_Cliente"],
+                                    reader["Apellido_Cliente"],
+                                    reader["Telefono_Cliente"],
+                                    reader["Correo_Cliente"],
+                                    reader["Direccion_Cliente"]
+                                );
+                            }
+                        }
                     }
                 }
             }
@@ -49,14 +58,28 @@ namespace ProyectoTaller.Views.Vendedor
 
         public class ClienteDatos
         {
+            private readonly ConexionBD conexion = new ConexionBD();
+
             public bool AgregarCliente(Clientes cliente)
             {
                 try
                 {
-                    using (var contexto = new TecnoPuntaBDEntities())
+                    using (var con = conexion.ObtenerConexion())
                     {
-                        contexto.Clientes.Add(cliente);
-                        contexto.SaveChanges();
+                        con.Open();
+
+                        using (var cmd = new SqlCommand("INSERT INTO Clientes (DNI_cliente, Nombre_Cliente, Apellido_Cliente, Telefono_Cliente, Correo_Cliente, Direccion_Cliente) VALUES (@DNI_cliente, @Nombre_Cliente, @Apellido_Cliente, @Telefono_Cliente, @Correo_Cliente, @Direccion_Cliente)", con))
+                        {
+                            cmd.Parameters.AddWithValue("@DNI_cliente", cliente.DNI_Cliente);
+                            cmd.Parameters.AddWithValue("@Nombre_Cliente", cliente.Nombre_Cliente);
+                            cmd.Parameters.AddWithValue("@Apellido_Cliente", cliente.Apellido_Cliente);
+                            cmd.Parameters.AddWithValue("@Telefono_Cliente", cliente.Telefono_Cliente);
+                            cmd.Parameters.AddWithValue("@Correo_Cliente", cliente.Correo_Cliente);
+                            cmd.Parameters.AddWithValue("@Direccion_Cliente", cliente.Direccion_Cliente);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
                         return true;
                     }
                 }
@@ -67,56 +90,6 @@ namespace ProyectoTaller.Views.Vendedor
                 }
             }
 
-            internal bool ActualizarCliente(Clientes cliente)
-            {
-                try
-                {
-                    using (var contexto = new TecnoPuntaBDEntities())
-                    {
-                        var clienteExistente = contexto.Clientes.FirstOrDefault(c => c.DNI_Cliente == cliente.DNI_Cliente);
-                        if (clienteExistente != null)
-                        {
-                            clienteExistente.Nombre_Cliente = cliente.Nombre_Cliente;
-                            clienteExistente.Apellido_Cliente = cliente.Apellido_Cliente;
-                            clienteExistente.Telefono_Cliente = cliente.Telefono_Cliente;
-                            clienteExistente.Correo_Cliente = cliente.Correo_Cliente;
-                            clienteExistente.Direccion_Cliente = cliente.Direccion_Cliente;
-
-                            contexto.SaveChanges();
-                            return true;
-                        }
-                        return false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error: {ex.Message}");
-                    return false;
-                }
-            }
-
-            internal bool EliminarCliente(int dni)
-            {
-                try
-                {
-                    using (var contexto = new TecnoPuntaBDEntities())
-                    {
-                        var cliente = contexto.Clientes.FirstOrDefault(c => c.DNI_Cliente == dni);
-                        if (cliente != null)
-                        {
-                            contexto.Clientes.Remove(cliente);
-                            contexto.SaveChanges();
-                            return true;
-                        }
-                        return false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error: {ex.Message}");
-                    return false;
-                }
-            }
         }
 
         private bool editando = false;
@@ -124,6 +97,7 @@ namespace ProyectoTaller.Views.Vendedor
         private void BAgregar_Click(object sender, EventArgs e)
         {
             ClienteNegocio clienteNegocio = new ClienteNegocio();
+            ClienteDatos clienteDatos = new ClienteDatos();
 
             if (ValidacionFormulario())
             {
@@ -156,7 +130,7 @@ namespace ProyectoTaller.Views.Vendedor
                 {
                     if (editando)
                     {
-                        if (clienteDatos.ActualizarCliente(cliente))
+                        if (ActualizarCliente(cliente))
                         {
                             DataGridViewRow fila = DGClientes.SelectedRows[0];
                             fila.Cells["CDNI"].Value = cliente.DNI_Cliente;
@@ -182,22 +156,29 @@ namespace ProyectoTaller.Views.Vendedor
                     }
                     else
                     {
-                        if (clienteDatos.AgregarCliente(cliente))
+                        try
                         {
-                            DGClientes.Rows.Add(
-                                cliente.DNI_Cliente,
-                                cliente.Nombre_Cliente,
-                                cliente.Apellido_Cliente,
-                                cliente.Telefono_Cliente,
-                                cliente.Correo_Cliente,
-                                cliente.Direccion_Cliente
-                            );
-                            LValido.Text = "Cliente registrado exitosamente!";
-                            LimpiarCampos();
+                            if (clienteDatos.AgregarCliente(cliente))
+                            {
+                                DGClientes.Rows.Add(
+                                    cliente.DNI_Cliente,
+                                    cliente.Nombre_Cliente,
+                                    cliente.Apellido_Cliente,
+                                    cliente.Telefono_Cliente,
+                                    cliente.Correo_Cliente,
+                                    cliente.Direccion_Cliente
+                                );
+                                LValido.Text = "Cliente registrado exitosamente!";
+                                LimpiarCampos();
+                            }
+                            else
+                            {
+                                LValido.Text = "Error al registrar el cliente.";
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            LValido.Text = "Error al registrar el cliente.";
+                            LValido.Text = $"Se produjo un error: {ex.Message}";
                         }
                     }
 
@@ -207,6 +188,33 @@ namespace ProyectoTaller.Views.Vendedor
             else
             {
                 ValidarFormularioLabel();
+            }
+        }
+
+        public bool ActualizarCliente(Clientes cliente)
+        {
+            try
+            {
+                using (SqlConnection connection = conexion.ObtenerConexion())
+                {
+                    string query = "UPDATE Clientes SET Nombre_Cliente=@Nombre_Cliente, Apellido_Cliente=@Apellido_Cliente, Telefono_Cliente=@Telefono_Cliente, Correo_Cliente=@Correo_Cliente, Direccion_Cliente=@Direccion_Cliente WHERE DNI_cliente=@DNI_Cliente";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@DNI_Cliente", cliente.DNI_Cliente);
+                    command.Parameters.AddWithValue("@Nombre_Cliente", cliente.Nombre_Cliente);
+                    command.Parameters.AddWithValue("@Apellido_Cliente", cliente.Apellido_Cliente);
+                    command.Parameters.AddWithValue("@Telefono_Cliente", cliente.Telefono_Cliente);
+                    command.Parameters.AddWithValue("@Correo_Cliente", cliente.Correo_Cliente);
+                    command.Parameters.AddWithValue("@Direccion_Cliente", cliente.Direccion_Cliente);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al editar cliente: {ex.Message}");
+                return false;
             }
         }
 

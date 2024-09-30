@@ -51,7 +51,6 @@ namespace ProyectoTaller.Views
                 BCliente.Visible = true;
                 BCarrito.Visible = true;
                 BVentas.Visible = true;
-                BInformes.Visible = true;
             }
             else if (_rolUsuario == "Gerente")
             {
