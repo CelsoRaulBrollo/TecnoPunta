@@ -214,49 +214,64 @@ namespace ProyectoTaller.Views.Administradores
             {
                 LimpiarMensajesDeValidacion();
 
-                if (editando)
-                {
-                    if (filaSeleccionadaIndex >= 0)
-                    {
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CMarca"].Value = CBMarca.SelectedItem.ToString();
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombreProducto.Text;
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CModelo"].Value = TModelo.Text;
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CSistemaOperativo"].Value = TSo.Text;
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CAlmacenamiento"].Value = TAlmacenamiento.Text;
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CRam"].Value = TRam.Text;
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CEstado"].Value = CBEstado.SelectedItem.ToString();
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CStock"].Value = TStock.Text;
-                        DGProductos.Rows[filaSeleccionadaIndex].Cells["CPrecio"].Value = TPrecio.Text;
+                string mensaje = editando ? "¿Está seguro que desea modificar el producto?" : "¿Está seguro que desea agregar el producto?";
+                var result = MessageBox.Show(mensaje, "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        LimpiarMensajesDeValidacion();
-                        LValido.Text = "Producto editado exitosamente.";
+                if (result == DialogResult.Yes)
+                {
+                    if (editando)
+                    {
+                        if (filaSeleccionadaIndex >= 0)
+                        {
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CMarca"].Value = CBMarca.SelectedItem.ToString();
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombreProducto.Text;
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CModelo"].Value = TModelo.Text;
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CSistemaOperativo"].Value = TSo.Text;
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CAlmacenamiento"].Value = TAlmacenamiento.Text;
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CRam"].Value = TRam.Text;
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CEstado"].Value = CBEstado.SelectedItem.ToString();
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CStock"].Value = TStock.Text;
+                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CPrecio"].Value = TPrecio.Text;
+
+                            LValido.Text = "Producto editado exitosamente.";
+
+                            TModelo.ReadOnly = false;
+                            TModelo.BackColor = Color.White;
+                        }
 
                         editando = false;
                         filaSeleccionadaIndex = -1;
+
+                        LimpiarCampos();
                     }
-                }
-                else
-                {
-                    if (!ValidarModelo(TModelo.Text))
+                    else
                     {
-                        return;
+                        if (!ValidarModelo(TModelo.Text))
+                        {
+                            return;
+                        }
+
+                        DGProductos.Rows.Add(CBMarca.SelectedItem.ToString(), TNombreProducto.Text, TModelo.Text, TSo.Text, TAlmacenamiento.Text, TRam.Text, TStock.Text, TPrecio.Text, CBEstado.SelectedItem.ToString());
+
+                        LValido.Text = "Producto agregado exitosamente.";
+
+                        LimpiarCampos();
                     }
-
-                    DGProductos.Rows.Add(CBMarca.SelectedItem.ToString(), TNombreProducto.Text, TModelo.Text, TSo.Text, TAlmacenamiento.Text, TRam.Text, TStock.Text, TPrecio.Text, CBEstado.SelectedItem.ToString(), TPrecio.Text);
-
-                    LValido.Text = "Producto agregado exitosamente.";
                 }
-
-                CBMarca.SelectedIndex = -1;
-                TNombreProducto.Clear();
-                TModelo.Clear();
-                TAlmacenamiento.Clear();
-                TRam.Clear();
-                TStock.Clear();
-                CBEstado.SelectedIndex = -1;
-                TSo.Clear();
-                TPrecio.Clear();
             }
+        }
+
+        private void LimpiarCampos()
+        {
+            CBMarca.SelectedIndex = -1;
+            TNombreProducto.Clear();
+            TModelo.Clear();
+            TAlmacenamiento.Clear();
+            TRam.Clear();
+            TStock.Clear();
+            CBEstado.SelectedIndex = -1;
+            TSo.Clear();
+            TPrecio.Clear();
         }
 
         private bool ValidarModelo(string modelo)
@@ -298,6 +313,7 @@ namespace ProyectoTaller.Views.Administradores
                     CBEstado.SelectedIndex = -1;
                     TStock.Clear();
                     TPrecio.Clear();
+                    MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -310,6 +326,7 @@ namespace ProyectoTaller.Views.Administradores
                     CBEstado.SelectedIndex = -1;
                     TStock.Clear();
                     TPrecio.Clear();
+                    MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 LValido.Text = string.Empty;
