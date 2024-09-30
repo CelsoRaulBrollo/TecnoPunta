@@ -297,6 +297,7 @@
             this.DGClientes.Location = new System.Drawing.Point(11, 273);
             this.DGClientes.Margin = new System.Windows.Forms.Padding(2);
             this.DGClientes.Name = "DGClientes";
+            this.DGClientes.ReadOnly = true;
             this.DGClientes.RowHeadersWidth = 51;
             this.DGClientes.RowTemplate.Height = 24;
             this.DGClientes.Size = new System.Drawing.Size(865, 223);
@@ -307,6 +308,7 @@
             this.CDNI.HeaderText = "DNI";
             this.CDNI.MinimumWidth = 6;
             this.CDNI.Name = "CDNI";
+            this.CDNI.ReadOnly = true;
             this.CDNI.Width = 125;
             // 
             // CNombreCliente
@@ -314,6 +316,7 @@
             this.CNombreCliente.HeaderText = "Nombre";
             this.CNombreCliente.MinimumWidth = 6;
             this.CNombreCliente.Name = "CNombreCliente";
+            this.CNombreCliente.ReadOnly = true;
             this.CNombreCliente.Width = 200;
             // 
             // CApellidoCliente
@@ -321,6 +324,7 @@
             this.CApellidoCliente.HeaderText = "Apellido";
             this.CApellidoCliente.MinimumWidth = 6;
             this.CApellidoCliente.Name = "CApellidoCliente";
+            this.CApellidoCliente.ReadOnly = true;
             this.CApellidoCliente.Width = 200;
             // 
             // CTelefonoCliente
@@ -328,6 +332,7 @@
             this.CTelefonoCliente.HeaderText = "Telefono";
             this.CTelefonoCliente.MinimumWidth = 6;
             this.CTelefonoCliente.Name = "CTelefonoCliente";
+            this.CTelefonoCliente.ReadOnly = true;
             this.CTelefonoCliente.Width = 125;
             // 
             // CCorreoCliente
@@ -335,6 +340,7 @@
             this.CCorreoCliente.HeaderText = "Correo";
             this.CCorreoCliente.MinimumWidth = 6;
             this.CCorreoCliente.Name = "CCorreoCliente";
+            this.CCorreoCliente.ReadOnly = true;
             this.CCorreoCliente.Width = 260;
             // 
             // CDireccionCliente
@@ -342,6 +348,7 @@
             this.CDireccionCliente.HeaderText = "Direccion";
             this.CDireccionCliente.MinimumWidth = 6;
             this.CDireccionCliente.Name = "CDireccionCliente";
+            this.CDireccionCliente.ReadOnly = true;
             this.CDireccionCliente.Width = 200;
             // 
             // LValiBuscarCliente

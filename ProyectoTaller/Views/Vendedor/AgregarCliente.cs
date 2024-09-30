@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ProyectoTaller.CDatos;
+using ProyectoTaller.CNegocio;
 
 namespace ProyectoTaller.Views.Vendedor
 {
@@ -123,9 +124,22 @@ namespace ProyectoTaller.Views.Vendedor
         private void BAgregar_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
 
             if (ValidacionFormulario())
             {
+                int dniCliente;
+
+                if (!editando && int.TryParse(TDNICliente.Text, out dniCliente))
+                {
+                    if (clienteNegocio.EsDNIExistente(dniCliente))
+                    {
+                        LValidDNI.ForeColor = Color.Red;
+                        LValidDNI.Text = "El DNI ya existe.";
+                        return;
+                    }
+                }
+
                 Clientes cliente = new Clientes
                 {
                     DNI_Cliente = int.Parse(TDNICliente.Text),
@@ -224,7 +238,7 @@ namespace ProyectoTaller.Views.Vendedor
             DialogResult result = MessageBox.Show("¿Está seguro de que desea borrar todos los datos?", "Confirmar Borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
-            { 
+            {
                 LimpiarCampos();
                 LimpiarMensajesDeValidacion();
             }

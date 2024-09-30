@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ProyectoTaller.CDatos
 {
     public class ClienteDatos
     {
-        private string cadenaConexion = @"Server=CELSOBRO\SQLEXPRESS;Database=TecnoPuntaDB;Trusted_Connection=True;";
+        private string cadenaConexion = @"Server=CELSOBRO\SQLEXPRESS;Database=TecnoPuntaBD;Trusted_Connection=True;";
 
         public DataTable ObtenerClientes()
         {
@@ -94,6 +95,22 @@ namespace ProyectoTaller.CDatos
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al borrar cliente: {ex.Message}");
+            }
+        }
+
+        public bool VerificarDNIExistente(int dniCliente)
+        {
+            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            {
+                string query = "SELECT COUNT(1) FROM Clientes WHERE DNI_cliente = @DNICliente";
+                SqlCommand command = new SqlCommand(query, conexion);
+                command.Parameters.AddWithValue("@DNICliente", dniCliente);
+
+                conexion.Open();
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                conexion.Close();
+
+                return count > 0;
             }
         }
     }

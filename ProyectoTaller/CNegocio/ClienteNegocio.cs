@@ -63,5 +63,11 @@ namespace ProyectoTaller.CNegocio
 
             return isDniValid && isNombreValid && isApellidoValid && isTelefonoValid && isCorreoValid && isDireccionValid;
         }
+
+        public bool EsDNIExistente(int dniCliente)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            return clienteDatos.VerificarDNIExistente(dniCliente);
+        }
     }
 }
