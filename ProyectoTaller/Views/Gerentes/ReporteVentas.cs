@@ -66,8 +66,72 @@ namespace ProyectoTaller.Views.Gerentes
             serieVentas.Points.AddXY("Noviembre", 2000);
             serieVentas.Points.AddXY("Diciembre", 2200);
 
-            // Agrega la serie al gráfico
             chart2.Series.Add(serieVentas);
+            chart1.Legends[0].Enabled = false;
+            chart2.Legends[0].Enabled = false;
+
+            chart1.ChartAreas[0].AxisX.Title = "Meses";
+            chart1.ChartAreas[0].AxisY.Title = "Cantidad";
+
+            chart2.ChartAreas[0].AxisX.Title = "Meses";
+            chart2.ChartAreas[0].AxisY.Title = "Monto ($)";
+
+
+        }
+
+
+
+        private void UpdateControls()
+        {
+            // Habilitar/Deshabilitar controles según los CheckBoxes
+            bool isAnualChecked = CAAnualReporteVentas.Checked;
+            bool isMensualChecked = CAMensualReporteVentas.Checked;
+            bool isDiarioChecked = CADiarioReporteVentas.Checked;
+
+            // Habilitar solo el ComboBox y DateTimePickers relacionados
+            CBOXAnualReporteVentas.Enabled = isAnualChecked;
+            CBOXMensualReporteVentas.Enabled = isMensualChecked;
+            DTMDesdeReporteDeVentas.Enabled = isDiarioChecked;
+            DTMHastaReporteDeVentas.Enabled = isDiarioChecked;
+
+            // Deshabilitar los controles no relacionados
+            if (isAnualChecked)
+            {
+                CAMensualReporteVentas.Enabled = false;
+                CADiarioReporteVentas.Enabled = false;
+            }
+            else if (isMensualChecked)
+            {
+                CAAnualReporteVentas.Enabled = false;
+                CADiarioReporteVentas.Enabled = false;
+            }
+            else if (isDiarioChecked)
+            {
+                CAAnualReporteVentas.Enabled = false;
+                CAMensualReporteVentas.Enabled = false;
+            }
+            else
+            {
+                // Si no hay CheckBox seleccionado, habilitar todos los CheckBoxes
+                CAMensualReporteVentas.Enabled = true;
+                CAAnualReporteVentas.Enabled = true;
+                CADiarioReporteVentas.Enabled = true;
+            }
+        }
+
+        private void CAAnualReporteVentas_CheckedChanged(object sender, System.EventArgs e)
+        {
+            UpdateControls();
+        }
+
+        private void CAMensualReporteVentas_CheckedChanged(object sender, System.EventArgs e)
+        {
+            UpdateControls();
+        }
+
+        private void CADiarioReporteVentas_CheckedChanged(object sender, System.EventArgs e)
+        {
+            UpdateControls();
         }
     }
 }
