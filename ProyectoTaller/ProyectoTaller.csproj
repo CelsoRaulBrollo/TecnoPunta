@@ -78,12 +78,6 @@
     <Compile Include="Views\Administradores\AdministrarClientes.Designer.cs">
       <DependentUpon>AdministrarClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Administradores\AdministrarConsultas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Administradores\AdministrarConsultas.Designer.cs">
-      <DependentUpon>AdministrarConsultas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Administradores\AgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,12 +182,6 @@
     <Compile Include="Views\Vendedor\GestionVentas.Designer.cs">
       <DependentUpon>GestionVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Vendedor\InformesVendedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Vendedor\InformesVendedor.Designer.cs">
-      <DependentUpon>InformesVendedor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Vendedor\VentaDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,9 +195,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Administradores\AdministrarClientes.resx">
       <DependentUpon>AdministrarClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Administradores\AdministrarConsultas.resx">
-      <DependentUpon>AdministrarConsultas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Administradores\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
@@ -261,9 +246,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Vendedor\GestionVentas.resx">
       <DependentUpon>GestionVentas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Vendedor\InformesVendedor.resx">
-      <DependentUpon>InformesVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Vendedor\VentaDetalle.resx">
       <DependentUpon>VentaDetalle.cs</DependentUpon>

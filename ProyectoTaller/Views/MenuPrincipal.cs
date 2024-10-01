@@ -56,7 +56,7 @@ namespace ProyectoTaller.Views
                 BProductos.Visible = true;
                 BVentas.Visible = true;
                 BCliente.Visible = true;
-                BGraficos.Visible = true;
+                BStock.Visible = true;
                 BInformes.Visible = true;
             }
         }
@@ -195,13 +195,6 @@ namespace ProyectoTaller.Views
             }
         }
 
-        private void BConsultas_Click(object sender, EventArgs e)
-        {
-            Form consultasForm = new AdministrarConsultas();
-
-            MostrarFormularioEnPanel(consultasForm);
-        }
-
         private void BCliente_Click(object sender, EventArgs e)
         {
             if (_rolUsuario == "Admin")
@@ -252,12 +245,6 @@ namespace ProyectoTaller.Views
                 Form informeAdmin = new InformesAdministrador();
 
                 MostrarFormularioEnPanel(informeAdmin);
-            }
-            else if (_rolUsuario == "Vendedor")
-            {
-                Form informeVendedor = new InformesVendedor();
-
-                MostrarFormularioEnPanel(informeVendedor);
             }
             else if (_rolUsuario == "Gerente")
             {

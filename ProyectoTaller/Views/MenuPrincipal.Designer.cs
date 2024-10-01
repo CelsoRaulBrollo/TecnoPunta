@@ -40,7 +40,7 @@ namespace ProyectoTaller.Views
             this.BCarrito = new System.Windows.Forms.ToolStripMenuItem();
             this.BUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.BVentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.BGraficos = new System.Windows.Forms.ToolStripMenuItem();
+            this.BStock = new System.Windows.Forms.ToolStripMenuItem();
             this.BInformes = new System.Windows.Forms.ToolStripMenuItem();
             this.BBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.DragControl = new System.Windows.Forms.Panel();
@@ -94,7 +94,7 @@ namespace ProyectoTaller.Views
             this.BCarrito,
             this.BUsuarios,
             this.BVentas,
-            this.BGraficos,
+            this.BStock,
             this.BInformes,
             this.BBackup});
             this.MMenuOpciones.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
@@ -130,7 +130,6 @@ namespace ProyectoTaller.Views
             this.BConsultas.Size = new System.Drawing.Size(110, 55);
             this.BConsultas.Text = "Consultas";
             this.BConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BConsultas.Click += new System.EventHandler(this.BConsultas_Click);
             // 
             // BCliente
             // 
@@ -184,18 +183,18 @@ namespace ProyectoTaller.Views
             this.BVentas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BVentas.Click += new System.EventHandler(this.BVentas_Click);
             // 
-            // BGraficos
+            // BStock
             // 
-            this.BGraficos.AutoSize = false;
-            this.BGraficos.Image = global::ProyectoTaller.Properties.Resources.graficos_estadisticas;
-            this.BGraficos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BGraficos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BGraficos.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
-            this.BGraficos.Name = "BGraficos";
-            this.BGraficos.Size = new System.Drawing.Size(110, 55);
-            this.BGraficos.Text = " Graficos";
-            this.BGraficos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BGraficos.Click += new System.EventHandler(this.BGraficos_Click);
+            this.BStock.AutoSize = false;
+            this.BStock.Image = global::ProyectoTaller.Properties.Resources.graficos_estadisticas;
+            this.BStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BStock.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BStock.Margin = new System.Windows.Forms.Padding(0, 10, 5, 0);
+            this.BStock.Name = "BStock";
+            this.BStock.Size = new System.Drawing.Size(110, 55);
+            this.BStock.Text = "   Stock";
+            this.BStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BStock.Click += new System.EventHandler(this.BGraficos_Click);
             // 
             // BInformes
             // 
@@ -374,7 +373,7 @@ namespace ProyectoTaller.Views
         private Label LBienvenido;
         private ToolStripMenuItem BCliente;
         private ToolStripMenuItem BCarrito;
-        private ToolStripMenuItem BGraficos;
+        private ToolStripMenuItem BStock;
         private ToolStripMenuItem BInformes;
         private ToolStripMenuItem BBackup;
     }
