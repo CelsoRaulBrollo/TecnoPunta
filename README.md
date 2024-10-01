@@ -6,7 +6,7 @@
 
 |Tipo de usuario| Contraseña|
 |--|--|
-| Administrador |12345  |
+| Admin |12345  |
 | Vendedor |45678  |
 | Gerente |13579 |
 
