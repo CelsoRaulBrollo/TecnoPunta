@@ -131,10 +131,16 @@ namespace ProyectoTaller.Views.Administradores
                 LValiTelefono.Text = string.Empty;
             }
 
-            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@") || !email.Contains("."))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 LValiEmail.ForeColor = Color.Red;
-                LValiEmail.Text = "Ingrese un email válido.";
+                LValiEmail.Text = "Ingrese un email.";
+                valido = false;
+            }
+            else if (!email.Contains("@") || !email.Contains("."))
+            {
+                LValiEmail.ForeColor = Color.Red;
+                LValiEmail.Text = "El email debe contener @ t (.).";
                 valido = false;
             }
             else
@@ -214,38 +220,49 @@ namespace ProyectoTaller.Views.Administradores
             {
                 LimpiarMensajesDeValidacion();
 
-                if (editando)
-                {
-                    if (filaSeleccionadaIndex >= 0)
-                    {
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CPuesto"].Value = CBPuesto.SelectedItem.ToString();
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CUsuario"].Value = TUsuario.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CDni"].Value = TDni.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombre.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CApellido"].Value = TApellido.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CEmail"].Value = TEmail.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSexo"].Value = CBSexo.SelectedItem.ToString();
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSueldo"].Value = TSueldo.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CTelefono"].Value = TTelefono.Text;
-                        DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CContraseña"].Value = TContraseña.Text;
+                string mensaje = editando ? "¿Está seguro que desea modificar este usuario?" : "¿Está seguro que desea agregar el usuario?";
+                var result = MessageBox.Show(mensaje, "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        LimpiarMensajesDeValidacion();
-                        LValido.Text = "Usuario editado exitosamente.";
+                if (result == DialogResult.Yes)
+                {
+
+                    if (editando)
+                    {
+                        if (filaSeleccionadaIndex >= 0)
+                        {
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CPuesto"].Value = CBPuesto.SelectedItem.ToString();
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CUsuario"].Value = TUsuario.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CDni"].Value = TDni.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombre.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CApellido"].Value = TApellido.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CEmail"].Value = TEmail.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSexo"].Value = CBSexo.SelectedItem.ToString();
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSueldo"].Value = TSueldo.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CTelefono"].Value = TTelefono.Text;
+                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CContraseña"].Value = TContraseña.Text;
+
+                            LimpiarMensajesDeValidacion();
+                            LValido.Text = "Usuario editado exitosamente.";
+
+                            TDni.ReadOnly = false;
+                            TDni.BackColor = Color.White;
+                        }
 
                         editando = false;
                         filaSeleccionadaIndex = -1;
+
                     }
-                }
-                else
-                {
-                    if (!ValidarDni(TDni.Text))
+                    else
                     {
-                        return;
+                        if (!ValidarDni(TDni.Text))
+                        {
+                            return;
+                        }
+
+                        DGUsuarios.Rows.Add(CBPuesto.SelectedItem.ToString(), TUsuario.Text, TDni.Text, TNombre.Text, TApellido.Text, TEmail.Text, CBSexo.SelectedItem.ToString(), TSueldo.Text, TTelefono.Text, TContraseña.Text);
+
+                        LValido.Text = "Usuario agregado exitosamente.";
                     }
-
-                    DGUsuarios.Rows.Add(CBPuesto.SelectedItem.ToString(), TUsuario.Text, TDni.Text, TNombre.Text, TApellido.Text, TEmail.Text, CBSexo.SelectedItem.ToString(), TSueldo.Text, TTelefono.Text, TContraseña.Text);
-
-                    LValido.Text = "Usuario agregado exitosamente.";
                 }
 
                 CBPuesto.SelectedIndex = -1;
@@ -294,6 +311,7 @@ namespace ProyectoTaller.Views.Administradores
                     TSueldo.Clear();
                     TTelefono.Clear();
                     TContraseña.Clear();
+                    MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -307,6 +325,7 @@ namespace ProyectoTaller.Views.Administradores
                     TSueldo.Clear();
                     TTelefono.Clear();
                     TContraseña.Clear();
+                    MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 LValido.Text = string.Empty;
