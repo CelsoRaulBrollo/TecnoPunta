@@ -2,6 +2,7 @@
 using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -452,6 +453,25 @@ namespace ProyectoTaller.Views.Vendedor
             else
             {
                 LValiDireccionCliente.Text = string.Empty;
+            }
+        }
+
+        private void TBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarClientes(TBuscarCliente.Text);
+        }
+
+        private void FiltrarClientes(string buscarTexto)
+        {
+            foreach (DataGridViewRow row in DGClientes.Rows)
+            {
+                bool rowVisible =
+                    row.Cells["CDNI"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["CNombreCliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["CTelefonoCliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["CCorreoCliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0;
+
+                row.Visible = rowVisible;
             }
         }
     }

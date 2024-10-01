@@ -39,7 +39,6 @@ namespace ProyectoTaller.Views
             {
                 BProductos.Visible = true;
                 BVentas.Visible = true;
-                BConsultas.Visible = true;
                 BCliente.Visible = true;
                 BUsuarios.Visible = true;
                 BInformes.Visible = true;

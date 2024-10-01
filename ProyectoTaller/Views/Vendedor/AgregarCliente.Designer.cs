@@ -366,6 +366,7 @@
             this.TBuscarCliente.Name = "TBuscarCliente";
             this.TBuscarCliente.Size = new System.Drawing.Size(277, 20);
             this.TBuscarCliente.TabIndex = 135;
+            this.TBuscarCliente.TextChanged += new System.EventHandler(this.TBuscarCliente_TextChanged);
             // 
             // TNombreCliente
             // 
