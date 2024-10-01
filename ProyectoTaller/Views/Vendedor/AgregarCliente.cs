@@ -307,12 +307,12 @@ namespace ProyectoTaller.Views.Vendedor
                 respuesta = false;
             }
 
-            if (string.IsNullOrEmpty(TNombreCliente.Text) || TNombreCliente.Text.Length > 30 || !System.Text.RegularExpressions.Regex.IsMatch(TNombreCliente.Text, @"^[a-zA-Z]+$"))
+            if (string.IsNullOrEmpty(TNombreCliente.Text) || TNombreCliente.Text.Length > 30 || !System.Text.RegularExpressions.Regex.IsMatch(TNombreCliente.Text, @"^[a-zA-ZÀ-ÿ\s,]+$"))
             {
                 respuesta = false;
             }
 
-            if (string.IsNullOrEmpty(TApellidoCliente.Text) || TApellidoCliente.Text.Length > 30 || !System.Text.RegularExpressions.Regex.IsMatch(TApellidoCliente.Text, @"^[a-zA-Z]+$"))
+            if (string.IsNullOrEmpty(TApellidoCliente.Text) || TApellidoCliente.Text.Length > 30 || !System.Text.RegularExpressions.Regex.IsMatch(TApellidoCliente.Text, @"^[a-zA-ZÀ-ÿ\s,]+$"))
             {
                 respuesta = false;
             }
@@ -410,7 +410,7 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiNombre.ForeColor = Color.Red;
                 LValiNombre.Text = "Ingrese menos de 30 caracteres.";
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreCliente, @"^[a-zA-Z]+$"))
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreCliente, @"^[a-zA-ZÀ-ÿ\s,]+$"))
             {
                 LValiNombre.ForeColor = Color.Red;
                 LValiNombre.Text = "El nombre solo debe contener letras.";
@@ -430,7 +430,7 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiApellidoCliente.ForeColor = Color.Red;
                 LValiApellidoCliente.Text = "Ingrese menos de 30 caracteres.";
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(apellidoCliente, @"^[a-zA-Z]+$"))
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(apellidoCliente, @"^[a-zA-ZÀ-ÿ\s,]+$"))
             {
                 LValiApellidoCliente.ForeColor = Color.Red;
                 LValiApellidoCliente.Text = "El apellido solo debe contener letras.";
