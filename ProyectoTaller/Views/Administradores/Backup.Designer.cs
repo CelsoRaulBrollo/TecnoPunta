@@ -58,6 +58,7 @@
             this.BBackup.Text = "Backup";
             this.BBackup.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BBackup.UseVisualStyleBackColor = false;
+            this.BBackup.Click += new System.EventHandler(this.BBackup_Click);
             // 
             // BRestaurar
             // 
@@ -72,6 +73,7 @@
             this.BRestaurar.Text = "Restaurar";
             this.BRestaurar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BRestaurar.UseVisualStyleBackColor = false;
+            this.BRestaurar.Click += new System.EventHandler(this.BRestaurar_Click);
             // 
             // PBImagenBackUp
             // 

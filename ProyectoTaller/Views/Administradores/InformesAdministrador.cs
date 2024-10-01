@@ -67,5 +67,49 @@ namespace ProyectoTaller.Views.Administradores
 
             CHCantidadUsuarios.Series.Add(seriesCantidadUsuarios);
         }
+
+        private void DTPHastaCantidadUsuarios_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DTPDesdeCantidadUsuarios_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DTPDesdeMarcas_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DTPHastaMarcas_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Quieres quitar los filtros?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                LimpiarFiltros();
+
+                MessageBox.Show("Filtros borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void LimpiarFiltros()
+        {
+            DTPDesdeCantidadUsuarios.Value = DateTime.Today;
+            DTPHastaCantidadUsuarios.Value = DateTime.Today;
+            DTPDesdeMarcas.Value = DateTime.Today;
+            DTPHastaMarcas.Value = DateTime.Today;
+        }
     }
 }
