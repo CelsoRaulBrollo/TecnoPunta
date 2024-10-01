@@ -13,6 +13,7 @@ namespace ProyectoTaller.Views.Vendedor
     public partial class AgregarCliente : Form
     {
         private ClienteDatos clienteDatos;
+        private ClienteNegocio clienteNegocio;
         private readonly ConexionBD conexion = new ConexionBD();
 
         public AgregarCliente()
@@ -103,7 +104,10 @@ namespace ProyectoTaller.Views.Vendedor
             if (ValidacionFormulario())
             {
                 int dniCliente;
+                string telefonoCliente = TTelefonoCliente.Text;
+                string correoCliente = TCorreoCliente.Text;
 
+                // Validar el DNI
                 if (!editando && int.TryParse(TDNICliente.Text, out dniCliente))
                 {
                     if (clienteNegocio.EsDNIExistente(dniCliente))
@@ -113,6 +117,21 @@ namespace ProyectoTaller.Views.Vendedor
                         return;
                     }
                 }
+
+                if (!editando && clienteNegocio.EsTelefonoExistente(telefonoCliente))
+                {
+                    LValiTelefono.ForeColor = Color.Red;
+                    LValiTelefono.Text = "El teléfono ya está registrado.";
+                    return;
+                }
+
+                if (!editando && clienteNegocio.EsCorreoExistente(correoCliente))
+                {
+                    LValiCorreo.ForeColor = Color.Red;
+                    LValiCorreo.Text = "El correo ya está registrado.";
+                    return;
+                }
+
 
                 Clientes cliente = new Clientes
                 {

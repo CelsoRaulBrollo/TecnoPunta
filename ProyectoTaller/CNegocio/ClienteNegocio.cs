@@ -30,5 +30,17 @@ namespace ProyectoTaller.CNegocio
             ClienteDatos clienteDatos = new ClienteDatos();
             return clienteDatos.VerificarDNIExistente(dniCliente);
         }
+
+        public bool EsTelefonoExistente(string telefono)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            return clienteDatos.VerificarTelefono(telefono);
+        }
+
+        public bool EsCorreoExistente(string correo)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            return clienteDatos.VerificarCorreo(correo);
+        }
     }
 }

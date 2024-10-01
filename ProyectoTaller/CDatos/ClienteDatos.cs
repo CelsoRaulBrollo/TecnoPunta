@@ -114,6 +114,34 @@ namespace ProyectoTaller.CDatos
                 }
             }
         }
+
+        public bool VerificarTelefono(string telefono)
+        {
+            using (var con = conexion.ObtenerConexion())
+            {
+                con.Open();
+                using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Clientes WHERE Telefono_Cliente = @Telefono", con))
+                {
+                    cmd.Parameters.AddWithValue("@Telefono", telefono);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
+
+        public bool VerificarCorreo(string correo)
+        {
+            using (var con = conexion.ObtenerConexion())
+            {
+                con.Open();
+                using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Clientes WHERE Correo_Cliente = @Correo", con))
+                {
+                    cmd.Parameters.AddWithValue("@Correo", correo);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
     }
 }
 
