@@ -66,6 +66,9 @@
     <Compile Include="CDatos\ClienteDatos.cs" />
     <Compile Include="CDatos\ConexionBD.cs" />
     <Compile Include="CModelos\Clientes.cs" />
+    <Compile Include="CModelos\Rol.cs" />
+    <Compile Include="CModelos\Sexo.cs" />
+    <Compile Include="CModelos\Usuario.cs" />
     <Compile Include="CNegocio\ClienteNegocio.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
