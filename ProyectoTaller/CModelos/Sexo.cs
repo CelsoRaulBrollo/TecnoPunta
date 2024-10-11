@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller.CModelos
 {
-    internal class Sexo
+    public class Sexo
     {
         public int Id_Sexo { get; set; }
         public string Descripcion_Sexo {  get; set; }
