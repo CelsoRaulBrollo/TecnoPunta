@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller.CModelos
 {
-    internal class Rol
+    public class Rol
     {
         public int Id_Rol { get; set; }
         public string Descripcion_Rol { get; set; }
