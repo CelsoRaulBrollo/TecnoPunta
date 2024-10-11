@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller.CModelos
 {
-    internal class Usuario
+    public class Usuario
     {
         public int DNI_Usuario { get; set; }
         public string Nombre_Usuario { get; set; }
         public string Apellido_Usuario { get; set; }
         public string Telefono_Usuario { get; set; }
         public string Correo_Usuario { get; set; }
-        public string Direccion_Usuario { get; set; }
+        public decimal Sueldo_Usuario {  get; set; }
+        public string Contraseña { get; set; }
+        public string Usuario_Login { get; set; }
 
-        public Sexo Sexo_Usuario { get; set; }
-        public Rol Rol_Usuario { get; set; }
+        public int Sexo_Usuario { get; set; }
+        public int Rol_Usuario { get; set; }
 
     }
 }
