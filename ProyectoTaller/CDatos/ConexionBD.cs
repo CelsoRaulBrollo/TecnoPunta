@@ -5,7 +5,7 @@ namespace ProyectoTaller.CDatos
 {
     public class ConexionBD
     {
-        private string cadenaConexion = ConfigurationManager.ConnectionStrings["TecnoPuntaDB"].ConnectionString;
+        public string cadenaConexion = ConfigurationManager.ConnectionStrings["TecnoPuntaDB"].ConnectionString;
 
         public SqlConnection ObtenerConexion()
         {
