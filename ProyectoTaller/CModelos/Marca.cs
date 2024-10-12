@@ -9,6 +9,6 @@ namespace ProyectoTaller.CModelos
     public class Marca
     {
         public int Id_Marca { get; set; }
-        public string Marca_Rol { get; set; }
+        public string Descripcion_Marca { get; set; }
     }
 }
