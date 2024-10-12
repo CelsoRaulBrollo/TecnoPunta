@@ -9,6 +9,6 @@ namespace ProyectoTaller.CModelos
     public class Condicion
     {
         public int Id_Condicion { get; set; }
-        public string Condicion_Rol { get; set; }
+        public string Descripcion_Condicion { get; set; }
     }
 }
