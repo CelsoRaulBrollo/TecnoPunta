@@ -12,7 +12,7 @@ namespace ProyectoTaller.CDatos
     {
         private ConexionBD conexion = new ConexionBD();
 
-        public List<Condicion> ObtenerMarcas()
+        public List<Condicion> ObtenerCondiciones()
         {
             List<Condicion> condicion = new List<Condicion>();
 
