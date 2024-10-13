@@ -18,7 +18,7 @@ namespace ProyectoTaller.CDatos
 
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
-                string query = "SELECT Id_Condicion, Descripcion_Condicion FROM Condicion";
+                string query = "SELECT Id_Condicion, Descripcion_Estado FROM Condicion";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -28,8 +28,8 @@ namespace ProyectoTaller.CDatos
                 {
                     condicion.Add(new Condicion
                     {
-                        Id_Condicion = (int)reader["Id_Marca"],
-                        Descripcion_Condicion = reader["Descripcion_Marca"].ToString()
+                        Id_Condicion = (int)reader["Id_Condicion"],
+                        Descripcion_Condicion = reader["Descripcion_Estado"].ToString()
                     });
                 }
             }
