@@ -1,5 +1,11 @@
-﻿using System;
+﻿using ProyectoTaller.CDatos;
+using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using ProyectoTaller.DTO;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Administradores
@@ -8,13 +14,34 @@ namespace ProyectoTaller.Views.Administradores
     {
         private bool editando = false;
         private int filaSeleccionadaIndex = -1;
+        private ProductoNegocio productoNegocio;
 
         public AgregarProducto()
         {
             InitializeComponent();
+            productoNegocio = new ProductoNegocio();
+            CargarMarcas();
+            CargarCondicion();
+            CargarProductos();
         }
 
-        // Evento del botón "Agregar"
+        private void CargarMarcas()
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            List<Marca> marcas = marcaNegocio.ListarMarca();
+            CBMarca.DataSource = marcas;
+            CBMarca.DisplayMember = "Nombre_Marca";
+            CBMarca.ValueMember = "Id_Marca";
+        }
+
+        private void CargarCondicion()
+        {
+            CondicionNegocio condicionNegocio = new CondicionNegocio();
+            List<Condicion> conciones = condicionNegocio.ListarCondiciones();
+            CBEstado.DataSource = conciones;
+            CBEstado.DisplayMember = "Descripcion_Condicion";
+            CBEstado.ValueMember = "Id_Condicion";
+        }
         private void BAgregar_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
@@ -223,18 +250,26 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         if (filaSeleccionadaIndex >= 0)
                         {
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CMarca"].Value = CBMarca.SelectedItem.ToString();
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombreProducto.Text;
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CModelo"].Value = TModelo.Text;
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CSistemaOperativo"].Value = TSo.Text;
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CAlmacenamiento"].Value = TAlmacenamiento.Text;
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CRam"].Value = TRam.Text;
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CEstado"].Value = CBEstado.SelectedItem.ToString();
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CStock"].Value = TStock.Text;
-                            DGProductos.Rows[filaSeleccionadaIndex].Cells["CPrecio"].Value = TPrecio.Text;
+                           
+                            Producto productoActualizar = new Producto
+                            {
+                                Modelo_Producto = TModelo.Text,
+                                Nombre_Producto = TNombreProducto.Text,
+                                SistemaOperativo_Producto = TSo.Text,
+                                Almacenamiento_Producto = TAlmacenamiento.Text,
+                                Ram_Producto = TRam.Text,
+                                Stock_Producto = int.Parse(TStock.Text),
+                                Precio_Producto = decimal.Parse(TPrecio.Text),
+                                Marca = CBMarca.SelectedItem as Marca,
+                                Condicion = CBEstado.SelectedItem as Condicion
+                            };
+                            productoNegocio = new ProductoNegocio();
+                            productoNegocio.actualizarProducto(productoActualizar);
 
                             LValido.Text = "Producto editado exitosamente.";
-
+                            CargarCondicion();
+                            CargarMarcas();
+                            CargarProductos();
                             TModelo.ReadOnly = false;
                             TModelo.BackColor = Color.White;
                         }
@@ -251,11 +286,29 @@ namespace ProyectoTaller.Views.Administradores
                             return;
                         }
 
-                        DGProductos.Rows.Add(CBMarca.SelectedItem.ToString(), TNombreProducto.Text, TModelo.Text, TSo.Text, TAlmacenamiento.Text, TRam.Text, TStock.Text, TPrecio.Text, CBEstado.SelectedItem.ToString());
+                        Producto productoGuardar = new Producto
+                        {
+                            Modelo_Producto = TModelo.Text,
+                            Nombre_Producto = TNombreProducto.Text,
+                            SistemaOperativo_Producto = TSo.Text,
+                            Almacenamiento_Producto = TAlmacenamiento.Text,
+                            Ram_Producto = TRam.Text,
+                            Stock_Producto = int.Parse(TStock.Text), 
+                            Precio_Producto = decimal.Parse(TPrecio.Text), 
+                            Marca = CBMarca.SelectedItem as Marca, 
+                            Condicion = CBEstado.SelectedItem as Condicion 
+                        };
+
+                        productoNegocio = new ProductoNegocio();
+                        productoNegocio.guardarProducto(productoGuardar);
+
 
                         LValido.Text = "Producto agregado exitosamente.";
 
                         LimpiarCampos();
+                        CargarCondicion();
+                        CargarProductos();
+                        CargarMarcas();
                     }
                 }
             }
@@ -283,8 +336,8 @@ namespace ProyectoTaller.Views.Administradores
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
                 if (fila.Index != filaSeleccionadaIndex &&
-                    fila.Cells["CModelo"].Value != null &&
-                    fila.Cells["CModelo"].Value.ToString() == modelo)
+                    fila.Cells["Modelo"].Value != null &&
+                    fila.Cells["Modelo"].Value.ToString() == modelo)
                 {
                     LValiModelo.ForeColor = Color.Red;
                     LValiModelo.Text = "El Modelo ya está registrado.";
@@ -317,6 +370,9 @@ namespace ProyectoTaller.Views.Administradores
                 }
                 else
                 {
+                    
+
+
                     CBMarca.SelectedIndex = -1;
                     TNombreProducto.Clear();
                     TModelo.Clear();
@@ -324,8 +380,6 @@ namespace ProyectoTaller.Views.Administradores
                     TAlmacenamiento.Clear();
                     TRam.Clear();
                     CBEstado.SelectedIndex = -1;
-                    TStock.Clear();
-                    TPrecio.Clear();
                     MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -419,7 +473,7 @@ namespace ProyectoTaller.Views.Administradores
             }
         }
 
-        // Evento del botón "Salir"
+     
         private void BSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -438,15 +492,24 @@ namespace ProyectoTaller.Views.Administradores
                 {
                     filaSeleccionadaIndex = DGProductos.SelectedRows[0].Index;
 
-                    CBMarca.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["CMarca"].Value.ToString();
-                    TNombreProducto.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value.ToString();
-                    TModelo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CModelo"].Value.ToString();
-                    TSo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CSistemaOperativo"].Value.ToString();
-                    TAlmacenamiento.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CAlmacenamiento"].Value.ToString();
-                    TRam.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CRam"].Value.ToString();
-                    TStock.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CStock"].Value.ToString();
-                    TPrecio.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["CPrecio"].Value.ToString();
-                    CBEstado.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["CEstado"].Value.ToString();
+                    string marcaNombre = DGProductos.Rows[filaSeleccionadaIndex].Cells["Marca"].Value.ToString();
+                    string condicionDescripcion = DGProductos.Rows[filaSeleccionadaIndex].Cells["Condicion"].Value.ToString();
+
+
+                    CBMarca.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["Marca"].Value.ToString();
+                    TNombreProducto.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Nombre"].Value.ToString();
+                    TModelo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Modelo"].Value.ToString();
+                    TSo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["SistemaOperativo"].Value.ToString();
+                    TAlmacenamiento.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Almacenamiento"].Value.ToString().Replace(" GB", ""); ;
+                    TRam.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Ram"].Value.ToString();
+                    TStock.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Stock"].Value.ToString();
+                    TPrecio.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Precio"].Value.ToString();
+                    CBEstado.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["Condicion"].Value.ToString();
+
+                    CBMarca.SelectedItem = CBMarca.Items.Cast<Marca>().FirstOrDefault(m => m.Nombre_Marca == marcaNombre);
+
+                    // Seleccionar la condición correspondiente
+                    CBEstado.SelectedItem = CBEstado.Items.Cast<Condicion>().FirstOrDefault(c => c.Descripcion_Condicion == condicionDescripcion);
 
                     TModelo.ReadOnly = true;
                     TModelo.BackColor = Color.LightGray;
@@ -490,12 +553,12 @@ namespace ProyectoTaller.Views.Administradores
             string filtro = TBuscarProducto.Text.ToLower();
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
-                if (fila.Cells["CNombre"].Value != null)
+                if (fila.Cells["Nombre"].Value != null)
                 {
-                    string nombreProducto = fila.Cells["CNombre"].Value.ToString().ToLower();
-                    string modeloProducto = fila.Cells["CModelo"].Value.ToString().ToLower();
-                    string marcaProducto = fila.Cells["CMarca"].Value.ToString().ToLower();
-                    string soProducto = fila.Cells["CSistemaOperativo"].Value.ToString().ToLower();
+                    string nombreProducto = fila.Cells["Nombre"].Value.ToString().ToLower();
+                    string modeloProducto = fila.Cells["Modelo"].Value.ToString().ToLower();
+                    string marcaProducto = fila.Cells["Marca"].Value.ToString().ToLower();
+                    string soProducto = fila.Cells["SistemaOperativo"].Value.ToString().ToLower();
 
                     if (nombreProducto.Contains(filtro) || modeloProducto.Contains(filtro) || marcaProducto.Contains(filtro) || soProducto.Contains(filtro))
                     {
@@ -503,20 +566,17 @@ namespace ProyectoTaller.Views.Administradores
                     }
                     else
                     {
+                        DGProductos.CurrentCell = null;
                         fila.Visible = false;
                     }
                 }
             }
         }
 
-        private void AgregarProducto_Load(object sender, EventArgs e)
+        private void CargarProductos()
         {
-            DGProductos.Rows.Add("Samsung", "Galaxy S21", "SM-G991B", "Android 14", "128", "8", "50", "799.99", "Nuevo");
-            DGProductos.Rows.Add("Apple", "iPhone 13", "A2633", "iOS 16", "256", "4", "30", "1099.99", "Nuevo");
-            DGProductos.Rows.Add("Xiaomi", "Mi 11", "M2011K2C", "Android 11", "128", "8", "20", "699.99", "Nuevo");
-            DGProductos.Rows.Add("LG", "V60", "LM-V600", "Android", "128", "8", "10", "599.99", "Usado");
-            DGProductos.Rows.Add("Motorola", "G7", "XT1962", "Android", "64", "4", "15", "399.99", "Usado");
-            DGProductos.Rows.Add("Apple", "iPhone 12", "A2255", "iOS 15", "256", "4", "30", "1099.99", "Reacondicionado");
+            List <ProductoDTO> productos = productoNegocio.listarProductos();
+            DGProductos.DataSource = productos;
         }
 
         private void CBNuevo_CheckedChanged(object sender, EventArgs e)
@@ -567,20 +627,21 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         fila.Visible = true;
                     }
-                    else if (CBNuevo.Checked && fila.Cells["CEstado"].Value.ToString() == "Nuevo")
+                    else if (CBNuevo.Checked && fila.Cells["Condicion"].Value.ToString() == "Nuevo")
                     {
                         fila.Visible = true;
                     }
-                    else if (CBReacondicionado.Checked && fila.Cells["CEstado"].Value.ToString() == "Reacondicionado")
+                    else if (CBReacondicionado.Checked && fila.Cells["Condicion"].Value.ToString() == "Reacondicionado")
                     {
                         fila.Visible = true;
                     }
-                    else if (CBUsado.Checked && fila.Cells["CEstado"].Value.ToString() == "Usado")
+                    else if (CBUsado.Checked && fila.Cells["Condicion"].Value.ToString() == "Usado")
                     {
                         fila.Visible = true;
                     }
                     else
                     {
+                        DGProductos.CurrentCell = null;
                         fila.Visible = false;
                     }
                 }
