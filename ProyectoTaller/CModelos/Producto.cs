@@ -14,6 +14,7 @@ namespace ProyectoTaller.CModelos
         public string Almacenamiento_Producto { get; set; }
         public string Ram_Producto { get; set; }
         public int Stock_Producto { get; set; }
+        public decimal Precio_Producto { get; set; }
         public Marca Marca {  get; set; }
         public Condicion Condicion { get; set; }
 
