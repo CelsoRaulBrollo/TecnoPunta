@@ -18,7 +18,7 @@ namespace ProyectoTaller.CDatos
 
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
-                string query = "SELECT Id_Marcal, Descripcion_Marca FROM Marca"; 
+                string query = "SELECT Id_Marca, Nombre_Marca FROM Marcas"; 
                 SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -29,7 +29,7 @@ namespace ProyectoTaller.CDatos
                     marcas.Add(new Marca
                     {
                         Id_Marca = (int)reader["Id_Marca"],
-                        Descripcion_Marca = reader["Descripcion_Marca"].ToString()
+                        Nombre_Marca = reader["Nombre_Marca"].ToString()
                     });
                 }
             }
