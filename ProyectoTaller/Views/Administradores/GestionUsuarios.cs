@@ -1,18 +1,47 @@
-﻿using System;
+﻿using ProyectoTaller.CDatos;
+using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ProyectoTaller.Views.Administradores
 {
     public partial class GestionUsuarios : Form
     {
+        private UsuarioNegocio usuariosNegocio;
         private bool editando = false;
         private int filaSeleccionadaIndex = -1;
 
         public GestionUsuarios()
         {
             InitializeComponent();
+            usuariosNegocio = new UsuarioNegocio();
+            cargarComboRol();
+            cargarComboSexo();
+            GestionUsuarios_Load();
+        }
+
+        public void cargarComboRol()
+        {
+            RolNegocio rolDatos = new RolNegocio();
+            List<Rol> roles = rolDatos.ListarRoles();
+            CBPuesto.DataSource = roles;
+            CBPuesto.DisplayMember = "Descripcion_Rol";
+            CBPuesto.ValueMember = "Id_Rol"; 
+        }
+
+        public void cargarComboSexo()
+        {
+            SexoNegocio sexoDatos = new SexoNegocio();
+            List<Sexo> sexos = sexoDatos.ListarSexo();
+            CBSexo.DataSource = sexos;
+            CBSexo.DisplayMember = "Descripcion_Sexo";
+            CBSexo.ValueMember = "Id_Sexo";
         }
 
         private void BAgregar_Click(object sender, EventArgs e)
@@ -32,6 +61,8 @@ namespace ProyectoTaller.Views.Administradores
 
             bool valido = true;
 
+            long telefonotextoLONG;
+            long.TryParse(telefonotexto, out telefonotextoLONG);
 
             if (string.IsNullOrEmpty(puesto))
             {
@@ -230,22 +261,18 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         if (filaSeleccionadaIndex >= 0)
                         {
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CPuesto"].Value = CBPuesto.SelectedItem.ToString();
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CUsuario"].Value = TUsuario.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CDni"].Value = TDni.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CNombre"].Value = TNombre.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CApellido"].Value = TApellido.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CEmail"].Value = TEmail.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSexo"].Value = CBSexo.SelectedItem.ToString();
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CSueldo"].Value = TSueldo.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CTelefono"].Value = TTelefono.Text;
-                            DGUsuarios.Rows[filaSeleccionadaIndex].Cells["CContraseña"].Value = TContraseña.Text;
+                            
+                           
+                            usuariosNegocio = new UsuarioNegocio();
+                            usuariosNegocio.EditarUsuario(GenerarUsuario());
+
 
                             LimpiarMensajesDeValidacion();
                             LValido.Text = "Usuario editado exitosamente.";
-
+                            GestionUsuarios_Load();
                             TDni.ReadOnly = false;
                             TDni.BackColor = Color.White;
+                            
                         }
 
                         editando = false;
@@ -254,13 +281,32 @@ namespace ProyectoTaller.Views.Administradores
                     }
                     else
                     {
-                        if (!ValidarDni(TDni.Text))
+                        /*if (!ValidarDni(TDni.Text))
                         {
                             return;
-                        }
+                        }*/
 
-                        DGUsuarios.Rows.Add(CBPuesto.SelectedItem.ToString(), TUsuario.Text, TDni.Text, TNombre.Text, TApellido.Text, TEmail.Text, CBSexo.SelectedItem.ToString(), TSueldo.Text, TTelefono.Text, TContraseña.Text);
 
+
+                        Usuario usuarioGuardar = new Usuario
+                        {
+                            Nombre_Usuario = nombre,
+                            Apellido_Usuario = apellido,
+                            DNI_Usuario = Convert.ToInt32(dnitexto),
+                            Sueldo_Usuario = Convert.ToInt32(sueldotexto),
+                            Telefono_Usuario = telefonotexto,
+                            Correo_Usuario = email,
+                            Contraseña = contraseña,
+                            Usuario_Login = usuario,
+                            Sexo_Usuario = (int)CBSexo.SelectedValue,
+                            Rol_Usuario = (int)CBPuesto.SelectedValue
+                     
+                        };
+
+
+                        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                        usuarioNegocio.GuardarUsuario(usuarioGuardar);
+                        GestionUsuarios_Load();
                         LValido.Text = "Usuario agregado exitosamente.";
                     }
                 }
@@ -292,6 +338,26 @@ namespace ProyectoTaller.Views.Administradores
 
             LValiDni.Text = string.Empty;
             return true;
+        }
+
+        public Usuario GenerarUsuario()
+        {
+            Usuario usuarioGuardar = new Usuario
+            {
+                Nombre_Usuario = TUsuario.Text,
+                Apellido_Usuario = TApellido.Text,
+                DNI_Usuario = Convert.ToInt32(TDni.Text),
+                Sueldo_Usuario = Convert.ToDecimal(TSueldo.Text),
+                Telefono_Usuario = TTelefono.Text,
+                Correo_Usuario = TEmail.Text,
+                Contraseña = TContraseña.Text,
+                Usuario_Login = TUsuario.Text,
+                Sexo_Usuario = (int)CBSexo.SelectedValue,
+                Rol_Usuario = (int)CBPuesto.SelectedValue
+
+            };
+
+            return usuarioGuardar;
         }
 
         private void BBorrar_Click(object sender, EventArgs e)
@@ -358,19 +424,22 @@ namespace ProyectoTaller.Views.Administradores
 
                 if (result == DialogResult.Yes)
                 {
+                    RolNegocio rolNegocio = new RolNegocio();
+                    SexoNegocio sexoNegocio = new SexoNegocio();
+
                     DataGridViewRow filaSeleccionada = DGUsuarios.SelectedRows[0];
                     filaSeleccionadaIndex = filaSeleccionada.Index;
 
-                    CBPuesto.SelectedItem = filaSeleccionada.Cells["CPuesto"].Value.ToString();
-                    TUsuario.Text = filaSeleccionada.Cells["CUsuario"].Value.ToString();
-                    TDni.Text = filaSeleccionada.Cells["CDni"].Value.ToString();
-                    TNombre.Text = filaSeleccionada.Cells["CNombre"].Value.ToString();
-                    TApellido.Text = filaSeleccionada.Cells["CApellido"].Value.ToString();
-                    TEmail.Text = filaSeleccionada.Cells["CEmail"].Value.ToString();
-                    CBSexo.SelectedItem = filaSeleccionada.Cells["CSexo"].Value.ToString();
-                    TSueldo.Text = filaSeleccionada.Cells["CSueldo"].Value.ToString();
-                    TTelefono.Text = filaSeleccionada.Cells["CTelefono"].Value.ToString();
-                    TContraseña.Text = filaSeleccionada.Cells["CContraseña"].Value.ToString();
+                    CBPuesto.SelectedValue = rolNegocio.buscarIDRolPorDescripcion(filaSeleccionada.Cells["Rol"].Value.ToString());
+                    TUsuario.Text = filaSeleccionada.Cells["Usuario"].Value.ToString();
+                    TDni.Text = filaSeleccionada.Cells["DNI"].Value.ToString();
+                    TNombre.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                    TApellido.Text = filaSeleccionada.Cells["Apellido"].Value.ToString();
+                    TEmail.Text = filaSeleccionada.Cells["Correo"].Value.ToString();
+                    CBSexo.SelectedValue = sexoNegocio.buscarIDSexoPorDescripcion(filaSeleccionada.Cells["Sexo"].Value.ToString()) ;
+                    TSueldo.Text = filaSeleccionada.Cells["Sueldo"].Value.ToString();
+                    TTelefono.Text = filaSeleccionada.Cells["Telefono"].Value.ToString();
+                    TContraseña.Text = filaSeleccionada.Cells["Contraseña"].Value.ToString();
 
                     TDni.ReadOnly = true;
                     TDni.BackColor = Color.LightGray;
@@ -409,36 +478,45 @@ namespace ProyectoTaller.Views.Administradores
             }
         }
 
-        private void GestionUsuarios_Load(object sender, EventArgs e)
+        private void GestionUsuarios_Load()
         {
-            DGUsuarios.Rows.Add("Administrador", "CelsoBro", "42733217", "Celso", "Brollo", "celsobrollo@gmail.com", "Masculino", "500000", "3624274989", "12345");
-            DGUsuarios.Rows.Add("Vendedor", "MariaGon", "37654321", "María", "González", "mariagonzalez@gmail.com", "Femenino", "40000", "0987654321", "37654321");
-            DGUsuarios.Rows.Add("Gerente", "CarlosFernan", "11223344", "Carlos", "Fernández", "carlosfernandez@gmail.com", "Masculino", "60000", "1231231234", "784512963");
-            DGUsuarios.Rows.Add("Gerente", "AnaMarti", "44332211", "Ana", "Martínez", "anamartinez@hotmail.com", "Femenino", "35000", "3213214321", "Ana5588");
-            DGUsuarios.Rows.Add("Vendedor", "PedroSan", "45667788", "Pedro", "Sánchez", "pedrosanchez@gmail.com", "Masculino", "45000", "6546546546", "35687qwe");
+
+               DGUsuarios.DataSource = usuariosNegocio.ListarUsuarios();
+       
+
+
         }
 
         private void TBuscarUsuarios_TextChanged(object sender, EventArgs e)
         {
             string filtro = TBuscarUsuarios.Text.ToLower();
+       
             foreach (DataGridViewRow fila in DGUsuarios.Rows)
             {
-                if (fila.Cells["CNombre"].Value != null)
+                if (fila.Cells["Nombre"].Value != null)
                 {
-                    string usuario = fila.Cells["CUsuario"].Value.ToString().ToLower();
-                    string dni = fila.Cells["CDni"].Value.ToString().ToLower();
-                    string nombre = fila.Cells["CNombre"].Value.ToString().ToLower();
-                    string apellido = fila.Cells["CApellido"].Value.ToString().ToLower();
-                    string telefono = fila.Cells["CTelefono"].Value.ToString().ToLower();
-                    string email = fila.Cells["CEmail"].Value.ToString().ToLower();
+                    string dni = fila.Cells["DNI"].Value.ToString().ToLower();
+                    string usuario = fila.Cells["Usuario"].Value.ToString().ToLower();
+                    string nombre = fila.Cells["Nombre"].Value.ToString().ToLower();
+                    string apellido = fila.Cells["Apellido"].Value.ToString().ToLower();
+                    string correo = fila.Cells["Correo"].Value.ToString().ToLower();
+                    string sueldo = fila.Cells["Sueldo"].Value.ToString().ToLower();
+                    string telefono = fila.Cells["Telefono"].Value.ToString().ToLower();
+                    string contraseña = fila.Cells["Contraseña"].Value.ToString().ToLower();
+                    string sexo = fila.Cells["Sexo"].Value.ToString().ToLower();
+                    string rol = fila.Cells["Rol"].Value.ToString().ToLower();
 
-                    if (usuario.Contains(filtro) || dni.Contains(filtro) || nombre.Contains(filtro) || apellido.Contains(filtro) || telefono.Contains(filtro) || email.Contains(filtro))
+
+                    if (dni.Contains(filtro) ||  usuario.Contains(filtro) || nombre.Contains(filtro) || apellido.Contains(filtro) || correo.Contains(filtro) || sueldo.Contains(filtro) || telefono.Contains(filtro) || contraseña.Contains(filtro) || sexo.Contains(filtro) || rol.Contains(filtro))
                     {
                         fila.Visible = true;
                     }
                     else
                     {
+          
+                        DGUsuarios.CurrentCell = null;
                         fila.Visible = false;
+
                     }
                 }
             }
@@ -492,20 +570,22 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         fila.Visible = true;
                     }
-                    else if (CBGerente.Checked && fila.Cells["CPuesto"].Value.ToString() == "Gerente")
+                    else if (CBGerente.Checked && fila.Cells["Rol"].Value.ToString() == "Gerente")
                     {
                         fila.Visible = true;
                     }
-                    else if (CBVendedor.Checked && fila.Cells["CPuesto"].Value.ToString() == "Vendedor")
+                    else if (CBVendedor.Checked && fila.Cells["Rol"].Value.ToString() == "Vendedor")
                     {
                         fila.Visible = true;
                     }
-                    else if (CBAdministrador.Checked && fila.Cells["CPuesto"].Value.ToString() == "Administrador")
+                    else if (CBAdministrador.Checked && fila.Cells["Rol"].Value.ToString() == "Administrador")
                     {
                         fila.Visible = true;
                     }
                     else
                     {
+
+                        DGUsuarios.CurrentCell = null;
                         fila.Visible = false;
                     }
                 }

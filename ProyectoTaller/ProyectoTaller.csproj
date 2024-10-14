@@ -64,9 +64,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CDatos\ClienteDatos.cs" />
+    <Compile Include="CDatos\CondicionDatos.cs" />
     <Compile Include="CDatos\ConexionBD.cs" />
+    <Compile Include="CDatos\MarcaDatos.cs" />
+    <Compile Include="CDatos\ProductoDatos.cs" />
+    <Compile Include="CDatos\RolDatos.cs" />
+    <Compile Include="CDatos\SexoDato.cs" />
+    <Compile Include="CDatos\UsuarioDatos.cs" />
     <Compile Include="CModelos\Clientes.cs" />
+    <Compile Include="CModelos\Condicion.cs" />
+    <Compile Include="CModelos\Marca.cs" />
+    <Compile Include="CModelos\Producto.cs" />
+    <Compile Include="CModelos\Rol.cs" />
+    <Compile Include="CModelos\Sexo.cs" />
+    <Compile Include="CModelos\Usuario.cs" />
     <Compile Include="CNegocio\ClienteNegocio.cs" />
+    <Compile Include="CNegocio\CondicionNegocio.cs" />
+    <Compile Include="CNegocio\MarcaNegocio.cs" />
+    <Compile Include="CNegocio\ProductoNegocio.cs" />
+    <Compile Include="CNegocio\RolNegocio.cs" />
+    <Compile Include="CNegocio\SexoNegocio.cs" />
+    <Compile Include="CNegocio\UsuarioNegocio.cs" />
+    <Compile Include="DTO\ProductoDTO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,6 +269,7 @@
     <EmbeddedResource Include="Views\Vendedor\VentaDetalle.resx">
       <DependentUpon>VentaDetalle.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CModelos\.editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
