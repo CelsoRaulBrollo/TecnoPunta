@@ -114,9 +114,22 @@ namespace ProyectoTaller.CDatos
                 cmd.Parameters.Add("@Id_Sexo", SqlDbType.Int).Value = usuario.Sexo_Usuario; 
                 cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario; 
 
+
                 connection.Open();
-                return cmd.ExecuteNonQuery() > 0; // Devuelve true si se insertó
+                
+                if(usuario.Rol_Usuario == 3)
+                {
+                    string queryCarrito = @"
+                    INSERT INTO Carrito (DNI_Vendedor, Total)
+                    VALUES (@DNI, 0)";
+
+                    SqlCommand cmdCarrito = new SqlCommand(queryCarrito, connection);
+                    cmdCarrito.Parameters.AddWithValue("@DNI", usuario.DNI_Usuario);
+                    cmdCarrito.ExecuteNonQuery();
+                }
+                return cmd.ExecuteNonQuery() > 0;
             }
+
         }
     }
 }
