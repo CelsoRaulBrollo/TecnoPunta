@@ -1,16 +1,28 @@
-﻿using System;
+﻿using ProyectoTaller.CNegocio;
+using System;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
 {
     public partial class Carrito : Form
     {
+
+        private CarritoNegocio carritoNegocio;
         public Carrito()
         {
             InitializeComponent();
+            cargarCarrito();
         }
 
         private ConfirmarVenta confirmarVenta;
+
+        public void cargarCarrito()
+        {
+            carritoNegocio = new CarritoNegocio();
+            DGCarrito.DataSource = carritoNegocio.cargarCarito(41008591).detalles;
+            DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
 
         private void BFinalizarCompra_Click(object sender, EventArgs e)
         {
@@ -37,13 +49,20 @@ namespace ProyectoTaller.Views.Vendedor
                 MessageBox.Show("Por favor, seleccione una fila para poder quitar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            DataGridViewRow selectedRow = DGCarrito.SelectedRows[0];
 
-            foreach (DataGridViewRow row in DGCarrito.SelectedRows)
+            carritoNegocio = new CarritoNegocio();
+            bool eliminado = carritoNegocio.eliminarProducto(selectedRow.Cells["Modelo"].Value.ToString(), 41008591);
+            if (eliminado)
             {
-                DGCarrito.Rows.Remove(row);
+                MessageBox.Show("Elemento quitado del carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                MessageBox.Show("Error al eliminar el producto al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            cargarCarrito();
 
-            MessageBox.Show("Elemento quitado del carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BLimpiarCarrito_Click(object sender, EventArgs e)
@@ -52,9 +71,14 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (resultado == DialogResult.Yes)
             {
-                DGCarrito.Rows.Clear();
-
-                MessageBox.Show("El carrito ha sido limpiado.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                carritoNegocio = new CarritoNegocio();
+                bool vaciado = carritoNegocio.vaciarCarrito(41008591);
+                if (vaciado)
+                {
+                    MessageBox.Show("El carrito ha sido limpiado.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargarCarrito();
+                }
+                
             }
             else
             {

@@ -30,10 +30,6 @@
         {
             this.LTituloCarrito = new System.Windows.Forms.Label();
             this.DGCarrito = new System.Windows.Forms.DataGridView();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LTotal = new System.Windows.Forms.Label();
             this.TTotalCarrito = new System.Windows.Forms.Label();
             this.BFinalizarCompra = new System.Windows.Forms.Button();
@@ -48,9 +44,10 @@
             // 
             this.LTituloCarrito.AutoSize = true;
             this.LTituloCarrito.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloCarrito.Location = new System.Drawing.Point(81, 10);
+            this.LTituloCarrito.Location = new System.Drawing.Point(108, 12);
+            this.LTituloCarrito.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTituloCarrito.Name = "LTituloCarrito";
-            this.LTituloCarrito.Size = new System.Drawing.Size(110, 36);
+            this.LTituloCarrito.Size = new System.Drawing.Size(140, 44);
             this.LTituloCarrito.TabIndex = 1;
             this.LTituloCarrito.Text = "Carrito";
             // 
@@ -58,57 +55,23 @@
             // 
             this.DGCarrito.AllowUserToAddRows = false;
             this.DGCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CodigoProducto,
-            this.Descripcion,
-            this.Cantidad,
-            this.Precio});
-            this.DGCarrito.Location = new System.Drawing.Point(11, 123);
-            this.DGCarrito.Margin = new System.Windows.Forms.Padding(2);
+            this.DGCarrito.Location = new System.Drawing.Point(15, 151);
+            this.DGCarrito.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGCarrito.Name = "DGCarrito";
             this.DGCarrito.RowHeadersWidth = 51;
             this.DGCarrito.RowTemplate.Height = 24;
-            this.DGCarrito.Size = new System.Drawing.Size(865, 305);
+            this.DGCarrito.Size = new System.Drawing.Size(1153, 375);
             this.DGCarrito.TabIndex = 50;
             this.DGCarrito.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGCarrito_CellContentClick);
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.FillWeight = 1F;
-            this.CodigoProducto.HeaderText = "Codigo Producto";
-            this.CodigoProducto.MinimumWidth = 6;
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 400;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.FillWeight = 1000F;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 315;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 125;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 6;
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 125;
             // 
             // LTotal
             // 
             this.LTotal.AutoSize = true;
             this.LTotal.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTotal.Location = new System.Drawing.Point(690, 457);
+            this.LTotal.Location = new System.Drawing.Point(920, 562);
+            this.LTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTotal.Name = "LTotal";
-            this.LTotal.Size = new System.Drawing.Size(59, 23);
+            this.LTotal.Size = new System.Drawing.Size(73, 28);
             this.LTotal.TabIndex = 70;
             this.LTotal.Text = "Total:";
             // 
@@ -116,9 +79,10 @@
             // 
             this.TTotalCarrito.AutoSize = true;
             this.TTotalCarrito.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TTotalCarrito.Location = new System.Drawing.Point(751, 457);
+            this.TTotalCarrito.Location = new System.Drawing.Point(1001, 562);
+            this.TTotalCarrito.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TTotalCarrito.Name = "TTotalCarrito";
-            this.TTotalCarrito.Size = new System.Drawing.Size(0, 23);
+            this.TTotalCarrito.Size = new System.Drawing.Size(0, 28);
             this.TTotalCarrito.TabIndex = 71;
             // 
             // BFinalizarCompra
@@ -128,9 +92,10 @@
             this.BFinalizarCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BFinalizarCompra.Image = global::ProyectoTaller.Properties.Resources.Check;
             this.BFinalizarCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BFinalizarCompra.Location = new System.Drawing.Point(525, 442);
+            this.BFinalizarCompra.Location = new System.Drawing.Point(700, 544);
+            this.BFinalizarCompra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BFinalizarCompra.Name = "BFinalizarCompra";
-            this.BFinalizarCompra.Size = new System.Drawing.Size(154, 52);
+            this.BFinalizarCompra.Size = new System.Drawing.Size(205, 64);
             this.BFinalizarCompra.TabIndex = 73;
             this.BFinalizarCompra.Text = "Finalizar Compra ";
             this.BFinalizarCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -144,9 +109,10 @@
             this.BQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BQuitar.Image = global::ProyectoTaller.Properties.Resources.Quitar;
             this.BQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BQuitar.Location = new System.Drawing.Point(615, 60);
+            this.BQuitar.Location = new System.Drawing.Point(820, 74);
+            this.BQuitar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BQuitar.Name = "BQuitar";
-            this.BQuitar.Size = new System.Drawing.Size(123, 52);
+            this.BQuitar.Size = new System.Drawing.Size(164, 64);
             this.BQuitar.TabIndex = 72;
             this.BQuitar.Text = "Quitar       ";
             this.BQuitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -160,9 +126,10 @@
             this.BLimpiarCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BLimpiarCarrito.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
             this.BLimpiarCarrito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BLimpiarCarrito.Location = new System.Drawing.Point(753, 60);
+            this.BLimpiarCarrito.Location = new System.Drawing.Point(1004, 74);
+            this.BLimpiarCarrito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BLimpiarCarrito.Name = "BLimpiarCarrito";
-            this.BLimpiarCarrito.Size = new System.Drawing.Size(123, 52);
+            this.BLimpiarCarrito.Size = new System.Drawing.Size(164, 64);
             this.BLimpiarCarrito.TabIndex = 69;
             this.BLimpiarCarrito.Text = "Limpiar Carro";
             this.BLimpiarCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -172,18 +139,19 @@
             // PBImagenCarrito
             // 
             this.PBImagenCarrito.Image = global::ProyectoTaller.Properties.Resources.Carro;
-            this.PBImagenCarrito.Location = new System.Drawing.Point(12, 9);
+            this.PBImagenCarrito.Location = new System.Drawing.Point(16, 11);
+            this.PBImagenCarrito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PBImagenCarrito.Name = "PBImagenCarrito";
-            this.PBImagenCarrito.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenCarrito.Size = new System.Drawing.Size(87, 82);
             this.PBImagenCarrito.TabIndex = 67;
             this.PBImagenCarrito.TabStop = false;
             // 
             // Carrito
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(887, 507);
+            this.ClientSize = new System.Drawing.Size(1183, 624);
             this.Controls.Add(this.BFinalizarCompra);
             this.Controls.Add(this.BQuitar);
             this.Controls.Add(this.TTotalCarrito);
@@ -192,7 +160,7 @@
             this.Controls.Add(this.PBImagenCarrito);
             this.Controls.Add(this.DGCarrito);
             this.Controls.Add(this.LTituloCarrito);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Carrito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.DGCarrito)).EndInit();
@@ -211,10 +179,6 @@
         private System.Windows.Forms.Label LTotal;
         private System.Windows.Forms.Label TTotalCarrito;
         private System.Windows.Forms.Button BQuitar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Button BFinalizarCompra;
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ProyectoTaller.CNegocio;
+using ProyectoTaller.DTO;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,9 +9,21 @@ namespace ProyectoTaller.Views.Vendedor
 {
     public partial class TConsultarProducto : Form
     {
+        private ProductoNegocio productoNegocio;
+        private CarritoNegocio carritoNegocio;
         public TConsultarProducto()
         {
             InitializeComponent();
+            cargarProductos();
+        }
+
+
+
+        public void cargarProductos()
+        {
+            productoNegocio = new ProductoNegocio();
+            List<ProductoDTO> productos = productoNegocio.listarProductos();
+            DGProductos.DataSource = productos;
         }
 
         private void BBuscarProducto_Click(object sender, EventArgs e)
@@ -311,6 +326,13 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BAgregarProductoACarrito_Click(object sender, EventArgs e)
         {
+            if (DGProductos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar una fila primero.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+            DataGridViewRow selectedRow = DGProductos.SelectedRows[0];
+
             DialogResult resultado = MessageBox.Show(
                 "¿Desea agregar el producto al carrito?",
                 "Confirmar Agregar",
@@ -320,8 +342,26 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Producto agregado al carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                carritoNegocio = new CarritoNegocio();
+
+                bool agregado = carritoNegocio.agregarProducto(selectedRow.Cells["Modelo"].Value.ToString(), 41008591);
+
+                if (agregado)
+                {
+                    MessageBox.Show("Producto agregado al carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar el producto al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+             
             }
+        }
+
+        private void DGProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

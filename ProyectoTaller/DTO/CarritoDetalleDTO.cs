@@ -8,7 +8,7 @@ namespace ProyectoTaller.DTO
 {
     public class CarritoDetalleDTO
     {
-        public string CodigoProducto { get; set; }
+        public string Modelo { get; set; }
         public string Descripcion { get; set; }
         public int cantidad { get; set; }
         public decimal precio { get; set; }

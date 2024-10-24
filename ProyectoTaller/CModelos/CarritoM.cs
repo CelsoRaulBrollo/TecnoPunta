@@ -11,5 +11,10 @@ namespace ProyectoTaller.CModelos
         public int DNIVendedor { get; set; }
         public decimal Total { get; set; }
         public List<DetalleCarrito> Detalles {  get; set; }
+
+        public CarritoM()
+        {
+            Detalles = new List<DetalleCarrito>();
+        }
     }
 }

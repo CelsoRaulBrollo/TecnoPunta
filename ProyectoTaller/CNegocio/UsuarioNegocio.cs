@@ -27,10 +27,10 @@ namespace ProyectoTaller.CNegocio
             return usuarioDatos.ActualizarUsuario(usuario);
         }
 
-        public bool GuardarUsuario(Usuario usuario) {
+        public void GuardarUsuario(Usuario usuario) {
             usuarioDatos = new UsuarioDatos();
 
-            return usuarioDatos.GuardarUsuario(usuario);
+            usuarioDatos.GuardarUsuario(usuario);
         }
 
     }
