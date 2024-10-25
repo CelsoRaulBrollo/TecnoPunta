@@ -8,12 +8,6 @@ namespace ProyectoTaller.DTO
 {
     public class CarritoDTO
     {
-        public decimal total {  get; set; }
         public List<CarritoDetalleDTO> detalles { get; set; }
-
-        public CarritoDTO()
-        {
-            detalles = new List<CarritoDetalleDTO>();
-        }
     }
 }

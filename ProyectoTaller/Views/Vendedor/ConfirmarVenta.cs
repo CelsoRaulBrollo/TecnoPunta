@@ -25,7 +25,7 @@ namespace ProyectoTaller.Views.Vendedor
         public void cargarCarrito()
         {
             carritoNegocio = new CarritoNegocio();
-            DGCarrito.DataSource = carritoNegocio.cargarCarito(41008591).detalles;
+            DGCarrito.DataSource = carritoNegocio.cargarCarrito(41008591).detalles;
             DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 

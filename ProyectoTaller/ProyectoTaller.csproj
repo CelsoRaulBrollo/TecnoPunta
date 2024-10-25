@@ -76,7 +76,10 @@
     <Compile Include="CModelos\Clientes.cs" />
     <Compile Include="CModelos\Condicion.cs" />
     <Compile Include="CModelos\DetalleCarrito.cs" />
+    <Compile Include="CModelos\Detalle_Factura.cs" />
+    <Compile Include="CModelos\Factura.cs" />
     <Compile Include="CModelos\Marca.cs" />
+    <Compile Include="CModelos\MetodoDePago.cs" />
     <Compile Include="CModelos\Producto.cs" />
     <Compile Include="CModelos\Rol.cs" />
     <Compile Include="CModelos\Sexo.cs" />
@@ -89,8 +92,8 @@
     <Compile Include="CNegocio\RolNegocio.cs" />
     <Compile Include="CNegocio\SexoNegocio.cs" />
     <Compile Include="CNegocio\UsuarioNegocio.cs" />
-    <Compile Include="DTO\CarritoDTO.cs" />
     <Compile Include="DTO\CarritoDetalleDTO.cs" />
+    <Compile Include="DTO\CarritoDTO.cs" />
     <Compile Include="DTO\ProductoDTO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
