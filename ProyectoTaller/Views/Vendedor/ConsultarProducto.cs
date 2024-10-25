@@ -1,14 +1,33 @@
-﻿using System;
+﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using ProyectoTaller.DTO;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
 {
-    public partial class TConsultarProducto : Form
+    public partial class ConsultarProducto : Form
     {
-        public TConsultarProducto()
+        private int _dniVendedor;
+        private ProductoNegocio productoNegocio;
+        private CarritoNegocio carritoNegocio;
+
+        public ConsultarProducto(int dni)
         {
             InitializeComponent();
+            _dniVendedor = dni;
+            cargarProductos();
+        }
+
+        public void cargarProductos()
+        {
+            productoNegocio = new ProductoNegocio();
+            List<ProductoDTO> productos = productoNegocio.listarProductos();
+            DGProductos.DataSource = productos;
         }
 
         private void BBuscarProducto_Click(object sender, EventArgs e)
@@ -311,6 +330,14 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BAgregarProductoACarrito_Click(object sender, EventArgs e)
         {
+            if (DGProductos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar una fila primero.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataGridViewRow selectedRow = DGProductos.SelectedRows[0];
+
             DialogResult resultado = MessageBox.Show(
                 "¿Desea agregar el producto al carrito?",
                 "Confirmar Agregar",
@@ -320,8 +347,50 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Producto agregado al carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                carritoNegocio = new CarritoNegocio();
+
+                Producto producto = new Producto
+                {
+                    Modelo_Producto = selectedRow.Cells["Modelo"].Value.ToString(),
+                    Nombre_Producto = selectedRow.Cells["Nombre"].Value.ToString(),
+                    Precio_Producto = Convert.ToDecimal(selectedRow.Cells["Precio"].Value),
+                };
+
+                int cantidad = 1;
+
+                bool agregado = carritoNegocio.agregarProducto(producto, cantidad, _dniVendedor);
+
+                if (agregado)
+                {
+                    MessageBox.Show("Producto agregado al carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar el producto al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+
+        private bool VerificarDNIExistente(int dniVendedor)
+        {
+            string connectionString = @"Server=CELSOBRO\SQLEXPRESS;Database=TecnoPuntaBD;Trusted_Connection=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM Usuarios WHERE DNI_Usuario = @dniVendedor";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@dniVendedor", dniVendedor);
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0; // Devuelve true si existe
+                }
+            }
+        }
+
+        private void DGProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -93,7 +93,7 @@ namespace ProyectoTaller.CDatos
             }
         }
 
-        public bool GuardarUsuario(Usuario usuario)
+        public void GuardarUsuario(Usuario usuario)
         {
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
@@ -112,11 +112,35 @@ namespace ProyectoTaller.CDatos
                 cmd.Parameters.AddWithValue("@Telefono", usuario.Telefono_Usuario);
                 cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
                 cmd.Parameters.Add("@Id_Sexo", SqlDbType.Int).Value = usuario.Sexo_Usuario; 
-                cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario; 
+                cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario;
+
+
 
                 connection.Open();
-                return cmd.ExecuteNonQuery() > 0; // Devuelve true si se insertó
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    //si inserto los datos agrega el carrito para el vendedor
+                    if (usuario.Rol_Usuario == 3)
+                    {
+                        string queryCarrito = @"
+                                INSERT INTO Carrito (DNI_Vendedor, Total)
+                                VALUES (@DNI, 0)";
+
+                        using (SqlCommand cmdCarrito = new SqlCommand(queryCarrito, connection))
+                        {
+                            cmdCarrito.Parameters.AddWithValue("@DNI", usuario.DNI_Usuario);
+                            cmdCarrito.ExecuteNonQuery();
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception("No se pudo guardar el usuario.");
+                }
+
             }
+
         }
     }
 }

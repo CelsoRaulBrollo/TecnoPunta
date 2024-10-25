@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTaller.CNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,21 @@ namespace ProyectoTaller.Views.Vendedor
 {
     public partial class ConfirmarVenta : Form
     {
+
+        private CarritoNegocio carritoNegocio;
         public ConfirmarVenta()
         {
             InitializeComponent();
+            cargarCarrito();
         }
+
+        public void cargarCarrito()
+        {
+            carritoNegocio = new CarritoNegocio();
+            DGCarrito.DataSource = carritoNegocio.cargarCarrito(41008591).detalles;
+            DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
 
         private void ConfirmarVenta_Load(object sender, EventArgs e)
         {

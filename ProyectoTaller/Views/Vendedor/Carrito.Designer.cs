@@ -30,10 +30,6 @@
         {
             this.LTituloCarrito = new System.Windows.Forms.Label();
             this.DGCarrito = new System.Windows.Forms.DataGridView();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LTotal = new System.Windows.Forms.Label();
             this.TTotalCarrito = new System.Windows.Forms.Label();
             this.BFinalizarCompra = new System.Windows.Forms.Button();
@@ -57,50 +53,17 @@
             // DGCarrito
             // 
             this.DGCarrito.AllowUserToAddRows = false;
+            this.DGCarrito.AllowUserToDeleteRows = false;
             this.DGCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CodigoProducto,
-            this.Descripcion,
-            this.Cantidad,
-            this.Precio});
             this.DGCarrito.Location = new System.Drawing.Point(11, 123);
-            this.DGCarrito.Margin = new System.Windows.Forms.Padding(2);
+            this.DGCarrito.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DGCarrito.Name = "DGCarrito";
+            this.DGCarrito.ReadOnly = true;
             this.DGCarrito.RowHeadersWidth = 51;
             this.DGCarrito.RowTemplate.Height = 24;
             this.DGCarrito.Size = new System.Drawing.Size(865, 305);
             this.DGCarrito.TabIndex = 50;
             this.DGCarrito.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGCarrito_CellContentClick);
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.FillWeight = 1F;
-            this.CodigoProducto.HeaderText = "Codigo Producto";
-            this.CodigoProducto.MinimumWidth = 6;
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 400;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.FillWeight = 1000F;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 315;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 125;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 6;
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 125;
             // 
             // LTotal
             // 
@@ -192,7 +155,7 @@
             this.Controls.Add(this.PBImagenCarrito);
             this.Controls.Add(this.DGCarrito);
             this.Controls.Add(this.LTituloCarrito);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Carrito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.DGCarrito)).EndInit();
@@ -211,10 +174,9 @@
         private System.Windows.Forms.Label LTotal;
         private System.Windows.Forms.Label TTotalCarrito;
         private System.Windows.Forms.Button BQuitar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Button BFinalizarCompra;
+        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.NumericUpDown numericUpDownCantidad;
+        private System.Windows.Forms.Button BAgregar;
     }
 }

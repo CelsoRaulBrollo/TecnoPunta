@@ -2,6 +2,7 @@
 using ProyectoTaller.Views.Gerentes;
 using ProyectoTaller.Views.Vendedor;
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -14,14 +15,16 @@ namespace ProyectoTaller.Views
 
         private FormularioInicio _formularioInicio;
         private string _rolUsuario;
+        private int _dniUsuario;
 
         public static Form FormularioActivo;
 
-        public MenuPrincipal(FormularioInicio formularioInicio, string rolUsuario)
+        public MenuPrincipal(FormularioInicio formularioInicio, string rolUsuario, int dniUsuario)
         {
             InitializeComponent();
             _formularioInicio = formularioInicio;
             _rolUsuario = rolUsuario;
+            _dniUsuario = dniUsuario;
 
             FormularioActivo = null;
 
@@ -35,31 +38,32 @@ namespace ProyectoTaller.Views
                 item.Visible = false;
             }
 
-            if (_rolUsuario == "Admin")
+            switch (_rolUsuario)
             {
-                BProductos.Visible = true;
-                BVentas.Visible = true;
-                BCliente.Visible = true;
-                BUsuarios.Visible = true;
-                BInformes.Visible = true;
-                BBackup.Visible = true;
-            }
-            else if (_rolUsuario == "Vendedor")
-            {
-                BProductos.Visible = true;
-                BCliente.Visible = true;
-                BCarrito.Visible = true;
-                BVentas.Visible = true;
-            }
-            else if (_rolUsuario == "Gerente")
-            {
-                BProductos.Visible = true;
-                BVentas.Visible = true;
-                BCliente.Visible = true;
-                BStock.Visible = true;
-                BInformes.Visible = true;
+                case "Admin":
+                    BProductos.Visible = true;
+                    BVentas.Visible = true;
+                    BCliente.Visible = true;
+                    BUsuarios.Visible = true;
+                    BInformes.Visible = true;
+                    BBackup.Visible = true;
+                    break;
+                case "Gerente":
+                    BProductos.Visible = true;
+                    BVentas.Visible = true;
+                    BCliente.Visible = true;
+                    BStock.Visible = true;
+                    BInformes.Visible = true;
+                    break;
+                case "Vendedor":
+                    BProductos.Visible = true;
+                    BCliente.Visible = true;
+                    BCarrito.Visible = true;
+                    BVentas.Visible = true;
+                    break;
             }
         }
+
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -154,7 +158,7 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Vendedor")
             {
-                Form consultarProductoForm = new TConsultarProducto();
+                Form consultarProductoForm = new ConsultarProducto(_dniUsuario);
 
                 MostrarFormularioEnPanel(consultarProductoForm);
             }
@@ -219,7 +223,7 @@ namespace ProyectoTaller.Views
 
         private void BCarrito_Click(object sender, EventArgs e)
         {
-            Form carritoForm = new Carrito();
+            Form carritoForm = new Carrito(_dniUsuario);
 
             MostrarFormularioEnPanel(carritoForm);
         }
