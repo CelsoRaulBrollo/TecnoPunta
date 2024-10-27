@@ -1,4 +1,7 @@
-﻿using ProyectoTaller.Views;
+﻿using ProyectoTaller.CDatos;
+using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using ProyectoTaller.Views;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -8,6 +11,7 @@ namespace ProyectoTaller
 {
     public partial class FormularioInicio : Form
     {
+        private UsuarioNegocio UsuarioNegocio;
         public FormularioInicio()
         {
             InitializeComponent();
@@ -22,26 +26,50 @@ namespace ProyectoTaller
         {
             string nombre = TUsuario.Text;
             string contraseña = TContraseña.Text;
+            UsuarioNegocio = new UsuarioNegocio();
 
+
+            
             LValidaciones.Text = "";
 
             ValidarLogin(nombre, contraseña);
+            Usuario usuario = UsuarioNegocio.autenticacion(nombre, contraseña);
 
             if (string.IsNullOrWhiteSpace(LValidaciones.Text))
             {
-                // Validar usuario y contraseña correctos
-                if ((nombre == "Admin" && contraseña == "12345") || (nombre == "Vendedor" && contraseña == "45678") || (nombre == "Gerente" && contraseña == "13579"))
-                {
-                    MenuPrincipal menu = new MenuPrincipal(this, nombre);
+                if (usuario != null && usuario.Estado == "ACTIVO") {
+
+                    MenuPrincipal menu = new MenuPrincipal(this, usuario);
                     menu.Show();
 
                     this.Hide();
+
+
                 }
                 else
                 {
-                    LValidaciones.Text = "Usuario o contraseña incorrectos.";
-                    LValidaciones.ForeColor = Color.Red;
+                    if(usuario.Estado != "BAJA")
+                    {
+                        LValidaciones.Text = "El Usuario ha sido dado de baja.";
+                        LValidaciones.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        LValidaciones.Text = "Usuario o contraseña incorrectos.";
+                        LValidaciones.ForeColor = Color.Red;
+                    }
+                    
                 }
+
+
+
+
+
+
+
+
+                
+                
             }
         }
 
