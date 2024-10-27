@@ -1,4 +1,6 @@
-﻿using ProyectoTaller.CNegocio;
+﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using ProyectoTaller.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,24 +10,34 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using CheckBox = System.Windows.Forms.CheckBox;
 
 namespace ProyectoTaller.Views.Vendedor
 {
     public partial class ConfirmarVenta : Form
     {
+        private int _dniUsuario;
 
         private CarritoNegocio carritoNegocio;
-        public ConfirmarVenta()
+        private ClienteNegocio clienteNegocio;
+        private VentaNegocio ventaNegocio;
+        private bool clienteActivo;
+        public ConfirmarVenta(int dniUsuario)
         {
             InitializeComponent();
             cargarCarrito();
+            clienteActivo = false;
+            _dniUsuario = dniUsuario;
         }
 
         public void cargarCarrito()
         {
             carritoNegocio = new CarritoNegocio();
-            DGCarrito.DataSource = carritoNegocio.cargarCarito(41008591).detalles;
+            DGCarrito.DataSource = carritoNegocio.cargarCarito(_dniUsuario).detalles;
+            decimal totalFinalizarCompra = carritoNegocio.cargarCarito(_dniUsuario).total;
+            LTotalFinalizarCompra.Text = totalFinalizarCompra.ToString() +" $";
             DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
@@ -42,6 +54,55 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BConfirmarCompraFinalizarCompra_Click(object sender, EventArgs e)
         {
+            bool bandera = true; //falso si no paso alguna validacion
+            if(!clienteActivo == true)
+            {
+                MessageBox.Show("Seleccione el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                bandera = false;
+
+            }
+            if(!(CBTarjetaDeCredito.Checked || CBTarjetaDeDebito.Checked || CBBilleteraVirtual.Checked || CBEfectivo.Checked))
+            {
+                MessageBox.Show("Debes elegir el metodo de pago", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                bandera = false;
+            }
+            if (DGCarrito.Rows.Count == 0) // Verifica si no hay filas en el DataGridView
+            {
+                MessageBox.Show("El carrito debe tener al menos un producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                bandera = false;
+            }
+
+            if (bandera== true)
+            {
+                    List<CarritoDetalleDTO> carritoDetalle = new List<CarritoDetalleDTO>();
+                    decimal totalCompra = 0;
+                    foreach (DataGridViewRow row in DGCarrito.Rows)
+                    {
+                        if (row.DataBoundItem is CarritoDetalleDTO detalle)
+                        {
+                            
+                            carritoDetalle.Add(detalle);
+                        }
+                    }
+                    
+                    decimal.TryParse(LTotalFinalizarCompra.Text, out totalCompra);
+
+                    CarritoDTO carritoParaVender = new CarritoDTO
+                    {
+                        total = carritoNegocio.cargarCarito(_dniUsuario).total,
+                        detalles = carritoDetalle
+                        
+                    };
+                    int dniCliente;
+                    int.TryParse(LDNICompraFinCompra.Text, out dniCliente);
+                    ventaNegocio = new VentaNegocio();
+                    ventaNegocio.rigistrarVenta(carritoParaVender, ObtenerMetodoPagoSeleccionado(), dniCliente, _dniUsuario);
+
+            }
+
+
+
+
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
 
@@ -128,5 +189,108 @@ namespace ProyectoTaller.Views.Vendedor
             g.DrawString("Gracias por su compra!", contentFont, brush, margin + 100, margin + 520);
         
         }
+
+        private void LDNICompraFinCompra_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BBuscarClienteFinalizarCompra_Click(object sender, EventArgs e)
+        {
+            if((int.TryParse(BXDNIClienteFinalizarCompra.Text, out int numero)))
+            {
+                string dniText = BXDNIClienteFinalizarCompra.Text;
+                int dniCliente;
+                int.TryParse(dniText, out dniCliente);
+                clienteNegocio = new ClienteNegocio();
+                Clientes cliente = new Clientes();
+
+                cliente = clienteNegocio.buscarCliente(dniCliente);
+
+                if (!(cliente == null))
+                {
+                    LNombreCompraFinCompra.Text = cliente.Nombre_Cliente;
+                    LApellidosCompraFinCompra.Text = cliente.Apellido_Cliente;
+                    LDNICompraFinCompra.Text = cliente.DNI_Cliente.ToString();
+                    LTelefonoCompraFinCompra.Text = cliente.Telefono_Cliente;
+                    LDireccionCompraFinCompra.Text = cliente.Direccion_Cliente;
+                    LCorreoCompraFinCompra.Text = cliente.Correo_Cliente;
+                    LValiBuscarCliente.Text = "";
+                    clienteActivo = true;
+                }
+                else
+                {
+                    LValiBuscarCliente.Text = "Cliente no existe";
+                    LValiBuscarCliente.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                LValiBuscarCliente.Text = "Ingrese un numero";
+                LValiBuscarCliente.ForeColor = Color.Red;
+            }
+            
+
+            
+
+
+        }
+
+        private void CBTarjetaDeCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            cambiosEstadoCB(CBTarjetaDeCredito);
+        }
+
+        private void CBTarjetaDeDebito_CheckedChanged(object sender, EventArgs e)
+        {
+            cambiosEstadoCB(CBTarjetaDeDebito);
+        }
+
+        private void CBBilleteraVirtual_CheckedChanged(object sender, EventArgs e)
+        {
+            cambiosEstadoCB(CBBilleteraVirtual);
+        }
+
+        private void CBEfectivo_CheckedChanged(object sender, EventArgs e)
+        {
+            cambiosEstadoCB(CBEfectivo);
+        }
+
+        private void cambiosEstadoCB(CheckBox checkBoxSeleccionado)
+        {
+            CheckBox[] checkBoxes = { CBTarjetaDeCredito, CBTarjetaDeDebito, CBBilleteraVirtual, CBEfectivo };
+
+            foreach (var checkBox in checkBoxes)
+            {
+               
+                if (checkBox != checkBoxSeleccionado)
+                {
+                    checkBox.Enabled = !checkBoxSeleccionado.Checked;
+                }
+            }
+        }
+        private int ObtenerMetodoPagoSeleccionado()
+        {
+            if (CBTarjetaDeCredito.Checked)
+            {
+                return 1; 
+            }
+            else if (CBTarjetaDeDebito.Checked)
+            {
+                return 2; 
+            }
+            else if (CBBilleteraVirtual.Checked)
+            {
+                return 3; 
+            }
+            else if (CBEfectivo.Checked)
+            {
+                return 4; 
+            }
+
+            return 0; 
+        }
+
+
     }
 }

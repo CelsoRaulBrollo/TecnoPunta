@@ -8,19 +8,26 @@ namespace ProyectoTaller.Views.Vendedor
     {
 
         private CarritoNegocio carritoNegocio;
-        public Carrito()
+        private int _dniUsuario;
+        public Carrito(int dniUsuario)
         {
             InitializeComponent();
+            _dniUsuario = dniUsuario;
             cargarCarrito();
+            
         }
 
         private ConfirmarVenta confirmarVenta;
 
+        
+
         public void cargarCarrito()
         {
             carritoNegocio = new CarritoNegocio();
-            DGCarrito.DataSource = carritoNegocio.cargarCarito(41008591).detalles;
-            DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            DGCarrito.DataSource = carritoNegocio.cargarCarito(_dniUsuario).detalles;
+            decimal totalFinalizarCompra = carritoNegocio.cargarCarito(_dniUsuario).total;
+            TTotalCarrito.Text = totalFinalizarCompra.ToString() + " $";
+            DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
 
@@ -28,7 +35,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             if (confirmarVenta == null || confirmarVenta.IsDisposed)
             {
-                confirmarVenta = new ConfirmarVenta();
+                confirmarVenta = new ConfirmarVenta(_dniUsuario);
                 confirmarVenta.Show();
             }
             else
@@ -52,7 +59,7 @@ namespace ProyectoTaller.Views.Vendedor
             DataGridViewRow selectedRow = DGCarrito.SelectedRows[0];
 
             carritoNegocio = new CarritoNegocio();
-            bool eliminado = carritoNegocio.eliminarProducto(selectedRow.Cells["Modelo"].Value.ToString(), 41008591);
+            bool eliminado = carritoNegocio.eliminarProducto(selectedRow.Cells["Modelo"].Value.ToString(), _dniUsuario);
             if (eliminado)
             {
                 MessageBox.Show("Elemento quitado del carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,7 +79,7 @@ namespace ProyectoTaller.Views.Vendedor
             if (resultado == DialogResult.Yes)
             {
                 carritoNegocio = new CarritoNegocio();
-                bool vaciado = carritoNegocio.vaciarCarrito(41008591);
+                bool vaciado = carritoNegocio.vaciarCarrito(_dniUsuario);
                 if (vaciado)
                 {
                     MessageBox.Show("El carrito ha sido limpiado.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -84,6 +91,11 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 return;
             }
+        }
+
+        private void Carrito_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

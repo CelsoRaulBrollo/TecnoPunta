@@ -9,10 +9,12 @@ namespace ProyectoTaller.Views.Vendedor
 {
     public partial class TConsultarProducto : Form
     {
+        private int _dniUsuario;
         private ProductoNegocio productoNegocio;
         private CarritoNegocio carritoNegocio;
-        public TConsultarProducto()
+        public TConsultarProducto(int dniUsuario)
         {
+            _dniUsuario = dniUsuario;
             InitializeComponent();
             cargarProductos();
         }
@@ -344,7 +346,7 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 carritoNegocio = new CarritoNegocio();
 
-                bool agregado = carritoNegocio.agregarProducto(selectedRow.Cells["Modelo"].Value.ToString(), 41008591);
+                bool agregado = carritoNegocio.agregarProducto(selectedRow.Cells["Modelo"].Value.ToString(), _dniUsuario);
 
                 if (agregado)
                 {
