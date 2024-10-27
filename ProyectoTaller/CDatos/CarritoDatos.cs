@@ -182,6 +182,17 @@ namespace ProyectoTaller.CDatos
                     
                 }
 
+                string updateTotalQuery = @"
+                    UPDATE Carrito 
+                    SET Total = (SELECT SUM(SubTotal) FROM CarritoDetalle WHERE DNI_Vendedor = @DNI_Vendedor)
+                    WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                using (SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, connection))
+                {
+                    updateTotalCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    updateTotalCmd.ExecuteNonQuery();
+                }
+
                 return true;
             }
         }
@@ -263,6 +274,17 @@ namespace ProyectoTaller.CDatos
                     }
                 }
 
+                string updateTotalQuery = @"
+                        UPDATE Carrito 
+                        SET Total = (SELECT SUM(SubTotal) FROM CarritoDetalle WHERE DNI_Vendedor = @DNI_Vendedor)
+                        WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                using (SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, connection))
+                {
+                    updateTotalCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    updateTotalCmd.ExecuteNonQuery();
+                }
+
                 return true; 
             }
         }
@@ -281,8 +303,21 @@ namespace ProyectoTaller.CDatos
                 {
                     deleteCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
                     int rowsAffected = deleteCmd.ExecuteNonQuery();
+
+                        string updateTotalQuery = @"
+                            UPDATE Carrito 
+                            SET Total = (SELECT SUM(SubTotal) FROM CarritoDetalle WHERE DNI_Vendedor = @DNI_Vendedor)
+                            WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                        using (SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, connection))
+                        {
+                            updateTotalCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                            updateTotalCmd.ExecuteNonQuery();
+                        }
+
                     return rowsAffected > 0; 
                 }
+
             }
         }
 

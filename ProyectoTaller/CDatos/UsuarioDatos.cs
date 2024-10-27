@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ProyectoTaller.CModelos;
+using System.Security.Policy;
 
 namespace ProyectoTaller.CDatos
 {
@@ -141,6 +142,82 @@ namespace ProyectoTaller.CDatos
 
             }
 
+        }
+
+        public Usuario buscarUsuario(int dni)
+        {
+            Usuario usuario = null;
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string query = "SELECT * FROM Usuarios WHERE DNI_Usuario = @DNI_Usuario";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Usuario", dni);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario
+                            {
+                                DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
+                                Usuario_Login = reader["Usuario"].ToString(),
+                                Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
+                                Apellido_Usuario = reader["Apellido_Usuario"].ToString(),
+                                Correo_Usuario = reader["Correo_Usuario"].ToString(),
+                                Sueldo_Usuario = Convert.ToDecimal(reader["Sueldo_Usuario"]),
+                                Telefono_Usuario = reader["Telefono_Usuario"].ToString(),
+                                Sexo_Usuario = Convert.ToInt32(reader["Sexo_Usuario"]),
+                                Rol_Usuario = Convert.ToInt32(reader["Rol_Usuario"]),
+                                Estado = reader["Estado_Usuarios"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return usuario;
+        }
+
+        public Usuario autenticacion(string nombreUsuario, string contraseña)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string query = "SELECT * FROM Usuarios WHERE Usuario = @Usuario AND Contraseña = @Contraseña";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@Usuario", nombreUsuario);
+                    command.Parameters.AddWithValue("@Contraseña", contraseña);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            
+                            return new Usuario
+                            {
+                                DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
+                                Usuario_Login = reader["Usuario"].ToString(),
+                                Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
+                                Apellido_Usuario = reader["Apellido_Usuario"].ToString(),
+                                Correo_Usuario = reader["Correo_Usuario"].ToString(),
+                                Sueldo_Usuario = Convert.ToDecimal(reader["Sueldo_Usuario"]),
+                                Telefono_Usuario = reader["Telefono_Usuario"].ToString(),
+                                Sexo_Usuario = Convert.ToInt32(reader["Sexo_Usuario"]),
+                                Rol_Usuario = Convert.ToInt32(reader["Rol_Usuario"])
+                            };
+                        }
+                        else
+                        {
+                           
+                            return null; 
+                        }
+                    }
+
+                }
+            }
         }
     }
 }
