@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ProyectoTaller.CDatos;
+using ProyectoTaller.CNegocio;
+using ProyectoTaller.DTO;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -6,67 +10,84 @@ namespace ProyectoTaller.Views.Administradores
 {
     public partial class InformesAdministrador : Form
     {
+        private MarcaDatos marcaDatos;
+        private RolNegocio rolNegocio;
         public InformesAdministrador()
         {
             InitializeComponent();
+            inicializarGraficoTorta();
+            inicializarGraficoUsuario();
         }
 
-        private void CHMarcasVendidas_Click(object sender, EventArgs e)
+        public void inicializarGraficoTorta()
+        {
+            DateTime fechaDesde = DTPDesdeMarcas.Value.Date;
+            DateTime fechaHasta = DTPHastaMarcas.Value.Date;
+            cargarGraficoTorta(fechaHasta, fechaDesde);
+        }
+
+        public void cargarGraficoTorta(DateTime fechaHasta, DateTime fechaDesde)
         {
             CHMarcasVendidas.Series.Clear();
+            
+            marcaDatos = new MarcaDatos();
+            if (fechaHasta < fechaDesde)
+            {
+                MessageBox.Show("La fecha 'hasta' debe ser mayor o igual a la fecha 'desde'.");
+                return; 
+            }
+            List<MarcaDTO> marcasVendidas = marcaDatos.buscarMarcasMasVendidaPorFecha(fechaDesde, fechaHasta);
 
-            var series = new Series("Marcas Vendidas");
-            series.ChartType = SeriesChartType.Doughnut;
-
-            series.Points.AddXY("Samsung", 30);
-            series.Points.AddXY("Apple", 20);
-            series.Points.AddXY("Xiaomi", 15);
-            series.Points.AddXY("Huawei", 10);
-            series.Points.AddXY("Motorola", 20);
-
-            CHMarcasVendidas.Series.Add(series);
-        }
-
-        private void CHCantidadUsuarios_Click(object sender, EventArgs e)
-        {
-            CHCantidadUsuarios.Series.Clear();
-
-            var series = new Series("Cantidad de Usuarios");
-            series.ChartType = SeriesChartType.Column;
-
-            series.Points.AddXY("Administradores", 200);
-            series.Points.AddXY("Gerentes", 50);
-            series.Points.AddXY("Vendedores", 350);
-
-            CHCantidadUsuarios.Series.Add(series);
-        }
-
-        private void InformesAdministrador_Load(object sender, EventArgs e)
-        {
             CHMarcasVendidas.Series.Clear();
+            CHMarcasVendidas.Series.Add("MarcasVendidas");
+            CHMarcasVendidas.Series["MarcasVendidas"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            CHMarcasVendidas.Series["MarcasVendidas"].Points.Clear();
 
-            var seriesMarcas = new Series("Marcas Vendidas");
-            seriesMarcas.ChartType = SeriesChartType.Doughnut;
+            foreach (var marca in marcasVendidas)
+            {
+                CHMarcasVendidas.Series["MarcasVendidas"].Points.AddXY(marca.nombre, marca.cantidad);
+            }
 
-            seriesMarcas.Points.AddXY("Samsung", 40);
-            seriesMarcas.Points.AddXY("Apple", 30);
-            seriesMarcas.Points.AddXY("Xiaomi", 10);
-            seriesMarcas.Points.AddXY("Huawei", 8);
-            seriesMarcas.Points.AddXY("Motorola", 20);
+            CHMarcasVendidas.Legends[0].Enabled = true;
+            
 
-            CHMarcasVendidas.Series.Add(seriesMarcas);
-
-            CHCantidadUsuarios.Series.Clear();
-
-            var seriesCantidadUsuarios = new Series("Cantidad de Usuarios");
-            seriesCantidadUsuarios.ChartType = SeriesChartType.Column;
-
-            seriesCantidadUsuarios.Points.AddXY("Administradores", 200);
-            seriesCantidadUsuarios.Points.AddXY("Gerentes", 50);
-            seriesCantidadUsuarios.Points.AddXY("Vendedores", 350);
-
-            CHCantidadUsuarios.Series.Add(seriesCantidadUsuarios);
         }
+        public void inicializarGraficoUsuario()
+        {
+            DateTime desde = DTPDesdeCantidadUsuarios.Value;
+            DateTime hasta = DTPHastaCantidadUsuarios.Value;
+            cargarDatosUsuarios(desde, hasta);
+        }
+        public void cargarDatosUsuarios(DateTime fechaDesde, DateTime fechaHasta) {
+            
+
+            rolNegocio = new RolNegocio();
+            List<RolDTO> rolDatos = rolNegocio.generarInfomreUsuario(fechaDesde, fechaHasta);
+            if (fechaHasta < fechaDesde)
+            {
+                MessageBox.Show("La fecha 'Desde' no puede ser mayor que la fecha 'Hasta'.");
+                return;
+            }
+            CHCantidadUsuarios.Series.Clear();
+            CHCantidadUsuarios.Legends.Clear();
+            CHCantidadUsuarios.Titles.Clear();
+
+            var serie = new Series("Cantidad de Usuarios")
+            {
+                ChartType = SeriesChartType.Column 
+            };
+
+            foreach (var rol in rolDatos)
+            {
+                serie.Points.AddXY(rol.nombre, rol.cantidad);
+            }
+            CHCantidadUsuarios.Series.Add(serie);
+
+        }
+
+      
+
+      
 
         private void DTPHastaCantidadUsuarios_ValueChanged(object sender, EventArgs e)
         {
@@ -80,12 +101,16 @@ namespace ProyectoTaller.Views.Administradores
 
         private void DTPDesdeMarcas_ValueChanged(object sender, EventArgs e)
         {
-
+            DateTime fechaDesde = DTPDesdeMarcas.Value.Date;
+            DateTime fechaHasta = DTPHastaMarcas.Value.Date;
+            cargarGraficoTorta(fechaHasta, fechaDesde);
         }
 
         private void DTPHastaMarcas_ValueChanged(object sender, EventArgs e)
         {
-
+            DateTime fechaDesde = DTPDesdeMarcas.Value.Date;
+            DateTime fechaHasta = DTPHastaMarcas.Value.Date;
+            cargarGraficoTorta(fechaHasta, fechaDesde);
         }
 
         private void BLimpiarFiltros_Click(object sender, EventArgs e)

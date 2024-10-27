@@ -1,4 +1,6 @@
-﻿using ProyectoTaller.Views.Vendedor;
+﻿using ProyectoTaller.CNegocio;
+using ProyectoTaller.DTO;
+using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -9,6 +11,7 @@ namespace ProyectoTaller.Views.Administradores
 {
     public partial class VerVentas : Form
     {
+        private VentaNegocio ventaNegocio;
         public VerVentas()
         {
             InitializeComponent();
@@ -16,12 +19,9 @@ namespace ProyectoTaller.Views.Administradores
 
         private void VerVentas_Load(object sender, System.EventArgs e)
         {
-            DGVentas.Columns["CFecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            DGVentas.Rows.Add("1", "Raul Brollo", "06/09/2024", "Tarjeta", "iPhone 13 Pro Max", "Leon Zorrilla 5260");
-            DGVentas.Rows.Add("2", "Leon Martinez", "10/12/2022", "Efectivo", "Samsung S24 Ultra", "Direccion 474");
-            DGVentas.Rows.Add("3", "Rawl Brol", "02/08/2024", "Tarjeta", "iPhone 16 Pro Max", "Direcc 878");
-            DGVentas.Rows.Add("3", "Maria Cande", "07/08/2024", "Transferencia", "iPhone 13 Pro Max", "Diagonal Eva 2377");
+            ventaNegocio = new VentaNegocio();
+            DGVentas.DataSource = ventaNegocio.obtenerTodasLasVentas();
+            DGVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void TBuscarVentas_TextChanged(object sender, System.EventArgs e)
@@ -48,8 +48,10 @@ namespace ProyectoTaller.Views.Administradores
                 MessageBox.Show("Por favor, selecciona una fila para ver el detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            VentaDetalle detalleForm = new VentaDetalle();
+            DataGridViewRow filaSeleccionada = DGVentas.SelectedRows[0];
+            var valor = filaSeleccionada.Cells["CodigoVenta"].Value;
+            int idVenta = Convert.ToInt32(valor);
+            VentaDetalles detalleForm = new VentaDetalles(idVenta);
 
             detalleForm.ShowDialog();
         }
@@ -184,21 +186,21 @@ namespace ProyectoTaller.Views.Administradores
                 {
                     bool mostrarFila = true;
 
-                    if (CBEfectivo.Checked && fila.Cells["CMedioPago"].Value.ToString() != "Efectivo")
+                    if (CBEfectivo.Checked && fila.Cells["MetodoDePago"].Value.ToString() != "Efectivo")
                     {
                         mostrarFila = false;
                     }
 
-                    if (CBTarjeta.Checked && fila.Cells["CMedioPago"].Value.ToString() != "Tarjeta")
+                    if (CBTarjeta.Checked && fila.Cells["MetodoDePago"].Value.ToString() != "Tarjeta")
                     {
                         mostrarFila = false;
                     }
 
-                    if (CBTransferencia.Checked && fila.Cells["CMedioPago"].Value.ToString() != "Transferencia")
+                    if (CBTransferencia.Checked && fila.Cells["MetodoDePago"].Value.ToString() != "Transferencia")
                     {
                         mostrarFila = false;
                     }
-
+                    DGVentas.CurrentCell = null;
                     fila.Visible = mostrarFila;
                 }
             }
@@ -217,20 +219,23 @@ namespace ProyectoTaller.Views.Administradores
         private void FiltrarPorFecha()
         {
             DateTime fechaDesde = DTPDesde.Value.Date;
-            DateTime fechaHasta = DTPHasta.Value.Date;
+            DateTime fechaHasta = DTPHasta.Value.Date.AddDays(1).AddTicks(-1);
 
             foreach (DataGridViewRow fila in DGVentas.Rows)
             {
                 if (!fila.IsNewRow)
                 {
-                    DateTime fecha = Convert.ToDateTime(fila.Cells["CFecha"].Value);
+                    DateTime fecha = Convert.ToDateTime(fila.Cells["FechaDeFacturacion"].Value);
 
                     if (fecha >= fechaDesde && fecha <= fechaHasta)
                     {
+
                         fila.Visible = true;
                     }
                     else
                     {
+         
+                        DGVentas.CurrentCell = null;
                         fila.Visible = false;
                     }
                 }

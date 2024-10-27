@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PBImagenInformeAdmin = new System.Windows.Forms.PictureBox();
             this.LTituloInformeAdmin = new System.Windows.Forms.Label();
             this.CHMarcasVendidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -57,9 +57,10 @@
             // PBImagenInformeAdmin
             // 
             this.PBImagenInformeAdmin.Image = global::ProyectoTaller.Properties.Resources.informe_titulo;
-            this.PBImagenInformeAdmin.Location = new System.Drawing.Point(12, 12);
+            this.PBImagenInformeAdmin.Location = new System.Drawing.Point(16, 15);
+            this.PBImagenInformeAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PBImagenInformeAdmin.Name = "PBImagenInformeAdmin";
-            this.PBImagenInformeAdmin.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenInformeAdmin.Size = new System.Drawing.Size(87, 82);
             this.PBImagenInformeAdmin.TabIndex = 31;
             this.PBImagenInformeAdmin.TabStop = false;
             // 
@@ -67,9 +68,10 @@
             // 
             this.LTituloInformeAdmin.AutoSize = true;
             this.LTituloInformeAdmin.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloInformeAdmin.Location = new System.Drawing.Point(80, 13);
+            this.LTituloInformeAdmin.Location = new System.Drawing.Point(107, 16);
+            this.LTituloInformeAdmin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTituloInformeAdmin.Name = "LTituloInformeAdmin";
-            this.LTituloInformeAdmin.Size = new System.Drawing.Size(305, 36);
+            this.LTituloInformeAdmin.Size = new System.Drawing.Size(385, 44);
             this.LTituloInformeAdmin.TabIndex = 32;
             this.LTituloInformeAdmin.Text = "Informes Estadisticos";
             this.LTituloInformeAdmin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -78,49 +80,50 @@
             // 
             this.CHMarcasVendidas.BackColor = System.Drawing.SystemColors.Control;
             this.CHMarcasVendidas.BorderlineColor = System.Drawing.SystemColors.Control;
-            chartArea3.Name = "ChartArea1";
-            this.CHMarcasVendidas.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.CHMarcasVendidas.Legends.Add(legend3);
-            this.CHMarcasVendidas.Location = new System.Drawing.Point(479, 142);
+            chartArea1.Name = "ChartArea1";
+            this.CHMarcasVendidas.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.CHMarcasVendidas.Legends.Add(legend1);
+            this.CHMarcasVendidas.Location = new System.Drawing.Point(639, 175);
+            this.CHMarcasVendidas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CHMarcasVendidas.Name = "CHMarcasVendidas";
             this.CHMarcasVendidas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.CHMarcasVendidas.Series.Add(series3);
-            this.CHMarcasVendidas.Size = new System.Drawing.Size(396, 288);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.CHMarcasVendidas.Series.Add(series1);
+            this.CHMarcasVendidas.Size = new System.Drawing.Size(528, 354);
             this.CHMarcasVendidas.TabIndex = 33;
             this.CHMarcasVendidas.Text = "chart1";
-            this.CHMarcasVendidas.Click += new System.EventHandler(this.CHMarcasVendidas_Click);
             // 
             // CHCantidadUsuarios
             // 
             this.CHCantidadUsuarios.BackColor = System.Drawing.SystemColors.Control;
-            chartArea4.Name = "ChartArea1";
-            this.CHCantidadUsuarios.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.CHCantidadUsuarios.Legends.Add(legend4);
-            this.CHCantidadUsuarios.Location = new System.Drawing.Point(12, 142);
+            chartArea2.Name = "ChartArea1";
+            this.CHCantidadUsuarios.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.CHCantidadUsuarios.Legends.Add(legend2);
+            this.CHCantidadUsuarios.Location = new System.Drawing.Point(16, 175);
+            this.CHCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CHCantidadUsuarios.Name = "CHCantidadUsuarios";
             this.CHCantidadUsuarios.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.CHCantidadUsuarios.Series.Add(series4);
-            this.CHCantidadUsuarios.Size = new System.Drawing.Size(396, 288);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.CHCantidadUsuarios.Series.Add(series2);
+            this.CHCantidadUsuarios.Size = new System.Drawing.Size(528, 354);
             this.CHCantidadUsuarios.TabIndex = 34;
             this.CHCantidadUsuarios.Text = "chart2";
-            this.CHCantidadUsuarios.Click += new System.EventHandler(this.CHCantidadUsuarios_Click);
             // 
             // LMarcasVendidas
             // 
             this.LMarcasVendidas.AutoSize = true;
             this.LMarcasVendidas.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LMarcasVendidas.Location = new System.Drawing.Point(475, 116);
+            this.LMarcasVendidas.Location = new System.Drawing.Point(633, 143);
+            this.LMarcasVendidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LMarcasVendidas.Name = "LMarcasVendidas";
-            this.LMarcasVendidas.Size = new System.Drawing.Size(206, 23);
+            this.LMarcasVendidas.Size = new System.Drawing.Size(260, 28);
             this.LMarcasVendidas.TabIndex = 35;
             this.LMarcasVendidas.Text = "Marca mas vendidas";
             // 
@@ -128,9 +131,10 @@
             // 
             this.LCantidadUsuarios.AutoSize = true;
             this.LCantidadUsuarios.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LCantidadUsuarios.Location = new System.Drawing.Point(12, 116);
+            this.LCantidadUsuarios.Location = new System.Drawing.Point(16, 143);
+            this.LCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LCantidadUsuarios.Name = "LCantidadUsuarios";
-            this.LCantidadUsuarios.Size = new System.Drawing.Size(208, 23);
+            this.LCantidadUsuarios.Size = new System.Drawing.Size(262, 28);
             this.LCantidadUsuarios.TabIndex = 36;
             this.LCantidadUsuarios.Text = "Cantidad de usuarios";
             // 
@@ -138,18 +142,20 @@
             // 
             this.LHasta.AutoSize = true;
             this.LHasta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LHasta.Location = new System.Drawing.Point(261, 119);
+            this.LHasta.Location = new System.Drawing.Point(348, 146);
+            this.LHasta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LHasta.Name = "LHasta";
-            this.LHasta.Size = new System.Drawing.Size(45, 17);
+            this.LHasta.Size = new System.Drawing.Size(60, 21);
             this.LHasta.TabIndex = 75;
             this.LHasta.Text = "Hasta";
             // 
             // DTPHastaCantidadUsuarios
             // 
             this.DTPHastaCantidadUsuarios.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTPHastaCantidadUsuarios.Location = new System.Drawing.Point(312, 117);
+            this.DTPHastaCantidadUsuarios.Location = new System.Drawing.Point(416, 144);
+            this.DTPHastaCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTPHastaCantidadUsuarios.Name = "DTPHastaCantidadUsuarios";
-            this.DTPHastaCantidadUsuarios.Size = new System.Drawing.Size(97, 20);
+            this.DTPHastaCantidadUsuarios.Size = new System.Drawing.Size(128, 22);
             this.DTPHastaCantidadUsuarios.TabIndex = 74;
             this.DTPHastaCantidadUsuarios.ValueChanged += new System.EventHandler(this.DTPHastaCantidadUsuarios_ValueChanged);
             // 
@@ -157,37 +163,42 @@
             // 
             this.LDesde.AutoSize = true;
             this.LDesde.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDesde.Location = new System.Drawing.Point(261, 77);
+            this.LDesde.Location = new System.Drawing.Point(348, 95);
+            this.LDesde.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LDesde.Name = "LDesde";
-            this.LDesde.Size = new System.Drawing.Size(48, 17);
+            this.LDesde.Size = new System.Drawing.Size(64, 21);
             this.LDesde.TabIndex = 73;
             this.LDesde.Text = "Desde";
             // 
             // DTPDesdeCantidadUsuarios
             // 
             this.DTPDesdeCantidadUsuarios.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTPDesdeCantidadUsuarios.Location = new System.Drawing.Point(312, 76);
+            this.DTPDesdeCantidadUsuarios.Location = new System.Drawing.Point(416, 94);
+            this.DTPDesdeCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTPDesdeCantidadUsuarios.Name = "DTPDesdeCantidadUsuarios";
-            this.DTPDesdeCantidadUsuarios.Size = new System.Drawing.Size(97, 20);
+            this.DTPDesdeCantidadUsuarios.Size = new System.Drawing.Size(128, 22);
             this.DTPDesdeCantidadUsuarios.TabIndex = 72;
+            this.DTPDesdeCantidadUsuarios.Value = new System.DateTime(2024, 10, 26, 0, 0, 0, 0);
             this.DTPDesdeCantidadUsuarios.ValueChanged += new System.EventHandler(this.DTPDesdeCantidadUsuarios_ValueChanged);
             // 
             // LHasta1
             // 
             this.LHasta1.AutoSize = true;
             this.LHasta1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LHasta1.Location = new System.Drawing.Point(727, 116);
+            this.LHasta1.Location = new System.Drawing.Point(969, 143);
+            this.LHasta1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LHasta1.Name = "LHasta1";
-            this.LHasta1.Size = new System.Drawing.Size(45, 17);
+            this.LHasta1.Size = new System.Drawing.Size(60, 21);
             this.LHasta1.TabIndex = 80;
             this.LHasta1.Text = "Hasta";
             // 
             // DTPHastaMarcas
             // 
             this.DTPHastaMarcas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTPHastaMarcas.Location = new System.Drawing.Point(778, 114);
+            this.DTPHastaMarcas.Location = new System.Drawing.Point(1037, 140);
+            this.DTPHastaMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTPHastaMarcas.Name = "DTPHastaMarcas";
-            this.DTPHastaMarcas.Size = new System.Drawing.Size(97, 20);
+            this.DTPHastaMarcas.Size = new System.Drawing.Size(128, 22);
             this.DTPHastaMarcas.TabIndex = 79;
             this.DTPHastaMarcas.ValueChanged += new System.EventHandler(this.DTPHastaMarcas_ValueChanged);
             // 
@@ -195,18 +206,20 @@
             // 
             this.LDesde1.AutoSize = true;
             this.LDesde1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDesde1.Location = new System.Drawing.Point(727, 74);
+            this.LDesde1.Location = new System.Drawing.Point(969, 91);
+            this.LDesde1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LDesde1.Name = "LDesde1";
-            this.LDesde1.Size = new System.Drawing.Size(48, 17);
+            this.LDesde1.Size = new System.Drawing.Size(64, 21);
             this.LDesde1.TabIndex = 78;
             this.LDesde1.Text = "Desde";
             // 
             // DTPDesdeMarcas
             // 
             this.DTPDesdeMarcas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTPDesdeMarcas.Location = new System.Drawing.Point(778, 73);
+            this.DTPDesdeMarcas.Location = new System.Drawing.Point(1037, 90);
+            this.DTPDesdeMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTPDesdeMarcas.Name = "DTPDesdeMarcas";
-            this.DTPDesdeMarcas.Size = new System.Drawing.Size(97, 20);
+            this.DTPDesdeMarcas.Size = new System.Drawing.Size(128, 22);
             this.DTPDesdeMarcas.TabIndex = 77;
             this.DTPDesdeMarcas.ValueChanged += new System.EventHandler(this.DTPDesdeMarcas_ValueChanged);
             // 
@@ -217,9 +230,10 @@
             this.BLimpiarFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BLimpiarFiltros.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
             this.BLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BLimpiarFiltros.Location = new System.Drawing.Point(377, 443);
+            this.BLimpiarFiltros.Location = new System.Drawing.Point(503, 545);
+            this.BLimpiarFiltros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BLimpiarFiltros.Name = "BLimpiarFiltros";
-            this.BLimpiarFiltros.Size = new System.Drawing.Size(123, 52);
+            this.BLimpiarFiltros.Size = new System.Drawing.Size(164, 64);
             this.BLimpiarFiltros.TabIndex = 81;
             this.BLimpiarFiltros.Text = "Limpiar Filtros";
             this.BLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -228,10 +242,10 @@
             // 
             // InformesAdministrador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(887, 507);
+            this.ClientSize = new System.Drawing.Size(1183, 624);
             this.Controls.Add(this.BLimpiarFiltros);
             this.Controls.Add(this.LHasta1);
             this.Controls.Add(this.DTPHastaMarcas);
@@ -247,10 +261,10 @@
             this.Controls.Add(this.CHMarcasVendidas);
             this.Controls.Add(this.LTituloInformeAdmin);
             this.Controls.Add(this.PBImagenInformeAdmin);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "InformesAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesAdministrador";
-            this.Load += new System.EventHandler(this.InformesAdministrador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenInformeAdmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CHMarcasVendidas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CHCantidadUsuarios)).EndInit();

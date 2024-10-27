@@ -1,21 +1,46 @@
-﻿using System.Linq;
+﻿using ProyectoTaller.CNegocio;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Administradores
 {
     public partial class AdministrarClientes : Form
     {
+        private ClienteNegocio clienteNegocio;
         public AdministrarClientes()
         {
             InitializeComponent();
+            cargarClientes();
+            DGClientes.RowPrePaint += DGClientes_RowPrePaint;
         }
 
-        private void AdministrarClientes_Load(object sender, System.EventArgs e)
+        public void cargarClientes()
         {
-            DGClientes.Rows.Add("42733217", "Raul", "Brollo", "3624777447", "celsobrollo@gmail.com", "Leon Zorrilla 5260");
-            DGClientes.Rows.Add("35525452", "Leon", "Martinez", "887845827", "Correo@gmail.com", "Direccion 474");
-            DGClientes.Rows.Add("45872125", "Rawl", "Brol", "3624984588", "Correo@outlook.com", "Direccion 878");
+            clienteNegocio = new ClienteNegocio();
+            DGClientes.DataSource = clienteNegocio.ObtenerClientes();
+            DGClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+           
+
+
         }
+
+        private void DGClientes_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            // Verifica si la celda de la columna "Estado" contiene "BAJA"
+            if (DGClientes.Rows[e.RowIndex].Cells["Estado"].Value != null &&
+                DGClientes.Rows[e.RowIndex].Cells["Estado"].Value.ToString() == "BAJA")
+            {
+                // Cambia el color de fondo de toda la fila a rojo
+                DGClientes.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#b11963");
+            }
+            else
+            {
+                // Restablecer a su color original si no es "BAJA"
+                DGClientes.Rows[e.RowIndex].DefaultCellStyle.BackColor = SystemColors.Window;
+            }
+        }
+
 
         private void DGClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
