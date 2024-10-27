@@ -14,5 +14,7 @@ namespace ProyectoTaller.CModelos
         public string Telefono_Cliente { get; set; }
         public string Correo_Cliente { get; set; }
         public string Direccion_Cliente { get; set; }
+        public string Estado { get; set; }
+
     }
 }

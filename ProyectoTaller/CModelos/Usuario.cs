@@ -16,7 +16,7 @@ namespace ProyectoTaller.CModelos
         public decimal Sueldo_Usuario {  get; set; }
         public string Contraseña { get; set; }
         public string Usuario_Login { get; set; }
-
+        public string Estado {  get; set; }
         public int Sexo_Usuario { get; set; }
         public int Rol_Usuario { get; set; }
 
