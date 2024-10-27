@@ -14,6 +14,12 @@ namespace ProyectoTaller.CNegocio
     {
         private UsuarioDatos usuarioDatos;
 
+        public Usuario autenticacion(string nombreUsuario, string contraseña)
+        {
+            usuarioDatos = new UsuarioDatos();
+            return usuarioDatos.autenticacion(nombreUsuario, contraseña);
+        }
+
         public DataTable ListarUsuarios()
         {
             usuarioDatos = new UsuarioDatos();
@@ -31,6 +37,12 @@ namespace ProyectoTaller.CNegocio
             usuarioDatos = new UsuarioDatos();
 
             usuarioDatos.GuardarUsuario(usuario);
+        }
+
+        public Usuario buscarUsuarioByDNI(int dNI)
+        {
+            usuarioDatos = new UsuarioDatos();
+            return usuarioDatos.buscarUsuario(dNI);
         }
 
     }

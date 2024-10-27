@@ -1,5 +1,6 @@
 ﻿using ProyectoTaller.CDatos;
 using ProyectoTaller.CModelos;
+using ProyectoTaller.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ namespace ProyectoTaller.CNegocio
         {
             MarcaDatos = new MarcaDatos();
             return MarcaDatos.ObtenerMarcas();
+        }
+
+        public List<MarcaDTO> buscarMarcasMasVendidaPorFecha(DateTime desde, DateTime hasta)
+        {
+            MarcaDatos = new MarcaDatos();
+            return MarcaDatos.buscarMarcasMasVendidaPorFecha(desde, hasta);
         }
     }
 }

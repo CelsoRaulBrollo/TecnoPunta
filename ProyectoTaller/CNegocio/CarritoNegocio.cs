@@ -13,7 +13,7 @@ namespace ProyectoTaller.CNegocio
     public class CarritoNegocio
     {
         private CarritoDatos carritoDatos;
-
+        
         public CarritoDTO cargarCarito(int dniVendedor)
         {
             CarritoDTO carritoRespuesta = new CarritoDTO();

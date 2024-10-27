@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using ProyectoTaller.CDatos;
+using ProyectoTaller.CModelos;
 
 namespace ProyectoTaller.CNegocio
 {
@@ -25,6 +27,12 @@ namespace ProyectoTaller.CNegocio
             return isDniValid && isNombreValid && isApellidoValid && isTelefonoValid && isCorreoValid && isDireccionValid;
         }
 
+        public List<Clientes> ObtenerClientes() {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            //tengo que hacer clientedto
+            return clienteDatos.listaDeClientes();
+        }
+
         public bool EsDNIExistente(int dniCliente)
         {
             ClienteDatos clienteDatos = new ClienteDatos();
@@ -41,6 +49,12 @@ namespace ProyectoTaller.CNegocio
         {
             ClienteDatos clienteDatos = new ClienteDatos();
             return clienteDatos.VerificarCorreo(correo);
+        }
+
+        public  Clientes buscarCliente (int dniCliente)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            return clienteDatos.buscarCliente(dniCliente);
         }
     }
 }

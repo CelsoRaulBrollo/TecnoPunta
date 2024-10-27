@@ -51,5 +51,11 @@ namespace ProyectoTaller.CNegocio
             productosDatos.guardarProducto(producto);
             
         }
+
+        public Producto buscarProductoBYID(string modelo)
+        {
+            productosDatos = new ProductoDatos();
+            return productosDatos.buscarProductoByID(modelo);
+        }
     }
 }
