@@ -1,8 +1,11 @@
-﻿using ProyectoTaller.Views.Administradores;
+﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using ProyectoTaller.Views.Administradores;
 using ProyectoTaller.Views.Gerentes;
 using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Drawing;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views
@@ -11,22 +14,31 @@ namespace ProyectoTaller.Views
     {
         bool mouseDown;
         private Point offset;
-
+        private RolNegocio rolNegocio;
         private FormularioInicio _formularioInicio;
         private string _rolUsuario;
+        private int _dniUsuario;
 
         public static Form FormularioActivo;
 
-        public MenuPrincipal(FormularioInicio formularioInicio, string rolUsuario)
+        public MenuPrincipal(FormularioInicio formularioInicio, Usuario usuario)
         {
             InitializeComponent();
             _formularioInicio = formularioInicio;
-            _rolUsuario = rolUsuario;
-
+            _rolUsuario = cargarRol(usuario.Rol_Usuario);
+            _dniUsuario = usuario.DNI_Usuario;
             FormularioActivo = null;
-
+            LNombreUsuario.Text = usuario.Nombre_Usuario + " " + usuario.Apellido_Usuario;
+            LRolUsuario.Text = cargarRol(usuario.Rol_Usuario);
             BotonesMenu();
         }
+
+        public string cargarRol(int idUsuario)
+        {
+            rolNegocio = new RolNegocio();
+            return rolNegocio.buscarDescripcionporID(idUsuario);
+        }
+
 
         private void BotonesMenu()
         {
@@ -35,7 +47,7 @@ namespace ProyectoTaller.Views
                 item.Visible = false;
             }
 
-            if (_rolUsuario == "Admin")
+            if (_rolUsuario == "Administrador")
             {
                 BProductos.Visible = true;
                 BVentas.Visible = true;
@@ -146,7 +158,7 @@ namespace ProyectoTaller.Views
 
         private void BProductos_Click(object sender, EventArgs e)
         {
-            if (_rolUsuario == "Admin")
+            if (_rolUsuario == "Administrador")
             {
                 Form agregarProductoForm = new AgregarProducto();
 
@@ -154,7 +166,7 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Vendedor")
             {
-                Form consultarProductoForm = new TConsultarProducto();
+                Form consultarProductoForm = new TConsultarProducto(_dniUsuario);
 
                 MostrarFormularioEnPanel(consultarProductoForm);
             }
@@ -175,7 +187,7 @@ namespace ProyectoTaller.Views
 
         private void BVentas_Click(object sender, EventArgs e)
         {
-            if (_rolUsuario == "Admin")
+            if (_rolUsuario == "Administrador")
             {
                 Form ventasAdmin = new VerVentas();
 
@@ -183,7 +195,7 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Vendedor")
             {
-                Form ventasVendedor = new GestionVentas();
+                Form ventasVendedor = new GestionVentas(_dniUsuario);
 
                 MostrarFormularioEnPanel(ventasVendedor);
             }
@@ -197,7 +209,7 @@ namespace ProyectoTaller.Views
 
         private void BCliente_Click(object sender, EventArgs e)
         {
-            if (_rolUsuario == "Admin")
+            if (_rolUsuario == "Administrador")
             {
                 Form AdminClientes = new AdministrarClientes();
 
@@ -219,7 +231,7 @@ namespace ProyectoTaller.Views
 
         private void BCarrito_Click(object sender, EventArgs e)
         {
-            Form carritoForm = new Carrito();
+            Form carritoForm = new Carrito(_dniUsuario);
 
             MostrarFormularioEnPanel(carritoForm);
         }
@@ -240,7 +252,7 @@ namespace ProyectoTaller.Views
 
         private void BInformes_Click(object sender, EventArgs e)
         {
-            if (_rolUsuario == "Admin")
+            if (_rolUsuario == "Administrador")
             {
                 Form informeAdmin = new InformesAdministrador();
 
