@@ -54,6 +54,7 @@
             this.LVenta = new System.Windows.Forms.Label();
             this.LIDCompra = new System.Windows.Forms.Label();
             this.LIDVenta = new System.Windows.Forms.Label();
+            this.LTotalVista = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVentaDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -355,12 +356,23 @@
             this.LIDVenta.Size = new System.Drawing.Size(0, 23);
             this.LIDVenta.TabIndex = 107;
             // 
+            // LTotalVista
+            // 
+            this.LTotalVista.AutoSize = true;
+            this.LTotalVista.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTotalVista.Location = new System.Drawing.Point(174, 513);
+            this.LTotalVista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LTotalVista.Name = "LTotalVista";
+            this.LTotalVista.Size = new System.Drawing.Size(0, 39);
+            this.LTotalVista.TabIndex = 108;
+            // 
             // VentaDetalles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1031, 598);
+            this.Controls.Add(this.LTotalVista);
             this.Controls.Add(this.LIDVenta);
             this.Controls.Add(this.LIDCompra);
             this.Controls.Add(this.BImprimirDetalle);
@@ -423,5 +435,6 @@
         private System.Windows.Forms.Label LVenta;
         private System.Windows.Forms.Label LIDCompra;
         private System.Windows.Forms.Label LIDVenta;
+        private System.Windows.Forms.Label LTotalVista;
     }
 }

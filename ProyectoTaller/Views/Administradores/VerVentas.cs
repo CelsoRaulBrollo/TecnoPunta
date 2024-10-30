@@ -31,7 +31,7 @@ namespace ProyectoTaller.Views.Administradores
             foreach (DataGridViewRow row in DGVentas.Rows)
             {
                 bool isVisible = row.Cells.Cast<DataGridViewCell>().Any(cell => cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText));
-
+                DGVentas.CurrentCell = null;
                 row.Visible = isVisible;
             }
         }
