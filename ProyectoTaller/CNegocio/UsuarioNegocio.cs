@@ -14,6 +14,12 @@ namespace ProyectoTaller.CNegocio
     {
         private UsuarioDatos usuarioDatos;
 
+        public void actualizarEstado(int dni_Usuario)
+        {
+            usuarioDatos = new UsuarioDatos();
+            usuarioDatos.actualizarEstado(dni_Usuario);
+        }
+
         public Usuario autenticacion(string nombreUsuario, string contraseña)
         {
             usuarioDatos = new UsuarioDatos();

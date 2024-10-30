@@ -48,27 +48,21 @@ namespace ProyectoTaller
                 }
                 else
                 {
-                    if(usuario.Estado != "BAJA")
-                    {
-                        LValidaciones.Text = "El Usuario ha sido dado de baja.";
-                        LValidaciones.ForeColor = Color.Red;
-                    }
-                    else
+                    if(usuario == null)
                     {
                         LValidaciones.Text = "Usuario o contraseña incorrectos.";
                         LValidaciones.ForeColor = Color.Red;
                     }
+                    else
+                    {
+                        LValidaciones.Text = "El Usuario ha sido dado de baja.";
+                        LValidaciones.ForeColor = Color.Red;
+
+                        
+                    }
                     
                 }
-
-
-
-
-
-
-
-
-                
+  
                 
             }
         }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using ProyectoTaller.CModelos;
 using System.Security.Policy;
+using ProyectoTaller.Views.Vendedor;
 
 namespace ProyectoTaller.CDatos
 {
@@ -29,7 +30,8 @@ namespace ProyectoTaller.CDatos
                         u.Telefono_Usuario AS Telefono,
                         u.Contraseña AS Contraseña,
                         s.Descripcion_Sexo AS Sexo,
-                        r.Descripcion_Rol AS Rol
+                        r.Descripcion_Rol AS Rol,
+                        u.Estado_Usuarios As Estado
                         FROM 
                             Usuarios u
                         JOIN 
@@ -86,11 +88,33 @@ namespace ProyectoTaller.CDatos
                 cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
                 cmd.Parameters.AddWithValue("@Usuario_Login", usuario.Usuario_Login);
                 cmd.Parameters.Add("@Id_Sexo", SqlDbType.Int).Value = usuario.Sexo_Usuario;
+                
                 cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario;
                 cmd.Parameters.AddWithValue("@DNI", usuario.DNI_Usuario);
-
                 connection.Open();
-                return cmd.ExecuteNonQuery() > 0; 
+                bool resultado = cmd.ExecuteNonQuery() > 0;
+
+                
+
+                if (usuario.Sexo_Usuario == 3)
+                {
+                    CrearCarrito(usuario.DNI_Usuario);
+                }
+                return resultado; 
+            }
+        }
+
+        public void CrearCarrito(int dniVendedor)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string insertCarritoQuery = "INSERT INTO Carrito (DNI_Vendedor, Total) VALUES (@DNI_Vendedor, 0)";
+                using (var command = new SqlCommand(insertCarritoQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -206,7 +230,8 @@ namespace ProyectoTaller.CDatos
                                 Sueldo_Usuario = Convert.ToDecimal(reader["Sueldo_Usuario"]),
                                 Telefono_Usuario = reader["Telefono_Usuario"].ToString(),
                                 Sexo_Usuario = Convert.ToInt32(reader["Sexo_Usuario"]),
-                                Rol_Usuario = Convert.ToInt32(reader["Rol_Usuario"])
+                                Rol_Usuario = Convert.ToInt32(reader["Rol_Usuario"]),
+                                Estado = reader["Estado_Usuarios"].ToString()
                             };
                         }
                         else
@@ -219,5 +244,39 @@ namespace ProyectoTaller.CDatos
                 }
             }
         }
+
+        public void actualizarEstado(int dni_Usuario)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+                string selectQuery = @"
+                    SELECT Estado_Usuarios 
+                    FROM Usuarios 
+                    WHERE DNI_Usuario = @DNI_Usuario";
+
+                var buscarUltimoEstadoCommand = new SqlCommand(selectQuery, connection);
+                buscarUltimoEstadoCommand.Parameters.AddWithValue("@DNI_Usuario", dni_Usuario);
+
+                var estadoActual = buscarUltimoEstadoCommand.ExecuteScalar() as string;
+
+                string nuevoEstado = (estadoActual == "ACTIVO") ? "BAJA" : "ACTIVO";
+
+                string updateQuery = @"
+                    UPDATE Usuarios 
+                    SET Estado_Usuarios = @NuevoEstado 
+                    WHERE DNI_Usuario = @DNI_Usuario";
+
+                var ActualizarCommand = new SqlCommand(updateQuery, connection);
+                ActualizarCommand.Parameters.AddWithValue("@NuevoEstado", nuevoEstado);
+                ActualizarCommand.Parameters.AddWithValue("@DNI_Usuario", dni_Usuario);
+
+                ActualizarCommand.ExecuteNonQuery();
+
+            }
+
+
+        }
+
     }
 }

@@ -24,8 +24,10 @@ namespace ProyectoTaller.Views.Vendedor
         public void cargarProductos()
         {
             productoNegocio = new ProductoNegocio();
-            List<ProductoDTO> productos = productoNegocio.listarProductos();
+            List<ProductoDTO> productos = productoNegocio.listarProductosConStock();
+
             DGProductos.DataSource = productos;
+            DGProductos.Columns["Condicion"].Visible = false;
         }
 
         private void BBuscarProducto_Click(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace ProyectoTaller.Views.Vendedor
             LimpiarMensajesDeValidacion();
             if (ValidacionesConsultaProducto())
             {
-                //IMPLEMENTACION CONSULTA SQL
+                //IMPLEMENTACION CONSULTA SQL O UTILIZAR LOS DATOS DEL DATA GRID
             }
 
             else

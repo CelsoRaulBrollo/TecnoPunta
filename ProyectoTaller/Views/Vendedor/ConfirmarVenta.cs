@@ -27,9 +27,10 @@ namespace ProyectoTaller.Views.Vendedor
         public ConfirmarVenta(int dniUsuario)
         {
             InitializeComponent();
+            _dniUsuario = dniUsuario;
             cargarCarrito();
             clienteActivo = false;
-            _dniUsuario = dniUsuario;
+            
         }
 
         public void cargarCarrito()
@@ -59,17 +60,20 @@ namespace ProyectoTaller.Views.Vendedor
             {
                 MessageBox.Show("Seleccione el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 bandera = false;
+                return;
 
             }
             if(!(CBTarjetaDeCredito.Checked || CBTarjetaDeDebito.Checked || CBBilleteraVirtual.Checked || CBEfectivo.Checked))
             {
                 MessageBox.Show("Debes elegir el metodo de pago", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 bandera = false;
+                return;
             }
             if (DGCarrito.Rows.Count == 0) // Verifica si no hay filas en el DataGridView
             {
                 MessageBox.Show("El carrito debe tener al menos un producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 bandera = false;
+                return;
             }
 
             if (bandera== true)
@@ -98,21 +102,26 @@ namespace ProyectoTaller.Views.Vendedor
                     ventaNegocio = new VentaNegocio();
                     ventaNegocio.rigistrarVenta(carritoParaVender, ObtenerMetodoPagoSeleccionado(), dniCliente, _dniUsuario);
 
+                    Carrito carrito = new Carrito(_dniUsuario);
+                    carrito.cargarCarrito();
+                // APARTIR DE ACA HABRIA QUE PONER LA IMPLEMENTACION DE IMPRIMIR FACTURA. 
+                PrintDocument printDocument = new PrintDocument();
+                    printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+
+                    PrintDialog printDialog = new PrintDialog();
+                    printDialog.Document = printDocument;
+
+                    if (printDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        printDocument.Print();
+                    }
+
             }
 
 
 
 
-            PrintDocument printDocument = new PrintDocument();
-            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
-
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.Document = printDocument;
-
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printDocument.Print();
-            }
+            
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)

@@ -24,6 +24,8 @@ namespace ProyectoTaller.Views.Administradores
             cargarComboRol();
             cargarComboSexo();
             GestionUsuarios_Load();
+            DGUsuarios.RowPostPaint += DGUsuarios_RowPostPaint;
+
         }
 
         public void cargarComboRol()
@@ -462,14 +464,21 @@ namespace ProyectoTaller.Views.Administradores
 
                 if (result == DialogResult.Yes)
                 {
-                    foreach (DataGridViewRow row in DGUsuarios.SelectedRows)
-                    {
-                        if (!row.IsNewRow)
-                        {
-                            MessageBox.Show("Usuario eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DGUsuarios.Rows.Remove(row);
-                        }
-                    }
+
+                    usuariosNegocio = new UsuarioNegocio();
+                    DataGridViewRow filaSeleccionada = DGUsuarios.SelectedRows[0];
+                    filaSeleccionadaIndex = filaSeleccionada.Index;
+                    string dni = filaSeleccionada.Cells["DNI"].Value.ToString();
+
+                    usuariosNegocio.actualizarEstado(int.Parse(dni));
+                    cargarComboRol();
+                    cargarComboSexo();
+                    GestionUsuarios_Load();
+
+
+                    MessageBox.Show("Usuario eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
+                     
                 }
             }
             else
@@ -481,10 +490,21 @@ namespace ProyectoTaller.Views.Administradores
         private void GestionUsuarios_Load()
         {
 
-               DGUsuarios.DataSource = usuariosNegocio.ListarUsuarios();
-       
+            DGUsuarios.DataSource = usuariosNegocio.ListarUsuarios();
+           
 
 
+        }
+
+        private void DGUsuarios_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var estado = DGUsuarios.Rows[e.RowIndex].Cells["Estado"].Value;
+
+            if (estado != null && estado.ToString() == "BAJA")
+            {
+                DGUsuarios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                DGUsuarios.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White; // Opcional
+            }
         }
 
         private void TBuscarUsuarios_TextChanged(object sender, EventArgs e)

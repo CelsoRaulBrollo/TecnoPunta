@@ -34,6 +34,7 @@
             this.TBuscarCliente = new System.Windows.Forms.TextBox();
             this.LBuscarClientes = new System.Windows.Forms.Label();
             this.BBorrarCliente = new System.Windows.Forms.Button();
+            this.BActivarCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGClientes)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +43,7 @@
             // 
             this.PBImagenCliente.Image = global::ProyectoTaller.Properties.Resources.NuevoCliente;
             this.PBImagenCliente.Location = new System.Drawing.Point(16, 15);
-            this.PBImagenCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PBImagenCliente.Margin = new System.Windows.Forms.Padding(4);
             this.PBImagenCliente.Name = "PBImagenCliente";
             this.PBImagenCliente.Size = new System.Drawing.Size(87, 82);
             this.PBImagenCliente.TabIndex = 68;
@@ -75,7 +76,7 @@
             // TBuscarCliente
             // 
             this.TBuscarCliente.Location = new System.Drawing.Point(468, 95);
-            this.TBuscarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TBuscarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.TBuscarCliente.Name = "TBuscarCliente";
             this.TBuscarCliente.Size = new System.Drawing.Size(272, 22);
             this.TBuscarCliente.TabIndex = 80;
@@ -102,15 +103,35 @@
             this.BBorrarCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BBorrarCliente.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
             this.BBorrarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrarCliente.Location = new System.Drawing.Point(993, 74);
-            this.BBorrarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BBorrarCliente.Location = new System.Drawing.Point(980, 74);
+            this.BBorrarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.BBorrarCliente.Name = "BBorrarCliente";
-            this.BBorrarCliente.Size = new System.Drawing.Size(175, 64);
+            this.BBorrarCliente.Size = new System.Drawing.Size(188, 64);
             this.BBorrarCliente.TabIndex = 83;
-            this.BBorrarCliente.Text = "Borrar Cliente";
+            this.BBorrarCliente.Text = "Baja Cliente";
             this.BBorrarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBorrarCliente.UseVisualStyleBackColor = true;
             this.BBorrarCliente.Click += new System.EventHandler(this.BBorrarCliente_Click);
+            // 
+            // BActivarCliente
+            // 
+            this.BActivarCliente.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BActivarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BActivarCliente.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BActivarCliente.FlatAppearance.BorderSize = 0;
+            this.BActivarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BActivarCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BActivarCliente.Image = global::ProyectoTaller.Properties.Resources.Usuarios;
+            this.BActivarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BActivarCliente.Location = new System.Drawing.Point(786, 74);
+            this.BActivarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.BActivarCliente.Name = "BActivarCliente";
+            this.BActivarCliente.Size = new System.Drawing.Size(186, 64);
+            this.BActivarCliente.TabIndex = 84;
+            this.BActivarCliente.Text = "Activar Cliente";
+            this.BActivarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BActivarCliente.UseVisualStyleBackColor = true;
+            this.BActivarCliente.Click += new System.EventHandler(this.BActivarCliente_Click);
             // 
             // AdministrarClientes
             // 
@@ -118,13 +139,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1183, 624);
+            this.Controls.Add(this.BActivarCliente);
             this.Controls.Add(this.BBorrarCliente);
             this.Controls.Add(this.LBuscarClientes);
             this.Controls.Add(this.TBuscarCliente);
             this.Controls.Add(this.DGClientes);
             this.Controls.Add(this.PBImagenCliente);
             this.Controls.Add(this.LTituloCliente);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdministrarClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdministrarClientes";
@@ -143,5 +165,6 @@
         private System.Windows.Forms.TextBox TBuscarCliente;
         private System.Windows.Forms.Label LBuscarClientes;
         private System.Windows.Forms.Button BBorrarCliente;
+        private System.Windows.Forms.Button BActivarCliente;
     }
 }

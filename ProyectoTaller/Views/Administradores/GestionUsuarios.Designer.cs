@@ -286,14 +286,14 @@
             this.BEliminar.FlatAppearance.BorderSize = 0;
             this.BEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar;
+            this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar1;
             this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BEliminar.Location = new System.Drawing.Point(979, 270);
             this.BEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.BEliminar.Name = "BEliminar";
             this.BEliminar.Size = new System.Drawing.Size(164, 64);
             this.BEliminar.TabIndex = 93;
-            this.BEliminar.Text = "Eliminar";
+            this.BEliminar.Text = "Activa / Baja";
             this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEliminar.UseVisualStyleBackColor = true;
             this.BEliminar.Click += new System.EventHandler(this.BEliminar_Click);
@@ -612,7 +612,6 @@
             this.Name = "GestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionUsuarios";
-        
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).EndInit();
             this.ResumeLayout(false);

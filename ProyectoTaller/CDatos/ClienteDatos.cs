@@ -9,7 +9,7 @@ namespace ProyectoTaller.CDatos
 {
     public class ClienteDatos
     {
-        private  ConexionBD conexion = new ConexionBD();
+        private ConexionBD conexion = new ConexionBD();
 
 
         public List<Clientes> listaDeClientes()
@@ -191,12 +191,12 @@ namespace ProyectoTaller.CDatos
                 {
                     command.Parameters.AddWithValue("@DNI_Cliente", dniCliente);
 
-        
+
                     connection.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                     
+
                         if (reader.Read())
                         {
                             cliente = new Clientes
@@ -213,9 +213,45 @@ namespace ProyectoTaller.CDatos
                 }
             }
 
-             return cliente;
+            return cliente;
         }
 
+        public void altaCliente(int dniCliente)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+                string query = @"
+                            UPDATE Clientes
+                            SET Estado_Cliente = 'ACTIVO'
+                            WHERE DNI_Cliente = @DNI_Cliente";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Cliente", dniCliente);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public void bajaCliente(int dniCliente)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+                string query = @"
+                        UPDATE Clientes
+                        SET Estado_Cliente = 'BAJA'
+                        WHERE DNI_Cliente = @DNI_Cliente";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Cliente", dniCliente);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
 

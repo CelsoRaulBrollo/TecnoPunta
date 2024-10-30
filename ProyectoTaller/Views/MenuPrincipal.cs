@@ -15,6 +15,7 @@ namespace ProyectoTaller.Views
         bool mouseDown;
         private Point offset;
         private RolNegocio rolNegocio;
+        private CarritoNegocio carritoNegocio;
         private FormularioInicio _formularioInicio;
         private string _rolUsuario;
         private int _dniUsuario;
@@ -129,8 +130,14 @@ namespace ProyectoTaller.Views
             if (result == DialogResult.Yes)
             {
                 this.Close();
-
+                if(_rolUsuario == "Vendedor")
+                {
+                    carritoNegocio = new CarritoNegocio();
+                    carritoNegocio.vaciarCarrito(_dniUsuario);
+                }
                 _formularioInicio.Show();
+
+
             }
         }
 

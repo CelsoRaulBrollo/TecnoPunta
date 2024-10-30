@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -46,6 +47,24 @@ namespace ProyectoTaller.CDatos
 
                     detalleCommand.ExecuteNonQuery();
                 }
+                string updateCarritoQuery = @"
+                    UPDATE Carrito
+                    SET Total = 0 
+                    WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                var updateCommand = new SqlCommand(updateCarritoQuery, connection);
+                updateCommand.Parameters.AddWithValue("@DNI_Vendedor", venta.vendedor.DNI_Usuario);
+                updateCommand.ExecuteNonQuery();
+
+                string deleteCarritoQuery = @"
+                    DELETE FROM CarritoDetalle 
+                    WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                var deleteCommand = new SqlCommand(deleteCarritoQuery, connection);
+                deleteCommand.Parameters.AddWithValue("@DNI_Vendedor", venta.vendedor.DNI_Usuario);
+                deleteCommand.ExecuteNonQuery();
+
+               
             }
         }
 

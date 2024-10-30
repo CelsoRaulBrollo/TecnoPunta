@@ -56,5 +56,17 @@ namespace ProyectoTaller.CNegocio
             ClienteDatos clienteDatos = new ClienteDatos();
             return clienteDatos.buscarCliente(dniCliente);
         }
+
+        public void altaCliente(int dniCliente)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            clienteDatos.altaCliente(dniCliente);
+        }
+
+        public void bajaCliente(int dniCliente)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            clienteDatos.bajaCliente(dniCliente);
+        }
     }
 }
