@@ -36,15 +36,17 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BVerDetalle_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<VentaDetalles>().Any())
+            if (DGVentasVendedor.SelectedRows.Count == 0) 
             {
-                Application.OpenForms.OfType<VentaDetalles>().First().Activate();
+                MessageBox.Show("Por favor, selecciona una fila para ver el detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                VentaDetalles ventana = new VentaDetalles(2);
-                ventana.Show();
-            }
+            DataGridViewRow filaSeleccionada = DGVentasVendedor.SelectedRows[0];
+            var valor = filaSeleccionada.Cells["CodigoVenta"].Value;
+            int idVenta = Convert.ToInt32(valor);
+            VentaDetalles detalleForm = new VentaDetalles(idVenta);
+
+            detalleForm.ShowDialog();
         }
     }
 }

@@ -2,6 +2,7 @@
 using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using ProyectoTaller.DTO;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,9 @@ namespace ProyectoTaller.Views.Vendedor
             LDireccionVenta.Text = ventaNegocio.buscarVentaPorId(idVenta).cliente.Direccion_Cliente;
             LCorreoVenta.Text = ventaNegocio.buscarVentaPorId(idVenta).cliente.Correo_Cliente;
             LIDVenta.Text = idVenta.ToString();
-           
+            LTotalVista.Text= ventaNegocio.buscarVentaPorId(idVenta).total.ToString();
+
+
 
             List<CarritoDetalleDTO> detalleVenta = new List<CarritoDetalleDTO>();
 
@@ -100,7 +103,60 @@ namespace ProyectoTaller.Views.Vendedor
         }
         private void BImprimirDetalle_Click(object sender, EventArgs e)
         {
-            
+            GenerarPDF();
+        }
+
+        private void GenerarPDF()
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.FileName = "ReporteVentas.pdf";
+                saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+                saveFileDialog.Title = "Guardar Reporte de Ventas";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var document = Document.Create(container =>
+                    {
+                        container
+                            .Page(page =>
+                            {
+                                page.Content().Column(column =>
+                                {
+                                    column.Item().Text("Reporte de Ventas").FontSize(20).Bold();
+                                    column.Item().PaddingVertical(10);
+                                    column.Item().Table(table =>
+                                    {
+                                        table.ColumnsDefinition(columns =>
+                                        {
+                                            columns.RelativeColumn(2);
+                                            columns.RelativeColumn(1);
+                                            columns.RelativeColumn(1);
+                                        });
+
+                                        table.Header(header =>
+                                        {
+                                            header.Cell().Text("Producto").Bold();
+                                            header.Cell().Text("Cantidad").Bold();
+                                            header.Cell().Text("Precio").Bold();
+                                        });
+
+                                        
+                                        
+                                            table.Cell().Text("venta.Producto");
+                                            table.Cell().Text("2");
+                                            table.Cell().Text("2333");
+                                        
+                                    });
+                                });
+                            });
+                    });
+
+                    document.GeneratePdf(saveFileDialog.FileName);
+                    MessageBox.Show($"PDF generado en: {saveFileDialog.FileName}");
+                }
+            }
         }
     }
 }
+
