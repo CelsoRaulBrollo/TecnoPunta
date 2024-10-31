@@ -114,6 +114,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Questpdf\InvoiceDocument.cs" />
     <Compile Include="Views\Administradores\AdministrarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
