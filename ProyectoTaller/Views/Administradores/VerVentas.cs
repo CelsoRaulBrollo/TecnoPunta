@@ -1,5 +1,6 @@
 ﻿using ProyectoTaller.CNegocio;
 using ProyectoTaller.DTO;
+using ProyectoTaller.Questpdf;
 using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Drawing;
@@ -64,13 +65,13 @@ namespace ProyectoTaller.Views.Administradores
                 return;
             }
 
-            PrintDocument printDocument = new PrintDocument();
-            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
-
-            PrintPreviewDialog previewDialog = new PrintPreviewDialog();
-            previewDialog.Document = printDocument;
-
-            previewDialog.ShowDialog();
+            ventaNegocio = new VentaNegocio();
+            DataGridViewRow filaSeleccionada = DGVentas.SelectedRows[0];
+            var valor = filaSeleccionada.Cells["CodigoVenta"].Value;
+            int idVenta = Convert.ToInt32(valor);
+            var venta = ventaNegocio.buscarVentaPorId(idVenta);
+            var document = new InvoiceDocument(venta);
+            document.crearDocumento();
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)

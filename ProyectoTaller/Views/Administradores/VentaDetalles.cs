@@ -2,11 +2,13 @@
 using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using ProyectoTaller.DTO;
+using ProyectoTaller.Questpdf;
 using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -14,6 +16,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.IO;
+using QuestPDF.Drawing;
+using QuestPDF.Infrastructure;
+using QuestPDF;
+
 
 namespace ProyectoTaller.Views.Vendedor
 {
@@ -21,7 +28,8 @@ namespace ProyectoTaller.Views.Vendedor
     {
         private VentaNegocio ventaNegocio;
 
-        
+ 
+
         public VentaDetalles(int idVenta)
         {
             InitializeComponent();
@@ -103,8 +111,20 @@ namespace ProyectoTaller.Views.Vendedor
         }
         private void BImprimirDetalle_Click(object sender, EventArgs e)
         {
-            GenerarPDF();
+            ventaNegocio = new VentaNegocio();
+            int idVenta;
+            int.TryParse(LIDVenta.Text, out idVenta);
+            var venta = ventaNegocio.buscarVentaPorId(idVenta);
+            var document = new InvoiceDocument(venta);
+            document.crearDocumento();
+          
+
+
+
+
         }
+
+
 
         private void GenerarPDF()
         {

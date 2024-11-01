@@ -1,8 +1,10 @@
-﻿using ProyectoTaller.CNegocio;
+﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
 using ProyectoTaller.DTO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
@@ -17,6 +19,7 @@ namespace ProyectoTaller.Views.Vendedor
             _dniUsuario = dniUsuario;
             InitializeComponent();
             cargarProductos();
+            cargarEventos();
         }
 
 
@@ -63,7 +66,7 @@ namespace ProyectoTaller.Views.Vendedor
                 TAlmacenamiento.Clear();
                 TSistemaOperativo.Clear();
 
-                CBEnStock.Checked = false;
+               
                 CBPrecioAsc.Checked = false;
                 CBPrecioDesc.Checked = false;
 
@@ -281,20 +284,49 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void CBPrecioAsc_CheckedChanged(object sender, EventArgs e)
         {
-            // Implementacion. Ordenar menor a mayor segun precio.
+            if (CBPrecioAsc.Checked)
+            {
+                CBPrecioDesc.Checked = false; 
+
+                OrdenarAscendente();
+            }
+            else
+            {
+                CBPrecioDesc.Enabled = true;
+                cargarProductos();
+            }
         }
 
         private void CBPrecioDesc_CheckedChanged(object sender, EventArgs e)
         {
-            // Implementacion. Ordenar mayor a menor segun precio.
+            if (CBPrecioDesc.Checked)
+            {
+                CBPrecioAsc.Checked = false; 
+
+                OrdenarDescendente();
+            }
+            else
+            {
+                CBPrecioAsc.Enabled = true;
+                cargarProductos();
+            }
         }
 
+        private void OrdenarAscendente()
+        {
+            productoNegocio = new ProductoNegocio();
+            List<ProductoDTO> productos = productoNegocio.listarProductosConStock();
+            var listaOrdenada = productos.OrderBy(p => p.Precio).ToList();
+            DGProductos.DataSource = listaOrdenada;
+        }
 
-
-
-
-
-
+        private void OrdenarDescendente()
+        {
+            productoNegocio = new ProductoNegocio();
+            List<ProductoDTO> productos = productoNegocio.listarProductosConStock();
+            var listaOrdenada = productos.OrderByDescending(p => p.Precio).ToList();
+            DGProductos.DataSource = listaOrdenada;
+        }
 
 
 
@@ -326,6 +358,80 @@ namespace ProyectoTaller.Views.Vendedor
         private void ConsultarProducto_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox currentTextBox = sender as TextBox;
+
+            // Verificar si hay texto en algún TextBox
+            bool isAnyTextBoxFilled = false;
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox && textBox != currentTextBox)
+                {
+                    if (textBox.Text.Length > 0)
+                    {
+                        isAnyTextBoxFilled = true; // Hay texto en algún TextBox
+                    }
+                }
+            }
+
+            // Si hay texto en algún TextBox, deshabilitar los demás y el ComboBox
+            if (isAnyTextBoxFilled || currentTextBox.Text.Length > 0)
+            {
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox textBox && textBox != currentTextBox)
+                    {
+                        textBox.Enabled = false; // Deshabilitar otros TextBox
+                    }
+                    else if (control is ComboBox)
+                    {
+                        control.Enabled = false; // Deshabilitar el ComboBox
+                    }
+                }
+            }
+            else
+            {
+                // Habilitar todos los TextBox y el ComboBox si todos están vacíos
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        control.Enabled = true; // Habilitar TextBox
+                    }
+                    else if (control is ComboBox)
+                    {
+                        control.Enabled = true; // Habilitar ComboBox
+                    }
+                }
+            }
+        }
+
+        private void CBMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Deshabilitar los TextBox si hay una marca seleccionada
+            bool isMarcaSelected = CBMarca.SelectedIndex >= 0;
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Enabled = !isMarcaSelected; // Habilitar o deshabilitar según la selección
+                }
+            }
+        }
+
+        public void cargarEventos()
+        {
+            TNombreProducto.TextChanged += TextBox_TextChanged;
+            TModelo.TextChanged += TextBox_TextChanged;
+            TMemoriaRam.TextChanged += TextBox_TextChanged;
+            TAlmacenamiento.TextChanged += TextBox_TextChanged;
+            TSistemaOperativo.TextChanged += TextBox_TextChanged;
+            CBMarca.SelectedIndexChanged += CBMarca_SelectedIndexChanged;
         }
 
         private void BAgregarProductoACarrito_Click(object sender, EventArgs e)
@@ -364,6 +470,11 @@ namespace ProyectoTaller.Views.Vendedor
         }
 
         private void DGProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CBMarca_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
         }

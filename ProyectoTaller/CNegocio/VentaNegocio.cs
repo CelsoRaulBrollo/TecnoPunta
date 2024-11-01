@@ -19,7 +19,7 @@ namespace ProyectoTaller.CNegocio
         private ProductoNegocio productoNegocio;
         private MetodoDePagoNegocio metodoNegocio;
 
-        public void rigistrarVenta(CarritoDTO carritoRegistrar,int idMetodoDePago, int dniCliente, int dniVendedor)
+        public int rigistrarVenta(CarritoDTO carritoRegistrar,int idMetodoDePago, int dniCliente, int dniVendedor)
         {
             clienteNegocio = new ClienteNegocio();
             Clientes clientee = clienteNegocio.buscarCliente(dniCliente);
@@ -53,7 +53,7 @@ namespace ProyectoTaller.CNegocio
 
 
 
-            ventaDatos.registrarVenta(venta);
+            return ventaDatos.registrarVenta(venta);
         }
 
         public List<VentasDTO> buscarVentaPorVendedor(int dniVendedor)

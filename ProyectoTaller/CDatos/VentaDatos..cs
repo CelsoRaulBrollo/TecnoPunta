@@ -13,7 +13,7 @@ namespace ProyectoTaller.CDatos
     {
         private ConexionBD conexion = new ConexionBD();
 
-        public void registrarVenta( Venta venta)
+        public int registrarVenta( Venta venta)
         {
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
@@ -64,7 +64,7 @@ namespace ProyectoTaller.CDatos
                 deleteCommand.Parameters.AddWithValue("@DNI_Vendedor", venta.vendedor.DNI_Usuario);
                 deleteCommand.ExecuteNonQuery();
 
-               
+                return idVenta;
             }
         }
 

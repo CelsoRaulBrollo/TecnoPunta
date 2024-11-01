@@ -284,7 +284,7 @@
             this.BEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BEliminar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BEliminar.FlatAppearance.BorderSize = 0;
-            this.BEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar1;
             this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

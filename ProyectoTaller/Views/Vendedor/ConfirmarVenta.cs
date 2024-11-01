@@ -1,6 +1,7 @@
 ﻿using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using ProyectoTaller.DTO;
+using ProyectoTaller.Questpdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -55,7 +57,7 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BConfirmarCompraFinalizarCompra_Click(object sender, EventArgs e)
         {
-            bool bandera = true; //falso si no paso alguna validacion
+            bool bandera = true; 
             if(!clienteActivo == true)
             {
                 MessageBox.Show("Seleccione el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -78,43 +80,45 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (bandera== true)
             {
+                    DialogResult resultado = MessageBox.Show("¿Desea terminar la venta?.", "Finalizacion de Venta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.OK)
+                {
                     List<CarritoDetalleDTO> carritoDetalle = new List<CarritoDetalleDTO>();
                     decimal totalCompra = 0;
                     foreach (DataGridViewRow row in DGCarrito.Rows)
                     {
                         if (row.DataBoundItem is CarritoDetalleDTO detalle)
                         {
-                            
+
                             carritoDetalle.Add(detalle);
                         }
                     }
-                    
+
                     decimal.TryParse(LTotalFinalizarCompra.Text, out totalCompra);
 
                     CarritoDTO carritoParaVender = new CarritoDTO
                     {
                         total = carritoNegocio.cargarCarito(_dniUsuario).total,
                         detalles = carritoDetalle
-                        
+
                     };
                     int dniCliente;
                     int.TryParse(LDNICompraFinCompra.Text, out dniCliente);
                     ventaNegocio = new VentaNegocio();
-                    ventaNegocio.rigistrarVenta(carritoParaVender, ObtenerMetodoPagoSeleccionado(), dniCliente, _dniUsuario);
+                    int idventa = ventaNegocio.rigistrarVenta(carritoParaVender, ObtenerMetodoPagoSeleccionado(), dniCliente, _dniUsuario);
+                    var venta = ventaNegocio.buscarVentaPorId(idventa);
+                    var document = new InvoiceDocument(venta);
+                    document.crearDocumento();
+
+
+
 
                     Carrito carrito = new Carrito(_dniUsuario);
                     carrito.cargarCarrito();
-                // APARTIR DE ACA HABRIA QUE PONER LA IMPLEMENTACION DE IMPRIMIR FACTURA. 
-                PrintDocument printDocument = new PrintDocument();
-                    printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
-
-                    PrintDialog printDialog = new PrintDialog();
-                    printDialog.Document = printDocument;
-
-                    if (printDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        printDocument.Print();
-                    }
+                }
+                
+                
+                
 
             }
 

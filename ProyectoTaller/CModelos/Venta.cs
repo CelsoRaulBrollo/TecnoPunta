@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +11,17 @@ namespace ProyectoTaller.CModelos
 {
     public class Venta
     {
-        public int idVenta {  get; set; }
-        public Usuario vendedor {  get; set; }
-        public Clientes cliente {  get; set; }
-        public decimal total {  get; set; }
+        public int idVenta { get; set; }
+        public Usuario vendedor { get; set; }
+        public Clientes cliente { get; set; }
+        public decimal total { get; set; }
         public MetodoDePagoModel metodoDePago { get; set; }
         public DateTime fechaDeVenta { get; set; }
 
         public List<VentaDetalle> detalles { get; set; }    
         
     }
-}
+
+        
+   }
+
