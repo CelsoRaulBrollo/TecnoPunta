@@ -3,6 +3,7 @@ using ProyectoTaller.CNegocio;
 using ProyectoTaller.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -36,9 +37,62 @@ namespace ProyectoTaller.Views.Vendedor
         private void BBuscarProducto_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
+            
             if (ValidacionesConsultaProducto())
             {
-                //IMPLEMENTACION CONSULTA SQL O UTILIZAR LOS DATOS DEL DATA GRID
+
+             
+                List<ProductoDTO> productos = productoNegocio.listarProductosConStock();
+                List<ProductoDTO> filtrados = new List<ProductoDTO>();
+
+                // Filtrar los productos según los criterios
+                foreach (var producto in productos)
+                {
+                    bool coinciden = true;
+
+                    if (!string.IsNullOrEmpty(TNombreProducto.Text) &&
+                        !producto.Nombre.ToLower().Contains(TNombreProducto.Text.ToLower()))
+                    {
+                        coinciden = false;
+                    }
+                    if (!string.IsNullOrEmpty(TModelo.Text) &&
+                        !producto.Modelo.ToLower().Contains(TModelo.Text.ToLower()))
+                    {
+                        coinciden = false;
+                    }
+                    if (!string.IsNullOrEmpty(TMemoriaRam.Text) &&
+                        !producto.Ram.ToLower().Contains(TMemoriaRam.Text.ToLower()))
+                    {
+                        coinciden = false;
+                    }
+                    if (!string.IsNullOrEmpty(TAlmacenamiento.Text) &&
+                        !producto.Almacenamiento.ToLower().Contains(TAlmacenamiento.Text.ToLower()))
+                    {
+                        coinciden = false;
+                    }
+                    if (!string.IsNullOrEmpty(TSistemaOperativo.Text) &&
+                        !producto.SistemaOperativo.ToLower().Contains(TSistemaOperativo.Text.ToLower()))
+                    {
+                        coinciden = false;
+                    }
+
+                    // Si coinciden todas las condiciones, se añade a la lista filtrada
+                    if (coinciden)
+                    {
+                        filtrados.Add(producto);
+                    }
+                }
+
+                // Asignar la lista filtrada al DataGrid
+                DGProductos.DataSource = filtrados;
+
+                // Mostrar mensaje si no se encuentran resultados
+                if (!filtrados.Any())
+                {
+                    MessageBox.Show("No se encontraron productos que coincidan con los criterios.");
+                }
+
+
             }
 
             else
@@ -69,6 +123,7 @@ namespace ProyectoTaller.Views.Vendedor
                
                 CBPrecioAsc.Checked = false;
                 CBPrecioDesc.Checked = false;
+                cargarProductos(); 
 
                 MessageBox.Show("Filtros limpios.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -96,65 +151,89 @@ namespace ProyectoTaller.Views.Vendedor
 
             bool valido = true;
 
-            if (nombreProducto.Length < 5)
+            // Validar Nombre Producto
+            if (TNombreProducto.Enabled)
             {
-
-                valido = false;
+                if (nombreProducto.Length < 5)
+                {
+                    LValiNombreP.ForeColor = Color.Red;
+                    LValiNombreP.Text = "Al menos 5 caracteres.";
+                    valido = false;
+                }
+                else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreProducto, @"^[a-zA-Z0-9]"))
+                {
+                    LValiNombreP.ForeColor = Color.Red;
+                    LValiNombreP.Text = "El Nombre debe contener solo letras y números.";
+                    valido = false;
+                }
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreProducto, @"^[a-zA-Z0-9]"))
-            {
 
-                valido = false;
+            // Validar Modelo
+            if (TModelo.Enabled)
+            {
+                if (modelo.Length < 3 || modelo.Length > 12)
+                {
+                    LValiModeloP.ForeColor = Color.Red;
+                    LValiModeloP.Text = "Modelo de 3 a 12 caracteres.";
+                    valido = false;
+                }
+                else if (!System.Text.RegularExpressions.Regex.IsMatch(modelo, @"^[a-zA-Z0-9]"))
+                {
+                    LValiModeloP.ForeColor = Color.Red;
+                    LValiModeloP.Text = "El modelo debe contener solo letras y números.";
+                    valido = false;
+                }
             }
 
-            if (modelo.Length < 3 || modelo.Length > 12)
+            // Validar Sistema Operativo
+            if (TSistemaOperativo.Enabled)
             {
-
-
-                valido = false;
-
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sistemaOperativo, @"^[a-zA-Z0-9]"))
+                {
+                    LValiSistOpe.ForeColor = Color.Red;
+                    LValiSistOpe.Text = "El S.O debe contener solo letras y números.";
+                    valido = false;
+                }
+                else if (sistemaOperativo.Length < 2 || sistemaOperativo.Length > 20)
+                {
+                    LValiSistOpe.ForeColor = Color.Red;
+                    LValiSistOpe.Text = "S.O de 2 a 20 caracteres.";
+                    valido = false;
+                }
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(modelo, @"^[a-zA-Z0-9]"))
+
+            // Validar Almacenamiento
+            if (TAlmacenamiento.Enabled)
             {
-
-                valido = false;
-
+                if (!int.TryParse(almacenamientoTexto, out int almacenamiento))
+                {
+                    LValiAllmac.ForeColor = Color.Red;
+                    LValiAllmac.Text = "El almacenamiento debe ser un número entero.";
+                    valido = false;
+                }
+                else if (almacenamiento <= 32 || almacenamiento > 1024)
+                {
+                    LValiAllmac.ForeColor = Color.Red;
+                    LValiAllmac.Text = "El almacenamiento debe estar entre 32 y 1024 GB.";
+                    valido = false;
+                }
             }
-            if (!System.Text.RegularExpressions.Regex.IsMatch(sistemaOperativo, @"^[a-zA-Z0-9]"))
+
+            // Validar RAM
+            if (TMemoriaRam.Enabled)
             {
-
-
-                valido = false;
-
-
-            }
-            else if (sistemaOperativo.Length < 2 || sistemaOperativo.Length > 20)
-            {
-
-                valido = false;
-
-
-            }
-            if (!int.TryParse(almacenamientoTexto, out int almacenamiento))
-            {
-
-
-                valido = false;
-            }
-            else if (almacenamiento <= 32 || almacenamiento > 1024)
-            {
-
-                valido = false;
-            }
-            if (!int.TryParse(ramTexto, out int ram))
-            {
-
-                valido = false;
-            }
-            else if (ram <= 1 || ram > 32)
-            {
-
-                valido = false;
+                if (!int.TryParse(ramTexto, out int ram))
+                {
+                    LValiRamp.ForeColor = Color.Red;
+                    LValiRamp.Text = "La Ram debe ser un número entero.";
+                    valido = false;
+                }
+                else if (ram <= 1 || ram > 32)
+                {
+                    LValiRamp.ForeColor = Color.Red;
+                    LValiRamp.Text = "La Ram debe estar entre 1 y 32 GB.";
+                    valido = false;
+                }
             }
 
             return valido;
@@ -169,112 +248,100 @@ namespace ProyectoTaller.Views.Vendedor
             string almacenamientoTexto = TAlmacenamiento.Text;
             string ramTexto = TMemoriaRam.Text;
 
-
-            if (string.IsNullOrWhiteSpace(nombreProducto))
+            // Validar Nombre Producto
+            if (TNombreProducto.Enabled) // Solo si el TextBox está habilitado
             {
-
-                LValiNombreP.Text = string.Empty;
-
-            }
-            else if (nombreProducto.Length < 5)
-            {
-                LValiNombreP.ForeColor = Color.Red;
-                LValiNombreP.Text = "Al menos 5 caracteres.";
-
-            }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreProducto, @"^[a-zA-Z0-9]"))
-            {
-                LValiNombreP.ForeColor = Color.Red;
-                LValiNombreP.Text = "El Nombre debe contener solo letras y números.";
-
-            }
-
-            if (string.IsNullOrWhiteSpace(modelo))
-            {
-
-                LValiModeloP.Text = string.Empty;
-
-            }
-            else if (modelo.Length < 3 || modelo.Length > 12)
-            {
-
-                LValiModeloP.ForeColor = Color.Red;
-                LValiModeloP.Text = "Modelo de 3 a 12 caracteres.";
-
-
-            }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(modelo, @"^[a-zA-Z0-9]"))
-            {
-                LValiModeloP.ForeColor = Color.Red;
-                LValiModeloP.Text = "El modelo debe contener solo letras y números.";
-
-
+                if (string.IsNullOrWhiteSpace(nombreProducto))
+                {
+                    LValiNombreP.Text = string.Empty;
+                }
+                else if (nombreProducto.Length < 5)
+                {
+                    LValiNombreP.ForeColor = Color.Red;
+                    LValiNombreP.Text = "Al menos 5 caracteres.";
+                }
+                else if (!System.Text.RegularExpressions.Regex.IsMatch(nombreProducto, @"^[a-zA-Z0-9]"))
+                {
+                    LValiNombreP.ForeColor = Color.Red;
+                    LValiNombreP.Text = "El Nombre debe contener solo letras y números.";
+                }
             }
 
-            if (string.IsNullOrWhiteSpace(sistemaOperativo))
+            // Validar Modelo
+            if (TModelo.Enabled)
             {
-
-                LValiSistOpe.Text = string.Empty;
-
-            }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(sistemaOperativo, @"^[a-zA-Z0-9]"))
-            {
-
-                LValiSistOpe.ForeColor = Color.Red;
-                LValiSistOpe.Text = "El S.O debe contener solo letras y números.";
-
-
-            }
-            else if (sistemaOperativo.Length < 2 || sistemaOperativo.Length > 20)
-            {
-                LValiSistOpe.ForeColor = Color.Red;
-                LValiSistOpe.Text = "S.O de 2 a 20 caracteres.";
-
-
-
+                if (string.IsNullOrWhiteSpace(modelo))
+                {
+                    LValiModeloP.Text = string.Empty;
+                }
+                else if (modelo.Length < 3 || modelo.Length > 12)
+                {
+                    LValiModeloP.ForeColor = Color.Red;
+                    LValiModeloP.Text = "Modelo de 3 a 12 caracteres.";
+                }
+                else if (!System.Text.RegularExpressions.Regex.IsMatch(modelo, @"^[a-zA-Z0-9]"))
+                {
+                    LValiModeloP.ForeColor = Color.Red;
+                    LValiModeloP.Text = "El modelo debe contener solo letras y números.";
+                }
             }
 
-            if (string.IsNullOrWhiteSpace(almacenamientoTexto))
+            // Validar Sistema Operativo
+            if (TSistemaOperativo.Enabled)
             {
-
-                LValiAllmac.Text = string.Empty;
-
-            }
-            else if (!int.TryParse(almacenamientoTexto, out int almacenamiento))
-            {
-
-                LValiAllmac.ForeColor = Color.Red;
-                LValiAllmac.Text = "El almacenamiento debe ser un número entero.";
-
-            }
-            else if (almacenamiento <= 32 || almacenamiento > 1024)
-            {
-                LValiAllmac.ForeColor = Color.Red;
-                LValiAllmac.Text = "El almacenamiento debe estar entre 32 y 1024 GB.";
-
-            }
-
-            if (string.IsNullOrWhiteSpace(ramTexto))
-            {
-
-                LValiRamp.Text = string.Empty;
-
-            }
-            else if (!int.TryParse(ramTexto, out int ram))
-            {
-
-                LValiRamp.ForeColor = Color.Red;
-                LValiRamp.Text = "La Ram debe ser un número entero.";
-
-            }
-            else if (ram <= 1 || ram > 32)
-            {
-                LValiRamp.ForeColor = Color.Red;
-                LValiRamp.Text = "La Ram debe estar entre 1 y 32 GB.";
-
+                if (string.IsNullOrWhiteSpace(sistemaOperativo))
+                {
+                    LValiSistOpe.Text = string.Empty;
+                }
+                else if (!System.Text.RegularExpressions.Regex.IsMatch(sistemaOperativo, @"^[a-zA-Z0-9]"))
+                {
+                    LValiSistOpe.ForeColor = Color.Red;
+                    LValiSistOpe.Text = "El S.O debe contener solo letras y números.";
+                }
+                else if (sistemaOperativo.Length < 2 || sistemaOperativo.Length > 20)
+                {
+                    LValiSistOpe.ForeColor = Color.Red;
+                    LValiSistOpe.Text = "S.O de 2 a 20 caracteres.";
+                }
             }
 
+            // Validar Almacenamiento
+            if (TAlmacenamiento.Enabled)
+            {
+                if (string.IsNullOrWhiteSpace(almacenamientoTexto))
+                {
+                    LValiAllmac.Text = string.Empty;
+                }
+                else if (!int.TryParse(almacenamientoTexto, out int almacenamiento))
+                {
+                    LValiAllmac.ForeColor = Color.Red;
+                    LValiAllmac.Text = "El almacenamiento debe ser un número entero.";
+                }
+                else if (almacenamiento <= 32 || almacenamiento > 1024)
+                {
+                    LValiAllmac.ForeColor = Color.Red;
+                    LValiAllmac.Text = "El almacenamiento debe estar entre 32 y 1024 GB.";
+                }
+            }
 
+            // Validar RAM
+            if (TMemoriaRam.Enabled)
+            {
+                if (string.IsNullOrWhiteSpace(ramTexto))
+                {
+                    LValiRamp.Text = string.Empty;
+                }
+                else if (!int.TryParse(ramTexto, out int ram))
+                {
+                    LValiRamp.ForeColor = Color.Red;
+                    LValiRamp.Text = "La Ram debe ser un número entero.";
+                }
+                else if (ram <= 1 || ram > 32)
+                {
+                    LValiRamp.ForeColor = Color.Red;
+                    LValiRamp.Text = "La Ram debe estar entre 1 y 32 GB.";
+                }
+            }
         }
 
         private void CBEnStock_CheckedChanged(object sender, EventArgs e)

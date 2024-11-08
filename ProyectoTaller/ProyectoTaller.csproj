@@ -104,11 +104,18 @@
     <Compile Include="DTO\CarritoDTO.cs" />
     <Compile Include="DTO\CarritoDetalleDTO.cs" />
     <Compile Include="DTO\MarcaDTO.cs" />
+    <Compile Include="DTO\MarcaInformeDTO.cs" />
     <Compile Include="DTO\ProductoDTO.cs" />
     <Compile Include="DTO\RolDTO.cs" />
     <Compile Include="DTO\VentaDetalleDTO.cs" />
+    <Compile Include="DTO\VentaInformeCantidadDTO.cs" />
+    <Compile Include="DTO\VentaInformeRecaudacionDTO.cs" />
+    <Compile Include="DTO\VentasMensualesPorMarcaDTO.cs" />
+    <Compile Include="DTO\VentasPorAñoDTO.cs" />
     <Compile Include="DTO\VentasAdmDTO.cs" />
     <Compile Include="DTO\VentasDTO.cs" />
+    <Compile Include="DTO\VentasPorDiaDTO.cs" />
+    <Compile Include="DTO\VentasPorMesDTO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

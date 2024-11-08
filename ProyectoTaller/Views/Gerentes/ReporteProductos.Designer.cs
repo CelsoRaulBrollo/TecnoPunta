@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.LTituloReporteProductos = new System.Windows.Forms.Label();
             this.PBImagenReporteProductos = new System.Windows.Forms.PictureBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -49,105 +49,91 @@
             // 
             this.LTituloReporteProductos.AutoSize = true;
             this.LTituloReporteProductos.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloReporteProductos.Location = new System.Drawing.Point(79, 14);
+            this.LTituloReporteProductos.Location = new System.Drawing.Point(105, 17);
+            this.LTituloReporteProductos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTituloReporteProductos.Name = "LTituloReporteProductos";
-            this.LTituloReporteProductos.Size = new System.Drawing.Size(274, 36);
+            this.LTituloReporteProductos.Size = new System.Drawing.Size(347, 44);
             this.LTituloReporteProductos.TabIndex = 35;
             this.LTituloReporteProductos.Text = "Reporte Productos";
             // 
             // PBImagenReporteProductos
             // 
             this.PBImagenReporteProductos.Image = global::ProyectoTaller.Properties.Resources.CelularesTitulo;
-            this.PBImagenReporteProductos.Location = new System.Drawing.Point(12, 12);
+            this.PBImagenReporteProductos.Location = new System.Drawing.Point(16, 15);
+            this.PBImagenReporteProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PBImagenReporteProductos.Name = "PBImagenReporteProductos";
-            this.PBImagenReporteProductos.Size = new System.Drawing.Size(65, 67);
+            this.PBImagenReporteProductos.Size = new System.Drawing.Size(87, 82);
             this.PBImagenReporteProductos.TabIndex = 34;
             this.PBImagenReporteProductos.TabStop = false;
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(51, 135);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
+            this.chart1.Location = new System.Drawing.Point(68, 166);
+            this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(254, 244);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart1.Series.Add(series5);
+            this.chart1.Size = new System.Drawing.Size(339, 300);
             this.chart1.TabIndex = 36;
             this.chart1.Text = "chart1";
             // 
             // CBMarca
             // 
             this.CBMarca.FormattingEnabled = true;
-            this.CBMarca.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.CBMarca.Location = new System.Drawing.Point(86, 385);
+            this.CBMarca.Location = new System.Drawing.Point(115, 474);
+            this.CBMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CBMarca.Name = "CBMarca";
-            this.CBMarca.Size = new System.Drawing.Size(177, 21);
+            this.CBMarca.Size = new System.Drawing.Size(235, 24);
             this.CBMarca.TabIndex = 74;
             this.CBMarca.Text = "Seleccione el Mes";
             // 
             // chart2
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(340, 135);
-            this.chart2.Margin = new System.Windows.Forms.Padding(2);
+            chartArea6.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart2.Legends.Add(legend6);
+            this.chart2.Location = new System.Drawing.Point(453, 166);
+            this.chart2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "VentasMensuales";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(483, 244);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "VentasMensuales";
+            this.chart2.Series.Add(series6);
+            this.chart2.Size = new System.Drawing.Size(644, 300);
             this.chart2.TabIndex = 75;
             this.chart2.Text = "chart2";
             // 
             // CBMarcaProductoReporte
             // 
             this.CBMarcaProductoReporte.FormattingEnabled = true;
-            this.CBMarcaProductoReporte.Items.AddRange(new object[] {
-            "Ventas Totales",
-            "Samsung",
-            "Motorola",
-            "Apple",
-            "Xiaomi",
-            "Huawei"});
-            this.CBMarcaProductoReporte.Location = new System.Drawing.Point(502, 385);
+            this.CBMarcaProductoReporte.Location = new System.Drawing.Point(669, 474);
+            this.CBMarcaProductoReporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CBMarcaProductoReporte.Name = "CBMarcaProductoReporte";
-            this.CBMarcaProductoReporte.Size = new System.Drawing.Size(177, 21);
+            this.CBMarcaProductoReporte.Size = new System.Drawing.Size(235, 24);
             this.CBMarcaProductoReporte.TabIndex = 76;
             this.CBMarcaProductoReporte.Text = "Seleccione una opción";
+            this.CBMarcaProductoReporte.SelectedIndexChanged += new System.EventHandler(this.CBMarcaProductoReporte_SelectedIndexChanged_1);
             // 
             // ReporteProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(887, 507);
+            this.ClientSize = new System.Drawing.Size(1183, 624);
             this.Controls.Add(this.CBMarcaProductoReporte);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.CBMarca);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.LTituloReporteProductos);
             this.Controls.Add(this.PBImagenReporteProductos);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ReporteProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReporteProductos";

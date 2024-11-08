@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.DTO;
 using ProyectoTaller.Views.Vendedor;
 using System;
 using System.Collections.Generic;
@@ -347,5 +348,229 @@ namespace ProyectoTaller.CDatos
 
             return venta;
         }
+
+        public List<VentasPorMesDTO> ObtenerVentasTotalesPorMes()
+        {
+            List<VentasPorMesDTO> ventasPorMes = new List<VentasPorMesDTO>();
+
+                    string query = @"
+                    SELECT 
+                        YEAR(FechaVenta) AS Año,
+                        MONTH(FechaVenta) AS Mes,
+                        SUM(Total) AS Total_Ventas
+                    FROM 
+                        Venta
+                    GROUP BY 
+                        YEAR(FechaVenta),
+                        MONTH(FechaVenta)
+                    ORDER BY 
+                        Año DESC, Mes DESC;
+                ";
+
+            
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open(); 
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ventasPorMes.Add(new VentasPorMesDTO
+                            {
+                                Año = reader.GetInt32(0),
+                                Mes = reader.GetInt32(1),
+                                TotalVentas = reader.GetDecimal(2)
+                            });
+                        }
+                    }
+                }
+            }
+
+            return ventasPorMes;
+        }
+
+        public List<VentaInformeRecaudacionDTO> ObtenerVentasTotales()
+        {
+            List<VentaInformeRecaudacionDTO> ventas = new List<VentaInformeRecaudacionDTO>();
+
+                 string query = @"
+                            SELECT 
+                                FechaVenta, 
+                                Total
+                            FROM Venta
+                            ORDER BY FechaVenta;
+                        ";
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        VentaInformeRecaudacionDTO venta = new VentaInformeRecaudacionDTO
+                        {
+                            FechaVenta = reader.GetDateTime(0), 
+                            TotalVentas = reader.GetDecimal(1)  
+                        };
+                        ventas.Add(venta);
+                    }
+                }
+            }
+
+            return ventas;
+        }
+
+
+        public List<VentaInformeCantidadDTO> ObtenerVentasPorDia()
+        {
+            List<VentaInformeCantidadDTO> ventasPorDia = new List<VentaInformeCantidadDTO>();
+
+            string query = @"
+                                SELECT 
+                                    CAST(v.FechaVenta AS DATE) AS Fecha,  -- Convertir a solo fecha
+                                    SUM(vd.Cantidad) AS Cantidad          -- Sumar las cantidades por día
+                                FROM 
+                                    Venta v
+                                JOIN 
+                                    VentaDetalle vd ON v.idVenta = vd.idVenta
+                                GROUP BY 
+                                    CAST(v.FechaVenta AS DATE)
+                                ORDER BY 
+                                    Fecha;
+                            ";
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        VentaInformeCantidadDTO venta = new VentaInformeCantidadDTO
+                        {
+                            FechaVenta = reader.GetDateTime(0),  // Fecha ya sin hora
+                            TotalCantidad = reader.GetInt32(1)   // Cantidad total de productos vendidos
+                        };
+
+                        ventasPorDia.Add(venta);
+                    }
+                }
+            }
+
+            return ventasPorDia;
+        }
+
+
+        public List<MarcaInformeDTO> ObtenerMarcasMasVendidasPorMes(int mes, int año)
+        {
+            List<MarcaInformeDTO> marcasVendidas = new List<MarcaInformeDTO>();
+
+            // Consulta SQL para obtener la marca y la cantidad vendida por cada marca en el mes y año seleccionados
+            string query = @"
+                            SELECT 
+                                m.Nombre_Marca, 
+                                SUM(vd.Cantidad) AS TotalCantidad
+                            FROM 
+                                Venta v
+                            JOIN 
+                                VentaDetalle vd ON v.idVenta = vd.idVenta
+                            JOIN 
+                                Productos p ON vd.Producto = p.Modelo_Producto
+                            JOIN 
+                                Marcas m ON p.Id_Marca = m.Id_Marca
+                            WHERE 
+                                YEAR(v.FechaVenta) = @Año 
+                                AND MONTH(v.FechaVenta) = @Mes
+                            GROUP BY 
+                                m.Nombre_Marca
+                            ORDER BY 
+                                TotalCantidad DESC;
+                        ";
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Año", año);
+                command.Parameters.AddWithValue("@Mes", mes);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        MarcaInformeDTO marca = new MarcaInformeDTO
+                        {
+                            Marca = reader.GetString(0),
+                            TotalVentas = reader.GetInt32(1)
+                        };
+
+                        marcasVendidas.Add(marca);
+                    }
+                }
+            }
+
+            return marcasVendidas;
+        }
+
+        public List<VentasMensualesPorMarcaDTO> ObtenerVentasMensualesPorMarca(int año)
+        {
+            List<VentasMensualesPorMarcaDTO> ventasMensualesPorMarca = new List<VentasMensualesPorMarcaDTO>();
+
+                        
+                        string query = @"
+                    SELECT 
+                        MONTH(v.FechaVenta) AS Mes,
+                        p.Id_Marca,
+                        m.Nombre_Marca,
+                        SUM(vd.Cantidad) AS CantidadVendida
+                    FROM 
+                        Venta v
+                    JOIN 
+                        VentaDetalle vd ON v.idVenta = vd.idVenta
+                    JOIN 
+                        Productos p ON p.Modelo_Producto = vd.Producto
+                    JOIN 
+                        Marcas m ON m.Id_Marca = p.Id_Marca
+                    WHERE 
+                        YEAR(v.FechaVenta) = @Año
+                    GROUP BY 
+                        MONTH(v.FechaVenta), p.Id_Marca, m.Nombre_Marca
+                    ORDER BY 
+                        MONTH(v.FechaVenta), m.Nombre_Marca;
+                ";
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Año", año);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ventasMensualesPorMarca.Add(new VentasMensualesPorMarcaDTO
+                        {
+                            Mes = reader.GetInt32(0),
+                            IdMarca = reader.GetInt32(1),
+                            NombreMarca = reader.GetString(2),
+                            CantidadVendida = reader.GetInt32(3)
+                        });
+                    }
+                }
+            }
+
+            return ventasMensualesPorMarca;
+        }
+
     }
 }

@@ -28,29 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.LTituloInformeGerente = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHVentasRealizadas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CHRecaudacion = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PBImagenReporteVentas = new System.Windows.Forms.PictureBox();
             this.CAAnualReporteVentas = new System.Windows.Forms.CheckBox();
             this.CAMensualReporteVentas = new System.Windows.Forms.CheckBox();
             this.CADiarioReporteVentas = new System.Windows.Forms.CheckBox();
-            this.CBOXMensualReporteVentas = new System.Windows.Forms.ComboBox();
-            this.CBOXAnualReporteVentas = new System.Windows.Forms.ComboBox();
             this.DTMDesdeReporteDeVentas = new System.Windows.Forms.DateTimePicker();
             this.DTMHastaReporteDeVentas = new System.Windows.Forms.DateTimePicker();
             this.LDesdeReporteDeVentas = new System.Windows.Forms.Label();
             this.LHastaReporteDeVentas = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.BReset = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.CHVentasRealizadas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHRecaudacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenReporteVentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,22 +64,22 @@
             this.LTituloInformeGerente.TabIndex = 32;
             this.LTituloInformeGerente.Text = "Reporte Ventas";
             // 
-            // chart1
+            // CHVentasRealizadas
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(36, 158);
-            this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Ventas";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(547, 300);
-            this.chart1.TabIndex = 33;
-            this.chart1.Text = "chart1";
+            chartArea3.Name = "ChartArea1";
+            this.CHVentasRealizadas.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.CHVentasRealizadas.Legends.Add(legend3);
+            this.CHVentasRealizadas.Location = new System.Drawing.Point(36, 158);
+            this.CHVentasRealizadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CHVentasRealizadas.Name = "CHVentasRealizadas";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Ventas";
+            this.CHVentasRealizadas.Series.Add(series3);
+            this.CHVentasRealizadas.Size = new System.Drawing.Size(547, 300);
+            this.CHVentasRealizadas.TabIndex = 33;
+            this.CHVentasRealizadas.Text = "chart1";
             // 
             // label7
             // 
@@ -104,28 +103,27 @@
             this.label1.TabIndex = 68;
             this.label1.Text = "Recaudacion";
             // 
-            // chart2
+            // CHRecaudacion
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(599, 158);
-            this.chart2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Ventas";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(547, 300);
-            this.chart2.TabIndex = 69;
-            this.chart2.Text = "chart2";
+            chartArea4.Name = "ChartArea1";
+            this.CHRecaudacion.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.CHRecaudacion.Legends.Add(legend4);
+            this.CHRecaudacion.Location = new System.Drawing.Point(599, 158);
+            this.CHRecaudacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CHRecaudacion.Name = "CHRecaudacion";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Ventas";
+            this.CHRecaudacion.Series.Add(series4);
+            this.CHRecaudacion.Size = new System.Drawing.Size(547, 300);
+            this.CHRecaudacion.TabIndex = 69;
             // 
             // PBImagenReporteVentas
             // 
             this.PBImagenReporteVentas.Image = global::ProyectoTaller.Properties.Resources.VentasTitulo;
             this.PBImagenReporteVentas.Location = new System.Drawing.Point(13, 14);
-            this.PBImagenReporteVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PBImagenReporteVentas.Margin = new System.Windows.Forms.Padding(4);
             this.PBImagenReporteVentas.Name = "PBImagenReporteVentas";
             this.PBImagenReporteVentas.Size = new System.Drawing.Size(87, 82);
             this.PBImagenReporteVentas.TabIndex = 70;
@@ -134,7 +132,7 @@
             // CAAnualReporteVentas
             // 
             this.CAAnualReporteVentas.AutoSize = true;
-            this.CAAnualReporteVentas.Location = new System.Drawing.Point(215, 521);
+            this.CAAnualReporteVentas.Location = new System.Drawing.Point(470, 560);
             this.CAAnualReporteVentas.Name = "CAAnualReporteVentas";
             this.CAAnualReporteVentas.Size = new System.Drawing.Size(63, 20);
             this.CAAnualReporteVentas.TabIndex = 71;
@@ -145,7 +143,7 @@
             // CAMensualReporteVentas
             // 
             this.CAMensualReporteVentas.AutoSize = true;
-            this.CAMensualReporteVentas.Location = new System.Drawing.Point(465, 521);
+            this.CAMensualReporteVentas.Location = new System.Drawing.Point(558, 560);
             this.CAMensualReporteVentas.Name = "CAMensualReporteVentas";
             this.CAMensualReporteVentas.Size = new System.Drawing.Size(80, 20);
             this.CAMensualReporteVentas.TabIndex = 72;
@@ -156,7 +154,7 @@
             // CADiarioReporteVentas
             // 
             this.CADiarioReporteVentas.AutoSize = true;
-            this.CADiarioReporteVentas.Location = new System.Drawing.Point(723, 521);
+            this.CADiarioReporteVentas.Location = new System.Drawing.Point(661, 560);
             this.CADiarioReporteVentas.Name = "CADiarioReporteVentas";
             this.CADiarioReporteVentas.Size = new System.Drawing.Size(65, 20);
             this.CADiarioReporteVentas.TabIndex = 73;
@@ -164,55 +162,26 @@
             this.CADiarioReporteVentas.UseVisualStyleBackColor = true;
             this.CADiarioReporteVentas.CheckedChanged += new System.EventHandler(this.CADiarioReporteVentas_CheckedChanged);
             // 
-            // CBOXMensualReporteVentas
-            // 
-            this.CBOXMensualReporteVentas.FormattingEnabled = true;
-            this.CBOXMensualReporteVentas.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.CBOXMensualReporteVentas.Location = new System.Drawing.Point(551, 517);
-            this.CBOXMensualReporteVentas.Name = "CBOXMensualReporteVentas";
-            this.CBOXMensualReporteVentas.Size = new System.Drawing.Size(145, 24);
-            this.CBOXMensualReporteVentas.TabIndex = 74;
-            this.CBOXMensualReporteVentas.Text = "Seleccione un mes";
-            // 
-            // CBOXAnualReporteVentas
-            // 
-            this.CBOXAnualReporteVentas.FormattingEnabled = true;
-            this.CBOXAnualReporteVentas.Location = new System.Drawing.Point(284, 517);
-            this.CBOXAnualReporteVentas.Name = "CBOXAnualReporteVentas";
-            this.CBOXAnualReporteVentas.Size = new System.Drawing.Size(145, 24);
-            this.CBOXAnualReporteVentas.TabIndex = 75;
-            this.CBOXAnualReporteVentas.Text = "Seleccione el Año";
-            // 
             // DTMDesdeReporteDeVentas
             // 
-            this.DTMDesdeReporteDeVentas.Location = new System.Drawing.Point(798, 493);
+            this.DTMDesdeReporteDeVentas.Location = new System.Drawing.Point(370, 514);
             this.DTMDesdeReporteDeVentas.Name = "DTMDesdeReporteDeVentas";
             this.DTMDesdeReporteDeVentas.Size = new System.Drawing.Size(200, 22);
             this.DTMDesdeReporteDeVentas.TabIndex = 76;
+            this.DTMDesdeReporteDeVentas.Value = new System.DateTime(2024, 1, 1, 23, 45, 0, 0);
             // 
             // DTMHastaReporteDeVentas
             // 
-            this.DTMHastaReporteDeVentas.Location = new System.Drawing.Point(798, 547);
+            this.DTMHastaReporteDeVentas.Location = new System.Drawing.Point(614, 514);
             this.DTMHastaReporteDeVentas.Name = "DTMHastaReporteDeVentas";
             this.DTMHastaReporteDeVentas.Size = new System.Drawing.Size(200, 22);
             this.DTMHastaReporteDeVentas.TabIndex = 77;
+            this.DTMHastaReporteDeVentas.Value = new System.DateTime(2024, 11, 8, 0, 0, 0, 0);
             // 
             // LDesdeReporteDeVentas
             // 
             this.LDesdeReporteDeVentas.AutoSize = true;
-            this.LDesdeReporteDeVentas.Location = new System.Drawing.Point(878, 474);
+            this.LDesdeReporteDeVentas.Location = new System.Drawing.Point(440, 484);
             this.LDesdeReporteDeVentas.Name = "LDesdeReporteDeVentas";
             this.LDesdeReporteDeVentas.Size = new System.Drawing.Size(48, 16);
             this.LDesdeReporteDeVentas.TabIndex = 78;
@@ -221,11 +190,28 @@
             // LHastaReporteDeVentas
             // 
             this.LHastaReporteDeVentas.AutoSize = true;
-            this.LHastaReporteDeVentas.Location = new System.Drawing.Point(878, 528);
+            this.LHastaReporteDeVentas.Location = new System.Drawing.Point(688, 484);
             this.LHastaReporteDeVentas.Name = "LHastaReporteDeVentas";
             this.LHastaReporteDeVentas.Size = new System.Drawing.Size(43, 16);
             this.LHastaReporteDeVentas.TabIndex = 79;
             this.LHastaReporteDeVentas.Text = "Hasta";
+            this.LHastaReporteDeVentas.Click += new System.EventHandler(this.LHastaReporteDeVentas_Click);
+            // 
+            // BReset
+            // 
+            this.BReset.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BReset.Image = global::ProyectoTaller.Properties.Resources.buscar;
+            this.BReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BReset.Location = new System.Drawing.Point(916, 494);
+            this.BReset.Margin = new System.Windows.Forms.Padding(4);
+            this.BReset.Name = "BReset";
+            this.BReset.Size = new System.Drawing.Size(133, 60);
+            this.BReset.TabIndex = 80;
+            this.BReset.Text = "   Reset      ";
+            this.BReset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BReset.UseVisualStyleBackColor = true;
             // 
             // ReporteVentas
             // 
@@ -233,27 +219,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1183, 624);
+            this.Controls.Add(this.BReset);
             this.Controls.Add(this.LHastaReporteDeVentas);
             this.Controls.Add(this.LDesdeReporteDeVentas);
             this.Controls.Add(this.DTMHastaReporteDeVentas);
             this.Controls.Add(this.DTMDesdeReporteDeVentas);
-            this.Controls.Add(this.CBOXAnualReporteVentas);
-            this.Controls.Add(this.CBOXMensualReporteVentas);
             this.Controls.Add(this.CADiarioReporteVentas);
             this.Controls.Add(this.CAMensualReporteVentas);
             this.Controls.Add(this.CAAnualReporteVentas);
             this.Controls.Add(this.PBImagenReporteVentas);
-            this.Controls.Add(this.chart2);
+            this.Controls.Add(this.CHRecaudacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.CHVentasRealizadas);
             this.Controls.Add(this.LTituloInformeGerente);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ReporteVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesGerente";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHVentasRealizadas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHRecaudacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenReporteVentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -262,19 +247,18 @@
 
         #endregion
         private System.Windows.Forms.Label LTituloInformeGerente;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHVentasRealizadas;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CHRecaudacion;
         private System.Windows.Forms.PictureBox PBImagenReporteVentas;
         private System.Windows.Forms.CheckBox CAAnualReporteVentas;
         private System.Windows.Forms.CheckBox CAMensualReporteVentas;
         private System.Windows.Forms.CheckBox CADiarioReporteVentas;
-        private System.Windows.Forms.ComboBox CBOXMensualReporteVentas;
-        private System.Windows.Forms.ComboBox CBOXAnualReporteVentas;
         private System.Windows.Forms.DateTimePicker DTMDesdeReporteDeVentas;
         private System.Windows.Forms.DateTimePicker DTMHastaReporteDeVentas;
         private System.Windows.Forms.Label LDesdeReporteDeVentas;
         private System.Windows.Forms.Label LHastaReporteDeVentas;
+        private System.Windows.Forms.Button BReset;
     }
 }

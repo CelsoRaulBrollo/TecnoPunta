@@ -128,5 +128,165 @@ namespace ProyectoTaller.CNegocio
             return ventaDatos.BuscarVentaPorId(idVenta);
         }
 
+        public List<VentasPorMesDTO> listarVentasPorMesAñoActual()
+        {
+            ventaDatos = new VentaDatos();
+            return ventaDatos.ObtenerVentasTotalesPorMes();
+
+        }
+
+        public List<VentasPorAñoDTO> ObtenerVentasAnuales(DateTime desde, DateTime hasta)
+        {
+            ventaDatos = new VentaDatos();
+            var todasLasVentas = ventaDatos.ObtenerVentasTotales(); 
+
+            var ventasAnuales = todasLasVentas
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)  // Filtrar por el rango de fechas
+                .GroupBy(v => v.FechaVenta.Year)  // Agrupar por año
+                .Select(g => new VentasPorAñoDTO
+                {
+                    Año = g.Key,
+                    TotalVentas = g.Sum(v => v.TotalVentas)  // Sumar ventas por año
+                })
+                .OrderBy(v => v.Año)
+                .ToList();
+
+            return ventasAnuales;
+        }
+
+
+        public List<VentasPorMesDTO> ObtenerVentasMensuales(DateTime desde, DateTime hasta)
+        {
+            ventaDatos = new VentaDatos();
+            var todasLasVentas = ventaDatos.ObtenerVentasTotales();
+
+            var ventasMensuales = todasLasVentas
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)  // Filtrar por el rango de fechas
+                .GroupBy(v => new { v.FechaVenta.Year, v.FechaVenta.Month })  // Agrupar por año y mes
+                .Select(g => new VentasPorMesDTO
+                {
+                    Año = g.Key.Year,
+                    Mes = g.Key.Month,
+                    MesNombre = g.First().FechaVenta.ToString("MMMM"),  // Nombre del mes
+                    TotalVentas = g.Sum(v => v.TotalVentas)  // Sumar ventas por mes
+                })
+                .OrderBy(v => v.Año)  // Ordenar por año
+                .ThenBy(v => v.Mes)   // Luego ordenar por mes
+                .ToList();
+
+            return ventasMensuales;
+        }
+
+        public List<VentasPorDiaDTO> ObtenerVentasDiarias(DateTime desde, DateTime hasta)
+        {
+            ventaDatos = new VentaDatos();
+            var todasLasVentas = ventaDatos.ObtenerVentasTotales();
+
+            var ventasDiarias = todasLasVentas
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)  // Filtrar por el rango de fechas
+                .GroupBy(v => v.FechaVenta.Date)  // Agrupar por día
+                .Select(g => new VentasPorDiaDTO
+                {
+                    Fecha = g.Key,
+                    TotalVentas = g.Sum(v => v.TotalVentas)  // Sumar ventas por día
+                })
+                .OrderBy(v => v.Fecha)  // Ordenar por fecha
+                .ToList();
+
+            return ventasDiarias;
+        }
+
+
+        public List<VentasPorAñoDTO> ObtenerCantidadVentasAnuales(DateTime desde, DateTime hasta)
+        {
+            ventaDatos = new VentaDatos();
+            var todasLasVentas = ventaDatos.ObtenerVentasPorDia();  // Obtener los datos de cantidad por día
+
+            // Filtrar las ventas dentro del rango de fechas
+            var ventasAnuales = todasLasVentas
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)  // Filtrar por el rango de fechas
+                .GroupBy(v => v.FechaVenta.Year)  // Agrupar por año
+                .Select(g => new VentasPorAñoDTO
+                {
+                    Año = g.Key,
+                    TotalCantidad = g.Sum(v => v.TotalCantidad)  // Sumar las cantidades por año
+                })
+                .OrderBy(v => v.Año)
+                .ToList();
+
+            return ventasAnuales;
+        }
+
+        public List<VentasPorMesDTO> ObtenerCantidadVentasMensuales(DateTime desde, DateTime hasta)
+        {
+            ventaDatos = new VentaDatos();
+            var todasLasVentas = ventaDatos.ObtenerVentasPorDia();  // Obtener los datos de cantidad por día
+
+            var ventasMensuales = todasLasVentas
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)  // Filtrar por el rango de fechas
+                .GroupBy(v => new { v.FechaVenta.Year, v.FechaVenta.Month })  // Agrupar por año y mes
+                .Select(g => new VentasPorMesDTO
+                {
+                    Año = g.Key.Year,
+                    Mes = g.Key.Month,
+                    MesNombre = g.First().FechaVenta.ToString("MMMM"),  // Nombre del mes
+                    TotalCantidad = g.Sum(v => v.TotalCantidad)  // Sumar las cantidades por mes
+                })
+                .OrderBy(v => v.Año)  // Ordenar por año
+                .ThenBy(v => v.Mes)   // Luego ordenar por mes
+                .ToList();
+
+            return ventasMensuales;
+        }
+
+        public List<VentasPorDiaDTO> ObtenerCantidadVentasDiarias(DateTime desde, DateTime hasta)
+        {
+            ventaDatos = new VentaDatos();
+            var todasLasVentas = ventaDatos.ObtenerVentasPorDia();  // Obtener los datos de cantidad por día
+
+            var ventasDiarias = todasLasVentas
+                .Where(v => v.FechaVenta >= desde && v.FechaVenta <= hasta)  // Filtrar por el rango de fechas
+                .GroupBy(v => v.FechaVenta.Date)  // Agrupar por fecha (día)
+                .Select(g => new VentasPorDiaDTO
+                {
+                    Fecha = g.Key,
+                    TotalCantidad = g.Sum(v => v.TotalCantidad)  // Sumar las cantidades por día
+                })
+                .OrderBy(v => v.Fecha)  // Ordenar por fecha
+                .ToList();
+
+            return ventasDiarias;
+        }
+
+
+        public List<MarcaInformeDTO> ObtenerMarcasMasVendidasPorMes(int mes, int año)
+        {
+            VentaDatos ventaDatos = new VentaDatos();
+            return ventaDatos.ObtenerMarcasMasVendidasPorMes(mes, año);
+        }
+
+        public List<VentasMensualesPorMarcaDTO> ObtenerVentasMensualesPorMarca(int año)
+        {
+            VentaDatos ventaDatos = new VentaDatos();
+            return ventaDatos.ObtenerVentasMensualesPorMarca(año);
+        }
+
+
+        public List<VentasMensualesPorMarcaDTO> ObtenerVentasMensualesPorMarca(string nombreMarca, int año)
+        {
+           
+            List<VentasMensualesPorMarcaDTO> ventasMensualesPorMarca = ventaDatos.ObtenerVentasMensualesPorMarca(año);
+
+           
+            if (!string.IsNullOrEmpty(nombreMarca))
+            {
+                
+                ventasMensualesPorMarca = ventasMensualesPorMarca
+                    .Where(v => v.NombreMarca.Equals(nombreMarca, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
+            return ventasMensualesPorMarca;
+        }
     }
 }
