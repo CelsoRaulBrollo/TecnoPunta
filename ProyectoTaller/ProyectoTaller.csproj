@@ -110,6 +110,7 @@
     <Compile Include="DTO\VentaDetalleDTO.cs" />
     <Compile Include="DTO\VentaInformeCantidadDTO.cs" />
     <Compile Include="DTO\VentaInformeRecaudacionDTO.cs" />
+    <Compile Include="DTO\VentaMensualPorClienteDTO.cs" />
     <Compile Include="DTO\VentasMensualesPorMarcaDTO.cs" />
     <Compile Include="DTO\VentasPorAñoDTO.cs" />
     <Compile Include="DTO\VentasAdmDTO.cs" />

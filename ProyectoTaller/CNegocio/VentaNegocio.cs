@@ -288,5 +288,12 @@ namespace ProyectoTaller.CNegocio
 
             return ventasMensualesPorMarca;
         }
+
+
+        public List<VentaMensualPorClienteDTO> ObtenerVentaMediaPorClientePorMes(DateTime fechaInicio, DateTime fechaFin)
+        {
+            ventaDatos = new VentaDatos();
+            return ventaDatos.ObtenerVentaMediaPorClientePorMes(fechaInicio, fechaFin);
+        }
     }
 }

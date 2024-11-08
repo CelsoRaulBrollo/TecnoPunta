@@ -572,5 +572,48 @@ namespace ProyectoTaller.CDatos
             return ventasMensualesPorMarca;
         }
 
+
+        public List<VentaMensualPorClienteDTO> ObtenerVentaMediaPorClientePorMes(DateTime fechaInicio, DateTime fechaFin)
+        {
+            var ventasMensuales = new List<VentaMensualPorClienteDTO>();
+
+            string query = @"
+        SELECT 
+            MONTH(v.FechaVenta) AS Mes,
+            YEAR(v.FechaVenta) AS Año,
+            SUM(v.Total) / COUNT(DISTINCT v.DNI_Cliente) AS VentaMediaPorCliente
+        FROM 
+            Venta v
+        WHERE 
+            v.FechaVenta BETWEEN @FechaInicio AND @FechaFin
+        GROUP BY 
+            YEAR(v.FechaVenta), MONTH(v.FechaVenta)
+        ORDER BY 
+            Año, Mes;
+    ";
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@FechaFin", fechaFin);
+                connection.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ventasMensuales.Add(new VentaMensualPorClienteDTO
+                        {
+                            Año = reader.GetInt32(1),  // Año
+                            Mes = reader.GetInt32(0),  // Mes
+                            VentaMediaPorCliente = reader.GetDecimal(2)  // Venta media por cliente
+                        });
+                    }
+                }
+            }
+
+            return ventasMensuales;
+        }
     }
 }
