@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PBImagenReporteCliente = new System.Windows.Forms.PictureBox();
             this.LTituloReporteCliente = new System.Windows.Forms.Label();
             this.CBNuevoClientes = new System.Windows.Forms.ComboBox();
@@ -79,17 +79,17 @@
             // 
             // ChartReporteClientes
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ChartReporteClientes.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.ChartReporteClientes.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.ChartReporteClientes.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.ChartReporteClientes.Legends.Add(legend3);
             this.ChartReporteClientes.Location = new System.Drawing.Point(86, 103);
             this.ChartReporteClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChartReporteClientes.Name = "ChartReporteClientes";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "VentasMensuales";
-            this.ChartReporteClientes.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "VentasMensuales";
+            this.ChartReporteClientes.Series.Add(series3);
             this.ChartReporteClientes.Size = new System.Drawing.Size(1056, 326);
             this.ChartReporteClientes.TabIndex = 77;
             this.ChartReporteClientes.Text = "chart2";
@@ -100,6 +100,7 @@
             this.DTPDesde.Name = "DTPDesde";
             this.DTPDesde.Size = new System.Drawing.Size(200, 22);
             this.DTPDesde.TabIndex = 81;
+            this.DTPDesde.ValueChanged += new System.EventHandler(this.DTPDesde_ValueChanged_1);
             // 
             // label1
             // 
@@ -125,6 +126,7 @@
             this.DTPHasta.Name = "DTPHasta";
             this.DTPHasta.Size = new System.Drawing.Size(200, 22);
             this.DTPHasta.TabIndex = 83;
+            this.DTPHasta.ValueChanged += new System.EventHandler(this.DTPHasta_ValueChanged_1);
             // 
             // ReporteClientes
             // 

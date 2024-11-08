@@ -13,39 +13,52 @@ namespace ProyectoTaller.Views.Gerentes
         public ReporteClientes()
         {
             InitializeComponent();
-
-
-            DateTime fechaInicio = new DateTime(2024, 1, 1);  // 1 de enero de 2024
-            DateTime fechaFin = new DateTime(2024, 12, 31);  // 31 de diciembre de 2024
+            cargarDTP();
+            DateTime fechaInicio = DTPDesde.Value.Date;  
+            DateTime fechaFin = DTPHasta.Value.Date;
 
             MostrarVentaMediaPorClientePorMes(fechaInicio, fechaFin);
 
-          
-
-          
-
         }
 
-        
-
-        
-
-        private void CBNuevoClientes_SelectedIndexChanged(object sender, EventArgs e)
+        public void cargarDTP()
         {
-            // Verifica qué opción se seleccionó en el ComboBox
-            if (CBNuevoClientes.SelectedItem.ToString() == "Nuevos Clientes")
-            {
-             
-            }
-            else if (CBNuevoClientes.SelectedItem.ToString() == "Nuevos Clientes Según Género")
-            {
-              
-            }
+            DateTime inicioAño = new DateTime(DateTime.Now.Year, 1, 1);
+            DateTime fechaActual = DateTime.Now;
+
+            DTPDesde.Value = inicioAño;
+            DTPHasta.Value = fechaActual;
         }
 
-       
 
-        
+        private void DTPDesde_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarGrafico();
+        }
+
+        private void DTPHasta_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarGrafico();
+        }
+
+      
+        private void ActualizarGrafico()
+        {
+           
+            DateTime fechaInicio = DTPDesde.Value.Date;  
+            DateTime fechaFin = DTPHasta.Value.Date;
+
+           
+            if (fechaInicio > fechaFin)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser posterior a la fecha de fin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+           
+            MostrarVentaMediaPorClientePorMes(fechaInicio, fechaFin);
+        }
+
 
         private void CBNuevoClientes_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -64,35 +77,43 @@ namespace ProyectoTaller.Views.Gerentes
             ventaNegocio = new VentaNegocio();
             var ventasMensuales = ventaNegocio.ObtenerVentaMediaPorClientePorMes(fechaInicio, fechaFin);
 
-            // Configurar el gráfico
+       
             ChartReporteClientes.Series.Clear();
             ChartReporteClientes.Titles.Clear();
             ChartReporteClientes.Legends.Clear();
 
             var serie = new Series
             {
-                Name = "Venta Media por Cliente",
+                Name = "Venta Media",
                 ChartType = SeriesChartType.Line,
                 IsValueShownAsLabel = true
             };
 
-            // Agregar los puntos al gráfico mes por mes
+         
             foreach (var venta in ventasMensuales)
             {
                 serie.Points.AddXY($"{venta.Año}-{venta.Mes:D2}", venta.VentaMediaPorCliente);
             }
 
-            // Añadir la serie al gráfico
+       
             ChartReporteClientes.Series.Add(serie);
 
-            // Agregar el título y la leyenda
-            ChartReporteClientes.Titles.Add($"Venta Media por Cliente ({fechaInicio.Year}-{fechaFin.Year})");
+            
+            ChartReporteClientes.Titles.Add($"Venta Media por Cliente");
             ChartReporteClientes.Legends.Add(new Legend("Leyenda"));
 
-            // Redibujar el gráfico
+         
             ChartReporteClientes.Invalidate();
         }
 
+        private void DTPDesde_ValueChanged_1(object sender, EventArgs e)
+        {
+            ActualizarGrafico();
+        }
 
+        private void DTPHasta_ValueChanged_1(object sender, EventArgs e)
+        {
+            ActualizarGrafico();
+        }
     }
 }
