@@ -20,23 +20,13 @@ namespace ProyectoTaller.Views.Gerentes
 
             MostrarVentaMediaPorClientePorMes(fechaInicio, fechaFin);
 
-            CBGeneroReporte.SelectedIndex = 0;
+          
 
-            CBGeneroReporte.SelectedIndexChanged += CBGeneroReporte_SelectedIndexChanged;
+          
 
         }
 
-        private void CBGeneroReporte_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CBGeneroReporte.SelectedItem.ToString() == "Clientes según género")
-            {
-             
-            }
-            else if (CBGeneroReporte.SelectedItem.ToString() == "Ventas anuales según género")
-            {
-               
-            }
-        }
+        
 
         
 
