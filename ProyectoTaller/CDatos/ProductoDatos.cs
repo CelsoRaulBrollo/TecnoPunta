@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoTaller.CDatos
 {
@@ -61,31 +62,43 @@ namespace ProyectoTaller.CDatos
 
         public void guardarProducto(Producto producto)
         {
-            using (SqlConnection connection = conexion.ObtenerConexion())
+
+
+            try
             {
-                string query = @"
-                    INSERT INTO Productos (Modelo_Producto, Nombre_Producto, SistemaOperativo_Producto, 
-                                           Almacenamiento_Producto, Ram_Producto, Stock_Producto, 
-                                           Precio_Producto, Id_Marca, Id_Condicion)
-                    VALUES (@Modelo, @Nombre, @SistemaOperativo, @Almacenamiento, 
-                            @Ram, @Stock, @Precio, @IdMarca, @IdCondicion)";
+                using (SqlConnection connection = conexion.ObtenerConexion())
+                {
+                    string query = @"
+                INSERT INTO Productos (Modelo_Producto, Nombre_Producto, SistemaOperativo_Producto, 
+                                       Almacenamiento_Producto, Ram_Producto, Stock_Producto, 
+                                       Precio_Producto, Id_Marca, Id_Condicion)
+                VALUES (@Modelo, @Nombre, @SistemaOperativo, @Almacenamiento, 
+                        @Ram, @Stock, @Precio, @IdMarca, @IdCondicion)";
 
-                SqlCommand command = new SqlCommand(query, connection);
+                    SqlCommand command = new SqlCommand(query, connection);
 
-                // Asignar los parámetros
-                command.Parameters.AddWithValue("@Modelo", producto.Modelo_Producto);
-                command.Parameters.AddWithValue("@Nombre", producto.Nombre_Producto);
-                command.Parameters.AddWithValue("@SistemaOperativo", producto.SistemaOperativo_Producto);
-                
-                command.Parameters.AddWithValue("@Almacenamiento", producto.Almacenamiento_Producto + " GB");
-                command.Parameters.AddWithValue("@Ram", producto.Ram_Producto);
-                command.Parameters.AddWithValue("@Stock", producto.Stock_Producto);
-                command.Parameters.AddWithValue("@Precio", producto.Precio_Producto);
-                command.Parameters.AddWithValue("@IdMarca", producto.Marca.Id_Marca); // Asegúrate de que este campo esté disponible
-                command.Parameters.AddWithValue("@IdCondicion", producto.Condicion.Id_Condicion); // Asegúrate de que este campo esté disponible
+                    // Asignar los parámetros
+                    command.Parameters.AddWithValue("@Modelo", producto.Modelo_Producto);
+                    command.Parameters.AddWithValue("@Nombre", producto.Nombre_Producto);
+                    command.Parameters.AddWithValue("@SistemaOperativo", producto.SistemaOperativo_Producto);
+                    command.Parameters.AddWithValue("@Almacenamiento", producto.Almacenamiento_Producto + " GB");
+                    command.Parameters.AddWithValue("@Ram", producto.Ram_Producto);
+                    command.Parameters.AddWithValue("@Stock", producto.Stock_Producto);
+                    command.Parameters.AddWithValue("@Precio", producto.Precio_Producto);
+                    command.Parameters.AddWithValue("@IdMarca", producto.Marca.Id_Marca); // Asegúrate de que este campo esté disponible
+                    command.Parameters.AddWithValue("@IdCondicion", producto.Condicion.Id_Condicion); // Asegúrate de que este campo esté disponible
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            } catch (SqlException ex)
+            {
+                MessageBox.Show("No se puede guardar el producto. Ya existe un producto con el mismo modelo.",
+                              "Error de inserción",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error);
+
+
             }
         }
 

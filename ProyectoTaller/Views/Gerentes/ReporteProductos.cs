@@ -142,8 +142,8 @@ namespace ProyectoTaller.Views.Gerentes
             var marcas = ventasMensualesPorMarca
                 .GroupBy(v => v.NombreMarca)
                 .ToList();
+            int serieIndex = 0;
 
-    
             foreach (var marca in marcas)
             {
                 var serie = new Series
@@ -151,7 +151,8 @@ namespace ProyectoTaller.Views.Gerentes
                     Name = marca.Key,  
                   
                     IsValueShownAsLabel = true,
-                    ChartType = SeriesChartType.Line
+                    ChartType = SeriesChartType.Line,
+                    BorderWidth = 3
                 };
 
    
@@ -162,13 +163,16 @@ namespace ProyectoTaller.Views.Gerentes
 
             
                 chart2.Series.Add(serie);
+
+               
             }
 
            
             chart2.Titles.Clear();
             chart2.Titles.Add($"Evolución de Ventas por Marca - {añoActual}");
+            
 
-      
+
             chart2.Legends.Add(new Legend("Leyenda"));
 
        

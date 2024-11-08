@@ -26,7 +26,9 @@ namespace ProyectoTaller.Questpdf
         private Venta venta { get; }
         public static Image LogoImage { get {
                 string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string logoPath = System.IO.Path.Combine(currentDirectory, "Logo.png");
+                string questPdfDirectory = Path.Combine(currentDirectory, "..", "..", "Questpdf");
+                string logoPath = Path.Combine(questPdfDirectory, "Logo.png");
+           
                 return Image.FromFile(logoPath);
             } } 
 
