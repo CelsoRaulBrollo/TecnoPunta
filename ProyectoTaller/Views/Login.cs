@@ -3,7 +3,6 @@ using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using ProyectoTaller.Views;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -25,12 +24,12 @@ namespace ProyectoTaller
 
         public void BInicioSesion_Click(object sender, EventArgs e)
         {
-            string nombreUsuario = TUsuario.Text;
+            string nombre = TUsuario.Text;
             string contraseña = TContraseña.Text;
             UsuarioNegocio = new UsuarioNegocio();
 
 
-            
+
             LValidaciones.Text = "";
 
             ValidarLogin(nombre, contraseña);
@@ -38,17 +37,19 @@ namespace ProyectoTaller
 
             if (string.IsNullOrWhiteSpace(LValidaciones.Text))
             {
-                if (usuario != null && usuario.Estado == "ACTIVO") {
+                if (usuario != null && usuario.Estado == "ACTIVO")
+                {
 
                     MenuPrincipal menu = new MenuPrincipal(this, usuario);
                     menu.Show();
+
                     this.Hide();
 
 
                 }
                 else
                 {
-                    if(usuario == null)
+                    if (usuario == null)
                     {
                         LValidaciones.Text = "Usuario o contraseña incorrectos.";
                         LValidaciones.ForeColor = Color.Red;
@@ -58,64 +59,14 @@ namespace ProyectoTaller
                         LValidaciones.Text = "El Usuario ha sido dado de baja.";
                         LValidaciones.ForeColor = Color.Red;
 
-                        
+
                     }
-                    
+
                 }
-  
-                
+
+
             }
         }
-
-        public string ObtenerRolUsuario(string nombreUsuario, string contraseña)
-        {
-            int rolId = -1;
-            string rolNombre = string.Empty;
-            string query = "SELECT Rol_Usuario FROM Usuarios WHERE Usuario = @Usuario AND Contraseña = @Contraseña";
-
-            string connectionString = "Server=CELSOBRO\\SQLEXPRESS;Database=TecnoPuntaBD;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
-                        cmd.Parameters.AddWithValue("@Contraseña", contraseña);
-                        var result = cmd.ExecuteScalar();
-                        if (result != null)
-                        {
-                            rolId = Convert.ToInt32(result);
-                        }
-                    }
-
-                    switch (rolId)
-                    {
-                        case 1:
-                            rolNombre = "Admin";
-                            break;
-                        case 2:
-                            rolNombre = "Gerente";
-                            break;
-                        case 3:
-                            rolNombre = "Vendedor";
-                            break;
-                        default:
-                            rolNombre = string.Empty;
-                            break;
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show($"Error de conexión: {ex.Message}");
-                }
-            }
-
-            return rolNombre;
-        }
-
 
         public void ValidarLogin(string nombre, string contraseña)
         {
@@ -167,14 +118,6 @@ namespace ProyectoTaller
             if (contraseña.Contains(" "))
             {
                 LValidaciones.Text = "La contraseña debe ser sin espacios.";
-                LValidaciones.ForeColor = Color.Red;
-                return;
-            }
-
-            // Validar que la contraseña tenga al menos un número
-            if (!TieneNumero(contraseña))
-            {
-                LValidaciones.Text = "La contraseña debe tener al menos un número.";
                 LValidaciones.ForeColor = Color.Red;
                 return;
             }

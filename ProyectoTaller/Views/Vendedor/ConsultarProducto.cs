@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Vendedor
 {
-    public partial class ConsultarProducto : Form
+    public partial class TConsultarProducto : Form
     {
-    
         private int _dniUsuario;
         private ProductoNegocio productoNegocio;
         private CarritoNegocio carritoNegocio;
@@ -20,10 +19,11 @@ namespace ProyectoTaller.Views.Vendedor
         {
             _dniUsuario = dniUsuario;
             InitializeComponent();
-            _dniVendedor = dni;
             cargarProductos();
             cargarEventos();
         }
+
+
 
         public void cargarProductos()
         {
@@ -37,11 +37,11 @@ namespace ProyectoTaller.Views.Vendedor
         private void BBuscarProducto_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
-            
+
             if (ValidacionesConsultaProducto())
             {
 
-             
+
                 List<ProductoDTO> productos = productoNegocio.listarProductosConStock();
                 List<ProductoDTO> filtrados = new List<ProductoDTO>();
 
@@ -120,10 +120,10 @@ namespace ProyectoTaller.Views.Vendedor
                 TAlmacenamiento.Clear();
                 TSistemaOperativo.Clear();
 
-               
+
                 CBPrecioAsc.Checked = false;
                 CBPrecioDesc.Checked = false;
-                cargarProductos(); 
+                cargarProductos();
 
                 MessageBox.Show("Filtros limpios.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -353,7 +353,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             if (CBPrecioAsc.Checked)
             {
-                CBPrecioDesc.Checked = false; 
+                CBPrecioDesc.Checked = false;
 
                 OrdenarAscendente();
             }
@@ -368,7 +368,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             if (CBPrecioDesc.Checked)
             {
-                CBPrecioAsc.Checked = false; 
+                CBPrecioAsc.Checked = false;
 
                 OrdenarDescendente();
             }
@@ -508,7 +508,6 @@ namespace ProyectoTaller.Views.Vendedor
                 MessageBox.Show("Debe seleccionar una fila primero.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             DataGridViewRow selectedRow = DGProductos.SelectedRows[0];
 
             DialogResult resultado = MessageBox.Show(
@@ -532,23 +531,8 @@ namespace ProyectoTaller.Views.Vendedor
                 {
                     MessageBox.Show("Error al agregar el producto al carrito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-        }
 
 
-        private bool VerificarDNIExistente(int dniVendedor)
-        {
-            string connectionString = @"Server=CELSOBRO\SQLEXPRESS;Database=TecnoPuntaBD;Trusted_Connection=True;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT COUNT(*) FROM Usuarios WHERE DNI_Usuario = @dniVendedor";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@dniVendedor", dniVendedor);
-                    int count = (int)command.ExecuteScalar();
-                    return count > 0; // Devuelve true si existe
-                }
             }
         }
 

@@ -72,6 +72,7 @@
     <Compile Include="CDatos\ClienteDatos.cs" />
     <Compile Include="CDatos\CondicionDatos.cs" />
     <Compile Include="CDatos\ConexionBD.cs" />
+    <Compile Include="CDatos\Detalle_FacturaDatos.cs" />
     <Compile Include="CDatos\MarcaDatos.cs" />
     <Compile Include="CDatos\MetodoDePagoDatos.cs" />
     <Compile Include="CDatos\ProductoDatos.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="CModelos\Detalle_Factura.cs" />
     <Compile Include="CModelos\Factura.cs" />
     <Compile Include="CModelos\Marca.cs" />
+    <Compile Include="CModelos\MetodoDePago.cs" />
     <Compile Include="CModelos\MetodoDePagoModel.cs" />
     <Compile Include="CModelos\Producto.cs" />
     <Compile Include="CModelos\Rol.cs" />

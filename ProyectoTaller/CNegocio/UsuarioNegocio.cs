@@ -3,14 +3,13 @@ using ProyectoTaller.CModelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProyectoTaller.CNegocio
 {
-   
+
     public class UsuarioNegocio
     {
         private UsuarioDatos usuarioDatos;
@@ -30,7 +29,7 @@ namespace ProyectoTaller.CNegocio
         public DataTable ListarUsuarios()
         {
             usuarioDatos = new UsuarioDatos();
-           
+
             return usuarioDatos.ListarUsuario();
         }
 
@@ -40,16 +39,18 @@ namespace ProyectoTaller.CNegocio
             return usuarioDatos.ActualizarUsuario(usuario);
         }
 
-        public void GuardarUsuario(Usuario usuario) {
+        public void GuardarUsuario(Usuario usuario)
+        {
             usuarioDatos = new UsuarioDatos();
 
             usuarioDatos.GuardarUsuario(usuario);
         }
-      
+
         public Usuario buscarUsuarioByDNI(int dNI)
         {
             usuarioDatos = new UsuarioDatos();
             return usuarioDatos.buscarUsuario(dNI);
         }
+
     }
 }
