@@ -33,6 +33,8 @@ namespace ProyectoTaller.Views.Vendedor
             CBMarca.ValueMember = "Id_Marca";
         }
 
+
+
         public void cargarProductos()
         {
             productoNegocio = new ProductoNegocio();
