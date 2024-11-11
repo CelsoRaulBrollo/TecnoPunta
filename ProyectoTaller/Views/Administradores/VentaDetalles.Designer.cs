@@ -1,6 +1,6 @@
 ﻿namespace ProyectoTaller.Views.Vendedor
 {
-    partial class VentaDetalle
+    partial class VentaDetalles
     {
         /// <summary>
         /// Required designer variable.
@@ -32,10 +32,6 @@
             this.LTotalFinalizarCompra = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.DGVentaDetalle = new System.Windows.Forms.DataGridView();
-            this.CodigoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.CBEfectivo = new System.Windows.Forms.CheckBox();
@@ -43,12 +39,12 @@
             this.CBTarjetaDeDebito = new System.Windows.Forms.CheckBox();
             this.CBTarjetaDeCredito = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.LCorreoCompraFinCompra = new System.Windows.Forms.Label();
-            this.LDireccionCompraFinCompra = new System.Windows.Forms.Label();
-            this.LTelefonoCompraFinCompra = new System.Windows.Forms.Label();
-            this.LDNICompraFinCompra = new System.Windows.Forms.Label();
-            this.LApellidosCompraFinCompra = new System.Windows.Forms.Label();
-            this.LNombreCompraFinCompra = new System.Windows.Forms.Label();
+            this.LCorreoVenta = new System.Windows.Forms.Label();
+            this.LDireccionVenta = new System.Windows.Forms.Label();
+            this.LTelefonoVenta = new System.Windows.Forms.Label();
+            this.LDNIVenta = new System.Windows.Forms.Label();
+            this.LApellidosVenta = new System.Windows.Forms.Label();
+            this.LNombreCompraVenta = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,7 +53,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.LVenta = new System.Windows.Forms.Label();
             this.LIDCompra = new System.Windows.Forms.Label();
-            this.LIDCompraValorVentaDetalle = new System.Windows.Forms.Label();
+            this.LIDVenta = new System.Windows.Forms.Label();
+            this.LTotalVista = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVentaDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,11 +100,6 @@
             // 
             this.DGVentaDetalle.AllowUserToAddRows = false;
             this.DGVentaDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVentaDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CodigoProducto,
-            this.Descripcion,
-            this.Cantidad,
-            this.Precio});
             this.DGVentaDetalle.Location = new System.Drawing.Point(83, 342);
             this.DGVentaDetalle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGVentaDetalle.Name = "DGVentaDetalle";
@@ -115,36 +107,6 @@
             this.DGVentaDetalle.RowTemplate.Height = 24;
             this.DGVentaDetalle.Size = new System.Drawing.Size(874, 139);
             this.DGVentaDetalle.TabIndex = 101;
-            // 
-            // CodigoProducto
-            // 
-            this.CodigoProducto.FillWeight = 1F;
-            this.CodigoProducto.HeaderText = "Codigo Producto";
-            this.CodigoProducto.MinimumWidth = 6;
-            this.CodigoProducto.Name = "CodigoProducto";
-            this.CodigoProducto.Width = 400;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.FillWeight = 1000F;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 315;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 125;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 6;
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 125;
             // 
             // label9
             // 
@@ -228,78 +190,72 @@
             this.label7.TabIndex = 94;
             this.label7.Text = "Metodo de pago";
             // 
-            // LCorreoCompraFinCompra
+            // LCorreoVenta
             // 
-            this.LCorreoCompraFinCompra.AutoSize = true;
-            this.LCorreoCompraFinCompra.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LCorreoCompraFinCompra.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LCorreoCompraFinCompra.Location = new System.Drawing.Point(677, 183);
-            this.LCorreoCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LCorreoCompraFinCompra.Name = "LCorreoCompraFinCompra";
-            this.LCorreoCompraFinCompra.Size = new System.Drawing.Size(172, 20);
-            this.LCorreoCompraFinCompra.TabIndex = 93;
-            this.LCorreoCompraFinCompra.Text = "correo@example.com";
+            this.LCorreoVenta.AutoSize = true;
+            this.LCorreoVenta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LCorreoVenta.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LCorreoVenta.Location = new System.Drawing.Point(677, 183);
+            this.LCorreoVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LCorreoVenta.Name = "LCorreoVenta";
+            this.LCorreoVenta.Size = new System.Drawing.Size(0, 20);
+            this.LCorreoVenta.TabIndex = 93;
             // 
-            // LDireccionCompraFinCompra
+            // LDireccionVenta
             // 
-            this.LDireccionCompraFinCompra.AutoSize = true;
-            this.LDireccionCompraFinCompra.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDireccionCompraFinCompra.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LDireccionCompraFinCompra.Location = new System.Drawing.Point(677, 152);
-            this.LDireccionCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LDireccionCompraFinCompra.Name = "LDireccionCompraFinCompra";
-            this.LDireccionCompraFinCompra.Size = new System.Drawing.Size(119, 20);
-            this.LDireccionCompraFinCompra.TabIndex = 92;
-            this.LDireccionCompraFinCompra.Text = "Calle Falsa; 123";
+            this.LDireccionVenta.AutoSize = true;
+            this.LDireccionVenta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LDireccionVenta.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LDireccionVenta.Location = new System.Drawing.Point(677, 152);
+            this.LDireccionVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LDireccionVenta.Name = "LDireccionVenta";
+            this.LDireccionVenta.Size = new System.Drawing.Size(0, 20);
+            this.LDireccionVenta.TabIndex = 92;
             // 
-            // LTelefonoCompraFinCompra
+            // LTelefonoVenta
             // 
-            this.LTelefonoCompraFinCompra.AutoSize = true;
-            this.LTelefonoCompraFinCompra.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTelefonoCompraFinCompra.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LTelefonoCompraFinCompra.Location = new System.Drawing.Point(677, 120);
-            this.LTelefonoCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LTelefonoCompraFinCompra.Name = "LTelefonoCompraFinCompra";
-            this.LTelefonoCompraFinCompra.Size = new System.Drawing.Size(89, 20);
-            this.LTelefonoCompraFinCompra.TabIndex = 91;
-            this.LTelefonoCompraFinCompra.Text = "3794097654";
+            this.LTelefonoVenta.AutoSize = true;
+            this.LTelefonoVenta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTelefonoVenta.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LTelefonoVenta.Location = new System.Drawing.Point(677, 120);
+            this.LTelefonoVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LTelefonoVenta.Name = "LTelefonoVenta";
+            this.LTelefonoVenta.Size = new System.Drawing.Size(0, 20);
+            this.LTelefonoVenta.TabIndex = 91;
             // 
-            // LDNICompraFinCompra
+            // LDNIVenta
             // 
-            this.LDNICompraFinCompra.AutoSize = true;
-            this.LDNICompraFinCompra.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDNICompraFinCompra.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LDNICompraFinCompra.Location = new System.Drawing.Point(311, 183);
-            this.LDNICompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LDNICompraFinCompra.Name = "LDNICompraFinCompra";
-            this.LDNICompraFinCompra.Size = new System.Drawing.Size(73, 20);
-            this.LDNICompraFinCompra.TabIndex = 90;
-            this.LDNICompraFinCompra.Text = "37890275";
+            this.LDNIVenta.AutoSize = true;
+            this.LDNIVenta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LDNIVenta.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LDNIVenta.Location = new System.Drawing.Point(311, 183);
+            this.LDNIVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LDNIVenta.Name = "LDNIVenta";
+            this.LDNIVenta.Size = new System.Drawing.Size(0, 20);
+            this.LDNIVenta.TabIndex = 90;
             // 
-            // LApellidosCompraFinCompra
+            // LApellidosVenta
             // 
-            this.LApellidosCompraFinCompra.AutoSize = true;
-            this.LApellidosCompraFinCompra.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LApellidosCompraFinCompra.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LApellidosCompraFinCompra.Location = new System.Drawing.Point(311, 152);
-            this.LApellidosCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LApellidosCompraFinCompra.Name = "LApellidosCompraFinCompra";
-            this.LApellidosCompraFinCompra.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LApellidosCompraFinCompra.Size = new System.Drawing.Size(49, 20);
-            this.LApellidosCompraFinCompra.TabIndex = 89;
-            this.LApellidosCompraFinCompra.Text = "Perez";
+            this.LApellidosVenta.AutoSize = true;
+            this.LApellidosVenta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LApellidosVenta.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LApellidosVenta.Location = new System.Drawing.Point(311, 152);
+            this.LApellidosVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LApellidosVenta.Name = "LApellidosVenta";
+            this.LApellidosVenta.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LApellidosVenta.Size = new System.Drawing.Size(0, 20);
+            this.LApellidosVenta.TabIndex = 89;
             // 
-            // LNombreCompraFinCompra
+            // LNombreCompraVenta
             // 
-            this.LNombreCompraFinCompra.AutoSize = true;
-            this.LNombreCompraFinCompra.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LNombreCompraFinCompra.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LNombreCompraFinCompra.Location = new System.Drawing.Point(311, 120);
-            this.LNombreCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LNombreCompraFinCompra.Name = "LNombreCompraFinCompra";
-            this.LNombreCompraFinCompra.Size = new System.Drawing.Size(50, 20);
-            this.LNombreCompraFinCompra.TabIndex = 88;
-            this.LNombreCompraFinCompra.Text = "Julian";
+            this.LNombreCompraVenta.AutoSize = true;
+            this.LNombreCompraVenta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LNombreCompraVenta.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LNombreCompraVenta.Location = new System.Drawing.Point(311, 120);
+            this.LNombreCompraVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LNombreCompraVenta.Name = "LNombreCompraVenta";
+            this.LNombreCompraVenta.Size = new System.Drawing.Size(0, 20);
+            this.LNombreCompraVenta.TabIndex = 88;
             // 
             // label6
             // 
@@ -389,25 +345,35 @@
             this.LIDCompra.TabIndex = 106;
             this.LIDCompra.Text = "ID VENTA:";
             // 
-            // LIDCompraValorVentaDetalle
+            // LIDVenta
             // 
-            this.LIDCompraValorVentaDetalle.AutoSize = true;
-            this.LIDCompraValorVentaDetalle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LIDCompraValorVentaDetalle.ForeColor = System.Drawing.Color.Blue;
-            this.LIDCompraValorVentaDetalle.Location = new System.Drawing.Point(857, 36);
-            this.LIDCompraValorVentaDetalle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LIDCompraValorVentaDetalle.Name = "LIDCompraValorVentaDetalle";
-            this.LIDCompraValorVentaDetalle.Size = new System.Drawing.Size(43, 23);
-            this.LIDCompraValorVentaDetalle.TabIndex = 107;
-            this.LIDCompraValorVentaDetalle.Text = "231";
+            this.LIDVenta.AutoSize = true;
+            this.LIDVenta.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LIDVenta.ForeColor = System.Drawing.Color.Blue;
+            this.LIDVenta.Location = new System.Drawing.Point(857, 36);
+            this.LIDVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LIDVenta.Name = "LIDVenta";
+            this.LIDVenta.Size = new System.Drawing.Size(0, 23);
+            this.LIDVenta.TabIndex = 107;
             // 
-            // VentaDetalle
+            // LTotalVista
+            // 
+            this.LTotalVista.AutoSize = true;
+            this.LTotalVista.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTotalVista.Location = new System.Drawing.Point(174, 513);
+            this.LTotalVista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LTotalVista.Name = "LTotalVista";
+            this.LTotalVista.Size = new System.Drawing.Size(0, 39);
+            this.LTotalVista.TabIndex = 108;
+            // 
+            // VentaDetalles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1031, 598);
-            this.Controls.Add(this.LIDCompraValorVentaDetalle);
+            this.Controls.Add(this.LTotalVista);
+            this.Controls.Add(this.LIDVenta);
             this.Controls.Add(this.LIDCompra);
             this.Controls.Add(this.BImprimirDetalle);
             this.Controls.Add(this.LTotalFinalizarCompra);
@@ -420,12 +386,12 @@
             this.Controls.Add(this.CBTarjetaDeDebito);
             this.Controls.Add(this.CBTarjetaDeCredito);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.LCorreoCompraFinCompra);
-            this.Controls.Add(this.LDireccionCompraFinCompra);
-            this.Controls.Add(this.LTelefonoCompraFinCompra);
-            this.Controls.Add(this.LDNICompraFinCompra);
-            this.Controls.Add(this.LApellidosCompraFinCompra);
-            this.Controls.Add(this.LNombreCompraFinCompra);
+            this.Controls.Add(this.LCorreoVenta);
+            this.Controls.Add(this.LDireccionVenta);
+            this.Controls.Add(this.LTelefonoVenta);
+            this.Controls.Add(this.LDNIVenta);
+            this.Controls.Add(this.LApellidosVenta);
+            this.Controls.Add(this.LNombreCompraVenta);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -433,7 +399,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LVenta);
-            this.Name = "VentaDetalle";
+            this.Name = "VentaDetalles";
             this.Text = "VentaDetalle";
             ((System.ComponentModel.ISupportInitialize)(this.DGVentaDetalle)).EndInit();
             this.ResumeLayout(false);
@@ -447,10 +413,6 @@
         private System.Windows.Forms.Label LTotalFinalizarCompra;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView DGVentaDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox CBEfectivo;
@@ -458,12 +420,12 @@
         private System.Windows.Forms.CheckBox CBTarjetaDeDebito;
         private System.Windows.Forms.CheckBox CBTarjetaDeCredito;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label LCorreoCompraFinCompra;
-        private System.Windows.Forms.Label LDireccionCompraFinCompra;
-        private System.Windows.Forms.Label LTelefonoCompraFinCompra;
-        private System.Windows.Forms.Label LDNICompraFinCompra;
-        private System.Windows.Forms.Label LApellidosCompraFinCompra;
-        private System.Windows.Forms.Label LNombreCompraFinCompra;
+        private System.Windows.Forms.Label LCorreoVenta;
+        private System.Windows.Forms.Label LDireccionVenta;
+        private System.Windows.Forms.Label LTelefonoVenta;
+        private System.Windows.Forms.Label LDNIVenta;
+        private System.Windows.Forms.Label LApellidosVenta;
+        private System.Windows.Forms.Label LNombreCompraVenta;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -472,6 +434,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LVenta;
         private System.Windows.Forms.Label LIDCompra;
-        private System.Windows.Forms.Label LIDCompraValorVentaDetalle;
+        private System.Windows.Forms.Label LIDVenta;
+        private System.Windows.Forms.Label LTotalVista;
     }
 }

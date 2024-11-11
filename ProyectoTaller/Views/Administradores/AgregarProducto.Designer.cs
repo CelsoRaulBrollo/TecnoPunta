@@ -65,7 +65,6 @@
             this.DGProductos = new System.Windows.Forms.DataGridView();
             this.TBuscarProducto = new System.Windows.Forms.TextBox();
             this.LBuscarProducto = new System.Windows.Forms.Label();
-            this.CBUsado = new System.Windows.Forms.CheckBox();
             this.CBReacondicionado = new System.Windows.Forms.CheckBox();
             this.CBNuevo = new System.Windows.Forms.CheckBox();
             this.CBMarca = new System.Windows.Forms.ComboBox();
@@ -357,9 +356,9 @@
             this.LEstado.Location = new System.Drawing.Point(560, 229);
             this.LEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LEstado.Name = "LEstado";
-            this.LEstado.Size = new System.Drawing.Size(95, 21);
+            this.LEstado.Size = new System.Drawing.Size(68, 21);
             this.LEstado.TabIndex = 49;
-            this.LEstado.Text = "Condicion";
+            this.LEstado.Text = "Estado";
             // 
             // BEliminar
             // 
@@ -466,19 +465,6 @@
             this.LBuscarProducto.TabIndex = 105;
             this.LBuscarProducto.Text = "Buscar Producto";
             // 
-            // CBUsado
-            // 
-            this.CBUsado.AutoSize = true;
-            this.CBUsado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBUsado.Location = new System.Drawing.Point(884, 342);
-            this.CBUsado.Margin = new System.Windows.Forms.Padding(4);
-            this.CBUsado.Name = "CBUsado";
-            this.CBUsado.Size = new System.Drawing.Size(74, 22);
-            this.CBUsado.TabIndex = 110;
-            this.CBUsado.Text = "Usado";
-            this.CBUsado.UseVisualStyleBackColor = true;
-            this.CBUsado.CheckedChanged += new System.EventHandler(this.CBUsado_CheckedChanged);
-            // 
             // CBReacondicionado
             // 
             this.CBReacondicionado.AutoSize = true;
@@ -486,9 +472,9 @@
             this.CBReacondicionado.Location = new System.Drawing.Point(712, 341);
             this.CBReacondicionado.Margin = new System.Windows.Forms.Padding(4);
             this.CBReacondicionado.Name = "CBReacondicionado";
-            this.CBReacondicionado.Size = new System.Drawing.Size(146, 22);
+            this.CBReacondicionado.Size = new System.Drawing.Size(66, 22);
             this.CBReacondicionado.TabIndex = 109;
-            this.CBReacondicionado.Text = "Reacondicionado";
+            this.CBReacondicionado.Text = "BAJA";
             this.CBReacondicionado.UseVisualStyleBackColor = true;
             this.CBReacondicionado.CheckedChanged += new System.EventHandler(this.CBReacondicionado_CheckedChanged);
             // 
@@ -499,9 +485,9 @@
             this.CBNuevo.Location = new System.Drawing.Point(623, 341);
             this.CBNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.CBNuevo.Name = "CBNuevo";
-            this.CBNuevo.Size = new System.Drawing.Size(73, 22);
+            this.CBNuevo.Size = new System.Drawing.Size(83, 22);
             this.CBNuevo.TabIndex = 108;
-            this.CBNuevo.Text = "Nuevo";
+            this.CBNuevo.Text = "ACTIVO";
             this.CBNuevo.UseVisualStyleBackColor = true;
             this.CBNuevo.CheckedChanged += new System.EventHandler(this.CBNuevo_CheckedChanged);
             // 
@@ -532,7 +518,6 @@
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1183, 624);
             this.Controls.Add(this.CBMarca);
-            this.Controls.Add(this.CBUsado);
             this.Controls.Add(this.CBReacondicionado);
             this.Controls.Add(this.CBNuevo);
             this.Controls.Add(this.LBuscarProducto);
@@ -622,7 +607,6 @@
         private System.Windows.Forms.DataGridView DGProductos;
         private System.Windows.Forms.TextBox TBuscarProducto;
         private System.Windows.Forms.Label LBuscarProducto;
-        private System.Windows.Forms.CheckBox CBUsado;
         private System.Windows.Forms.CheckBox CBReacondicionado;
         private System.Windows.Forms.CheckBox CBNuevo;
         private System.Windows.Forms.ComboBox CBMarca;

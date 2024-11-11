@@ -11,18 +11,12 @@ namespace ProyectoTaller.Views.Vendedor
     public partial class Carrito : Form
     {
         private CarritoNegocio carritoNegocio;
-        private ProductoDatos productoDatos;
-        private List<CarritoDetalleDTO> detallesCarrito;
-        private int _dniVendedor;
-
-        public Carrito(int dniVendedor)
+        private int _dniUsuario;
+        public Carrito(int dniUsuario)
         {
             InitializeComponent();
-            _dniVendedor = dniVendedor;
-            detallesCarrito = new List<CarritoDetalleDTO>();
-            productoDatos = new ProductoDatos();
+            _dniUsuario = dniUsuario;
             cargarCarrito();
-            this.Load += new EventHandler(Carrito_Load);
         }
 
         private void Carrito_Load(object sender, EventArgs e)
@@ -30,10 +24,16 @@ namespace ProyectoTaller.Views.Vendedor
             cargarCarrito();
         }
 
+        
+
         public void cargarCarrito()
         {
             carritoNegocio = new CarritoNegocio();
-            CarritoDTO carritoRespuesta = carritoNegocio.cargarCarrito(_dniVendedor);
+            DGCarrito.DataSource = carritoNegocio.cargarCarito(_dniUsuario).detalles;
+            decimal totalFinalizarCompra = carritoNegocio.cargarCarito(_dniUsuario).total;
+            TTotalCarrito.Text = totalFinalizarCompra.ToString() + " $";
+            DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
 
             detallesCarrito = carritoRespuesta.detalles;
 
@@ -49,16 +49,8 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (productoSeleccionado == null)
             {
-                MessageBox.Show("El modelo ingresado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            bool agregado = carritoNegocio.agregarProducto(productoSeleccionado, cantidad, _dniVendedor);
-
-            if (agregado)
-            {
-                MessageBox.Show("Producto agregado al carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarCarrito();
+                confirmarVenta = new ConfirmarVenta(_dniUsuario);
+                confirmarVenta.Show();
             }
             else
             {
@@ -124,7 +116,9 @@ namespace ProyectoTaller.Views.Vendedor
             DataGridViewRow selectedRow = DGCarrito.SelectedRows[0];
 
             carritoNegocio = new CarritoNegocio();
-            bool eliminado = carritoNegocio.eliminarProducto(selectedRow.Cells["Modelo"].Value.ToString(), _dniVendedor);
+          
+            bool eliminado = carritoNegocio.eliminarProducto(selectedRow.Cells["Modelo"].Value.ToString(), _dniUsuario);
+          
             if (eliminado)
             {
                 MessageBox.Show("Elemento quitado del carrito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -143,13 +137,20 @@ namespace ProyectoTaller.Views.Vendedor
             if (resultado == DialogResult.Yes)
             {
                 carritoNegocio = new CarritoNegocio();
-                bool vaciado = carritoNegocio.vaciarCarrito(_dniVendedor);
+              
+                bool vaciado = carritoNegocio.vaciarCarrito(_dniUsuario);
+              
                 if (vaciado)
                 {
                     MessageBox.Show("El carrito ha sido limpiado.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cargarCarrito();
                 }
             }
+        }
+
+        private void Carrito_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

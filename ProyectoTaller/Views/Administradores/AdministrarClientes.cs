@@ -1,21 +1,48 @@
-﻿using System.Linq;
+﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
+using System;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Administradores
 {
     public partial class AdministrarClientes : Form
     {
+        private ClienteNegocio clienteNegocio;
         public AdministrarClientes()
         {
             InitializeComponent();
+            cargarClientes();
+            DGClientes.RowPrePaint += DGClientes_RowPrePaint;
         }
 
-        private void AdministrarClientes_Load(object sender, System.EventArgs e)
+        public void cargarClientes()
         {
-            DGClientes.Rows.Add("42733217", "Raul", "Brollo", "3624777447", "celsobrollo@gmail.com", "Leon Zorrilla 5260");
-            DGClientes.Rows.Add("35525452", "Leon", "Martinez", "887845827", "Correo@gmail.com", "Direccion 474");
-            DGClientes.Rows.Add("45872125", "Rawl", "Brol", "3624984588", "Correo@outlook.com", "Direccion 878");
+            clienteNegocio = new ClienteNegocio();
+            DGClientes.DataSource = clienteNegocio.ObtenerClientes();
+            DGClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+           
+
+
         }
+
+        private void DGClientes_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+           
+            if (DGClientes.Rows[e.RowIndex].Cells["Estado"].Value != null &&
+                DGClientes.Rows[e.RowIndex].Cells["Estado"].Value.ToString() == "BAJA")
+            {
+               
+                DGClientes.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#b11963");
+            }
+            else
+            {
+                
+                DGClientes.Rows[e.RowIndex].DefaultCellStyle.BackColor = SystemColors.Window;
+            }
+        }
+
 
         private void DGClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -29,7 +56,7 @@ namespace ProyectoTaller.Views.Administradores
             foreach (DataGridViewRow row in DGClientes.Rows)
             {
                 bool isVisible = row.Cells.Cast<DataGridViewCell>().Any(cell => cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText));
-
+                DGClientes.CurrentCell = null;
                 row.Visible = isVisible;
             }
         }
@@ -45,7 +72,39 @@ namespace ProyectoTaller.Views.Administradores
             DialogResult result = MessageBox.Show("¿Está seguro de que desea borrar al cliente seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                DGClientes.Rows.RemoveAt(DGClientes.SelectedRows[0].Index);
+                clienteNegocio = new ClienteNegocio();
+                int dniCliente = Convert.ToInt32(DGClientes.SelectedRows[0].Cells["DNI_Cliente"].Value);
+
+                clienteNegocio.bajaCliente(dniCliente);
+
+                cargarClientes();
+
+
+
+                MessageBox.Show("Cliente borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void BActivarCliente_Click(object sender, EventArgs e)
+        {
+            if (DGClientes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona un cliente para borrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea dar de Alta al cliente seleccionado?", "Confirmar Alta Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                clienteNegocio = new ClienteNegocio();
+                int dniCliente = Convert.ToInt32(DGClientes.SelectedRows[0].Cells["DNI_Cliente"].Value);
+
+                clienteNegocio.altaCliente(dniCliente);
+
+                cargarClientes();
+
+
+
                 MessageBox.Show("Cliente borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

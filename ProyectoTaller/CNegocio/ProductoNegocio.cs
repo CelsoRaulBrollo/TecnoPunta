@@ -38,6 +38,37 @@ namespace ProyectoTaller.CNegocio
 
         }
 
+        public List<ProductoDTO> listarProductosConStock()
+        {
+            List<ProductoDTO> listaProductos = new List<ProductoDTO>();
+            productosDatos = new ProductoDatos();
+
+            foreach (var p in productosDatos.ObtenerProductos())
+            {
+                if (p.Stock_Producto > 0 && p.Condicion.Descripcion_Condicion == "ACTIVO")
+                {
+                    ProductoDTO productoDTO = new ProductoDTO
+                    {
+                        Modelo = p.Modelo_Producto,
+                        Nombre = p.Nombre_Producto,
+                        SistemaOperativo = p.SistemaOperativo_Producto,
+                        Almacenamiento = p.Almacenamiento_Producto,
+                        Ram = p.Ram_Producto,
+                        Precio = p.Precio_Producto,
+                        Stock = p.Stock_Producto,
+                        Marca = p.Marca?.Nombre_Marca,
+                        
+                    };
+
+                    listaProductos.Add(productoDTO);
+                }
+                
+            }
+
+            return listaProductos;
+
+        }
+
         public void actualizarProducto(Producto producto)
         {
             productosDatos = new ProductoDatos();
@@ -50,6 +81,12 @@ namespace ProyectoTaller.CNegocio
             productosDatos = new ProductoDatos();
             productosDatos.guardarProducto(producto);
             
+        }
+
+        public Producto buscarProductoBYID(string modelo)
+        {
+            productosDatos = new ProductoDatos();
+            return productosDatos.buscarProductoByID(modelo);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using ProyectoTaller.CNegocio;
+﻿using ProyectoTaller.CDatos;
+using ProyectoTaller.CModelos;
+using ProyectoTaller.CNegocio;
 using ProyectoTaller.Views;
 using System;
 using System.Data.SqlClient;
@@ -10,6 +12,7 @@ namespace ProyectoTaller
 {
     public partial class FormularioInicio : Form
     {
+        private UsuarioNegocio UsuarioNegocio;
         public FormularioInicio()
         {
             InitializeComponent();
@@ -24,28 +27,43 @@ namespace ProyectoTaller
         {
             string nombreUsuario = TUsuario.Text;
             string contraseña = TContraseña.Text;
+            UsuarioNegocio = new UsuarioNegocio();
 
+
+            
             LValidaciones.Text = "";
 
-            ValidarLogin(nombreUsuario, contraseña);
+            ValidarLogin(nombre, contraseña);
+            Usuario usuario = UsuarioNegocio.autenticacion(nombre, contraseña);
 
             if (string.IsNullOrWhiteSpace(LValidaciones.Text))
             {
-                string rolUsuario = ObtenerRolUsuario(nombreUsuario, contraseña);
-                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-                int dniVendedor = usuarioNegocio.ObtenerDNIDelUsuario(nombreUsuario, contraseña);
+                if (usuario != null && usuario.Estado == "ACTIVO") {
 
-                if (!string.IsNullOrEmpty(rolUsuario) && dniVendedor != -1)
-                {
-                    MenuPrincipal menu = new MenuPrincipal(this, rolUsuario, dniVendedor);
+                    MenuPrincipal menu = new MenuPrincipal(this, usuario);
                     menu.Show();
                     this.Hide();
+
+
                 }
                 else
                 {
-                    LValidaciones.Text = "Usuario o contraseña incorrectos.";
-                    LValidaciones.ForeColor = Color.Red;
+                    if(usuario == null)
+                    {
+                        LValidaciones.Text = "Usuario o contraseña incorrectos.";
+                        LValidaciones.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        LValidaciones.Text = "El Usuario ha sido dado de baja.";
+                        LValidaciones.ForeColor = Color.Red;
+
+                        
+                    }
+                    
                 }
+  
+                
             }
         }
 

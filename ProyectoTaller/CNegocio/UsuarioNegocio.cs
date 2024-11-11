@@ -15,6 +15,18 @@ namespace ProyectoTaller.CNegocio
     {
         private UsuarioDatos usuarioDatos;
 
+        public void actualizarEstado(int dni_Usuario)
+        {
+            usuarioDatos = new UsuarioDatos();
+            usuarioDatos.actualizarEstado(dni_Usuario);
+        }
+
+        public Usuario autenticacion(string nombreUsuario, string contraseña)
+        {
+            usuarioDatos = new UsuarioDatos();
+            return usuarioDatos.autenticacion(nombreUsuario, contraseña);
+        }
+
         public DataTable ListarUsuarios()
         {
             usuarioDatos = new UsuarioDatos();
@@ -33,32 +45,11 @@ namespace ProyectoTaller.CNegocio
 
             usuarioDatos.GuardarUsuario(usuario);
         }
-
-        public int ObtenerDNIDelUsuario(string nombreUsuario, string contraseña)
+      
+        public Usuario buscarUsuarioByDNI(int dNI)
         {
-            int dni = -1;
-
-            string connectionString = @"Server=CELSOBRO\SQLEXPRESS;Database=TecnoPuntaBD;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT DNI_Usuario FROM Usuarios WHERE Usuario = @nombreUsuario AND Contraseña = @contraseña";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
-                    command.Parameters.AddWithValue("@contraseña", contraseña);
-
-                    // Ejecuta la consulta y obtiene el DNI
-                    object result = command.ExecuteScalar();
-                    if (result != null)
-                    {
-                        dni = Convert.ToInt32(result);
-                    }
-                }
-            }
-            return dni; // Retorna el DNI del usuario o -1 si no se encuentra
+            usuarioDatos = new UsuarioDatos();
+            return usuarioDatos.buscarUsuario(dNI);
         }
     }
 }

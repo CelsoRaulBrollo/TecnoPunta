@@ -30,7 +30,7 @@
         {
             this.LTituloCarrito = new System.Windows.Forms.Label();
             this.LNombreCliente = new System.Windows.Forms.Label();
-            this.TDNIClienteFinalizarCompra = new System.Windows.Forms.TextBox();
+            this.BXDNIClienteFinalizarCompra = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,7 +55,8 @@
             this.LTotalFinalizarCompra = new System.Windows.Forms.Label();
             this.BBuscarClienteFinalizarCompra = new System.Windows.Forms.Button();
             this.BConfirmarCompraFinalizarCompra = new System.Windows.Forms.Button();
-            this.BValiBuscarCliente = new System.Windows.Forms.Label();
+            this.LValiBuscarCliente = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,13 +82,13 @@
             this.LNombreCliente.TabIndex = 52;
             this.LNombreCliente.Text = "DNI del Cliente";
             // 
-            // TDNIClienteFinalizarCompra
+            // BXDNIClienteFinalizarCompra
             // 
-            this.TDNIClienteFinalizarCompra.Location = new System.Drawing.Point(388, 131);
-            this.TDNIClienteFinalizarCompra.Margin = new System.Windows.Forms.Padding(4);
-            this.TDNIClienteFinalizarCompra.Name = "TDNIClienteFinalizarCompra";
-            this.TDNIClienteFinalizarCompra.Size = new System.Drawing.Size(272, 22);
-            this.TDNIClienteFinalizarCompra.TabIndex = 51;
+            this.BXDNIClienteFinalizarCompra.Location = new System.Drawing.Point(388, 131);
+            this.BXDNIClienteFinalizarCompra.Margin = new System.Windows.Forms.Padding(4);
+            this.BXDNIClienteFinalizarCompra.Name = "BXDNIClienteFinalizarCompra";
+            this.BXDNIClienteFinalizarCompra.Size = new System.Drawing.Size(272, 22);
+            this.BXDNIClienteFinalizarCompra.TabIndex = 51;
             // 
             // label1
             // 
@@ -164,9 +165,8 @@
             this.LNombreCompraFinCompra.Location = new System.Drawing.Point(319, 191);
             this.LNombreCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LNombreCompraFinCompra.Name = "LNombreCompraFinCompra";
-            this.LNombreCompraFinCompra.Size = new System.Drawing.Size(50, 20);
+            this.LNombreCompraFinCompra.Size = new System.Drawing.Size(0, 20);
             this.LNombreCompraFinCompra.TabIndex = 60;
-            this.LNombreCompraFinCompra.Text = "Julian";
             // 
             // LApellidosCompraFinCompra
             // 
@@ -177,9 +177,8 @@
             this.LApellidosCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LApellidosCompraFinCompra.Name = "LApellidosCompraFinCompra";
             this.LApellidosCompraFinCompra.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LApellidosCompraFinCompra.Size = new System.Drawing.Size(49, 20);
+            this.LApellidosCompraFinCompra.Size = new System.Drawing.Size(0, 20);
             this.LApellidosCompraFinCompra.TabIndex = 61;
-            this.LApellidosCompraFinCompra.Text = "Perez";
             // 
             // LDNICompraFinCompra
             // 
@@ -189,9 +188,9 @@
             this.LDNICompraFinCompra.Location = new System.Drawing.Point(319, 254);
             this.LDNICompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LDNICompraFinCompra.Name = "LDNICompraFinCompra";
-            this.LDNICompraFinCompra.Size = new System.Drawing.Size(73, 20);
+            this.LDNICompraFinCompra.Size = new System.Drawing.Size(0, 20);
             this.LDNICompraFinCompra.TabIndex = 62;
-            this.LDNICompraFinCompra.Text = "37890275";
+            this.LDNICompraFinCompra.Click += new System.EventHandler(this.LDNICompraFinCompra_Click);
             // 
             // LCorreoCompraFinCompra
             // 
@@ -201,9 +200,8 @@
             this.LCorreoCompraFinCompra.Location = new System.Drawing.Point(685, 254);
             this.LCorreoCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LCorreoCompraFinCompra.Name = "LCorreoCompraFinCompra";
-            this.LCorreoCompraFinCompra.Size = new System.Drawing.Size(172, 20);
+            this.LCorreoCompraFinCompra.Size = new System.Drawing.Size(0, 20);
             this.LCorreoCompraFinCompra.TabIndex = 65;
-            this.LCorreoCompraFinCompra.Text = "correo@example.com";
             // 
             // LDireccionCompraFinCompra
             // 
@@ -213,9 +211,8 @@
             this.LDireccionCompraFinCompra.Location = new System.Drawing.Point(685, 223);
             this.LDireccionCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LDireccionCompraFinCompra.Name = "LDireccionCompraFinCompra";
-            this.LDireccionCompraFinCompra.Size = new System.Drawing.Size(119, 20);
+            this.LDireccionCompraFinCompra.Size = new System.Drawing.Size(0, 20);
             this.LDireccionCompraFinCompra.TabIndex = 64;
-            this.LDireccionCompraFinCompra.Text = "Calle Falsa; 123";
             // 
             // LTelefonoCompraFinCompra
             // 
@@ -225,9 +222,8 @@
             this.LTelefonoCompraFinCompra.Location = new System.Drawing.Point(685, 191);
             this.LTelefonoCompraFinCompra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LTelefonoCompraFinCompra.Name = "LTelefonoCompraFinCompra";
-            this.LTelefonoCompraFinCompra.Size = new System.Drawing.Size(89, 20);
+            this.LTelefonoCompraFinCompra.Size = new System.Drawing.Size(0, 20);
             this.LTelefonoCompraFinCompra.TabIndex = 63;
-            this.LTelefonoCompraFinCompra.Text = "3794097654";
             // 
             // label7
             // 
@@ -244,49 +240,53 @@
             // 
             this.CBBilleteraVirtual.AutoSize = true;
             this.CBBilleteraVirtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBBilleteraVirtual.Location = new System.Drawing.Point(530, 347);
+            this.CBBilleteraVirtual.Location = new System.Drawing.Point(537, 347);
             this.CBBilleteraVirtual.Margin = new System.Windows.Forms.Padding(4);
             this.CBBilleteraVirtual.Name = "CBBilleteraVirtual";
             this.CBBilleteraVirtual.Size = new System.Drawing.Size(126, 22);
             this.CBBilleteraVirtual.TabIndex = 69;
             this.CBBilleteraVirtual.Text = "Billetera Virtual";
             this.CBBilleteraVirtual.UseVisualStyleBackColor = true;
+            this.CBBilleteraVirtual.CheckedChanged += new System.EventHandler(this.CBBilleteraVirtual_CheckedChanged);
             // 
             // CBTarjetaDeDebito
             // 
             this.CBTarjetaDeDebito.AutoSize = true;
             this.CBTarjetaDeDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBTarjetaDeDebito.Location = new System.Drawing.Point(380, 347);
+            this.CBTarjetaDeDebito.Location = new System.Drawing.Point(376, 347);
             this.CBTarjetaDeDebito.Margin = new System.Windows.Forms.Padding(4);
             this.CBTarjetaDeDebito.Name = "CBTarjetaDeDebito";
             this.CBTarjetaDeDebito.Size = new System.Drawing.Size(142, 22);
             this.CBTarjetaDeDebito.TabIndex = 68;
             this.CBTarjetaDeDebito.Text = "Tarjeta de Debito";
             this.CBTarjetaDeDebito.UseVisualStyleBackColor = true;
+            this.CBTarjetaDeDebito.CheckedChanged += new System.EventHandler(this.CBTarjetaDeDebito_CheckedChanged);
             // 
             // CBTarjetaDeCredito
             // 
             this.CBTarjetaDeCredito.AutoSize = true;
             this.CBTarjetaDeCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBTarjetaDeCredito.Location = new System.Drawing.Point(225, 347);
+            this.CBTarjetaDeCredito.Location = new System.Drawing.Point(204, 347);
             this.CBTarjetaDeCredito.Margin = new System.Windows.Forms.Padding(4);
             this.CBTarjetaDeCredito.Name = "CBTarjetaDeCredito";
             this.CBTarjetaDeCredito.Size = new System.Drawing.Size(147, 22);
             this.CBTarjetaDeCredito.TabIndex = 67;
             this.CBTarjetaDeCredito.Text = "Tarjeta de Credito";
             this.CBTarjetaDeCredito.UseVisualStyleBackColor = true;
+            this.CBTarjetaDeCredito.CheckedChanged += new System.EventHandler(this.CBTarjetaDeCredito_CheckedChanged);
             // 
             // CBEfectivo
             // 
             this.CBEfectivo.AutoSize = true;
             this.CBEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBEfectivo.Location = new System.Drawing.Point(664, 347);
+            this.CBEfectivo.Location = new System.Drawing.Point(677, 347);
             this.CBEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.CBEfectivo.Name = "CBEfectivo";
             this.CBEfectivo.Size = new System.Drawing.Size(83, 22);
             this.CBEfectivo.TabIndex = 70;
             this.CBEfectivo.Text = "Efectivo";
             this.CBEfectivo.UseVisualStyleBackColor = true;
+            this.CBEfectivo.CheckedChanged += new System.EventHandler(this.CBEfectivo_CheckedChanged);
             // 
             // label8
             // 
@@ -351,6 +351,7 @@
             this.BBuscarClienteFinalizarCompra.TabIndex = 76;
             this.BBuscarClienteFinalizarCompra.Text = "Buscar";
             this.BBuscarClienteFinalizarCompra.UseVisualStyleBackColor = true;
+            this.BBuscarClienteFinalizarCompra.Click += new System.EventHandler(this.BBuscarClienteFinalizarCompra_Click);
             // 
             // BConfirmarCompraFinalizarCompra
             // 
@@ -369,16 +370,27 @@
             this.BConfirmarCompraFinalizarCompra.UseVisualStyleBackColor = true;
             this.BConfirmarCompraFinalizarCompra.Click += new System.EventHandler(this.BConfirmarCompraFinalizarCompra_Click);
             // 
-            // BValiBuscarCliente
+            // LValiBuscarCliente
             // 
-            this.BValiBuscarCliente.AutoSize = true;
-            this.BValiBuscarCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BValiBuscarCliente.ForeColor = System.Drawing.Color.Red;
-            this.BValiBuscarCliente.Location = new System.Drawing.Point(384, 157);
-            this.BValiBuscarCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BValiBuscarCliente.Name = "BValiBuscarCliente";
-            this.BValiBuscarCliente.Size = new System.Drawing.Size(0, 20);
-            this.BValiBuscarCliente.TabIndex = 78;
+            this.LValiBuscarCliente.AutoSize = true;
+            this.LValiBuscarCliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LValiBuscarCliente.ForeColor = System.Drawing.Color.Red;
+            this.LValiBuscarCliente.Location = new System.Drawing.Point(393, 157);
+            this.LValiBuscarCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiBuscarCliente.Name = "LValiBuscarCliente";
+            this.LValiBuscarCliente.Size = new System.Drawing.Size(0, 20);
+            this.LValiBuscarCliente.TabIndex = 78;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label11.Location = new System.Drawing.Point(506, 335);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 20);
+            this.label11.TabIndex = 79;
             // 
             // ConfirmarVenta
             // 
@@ -386,7 +398,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1012, 690);
-            this.Controls.Add(this.BValiBuscarCliente);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.LValiBuscarCliente);
             this.Controls.Add(this.BConfirmarCompraFinalizarCompra);
             this.Controls.Add(this.BBuscarClienteFinalizarCompra);
             this.Controls.Add(this.LTotalFinalizarCompra);
@@ -412,7 +425,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LNombreCliente);
-            this.Controls.Add(this.TDNIClienteFinalizarCompra);
+            this.Controls.Add(this.BXDNIClienteFinalizarCompra);
             this.Controls.Add(this.LTituloCarrito);
             this.Name = "ConfirmarVenta";
             this.Text = "ConfirmarVenta";
@@ -426,7 +439,7 @@
         #endregion
         private System.Windows.Forms.Label LTituloCarrito;
         private System.Windows.Forms.Label LNombreCliente;
-        private System.Windows.Forms.TextBox TDNIClienteFinalizarCompra;
+        private System.Windows.Forms.TextBox BXDNIClienteFinalizarCompra;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -451,6 +464,7 @@
         private System.Windows.Forms.Label LTotalFinalizarCompra;
         private System.Windows.Forms.Button BBuscarClienteFinalizarCompra;
         private System.Windows.Forms.Button BConfirmarCompraFinalizarCompra;
-        private System.Windows.Forms.Label BValiBuscarCliente;
+        private System.Windows.Forms.Label LValiBuscarCliente;
+        private System.Windows.Forms.Label label11;
     }
 }

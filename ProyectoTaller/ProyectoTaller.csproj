@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +40,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="QuestPDF, Version=2024.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuestPDF.2024.10.2\lib\netstandard2.0\QuestPDF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -68,10 +73,12 @@
     <Compile Include="CDatos\CondicionDatos.cs" />
     <Compile Include="CDatos\ConexionBD.cs" />
     <Compile Include="CDatos\MarcaDatos.cs" />
+    <Compile Include="CDatos\MetodoDePagoDatos.cs" />
     <Compile Include="CDatos\ProductoDatos.cs" />
     <Compile Include="CDatos\RolDatos.cs" />
     <Compile Include="CDatos\SexoDato.cs" />
     <Compile Include="CDatos\UsuarioDatos.cs" />
+    <Compile Include="CDatos\VentaDatos..cs" />
     <Compile Include="CModelos\CarritoM.cs" />
     <Compile Include="CModelos\Clientes.cs" />
     <Compile Include="CModelos\Condicion.cs" />
@@ -79,27 +86,47 @@
     <Compile Include="CModelos\Detalle_Factura.cs" />
     <Compile Include="CModelos\Factura.cs" />
     <Compile Include="CModelos\Marca.cs" />
-    <Compile Include="CModelos\MetodoDePago.cs" />
+    <Compile Include="CModelos\MetodoDePagoModel.cs" />
     <Compile Include="CModelos\Producto.cs" />
     <Compile Include="CModelos\Rol.cs" />
     <Compile Include="CModelos\Sexo.cs" />
     <Compile Include="CModelos\Usuario.cs" />
+    <Compile Include="CModelos\Venta.cs" />
+    <Compile Include="CModelos\VentaDetalle.cs" />
     <Compile Include="CNegocio\CarritoNegocio.cs" />
     <Compile Include="CNegocio\ClienteNegocio.cs" />
     <Compile Include="CNegocio\CondicionNegocio.cs" />
     <Compile Include="CNegocio\MarcaNegocio.cs" />
+    <Compile Include="CNegocio\MetodoDePagoNegocio.cs" />
     <Compile Include="CNegocio\ProductoNegocio.cs" />
     <Compile Include="CNegocio\RolNegocio.cs" />
     <Compile Include="CNegocio\SexoNegocio.cs" />
     <Compile Include="CNegocio\UsuarioNegocio.cs" />
-    <Compile Include="DTO\CarritoDetalleDTO.cs" />
+    <Compile Include="CNegocio\VentaNegocio.cs" />
     <Compile Include="DTO\CarritoDTO.cs" />
+    <Compile Include="DTO\CarritoDetalleDTO.cs" />
+    <Compile Include="DTO\MarcaDTO.cs" />
+    <Compile Include="DTO\MarcaInformeDTO.cs" />
     <Compile Include="DTO\ProductoDTO.cs" />
+    <Compile Include="DTO\RolDTO.cs" />
+    <Compile Include="DTO\VentaDetalleDTO.cs" />
+    <Compile Include="DTO\VentaInformeCantidadDTO.cs" />
+    <Compile Include="DTO\VentaInformeRecaudacionDTO.cs" />
+    <Compile Include="DTO\VentaMensualPorClienteDTO.cs" />
+    <Compile Include="DTO\VentasMensualesPorMarcaDTO.cs" />
+    <Compile Include="DTO\VentasPorAñoDTO.cs" />
+    <Compile Include="DTO\VentasAdmDTO.cs" />
+    <Compile Include="DTO\VentasDTO.cs" />
+    <Compile Include="DTO\VentasPorDiaDTO.cs" />
+    <Compile Include="DTO\VentasPorMesDTO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Questpdf\CarritoDocumente.cs" />
+    <Compile Include="Questpdf\IDocument.cs" />
+    <Compile Include="Questpdf\InvoiceDocument.cs" />
     <Compile Include="Views\Administradores\AdministrarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,11 +237,11 @@
     <Compile Include="Views\Vendedor\GestionVentas.Designer.cs">
       <DependentUpon>GestionVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Vendedor\VentaDetalle.cs">
+    <Compile Include="Views\Administradores\VentaDetalles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Vendedor\VentaDetalle.Designer.cs">
-      <DependentUpon>VentaDetalle.cs</DependentUpon>
+    <Compile Include="Views\Administradores\VentaDetalles.Designer.cs">
+      <DependentUpon>VentaDetalles.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -275,8 +302,8 @@
     <EmbeddedResource Include="Views\Vendedor\GestionVentas.resx">
       <DependentUpon>GestionVentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Vendedor\VentaDetalle.resx">
-      <DependentUpon>VentaDetalle.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Administradores\VentaDetalles.resx">
+      <DependentUpon>VentaDetalles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CModelos\.editorconfig" />
     <None Include="packages.config" />
@@ -458,5 +485,15 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Questpdf\Logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\QuestPDF.2024.10.2\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2024.10.2\build\net4\QuestPDF.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\QuestPDF.2024.10.2\build\net4\QuestPDF.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\QuestPDF.2024.10.2\build\net4\QuestPDF.targets'))" />
+  </Target>
 </Project>

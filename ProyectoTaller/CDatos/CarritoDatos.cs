@@ -34,6 +34,20 @@ namespace ProyectoTaller.CDatos
                             carrito.DNIVendedor = dniVendedor;
                             carrito.Total = reader.GetDecimal(reader.GetOrdinal("Total"));
                         }
+                        else
+                        {
+                            reader.Close();
+                            string insertCarritoQuery = "INSERT INTO Carrito (DNI_Vendedor, Total) VALUES (@DNI_Vendedor, 0)";
+                            using (var insertCommand = new SqlCommand(insertCarritoQuery, connection))
+                            {
+                                insertCommand.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                                insertCommand.ExecuteNonQuery();
+
+                               
+                                carrito.DNIVendedor = dniVendedor;
+                                carrito.Total = 0; 
+                            }
+                        }
                     }
                 }
 
@@ -182,6 +196,17 @@ namespace ProyectoTaller.CDatos
                     
                 }
 
+                string updateTotalQuery = @"
+                    UPDATE Carrito 
+                    SET Total = (SELECT SUM(SubTotal) FROM CarritoDetalle WHERE DNI_Vendedor = @DNI_Vendedor)
+                    WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                using (SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, connection))
+                {
+                    updateTotalCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    updateTotalCmd.ExecuteNonQuery();
+                }
+
                 return true;
             }
         }
@@ -263,6 +288,17 @@ namespace ProyectoTaller.CDatos
                     }
                 }
 
+                string updateTotalQuery = @"
+                        UPDATE Carrito 
+                            SET Total = ISNULL((SELECT SUM(SubTotal) FROM CarritoDetalle WHERE DNI_Vendedor = @DNI_Vendedor), 0)
+                            WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                using (SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, connection))
+                {
+                    updateTotalCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    updateTotalCmd.ExecuteNonQuery();
+                }
+
                 return true; 
             }
         }
@@ -273,16 +309,68 @@ namespace ProyectoTaller.CDatos
             {
                 connection.Open();
 
+                
+                string selectQuery = @"
+                    SELECT Producto, Cantidad 
+                    FROM CarritoDetalle 
+                    WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                List<(string producto, int cantidad)> productosEnCarrito = new List<(string, int)>();
+
+                using (SqlCommand selectCmd = new SqlCommand(selectQuery, connection))
+                {
+                    selectCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    using (SqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string producto = reader["Producto"].ToString();
+                            int cantidad = Convert.ToInt32(reader["Cantidad"]);
+                            productosEnCarrito.Add((producto, cantidad));
+                        }
+                    }
+                }
+
+                // Eliminar los productos del carrito.
                 string deleteQuery = @"
-                        DELETE FROM CarritoDetalle 
-                        WHERE DNI_Vendedor = @DNI_Vendedor";
+                DELETE FROM CarritoDetalle 
+                WHERE DNI_Vendedor = @DNI_Vendedor";
 
                 using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, connection))
                 {
                     deleteCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
-                    int rowsAffected = deleteCmd.ExecuteNonQuery();
-                    return rowsAffected > 0; 
+                    deleteCmd.ExecuteNonQuery();
                 }
+
+                // Actualizar el stock de los productos eliminados.
+                foreach (var (producto, cantidad) in productosEnCarrito)
+                {
+                    string updateStockQuery = @"
+                UPDATE Productos 
+                SET Stock_Producto = Stock_Producto + @Cantidad 
+                WHERE Modelo_Producto = @Producto";
+
+                    using (SqlCommand updateStockCmd = new SqlCommand(updateStockQuery, connection))
+                    {
+                        updateStockCmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                        updateStockCmd.Parameters.AddWithValue("@Producto", producto);
+                        updateStockCmd.ExecuteNonQuery();
+                    }
+                }
+
+           
+                string updateTotalQuery = @"
+                        UPDATE Carrito 
+                        SET Total = ISNULL((SELECT SUM(SubTotal) FROM CarritoDetalle WHERE DNI_Vendedor = @DNI_Vendedor), 0)
+                        WHERE DNI_Vendedor = @DNI_Vendedor";
+
+                using (SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, connection))
+                {
+                    updateTotalCmd.Parameters.AddWithValue("@DNI_Vendedor", dniVendedor);
+                    updateTotalCmd.ExecuteNonQuery();
+                }
+
+                return productosEnCarrito.Count > 0; // Retornar true si se eliminaron productos.
             }
         }
 

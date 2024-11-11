@@ -1,5 +1,6 @@
 ﻿using ProyectoTaller.CModelos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,7 +9,41 @@ namespace ProyectoTaller.CDatos
 {
     public class ClienteDatos
     {
-        private readonly ConexionBD conexion = new ConexionBD();
+        private ConexionBD conexion = new ConexionBD();
+
+
+        public List<Clientes> listaDeClientes()
+        {
+            List<Clientes> listaClientes = new List<Clientes>();
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string query = "SELECT * from Clientes";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Clientes cliente = new Clientes
+                            {
+                                DNI_Cliente = Convert.ToInt32(reader["DNI_Cliente"]),
+                                Nombre_Cliente = reader["Nombre_Cliente"].ToString(),
+                                Apellido_Cliente = reader["Apellido_Cliente"].ToString(),
+                                Telefono_Cliente = reader["Telefono_Cliente"].ToString(),
+                                Correo_Cliente = reader["Correo_Cliente"].ToString(),
+                                Direccion_Cliente = reader["Direccion_Cliente"].ToString(),
+                                Estado = reader["Estado_Cliente"].ToString()
+                            };
+                            listaClientes.Add(cliente);
+                        }
+                    }
+                }
+                return listaClientes;
+
+            }
+        }
+
 
         public DataTable ObtenerClientes()
         {
@@ -129,6 +164,8 @@ namespace ProyectoTaller.CDatos
             }
         }
 
+
+
         public bool VerificarCorreo(string correo)
         {
             using (var con = conexion.ObtenerConexion())
@@ -139,6 +176,79 @@ namespace ProyectoTaller.CDatos
                     cmd.Parameters.AddWithValue("@Correo", correo);
                     int count = (int)cmd.ExecuteScalar();
                     return count > 0;
+                }
+            }
+        }
+
+        public Clientes buscarCliente(int dniCliente)
+        {
+            Clientes cliente = null;
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string query = "SELECT DNI_Cliente, Nombre_Cliente, Apellido_Cliente, Telefono_Cliente, Correo_Cliente, Direccion_Cliente " +
+                      "FROM Clientes WHERE DNI_Cliente = @DNI_Cliente";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Cliente", dniCliente);
+
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        if (reader.Read())
+                        {
+                            cliente = new Clientes
+                            {
+                                DNI_Cliente = reader.GetInt32(reader.GetOrdinal("DNI_Cliente")),
+                                Nombre_Cliente = reader["Nombre_Cliente"].ToString(),
+                                Apellido_Cliente = reader["Apellido_Cliente"].ToString(),
+                                Telefono_Cliente = reader["Telefono_Cliente"].ToString(),
+                                Correo_Cliente = reader["Correo_Cliente"].ToString(),
+                                Direccion_Cliente = reader["Direccion_Cliente"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return cliente;
+        }
+
+        public void altaCliente(int dniCliente)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+                string query = @"
+                            UPDATE Clientes
+                            SET Estado_Cliente = 'ACTIVO'
+                            WHERE DNI_Cliente = @DNI_Cliente";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Cliente", dniCliente);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public void bajaCliente(int dniCliente)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+                string query = @"
+                        UPDATE Clientes
+                        SET Estado_Cliente = 'BAJA'
+                        WHERE DNI_Cliente = @DNI_Cliente";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DNI_Cliente", dniCliente);
+                    command.ExecuteNonQuery();
                 }
             }
         }

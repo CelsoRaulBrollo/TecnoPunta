@@ -500,15 +500,15 @@ namespace ProyectoTaller.Views.Administradores
                     TNombreProducto.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Nombre"].Value.ToString();
                     TModelo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Modelo"].Value.ToString();
                     TSo.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["SistemaOperativo"].Value.ToString();
-                    TAlmacenamiento.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Almacenamiento"].Value.ToString().Replace(" GB", ""); ;
-                    TRam.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Ram"].Value.ToString();
+                    TAlmacenamiento.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Almacenamiento"].Value.ToString().Replace("GB", ""); ;
+                    TRam.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Ram"].Value.ToString().Replace("GB", "");
                     TStock.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Stock"].Value.ToString();
                     TPrecio.Text = DGProductos.Rows[filaSeleccionadaIndex].Cells["Precio"].Value.ToString();
                     CBEstado.SelectedItem = DGProductos.Rows[filaSeleccionadaIndex].Cells["Condicion"].Value.ToString();
 
                     CBMarca.SelectedItem = CBMarca.Items.Cast<Marca>().FirstOrDefault(m => m.Nombre_Marca == marcaNombre);
 
-                    // Seleccionar la condición correspondiente
+                    
                     CBEstado.SelectedItem = CBEstado.Items.Cast<Condicion>().FirstOrDefault(c => c.Descripcion_Condicion == condicionDescripcion);
 
                     TModelo.ReadOnly = true;
@@ -585,7 +585,7 @@ namespace ProyectoTaller.Views.Administradores
             if (CBNuevo.Checked)
             {
                 CBReacondicionado.Checked = false;
-                CBUsado.Checked = false;
+                
             }
 
             FiltrarPorEstado();
@@ -597,27 +597,17 @@ namespace ProyectoTaller.Views.Administradores
             if (CBReacondicionado.Checked)
             {
                 CBNuevo.Checked = false;
-                CBUsado.Checked = false;
+                
             }
 
             FiltrarPorEstado();
         }
 
-        private void CBUsado_CheckedChanged(object sender, EventArgs e)
-        {
-            // Desmarcar otros CheckBoxes si CBUsado está seleccionado
-            if (CBUsado.Checked)
-            {
-                CBNuevo.Checked = false;
-                CBReacondicionado.Checked = false;
-            }
-
-            FiltrarPorEstado();
-        }
+ 
 
         private void FiltrarPorEstado()
         {
-            bool hayFiltroActivo = CBNuevo.Checked || CBReacondicionado.Checked || CBUsado.Checked;
+            bool hayFiltroActivo = CBNuevo.Checked || CBReacondicionado.Checked ;
 
             foreach (DataGridViewRow fila in DGProductos.Rows)
             {
@@ -627,15 +617,11 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         fila.Visible = true;
                     }
-                    else if (CBNuevo.Checked && fila.Cells["Condicion"].Value.ToString() == "Nuevo")
+                    else if (CBNuevo.Checked && fila.Cells["Condicion"].Value.ToString() == "ACTIVO")
                     {
                         fila.Visible = true;
                     }
-                    else if (CBReacondicionado.Checked && fila.Cells["Condicion"].Value.ToString() == "Reacondicionado")
-                    {
-                        fila.Visible = true;
-                    }
-                    else if (CBUsado.Checked && fila.Cells["Condicion"].Value.ToString() == "Usado")
+                    else if (CBReacondicionado.Checked && fila.Cells["Condicion"].Value.ToString() == "BAJA")
                     {
                         fila.Visible = true;
                     }

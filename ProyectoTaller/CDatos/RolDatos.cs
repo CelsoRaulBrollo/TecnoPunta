@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller.CModelos;
+using ProyectoTaller.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -60,6 +61,47 @@ namespace ProyectoTaller.CDatos
 
 
             return id;
+        }
+
+        public List<RolDTO> generarInfomreUsuario(DateTime desde, DateTime hasta)
+        {
+            List<RolDTO> listaRolDTO = new List<RolDTO>();
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+
+                string query = @"
+                        SELECT r.Descripcion_Rol AS nombre, COUNT(u.DNI_Usuario) AS cantidad
+                        FROM Usuarios u
+                        JOIN Roles r ON u.Rol_Usuario = r.Id_Rol
+                        WHERE 
+                            u.fechaDeRegistro >= CONVERT(DATETIME, @Desde, 120) 
+                            AND u.fechaDeRegistro < CONVERT(DATETIME, @Hasta, 120)
+                        GROUP BY r.Descripcion_Rol";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Desde", desde);
+                    command.Parameters.AddWithValue("@Hasta", hasta.AddDays(1));
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RolDTO rolDTO = new RolDTO
+                            {
+                                nombre = reader["nombre"].ToString(),
+                                cantidad = Convert.ToInt32(reader["cantidad"])
+                            };
+                            listaRolDTO.Add(rolDTO);
+                        }
+                    }
+                }
+            }
+
+            return listaRolDTO;
+
         }
     }
 }
