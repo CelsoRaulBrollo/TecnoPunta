@@ -12,5 +12,12 @@ namespace ProyectoTaller.DTO
         public string Descripcion { get; set; }
         public int cantidad { get; set; }
         public decimal precio { get; set; }
+        public decimal Subtotal
+        {
+            get
+            {
+                return cantidad * precio;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ProyectoTaller.Views.Vendedor
 {
-    partial class TConsultarProducto
+    partial class ConsultarProducto
     {
         /// <summary>
         /// Required designer variable.

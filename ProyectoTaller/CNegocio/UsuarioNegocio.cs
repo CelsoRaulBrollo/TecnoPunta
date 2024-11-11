@@ -3,6 +3,7 @@ using ProyectoTaller.CModelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,12 +45,11 @@ namespace ProyectoTaller.CNegocio
 
             usuarioDatos.GuardarUsuario(usuario);
         }
-
+      
         public Usuario buscarUsuarioByDNI(int dNI)
         {
             usuarioDatos = new UsuarioDatos();
             return usuarioDatos.buscarUsuario(dNI);
         }
-
     }
 }

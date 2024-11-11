@@ -83,6 +83,8 @@
     <Compile Include="CModelos\Clientes.cs" />
     <Compile Include="CModelos\Condicion.cs" />
     <Compile Include="CModelos\DetalleCarrito.cs" />
+    <Compile Include="CModelos\Detalle_Factura.cs" />
+    <Compile Include="CModelos\Factura.cs" />
     <Compile Include="CModelos\Marca.cs" />
     <Compile Include="CModelos\MetodoDePagoModel.cs" />
     <Compile Include="CModelos\Producto.cs" />

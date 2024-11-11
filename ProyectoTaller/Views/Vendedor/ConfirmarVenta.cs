@@ -38,6 +38,7 @@ namespace ProyectoTaller.Views.Vendedor
         public void cargarCarrito()
         {
             carritoNegocio = new CarritoNegocio();
+            
             DGCarrito.DataSource = carritoNegocio.cargarCarito(_dniUsuario).detalles;
             decimal totalFinalizarCompra = carritoNegocio.cargarCarito(_dniUsuario).total;
             LTotalFinalizarCompra.Text = totalFinalizarCompra.ToString() +" $";
