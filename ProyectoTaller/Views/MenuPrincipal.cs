@@ -4,7 +4,6 @@ using ProyectoTaller.Views.Administradores;
 using ProyectoTaller.Views.Gerentes;
 using ProyectoTaller.Views.Vendedor;
 using System;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -60,30 +59,20 @@ namespace ProyectoTaller.Views
             }
             else if (_rolUsuario == "Vendedor")
             {
-                case "Admin":
-                    BProductos.Visible = true;
-                    BVentas.Visible = true;
-                    BCliente.Visible = true;
-                    BUsuarios.Visible = true;
-                    BInformes.Visible = true;
-                    BBackup.Visible = true;
-                    break;
-                case "Gerente":
-                    BProductos.Visible = true;
-                    BVentas.Visible = true;
-                    BCliente.Visible = true;
-                    BStock.Visible = true;
-                    BInformes.Visible = true;
-                    break;
-                case "Vendedor":
-                    BProductos.Visible = true;
-                    BCliente.Visible = true;
-                    BCarrito.Visible = true;
-                    BVentas.Visible = true;
-                    break;
+                BProductos.Visible = true;
+                BCliente.Visible = true;
+                BCarrito.Visible = true;
+                BVentas.Visible = true;
+            }
+            else if (_rolUsuario == "Gerente")
+            {
+                BProductos.Visible = true;
+                BVentas.Visible = true;
+                BCliente.Visible = true;
+                BStock.Visible = true;
+                BInformes.Visible = true;
             }
         }
-
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -141,7 +130,7 @@ namespace ProyectoTaller.Views
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                if(_rolUsuario == "Vendedor")
+                if (_rolUsuario == "Vendedor")
                 {
                     carritoNegocio = new CarritoNegocio();
                     carritoNegocio.vaciarCarrito(_dniUsuario);

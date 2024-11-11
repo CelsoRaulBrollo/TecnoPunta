@@ -32,16 +32,15 @@ namespace ProyectoTaller.Views.Vendedor
             _dniUsuario = dniUsuario;
             cargarCarrito();
             clienteActivo = false;
-            
+
         }
 
         public void cargarCarrito()
         {
             carritoNegocio = new CarritoNegocio();
-            
             DGCarrito.DataSource = carritoNegocio.cargarCarito(_dniUsuario).detalles;
             decimal totalFinalizarCompra = carritoNegocio.cargarCarito(_dniUsuario).total;
-            LTotalFinalizarCompra.Text = totalFinalizarCompra.ToString() +" $";
+            LTotalFinalizarCompra.Text = totalFinalizarCompra.ToString() + " $";
             DGCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
@@ -58,15 +57,15 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BConfirmarCompraFinalizarCompra_Click(object sender, EventArgs e)
         {
-            bool bandera = true; 
-            if(!clienteActivo == true)
+            bool bandera = true;
+            if (!clienteActivo == true)
             {
                 MessageBox.Show("Seleccione el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 bandera = false;
                 return;
 
             }
-            if(!(CBTarjetaDeCredito.Checked || CBTarjetaDeDebito.Checked || CBBilleteraVirtual.Checked || CBEfectivo.Checked))
+            if (!(CBTarjetaDeCredito.Checked || CBTarjetaDeDebito.Checked || CBBilleteraVirtual.Checked || CBEfectivo.Checked))
             {
                 MessageBox.Show("Debes elegir el metodo de pago", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 bandera = false;
@@ -79,9 +78,9 @@ namespace ProyectoTaller.Views.Vendedor
                 return;
             }
 
-            if (bandera== true)
+            if (bandera == true)
             {
-                    DialogResult resultado = MessageBox.Show("¿Desea terminar la venta?.", "Finalizacion de Venta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DialogResult resultado = MessageBox.Show("¿Desea terminar la venta?.", "Finalizacion de Venta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 if (resultado == DialogResult.OK)
                 {
                     List<CarritoDetalleDTO> carritoDetalle = new List<CarritoDetalleDTO>();
@@ -117,16 +116,16 @@ namespace ProyectoTaller.Views.Vendedor
                     Carrito carrito = new Carrito(_dniUsuario);
                     carrito.cargarCarrito();
                 }
-                
-                
-                
+
+
+
 
             }
 
 
 
 
-            
+
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
@@ -163,7 +162,7 @@ namespace ProyectoTaller.Views.Vendedor
             g.DrawString("37890275", contentFont, brush, margin + 300, margin + 135);
             g.DrawString("3794090344", contentFont, brush, margin + 400, margin + 135);
 
-          
+
 
             // Método de pago
             g.DrawString("Método de Pago", titleFont, brush, margin, margin + 230);
@@ -201,7 +200,7 @@ namespace ProyectoTaller.Views.Vendedor
 
             // Agrega un pie de página
             g.DrawString("Gracias por su compra!", contentFont, brush, margin + 100, margin + 520);
-        
+
         }
 
         private void LDNICompraFinCompra_Click(object sender, EventArgs e)
@@ -211,7 +210,7 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void BBuscarClienteFinalizarCompra_Click(object sender, EventArgs e)
         {
-            if((int.TryParse(BXDNIClienteFinalizarCompra.Text, out int numero)))
+            if ((int.TryParse(BXDNIClienteFinalizarCompra.Text, out int numero)))
             {
                 string dniText = BXDNIClienteFinalizarCompra.Text;
                 int dniCliente;
@@ -243,9 +242,9 @@ namespace ProyectoTaller.Views.Vendedor
                 LValiBuscarCliente.Text = "Ingrese un numero";
                 LValiBuscarCliente.ForeColor = Color.Red;
             }
-            
 
-            
+
+
 
 
         }
@@ -276,7 +275,7 @@ namespace ProyectoTaller.Views.Vendedor
 
             foreach (var checkBox in checkBoxes)
             {
-               
+
                 if (checkBox != checkBoxSeleccionado)
                 {
                     checkBox.Enabled = !checkBoxSeleccionado.Checked;
@@ -287,22 +286,22 @@ namespace ProyectoTaller.Views.Vendedor
         {
             if (CBTarjetaDeCredito.Checked)
             {
-                return 1; 
+                return 1;
             }
             else if (CBTarjetaDeDebito.Checked)
             {
-                return 2; 
+                return 2;
             }
             else if (CBBilleteraVirtual.Checked)
             {
-                return 3; 
+                return 3;
             }
             else if (CBEfectivo.Checked)
             {
-                return 4; 
+                return 4;
             }
 
-            return 0; 
+            return 0;
         }
 
 
