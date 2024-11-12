@@ -273,6 +273,61 @@ namespace ProyectoTaller.CDatos
 
             return dtClientes;
         }
+
+        public DataTable ObtenerInformeClientesGenero()
+        {
+            DataTable dataTable = new DataTable();
+
+        
+                        string query = @"
+                                SELECT
+                                YEAR(fechaCreacion) AS Año,
+                                MONTH(fechaCreacion) AS Mes,
+                                genero,
+                                COUNT(*) AS Cantidad_Clientes
+                            FROM
+                                Clientes
+                            
+                            GROUP BY
+                                YEAR(fechaCreacion),
+                                MONTH(fechaCreacion),
+                                genero
+                            ORDER BY
+                                Año,
+                                Mes,
+                                genero;;";
+
+            
+            ConexionBD conexion = new ConexionBD();
+
+            using (SqlConnection connection = conexion.ObtenerConexion()) 
+            {
+                
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    
+                    
+
+                    try
+                    {
+                        connection.Open();
+
+                        
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                        {
+                            dataAdapter.Fill(dataTable); 
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Error al obtener los datos de clientes: {ex.Message}");
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
     }
 }
 
