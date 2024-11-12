@@ -111,12 +111,6 @@
             // CBMarca
             // 
             this.CBMarca.FormattingEnabled = true;
-            this.CBMarca.Items.AddRange(new object[] {
-            "Apple",
-            "Samsung",
-            "Xiaomi",
-            "Huawei",
-            "Motorola"});
             this.CBMarca.Location = new System.Drawing.Point(244, 96);
             this.CBMarca.Margin = new System.Windows.Forms.Padding(4);
             this.CBMarca.Name = "CBMarca";

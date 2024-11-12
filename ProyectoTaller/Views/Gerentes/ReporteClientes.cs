@@ -13,107 +13,183 @@ namespace ProyectoTaller.Views.Gerentes
         public ReporteClientes()
         {
             InitializeComponent();
-            cargarDTP();
-            DateTime fechaInicio = DTPDesde.Value.Date;  
-            DateTime fechaFin = DTPHasta.Value.Date;
-
-            MostrarVentaMediaPorClientePorMes(fechaInicio, fechaFin);
+            cargarCBAÑOS();
+            CargarComboBoxNuevoClientes();
+            CargarGrafico(2024);
+            
+            
 
         }
-
-        public void cargarDTP()
-        {
-            DateTime inicioAño = new DateTime(DateTime.Now.Year, 1, 1);
-            DateTime fechaActual = DateTime.Now;
-
-            DTPDesde.Value = inicioAño;
-            DTPHasta.Value = fechaActual;
-        }
-
-
-        private void DTPDesde_ValueChanged(object sender, EventArgs e)
-        {
-            ActualizarGrafico();
-        }
-
-        private void DTPHasta_ValueChanged(object sender, EventArgs e)
-        {
-            ActualizarGrafico();
-        }
-
-      
-        private void ActualizarGrafico()
-        {
-           
-            DateTime fechaInicio = DTPDesde.Value.Date;  
-            DateTime fechaFin = DTPHasta.Value.Date;
-
-           
-            if (fechaInicio > fechaFin)
-            {
-                MessageBox.Show("La fecha de inicio no puede ser posterior a la fecha de fin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-           
-            MostrarVentaMediaPorClientePorMes(fechaInicio, fechaFin);
-        }
-
 
         private void CBNuevoClientes_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (CBNuevoClientes.SelectedItem.ToString() == "Nuevos Clientes")
+            if (CBAÑOS.SelectedItem != null)
             {
-              
+                int añoSeleccionado = Convert.ToInt32(CBAÑOS.SelectedItem.ToString());
+
+                if (CBNuevoClientes.SelectedItem.ToString() == "Nuevos Clientes")
+                {
+                    CargarGraficoClientesPorMes(añoSeleccionado);
+                    LBReporteCliente.Text = "Nuevos Clientes";
+                }
+                else if (CBNuevoClientes.SelectedItem.ToString() == "Nuevos Clientes por Género")
+                {
+                    CargarGrafico(añoSeleccionado);
+                    LBReporteCliente.Text = "Nuevos Clientes por Género";
+                }
             }
-            else if (CBNuevoClientes.SelectedItem.ToString() == "Nuevos Clientes Según Género")
+            else
             {
-                
+                MessageBox.Show("Por favor, selecciona un año.");
             }
         }
 
-        private void MostrarVentaMediaPorClientePorMes(DateTime fechaInicio, DateTime fechaFin)
+        private void CargarGrafico(int año)
         {
-            ventaNegocio = new VentaNegocio();
-            var ventasMensuales = ventaNegocio.ObtenerVentaMediaPorClientePorMes(fechaInicio, fechaFin);
+            
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
 
-       
-            ChartReporteClientes.Series.Clear();
-            ChartReporteClientes.Titles.Clear();
-            ChartReporteClientes.Legends.Clear();
-
-            var serie = new Series
-            {
-                Name = "Venta Media",
-                ChartType = SeriesChartType.Line,
-                IsValueShownAsLabel = true
-            };
-
-         
-            foreach (var venta in ventasMensuales)
-            {
-                serie.Points.AddXY($"{venta.Año}-{venta.Mes:D2}", venta.VentaMediaPorCliente);
-            }
-
-       
-            ChartReporteClientes.Series.Add(serie);
+            LBReporteCliente.Text = "Nuevos Clientes por Género";
+            List<Tuple<int, string, int>> informeClientes = clienteNegocio.ObtenerInformeClientesGenero(año);
 
             
-            ChartReporteClientes.Titles.Add($"Venta Media por Cliente");
-            ChartReporteClientes.Legends.Add(new Legend("Leyenda"));
+            ChartReporteClientes.Series.Clear();
+
+            
+            ChartReporteClientes.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea("ChartArea1");
+            ChartReporteClientes.ChartAreas.Add(chartArea);
+
+            
+            var generos = new List<string> { "Masculino", "Femenino", "Otro" };
+
+            foreach (var genero in generos)
+            {
+                Series series = new Series(genero)
+                {
+                    ChartType = SeriesChartType.StackedColumn, 
+                    
+                    LabelFormat = "#,##0" 
+                };
+
+                
+                foreach (var item in informeClientes)
+                {
+                    if (item.Item2 == genero) 
+                    {
+                        int cantidad = item.Item3;
+
+                        if (cantidad > 0)
+                        {
+                            
+                            series.Points.AddXY(item.Item1, cantidad);
+                            series.Points[series.Points.Count - 1].IsValueShownAsLabel = true;
+                        }
+                        else
+                        {
+                            
+                            series.Points.AddXY(item.Item1, 0);
+                            series.Points[series.Points.Count - 1].IsValueShownAsLabel = false;
+                          
+                        }
+                    }
+                }
+
+                
+                ChartReporteClientes.Series.Add(series);
+            }
+
+            
+            ChartReporteClientes.ChartAreas[0].AxisX.Title = "Mes";
+            ChartReporteClientes.ChartAreas[0].AxisX.Interval = 1;  
+
+           
+            ChartReporteClientes.ChartAreas[0].AxisY.Title = "Cantidad de Clientes";
+
+            
+            ChartReporteClientes.ChartAreas[0].RecalculateAxesScale();
+        }
+
+        private void CargarComboBoxNuevoClientes()
+        {
+
+            CBNuevoClientes.SelectedIndexChanged -= CBNuevoClientes_SelectedIndexChanged_1;
+
+          
+            CBNuevoClientes.Items.Clear();
+            CBNuevoClientes.Items.Add("Nuevos Clientes");
+            CBNuevoClientes.Items.Add("Nuevos Clientes por Género");
+
+
+            CBNuevoClientes.SelectedIndex = 0;
+
+            
+            CBNuevoClientes.SelectedIndexChanged += CBNuevoClientes_SelectedIndexChanged_1;
+        }
+
+        private void cargarCBAÑOS()
+        {
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
+            List<int> años = clienteNegocio.ObtenerAñosDeDatosClientes();
+
+            if (años != null && años.Count > 0)
+            {
+               
+                CBAÑOS.DataSource = años;
+
+            
+                CBAÑOS.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron años disponibles.");
+            }
+        }
+
+        private void CargarGraficoClientesPorMes(int año)
+        {
+            
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
+
+            
+            List<Tuple<int, int>> informeClientes = clienteNegocio.ObtenerInformeClientesTotalesPorMes(año);
+
+            LBReporteCliente.Text = "Nuevos Clientes";
+            ChartReporteClientes.Series.Clear();
+
+           
+            ChartReporteClientes.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea("ChartArea1");
+            ChartReporteClientes.ChartAreas.Add(chartArea);
+
+            
+            Series series = new Series("Nuevos Clientes")
+            {
+                ChartType = SeriesChartType.Column, 
+                IsValueShownAsLabel = true, 
+                LabelFormat = "#,##0" 
+            };
+
+           
+            foreach (var item in informeClientes)
+            {
+                
+                series.Points.AddXY(item.Item1, item.Item2);
+            }
+
+           
+            ChartReporteClientes.Series.Add(series);
+
+            
+            ChartReporteClientes.ChartAreas[0].AxisX.Title = "Mes";
+            ChartReporteClientes.ChartAreas[0].AxisX.Interval = 1;  
+
+            
+            ChartReporteClientes.ChartAreas[0].AxisY.Title = "Cantidad de Clientes";
 
          
-            ChartReporteClientes.Invalidate();
+            ChartReporteClientes.ChartAreas[0].RecalculateAxesScale();
         }
 
-        private void DTPDesde_ValueChanged_1(object sender, EventArgs e)
-        {
-            ActualizarGrafico();
-        }
-
-        private void DTPHasta_ValueChanged_1(object sender, EventArgs e)
-        {
-            ActualizarGrafico();
-        }
     }
 }

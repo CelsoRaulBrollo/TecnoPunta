@@ -62,7 +62,7 @@
             // TBuscarVentas
             // 
             this.TBuscarVentas.Location = new System.Drawing.Point(427, 105);
-            this.TBuscarVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TBuscarVentas.Margin = new System.Windows.Forms.Padding(4);
             this.TBuscarVentas.Name = "TBuscarVentas";
             this.TBuscarVentas.Size = new System.Drawing.Size(368, 22);
             this.TBuscarVentas.TabIndex = 29;
@@ -73,7 +73,7 @@
             this.DGVentas.AllowUserToAddRows = false;
             this.DGVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVentas.Location = new System.Drawing.Point(16, 199);
-            this.DGVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGVentas.Margin = new System.Windows.Forms.Padding(4);
             this.DGVentas.Name = "DGVentas";
             this.DGVentas.RowHeadersWidth = 51;
             this.DGVentas.Size = new System.Drawing.Size(1151, 410);
@@ -99,7 +99,7 @@
             this.BVerDetalle.Image = global::ProyectoTaller.Properties.Resources.Ver_detalle;
             this.BVerDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BVerDetalle.Location = new System.Drawing.Point(969, 121);
-            this.BVerDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BVerDetalle.Margin = new System.Windows.Forms.Padding(4);
             this.BVerDetalle.Name = "BVerDetalle";
             this.BVerDetalle.Size = new System.Drawing.Size(164, 64);
             this.BVerDetalle.TabIndex = 34;
@@ -116,7 +116,7 @@
             this.BVerFactura.Image = global::ProyectoTaller.Properties.Resources.factura;
             this.BVerFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BVerFactura.Location = new System.Drawing.Point(969, 43);
-            this.BVerFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BVerFactura.Margin = new System.Windows.Forms.Padding(4);
             this.BVerFactura.Name = "BVerFactura";
             this.BVerFactura.Size = new System.Drawing.Size(164, 64);
             this.BVerFactura.TabIndex = 33;
@@ -129,7 +129,7 @@
             // 
             this.PBImagenTitulo.Image = global::ProyectoTaller.Properties.Resources.VentasTitulo;
             this.PBImagenTitulo.Location = new System.Drawing.Point(16, 9);
-            this.PBImagenTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PBImagenTitulo.Margin = new System.Windows.Forms.Padding(4);
             this.PBImagenTitulo.Name = "PBImagenTitulo";
             this.PBImagenTitulo.Size = new System.Drawing.Size(87, 82);
             this.PBImagenTitulo.TabIndex = 28;
@@ -139,7 +139,7 @@
             // 
             this.DTPDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTPDesde.Location = new System.Drawing.Point(93, 107);
-            this.DTPDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPDesde.Margin = new System.Windows.Forms.Padding(4);
             this.DTPDesde.Name = "DTPDesde";
             this.DTPDesde.Size = new System.Drawing.Size(128, 22);
             this.DTPDesde.TabIndex = 36;
@@ -160,7 +160,7 @@
             // 
             this.DTPHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTPHasta.Location = new System.Drawing.Point(93, 158);
-            this.DTPHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPHasta.Margin = new System.Windows.Forms.Padding(4);
             this.DTPHasta.Name = "DTPHasta";
             this.DTPHasta.Size = new System.Drawing.Size(128, 22);
             this.DTPHasta.TabIndex = 65;
@@ -181,7 +181,7 @@
             // 
             this.CBEfectivo.AutoSize = true;
             this.CBEfectivo.Location = new System.Drawing.Point(543, 169);
-            this.CBEfectivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.CBEfectivo.Name = "CBEfectivo";
             this.CBEfectivo.Size = new System.Drawing.Size(77, 20);
             this.CBEfectivo.TabIndex = 67;
@@ -204,7 +204,7 @@
             // 
             this.CBTarjeta.AutoSize = true;
             this.CBTarjeta.Location = new System.Drawing.Point(628, 169);
-            this.CBTarjeta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.CBTarjeta.Name = "CBTarjeta";
             this.CBTarjeta.Size = new System.Drawing.Size(72, 20);
             this.CBTarjeta.TabIndex = 69;
@@ -216,18 +216,18 @@
             // 
             this.CBTransferencia.AutoSize = true;
             this.CBTransferencia.Location = new System.Drawing.Point(709, 169);
-            this.CBTransferencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBTransferencia.Margin = new System.Windows.Forms.Padding(4);
             this.CBTransferencia.Name = "CBTransferencia";
-            this.CBTransferencia.Size = new System.Drawing.Size(112, 20);
+            this.CBTransferencia.Size = new System.Drawing.Size(118, 20);
             this.CBTransferencia.TabIndex = 70;
-            this.CBTransferencia.Text = "Transferencia";
+            this.CBTransferencia.Text = "Billetera Virutal";
             this.CBTransferencia.UseVisualStyleBackColor = true;
             this.CBTransferencia.CheckedChanged += new System.EventHandler(this.CBTransferencia_CheckedChanged);
             // 
             // BReiniciar
             // 
             this.BReiniciar.Location = new System.Drawing.Point(231, 106);
-            this.BReiniciar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BReiniciar.Margin = new System.Windows.Forms.Padding(4);
             this.BReiniciar.Name = "BReiniciar";
             this.BReiniciar.Size = new System.Drawing.Size(80, 28);
             this.BReiniciar.TabIndex = 71;
@@ -257,7 +257,7 @@
             this.Controls.Add(this.TBuscarVentas);
             this.Controls.Add(this.PBImagenTitulo);
             this.Controls.Add(this.LTituloVentas);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VerVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerVentas";

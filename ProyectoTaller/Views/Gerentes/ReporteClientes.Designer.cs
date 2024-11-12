@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PBImagenReporteCliente = new System.Windows.Forms.PictureBox();
             this.LTituloReporteCliente = new System.Windows.Forms.Label();
             this.CBNuevoClientes = new System.Windows.Forms.ComboBox();
             this.ChartReporteClientes = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.DTPDesde = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DTPHasta = new System.Windows.Forms.DateTimePicker();
+            this.CBAÑOS = new System.Windows.Forms.ComboBox();
+            this.LBReporteCliente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenReporteCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartReporteClientes)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +67,7 @@
             this.CBNuevoClientes.FormattingEnabled = true;
             this.CBNuevoClientes.Items.AddRange(new object[] {
             ""});
-            this.CBNuevoClientes.Location = new System.Drawing.Point(493, 448);
+            this.CBNuevoClientes.Location = new System.Drawing.Point(625, 502);
             this.CBNuevoClientes.Margin = new System.Windows.Forms.Padding(4);
             this.CBNuevoClientes.Name = "CBNuevoClientes";
             this.CBNuevoClientes.Size = new System.Drawing.Size(208, 24);
@@ -79,54 +77,43 @@
             // 
             // ChartReporteClientes
             // 
-            chartArea3.Name = "ChartArea1";
-            this.ChartReporteClientes.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.ChartReporteClientes.Legends.Add(legend3);
-            this.ChartReporteClientes.Location = new System.Drawing.Point(86, 103);
+            chartArea2.Name = "ChartArea1";
+            this.ChartReporteClientes.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.ChartReporteClientes.Legends.Add(legend2);
+            this.ChartReporteClientes.Location = new System.Drawing.Point(81, 150);
             this.ChartReporteClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChartReporteClientes.Name = "ChartReporteClientes";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "VentasMensuales";
-            this.ChartReporteClientes.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "VentasMensuales";
+            this.ChartReporteClientes.Series.Add(series2);
             this.ChartReporteClientes.Size = new System.Drawing.Size(1056, 326);
             this.ChartReporteClientes.TabIndex = 77;
             this.ChartReporteClientes.Text = "chart2";
             // 
-            // DTPDesde
+            // CBAÑOS
             // 
-            this.DTPDesde.Location = new System.Drawing.Point(350, 514);
-            this.DTPDesde.Name = "DTPDesde";
-            this.DTPDesde.Size = new System.Drawing.Size(200, 22);
-            this.DTPDesde.TabIndex = 81;
-            this.DTPDesde.ValueChanged += new System.EventHandler(this.DTPDesde_ValueChanged_1);
+            this.CBAÑOS.FormattingEnabled = true;
+            this.CBAÑOS.Items.AddRange(new object[] {
+            ""});
+            this.CBAÑOS.Location = new System.Drawing.Point(343, 502);
+            this.CBAÑOS.Margin = new System.Windows.Forms.Padding(4);
+            this.CBAÑOS.Name = "CBAÑOS";
+            this.CBAÑOS.Size = new System.Drawing.Size(208, 24);
+            this.CBAÑOS.TabIndex = 85;
+            this.CBAÑOS.Text = "Seleccione una opción";
             // 
-            // label1
+            // LBReporteCliente
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(422, 485);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
-            this.label1.TabIndex = 82;
-            this.label1.Text = "Desde";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(709, 485);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 84;
-            this.label2.Text = "Hasta";
-            // 
-            // DTPHasta
-            // 
-            this.DTPHasta.Location = new System.Drawing.Point(637, 514);
-            this.DTPHasta.Name = "DTPHasta";
-            this.DTPHasta.Size = new System.Drawing.Size(200, 22);
-            this.DTPHasta.TabIndex = 83;
-            this.DTPHasta.ValueChanged += new System.EventHandler(this.DTPHasta_ValueChanged_1);
+            this.LBReporteCliente.AutoSize = true;
+            this.LBReporteCliente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBReporteCliente.Location = new System.Drawing.Point(178, 107);
+            this.LBReporteCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBReporteCliente.Name = "LBReporteCliente";
+            this.LBReporteCliente.Size = new System.Drawing.Size(80, 23);
+            this.LBReporteCliente.TabIndex = 100;
+            this.LBReporteCliente.Text = "Cliente";
             // 
             // ReporteClientes
             // 
@@ -134,10 +121,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1183, 624);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.DTPHasta);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.DTPDesde);
+            this.Controls.Add(this.LBReporteCliente);
+            this.Controls.Add(this.CBAÑOS);
             this.Controls.Add(this.CBNuevoClientes);
             this.Controls.Add(this.ChartReporteClientes);
             this.Controls.Add(this.LTituloReporteCliente);
@@ -159,9 +144,7 @@
         private System.Windows.Forms.Label LTituloReporteCliente;
         private System.Windows.Forms.ComboBox CBNuevoClientes;
         private System.Windows.Forms.DataVisualization.Charting.Chart ChartReporteClientes;
-        private System.Windows.Forms.DateTimePicker DTPDesde;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker DTPHasta;
+        private System.Windows.Forms.ComboBox CBAÑOS;
+        private System.Windows.Forms.Label LBReporteCliente;
     }
 }

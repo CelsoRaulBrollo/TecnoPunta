@@ -33,7 +33,8 @@ namespace ProyectoTaller.CDatos
                                 Telefono_Cliente = reader["Telefono_Cliente"].ToString(),
                                 Correo_Cliente = reader["Correo_Cliente"].ToString(),
                                 Direccion_Cliente = reader["Direccion_Cliente"].ToString(),
-                                Estado = reader["Estado_Cliente"].ToString()
+                                Estado = reader["Estado_Cliente"].ToString(),
+                                Genero = reader["genero"].ToString()
                             };
                             listaClientes.Add(cliente);
                         }
@@ -44,41 +45,24 @@ namespace ProyectoTaller.CDatos
             }
         }
 
+      
+       
 
-        public DataTable ObtenerClientes()
+        public void AgregarCliente(Clientes cliente)
         {
             try
             {
                 using (SqlConnection connection = conexion.ObtenerConexion())
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Clientes", connection);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al obtener clientes: {ex.Message}");
-                return null;
-            }
-        }
-
-        public void AgregarCliente(int dni, string nombre, string apellido, int telefono, string correo, string direccion)
-        {
-            try
-            {
-                using (SqlConnection connection = conexion.ObtenerConexion())
-                {
-                    string query = "INSERT INTO Clientes (DNI_cliente, Nombre_Cliente, Apellido_Cliente, Telefono_Cliente, Correo_Cliente, Direccion_Cliente) VALUES (@DNI_Cliente, @Nombre_Cliente, @Apellido_Cliente, @Telefono_Cliente, @Correo_Cliente, @Direccion_Cliente)";
+                    string query = "INSERT INTO Clientes (DNI_cliente, Nombre_Cliente, Apellido_Cliente, Telefono_Cliente, Correo_Cliente, Direccion_Cliente, genero) VALUES (@DNI_Cliente, @Nombre_Cliente, @Apellido_Cliente, @Telefono_Cliente, @Correo_Cliente, @Direccion_Cliente ,@Genero_Cliente)";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@DNI_Cliente", dni);
-                    command.Parameters.AddWithValue("@Nombre_Cliente", nombre);
-                    command.Parameters.AddWithValue("@Apellido_Cliente", apellido);
-                    command.Parameters.AddWithValue("@Telefono_Cliente", telefono);
-                    command.Parameters.AddWithValue("@Correo_Cliente", correo);
-                    command.Parameters.AddWithValue("@Direccion_Cliente", direccion);
-
+                    command.Parameters.AddWithValue("@DNI_Cliente", cliente.DNI_Cliente);
+                    command.Parameters.AddWithValue("@Nombre_Cliente", cliente.Nombre_Cliente);
+                    command.Parameters.AddWithValue("@Apellido_Cliente", cliente.Apellido_Cliente);
+                    command.Parameters.AddWithValue("@Telefono_Cliente", cliente.Telefono_Cliente);
+                    command.Parameters.AddWithValue("@Correo_Cliente", cliente.Correo_Cliente);
+                    command.Parameters.AddWithValue("@Direccion_Cliente", cliente.Direccion_Cliente);
+                    command.Parameters.AddWithValue("@Genero_Cliente", cliente.Genero);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
@@ -89,20 +73,21 @@ namespace ProyectoTaller.CDatos
             }
         }
 
-        public void EditarCliente(int dni, string nombre, string apellido, int telefono, string correo, string direccion)
+        public void EditarCliente(Clientes cliente)
         {
             try
             {
                 using (SqlConnection connection = conexion.ObtenerConexion())
                 {
-                    string query = "UPDATE Clientes SET Nombre_Cliente=@Nombre_Cliente, Apellido_Cliente=@Apellido_Cliente, Telefono_Cliente=@Telefono_Cliente, Correo_Cliente=@Correo_Cliente, Direccion_Cliente=@Direccion_Cliente WHERE DNI_cliente=@DNI_Cliente";
+                    string query = "UPDATE Clientes SET Nombre_Cliente=@Nombre_Cliente, Apellido_Cliente=@Apellido_Cliente, Telefono_Cliente=@Telefono_Cliente, Correo_Cliente=@Correo_Cliente, Direccion_Cliente=@Direccion_Cliente, genero = @Genero_Cliente WHERE DNI_cliente=@DNI_Cliente";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@DNI_Cliente", dni);
-                    command.Parameters.AddWithValue("@Nombre_Cliente", nombre);
-                    command.Parameters.AddWithValue("@Apellido_Cliente", apellido);
-                    command.Parameters.AddWithValue("@Telefono_Cliente", telefono);
-                    command.Parameters.AddWithValue("@Correo_Cliente", correo);
-                    command.Parameters.AddWithValue("@Direccion_Cliente", direccion);
+                    command.Parameters.AddWithValue("@DNI_Cliente", cliente.DNI_Cliente);
+                    command.Parameters.AddWithValue("@Nombre_Cliente", cliente.Nombre_Cliente);
+                    command.Parameters.AddWithValue("@Apellido_Cliente", cliente.Apellido_Cliente);
+                    command.Parameters.AddWithValue("@Telefono_Cliente", cliente.Telefono_Cliente);
+                    command.Parameters.AddWithValue("@Correo_Cliente", cliente.Correo_Cliente);
+                    command.Parameters.AddWithValue("@Direccion_Cliente", cliente.Direccion_Cliente);
+                    command.Parameters.AddWithValue("@Genero_Cliente", cliente.Genero);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -149,6 +134,8 @@ namespace ProyectoTaller.CDatos
                 }
             }
         }
+
+        
 
         public bool VerificarTelefono(string telefono)
         {
@@ -252,6 +239,95 @@ namespace ProyectoTaller.CDatos
                 }
             }
         }
+
+        public DataTable GenerarInformeClientes(DateTime desde, DateTime hasta)
+        {
+            DataTable dtClientes = new DataTable();
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+
+                
+                string query = @"
+                SELECT c.genero AS Estado, COUNT(c.DNI_Cliente) AS Cantidad
+                FROM Clientes c
+                WHERE 
+                    c.fechaCreacion >= @Desde 
+                    AND c.fechaCreacion < @Hasta
+                GROUP BY c.genero";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    
+                    command.Parameters.AddWithValue("@Desde", desde);
+                    command.Parameters.AddWithValue("@Hasta", hasta.AddDays(1));
+
+                    
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dtClientes);
+                    }
+                }
+            }
+
+            return dtClientes;
+        }
+
+        public DataTable ObtenerInformeClientesGenero()
+        {
+            DataTable dataTable = new DataTable();
+
+        
+                        string query = @"
+                                SELECT
+                                YEAR(fechaCreacion) AS Año,
+                                MONTH(fechaCreacion) AS Mes,
+                                genero,
+                                COUNT(*) AS Cantidad_Clientes
+                            FROM
+                                Clientes
+                            
+                            GROUP BY
+                                YEAR(fechaCreacion),
+                                MONTH(fechaCreacion),
+                                genero
+                            ORDER BY
+                                Año,
+                                Mes,
+                                genero;;";
+
+            
+            ConexionBD conexion = new ConexionBD();
+
+            using (SqlConnection connection = conexion.ObtenerConexion()) 
+            {
+                
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    
+                    
+
+                    try
+                    {
+                        connection.Open();
+
+                        
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                        {
+                            dataAdapter.Fill(dataTable); 
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Error al obtener los datos de clientes: {ex.Message}");
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
     }
 }
 
