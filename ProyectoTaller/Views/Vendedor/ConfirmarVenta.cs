@@ -80,7 +80,7 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (bandera == true)
             {
-                DialogResult resultado = MessageBox.Show("¿Desea terminar la venta?.", "Finalizacion de Venta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DialogResult resultado = MessageBox.Show("¿Desea terminar la venta?", "Finalización de Venta", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (resultado == DialogResult.OK)
                 {
                     List<CarritoDetalleDTO> carritoDetalle = new List<CarritoDetalleDTO>();

@@ -23,6 +23,7 @@ namespace ProyectoTaller.Views.Administradores
             CargarMarcas();
             CargarCondicion();
             CargarProductos();
+           
         }
 
         private void CargarMarcas()

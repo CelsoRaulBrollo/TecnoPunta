@@ -2,6 +2,7 @@
 using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -25,74 +26,12 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void CargarClientes()
         {
-            try
-            {
-                using (var con = conexion.ObtenerConexion())
-                {
-                    con.Open();
-
-                    using (var cmd = new SqlCommand("SELECT * FROM Clientes", con))
-                    {
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            DGClientes.Rows.Clear();
-
-                            while (reader.Read())
-                            {
-                                DGClientes.Rows.Add(
-                                    reader["DNI_cliente"],
-                                    reader["Nombre_Cliente"],
-                                    reader["Apellido_Cliente"],
-                                    reader["Telefono_Cliente"],
-                                    reader["Correo_Cliente"],
-                                    reader["Direccion_Cliente"]
-                                );
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-        }
-
-        public class ClienteDatos
-        {
-            private readonly ConexionBD conexion = new ConexionBD();
-
-            public bool AgregarCliente(Clientes cliente)
-            {
-                try
-                {
-                    using (var con = conexion.ObtenerConexion())
-                    {
-                        con.Open();
-
-                        using (var cmd = new SqlCommand("INSERT INTO Clientes (DNI_cliente, Nombre_Cliente, Apellido_Cliente, Telefono_Cliente, Correo_Cliente, Direccion_Cliente) VALUES (@DNI_cliente, @Nombre_Cliente, @Apellido_Cliente, @Telefono_Cliente, @Correo_Cliente, @Direccion_Cliente)", con))
-                        {
-                            cmd.Parameters.AddWithValue("@DNI_cliente", cliente.DNI_Cliente);
-                            cmd.Parameters.AddWithValue("@Nombre_Cliente", cliente.Nombre_Cliente);
-                            cmd.Parameters.AddWithValue("@Apellido_Cliente", cliente.Apellido_Cliente);
-                            cmd.Parameters.AddWithValue("@Telefono_Cliente", cliente.Telefono_Cliente);
-                            cmd.Parameters.AddWithValue("@Correo_Cliente", cliente.Correo_Cliente);
-                            cmd.Parameters.AddWithValue("@Direccion_Cliente", cliente.Direccion_Cliente);
-
-                            cmd.ExecuteNonQuery();
-                        }
-
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error: {ex.Message}");
-                    return false;
-                }
-            }
+            clienteNegocio = new ClienteNegocio();
+            DGClientes.DataSource = clienteNegocio.ObtenerClientes();
 
         }
+
+        
 
         private bool editando = false;
 
@@ -150,51 +89,46 @@ namespace ProyectoTaller.Views.Vendedor
                 {
                     if (editando)
                     {
-                        if (ActualizarCliente(cliente))
-                        {
-                            DataGridViewRow fila = DGClientes.SelectedRows[0];
-                            fila.Cells["CDNI"].Value = cliente.DNI_Cliente;
-                            fila.Cells["CNombreCliente"].Value = cliente.Nombre_Cliente;
-                            fila.Cells["CApellidoCliente"].Value = cliente.Apellido_Cliente;
-                            fila.Cells["CTelefonoCliente"].Value = cliente.Telefono_Cliente;
-                            fila.Cells["CCorreoCliente"].Value = cliente.Correo_Cliente;
-                            fila.Cells["CDireccionCliente"].Value = cliente.Direccion_Cliente;
-                            LValido.Text = "Cliente editado exitosamente!";
-                            LimpiarCampos();
-                            editando = false;
-                            BAgregar.Enabled = true;
+                        clienteNegocio = new ClienteNegocio();
 
-                            TDNICliente.ReadOnly = false;
-                            TDNICliente.BackColor = Color.White;
-
-                            BAgregar.Text = "Agregar";
-                        }
-                        else
+                        Clientes clienteEditar = new Clientes
                         {
-                            LValido.Text = "Error al editar el cliente.";
-                        }
+                            DNI_Cliente = int.Parse(TDNICliente.Text),
+                            Nombre_Cliente = TNombreCliente.Text,
+                            Apellido_Cliente = TApellidoCliente.Text,
+                            Telefono_Cliente = TTelefonoCliente.Text,
+                            Correo_Cliente = TCorreoCliente.Text,
+                            Direccion_Cliente = TDireccionCliente.Text,
+                            Genero = CBGeneroCliente.SelectedItem.ToString()
+
+                        };
+                        clienteNegocio.editarCliente(clienteEditar);
+                        LValido.Text = "Cliente registrado exitosamente!";
+                        LimpiarCampos();
+                        CargarClientes();
                     }
                     else
                     {
                         try
                         {
-                            if (clienteDatos.AgregarCliente(cliente))
-                            {
-                                DGClientes.Rows.Add(
-                                    cliente.DNI_Cliente,
-                                    cliente.Nombre_Cliente,
-                                    cliente.Apellido_Cliente,
-                                    cliente.Telefono_Cliente,
-                                    cliente.Correo_Cliente,
-                                    cliente.Direccion_Cliente
-                                );
-                                LValido.Text = "Cliente registrado exitosamente!";
-                                LimpiarCampos();
-                            }
-                            else
-                            {
-                                LValido.Text = "Error al registrar el cliente.";
-                            }
+                            clienteNegocio = new ClienteNegocio();
+
+                            Clientes clienteRegistrar = new Clientes {
+                                DNI_Cliente = int.Parse(TDNICliente.Text),
+                                Nombre_Cliente = TNombreCliente.Text,
+                                Apellido_Cliente = TApellidoCliente.Text,
+                                Telefono_Cliente = TTelefonoCliente.Text,
+                                Correo_Cliente = TCorreoCliente.Text,
+                                Direccion_Cliente = TDireccionCliente.Text,
+                                Genero = CBGeneroCliente.SelectedItem.ToString()
+
+                            };
+                            clienteNegocio.registrarCliente( clienteRegistrar );
+                            LValido.Text = "Cliente registrado exitosamente!";
+                            LimpiarCampos();
+                            CargarClientes();
+
+
                         }
                         catch (Exception ex)
                         {
@@ -250,12 +184,21 @@ namespace ProyectoTaller.Views.Vendedor
                     LValido.Text = string.Empty;
                     DataGridViewRow fila = DGClientes.SelectedRows[0];
 
-                    TDNICliente.Text = fila.Cells["CDNI"].Value.ToString();
-                    TNombreCliente.Text = fila.Cells["CNombreCliente"].Value.ToString();
-                    TApellidoCliente.Text = fila.Cells["CApellidoCliente"].Value.ToString();
-                    TTelefonoCliente.Text = fila.Cells["CTelefonoCliente"].Value.ToString();
-                    TCorreoCliente.Text = fila.Cells["CCorreoCliente"].Value.ToString();
-                    TDireccionCliente.Text = fila.Cells["CDireccionCliente"].Value.ToString();
+                    TDNICliente.Text = fila.Cells["DNI_Cliente"].Value.ToString();
+                    TNombreCliente.Text = fila.Cells["Nombre_Cliente"].Value.ToString();
+                    TApellidoCliente.Text = fila.Cells["Apellido_Cliente"].Value.ToString();
+                    TTelefonoCliente.Text = fila.Cells["Telefono_Cliente"].Value.ToString();
+                    TCorreoCliente.Text = fila.Cells["Correo_Cliente"].Value.ToString();
+                    TDireccionCliente.Text = fila.Cells["Direccion_Cliente"].Value.ToString();
+                    string genero = fila.Cells["Genero"].Value.ToString();
+                    if (CBGeneroCliente.Items.Contains(genero))
+                    {
+                        CBGeneroCliente.SelectedItem = genero;
+                    }
+                    else
+                    {
+                        CBGeneroCliente.SelectedIndex = -1; 
+                    }
 
                     BAgregar.Enabled = true;
                     TDNICliente.ReadOnly = true;
@@ -271,18 +214,6 @@ namespace ProyectoTaller.Views.Vendedor
             }
         }
 
-
-        private void BBorrar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea borrar todos los datos?", "Confirmar Borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                LimpiarCampos();
-                LimpiarMensajesDeValidacion();
-                MessageBox.Show("Datos Borrados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void LimpiarMensajesDeValidacion()
         {
@@ -485,11 +416,12 @@ namespace ProyectoTaller.Views.Vendedor
             foreach (DataGridViewRow row in DGClientes.Rows)
             {
                 bool rowVisible =
-                    row.Cells["CDNI"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    row.Cells["CNombreCliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    row.Cells["CTelefonoCliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    row.Cells["CCorreoCliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0;
-
+                    row.Cells["DNI_Cliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["Nombre_Cliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["Apellido_Cliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["Telefono_Cliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    row.Cells["Correo_Cliente"].Value.ToString().IndexOf(buscarTexto, StringComparison.OrdinalIgnoreCase) >= 0;
+                DGClientes.CurrentCell = null;
                 row.Visible = rowVisible;
             }
         }

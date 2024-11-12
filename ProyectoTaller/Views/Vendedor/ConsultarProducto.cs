@@ -21,9 +21,17 @@ namespace ProyectoTaller.Views.Vendedor
             InitializeComponent();
             cargarProductos();
             cargarEventos();
+            CargarMarcas(); 
         }
 
-
+        private void CargarMarcas()
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            List<Marca> marcas = marcaNegocio.ListarMarca();
+            CBMarca.DataSource = marcas;
+            CBMarca.DisplayMember = "Nombre_Marca";
+            CBMarca.ValueMember = "Id_Marca";
+        }
 
         public void cargarProductos()
         {
@@ -45,7 +53,7 @@ namespace ProyectoTaller.Views.Vendedor
                 List<ProductoDTO> productos = productoNegocio.listarProductosConStock();
                 List<ProductoDTO> filtrados = new List<ProductoDTO>();
 
-                // Filtrar los productos según los criterios
+                string marcaSeleccionada = (CBMarca.SelectedItem as Marca)?.Nombre_Marca;
                 foreach (var producto in productos)
                 {
                     bool coinciden = true;
@@ -75,18 +83,20 @@ namespace ProyectoTaller.Views.Vendedor
                     {
                         coinciden = false;
                     }
-
-                    // Si coinciden todas las condiciones, se añade a la lista filtrada
+                    if (!string.IsNullOrEmpty(marcaSeleccionada) && producto.Marca.ToLower() != marcaSeleccionada.ToLower())
+                    {
+                        coinciden = false;
+                    }
                     if (coinciden)
                     {
                         filtrados.Add(producto);
                     }
                 }
 
-                // Asignar la lista filtrada al DataGrid
+                
                 DGProductos.DataSource = filtrados;
 
-                // Mostrar mensaje si no se encuentran resultados
+              
                 if (!filtrados.Any())
                 {
                     MessageBox.Show("No se encontraron productos que coincidan con los criterios.");
@@ -324,7 +334,7 @@ namespace ProyectoTaller.Views.Vendedor
                 }
             }
 
-            // Validar RAM
+         
             if (TMemoriaRam.Enabled)
             {
                 if (string.IsNullOrWhiteSpace(ramTexto))
@@ -431,7 +441,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             TextBox currentTextBox = sender as TextBox;
 
-            // Verificar si hay texto en algún TextBox
+           
             bool isAnyTextBoxFilled = false;
 
             foreach (Control control in this.Controls)
@@ -440,23 +450,23 @@ namespace ProyectoTaller.Views.Vendedor
                 {
                     if (textBox.Text.Length > 0)
                     {
-                        isAnyTextBoxFilled = true; // Hay texto en algún TextBox
+                        isAnyTextBoxFilled = true; 
                     }
                 }
             }
 
-            // Si hay texto en algún TextBox, deshabilitar los demás y el ComboBox
+           
             if (isAnyTextBoxFilled || currentTextBox.Text.Length > 0)
             {
                 foreach (Control control in this.Controls)
                 {
                     if (control is TextBox textBox && textBox != currentTextBox)
                     {
-                        textBox.Enabled = false; // Deshabilitar otros TextBox
+                        textBox.Enabled = false; 
                     }
                     else if (control is ComboBox)
                     {
-                        control.Enabled = false; // Deshabilitar el ComboBox
+                        control.Enabled = false; 
                     }
                 }
             }
@@ -479,14 +489,14 @@ namespace ProyectoTaller.Views.Vendedor
 
         private void CBMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Deshabilitar los TextBox si hay una marca seleccionada
+            
             bool isMarcaSelected = CBMarca.SelectedIndex >= 0;
 
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox textBox)
                 {
-                    textBox.Enabled = !isMarcaSelected; // Habilitar o deshabilitar según la selección
+                    textBox.Enabled = !isMarcaSelected;
                 }
             }
         }
