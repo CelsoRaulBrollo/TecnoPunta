@@ -22,7 +22,8 @@ namespace ProyectoTaller.CDatos
                 SELECT p.*, m.Id_Marca, m.Nombre_Marca, c.Id_Condicion, c.Descripcion_Estado
                 FROM Productos p
                 LEFT JOIN Marcas m ON p.Id_Marca = m.Id_Marca
-                LEFT JOIN Condicion c ON p.Id_Condicion = c.Id_Condicion";
+                LEFT JOIN Condicion c ON p.Id_Condicion = c.Id_Condicion
+                Order by m.Nombre_Marca";
 
                 SqlCommand command = new SqlCommand(query, connection);
 

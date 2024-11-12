@@ -433,8 +433,8 @@ namespace ProyectoTaller.CDatos
 
             string query = @"
                                 SELECT 
-                                    CAST(v.FechaVenta AS DATE) AS Fecha,  -- Convertir a solo fecha
-                                    SUM(vd.Cantidad) AS Cantidad          -- Sumar las cantidades por día
+                                    CAST(v.FechaVenta AS DATE) AS Fecha, 
+                                    SUM(vd.Cantidad) AS Cantidad          
                                 FROM 
                                     Venta v
                                 JOIN 

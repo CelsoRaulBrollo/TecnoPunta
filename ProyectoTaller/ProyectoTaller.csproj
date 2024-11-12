@@ -95,6 +95,7 @@
     <Compile Include="CModelos\Usuario.cs" />
     <Compile Include="CModelos\Venta.cs" />
     <Compile Include="CModelos\VentaDetalle.cs" />
+    <Compile Include="CNegocio\BaseDatosNegocio.cs" />
     <Compile Include="CNegocio\CarritoNegocio.cs" />
     <Compile Include="CNegocio\ClienteNegocio.cs" />
     <Compile Include="CNegocio\CondicionNegocio.cs" />
@@ -129,6 +130,9 @@
     <Compile Include="Questpdf\CarritoDocumente.cs" />
     <Compile Include="Questpdf\IDocument.cs" />
     <Compile Include="Questpdf\InvoiceDocument.cs" />
+    <Compile Include="Questpdf\ListaDeClientes.cs" />
+    <Compile Include="Questpdf\ListaDePrecio.cs" />
+    <Compile Include="Questpdf\ListaDeVenta.cs" />
     <Compile Include="Views\Administradores\AdministrarClientes.cs">
       <SubType>Form</SubType>
     </Compile>

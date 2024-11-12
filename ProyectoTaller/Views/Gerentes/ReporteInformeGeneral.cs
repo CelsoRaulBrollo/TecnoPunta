@@ -1,13 +1,32 @@
-﻿using System;
+﻿using ProyectoTaller.CNegocio;
+using ProyectoTaller.Questpdf;
+using System;
 using System.Windows.Forms;
 
 namespace ProyectoTaller.Views.Gerentes
 {
     public partial class ReporteInformeGeneral : Form
     {
+        private bool CBListaPreciosActivo = false;
+        private bool CBListaClientesActivo = false;
+        private bool CBReporteVentasActivo = false;
         public ReporteInformeGeneral()
         {
             InitializeComponent();
+            DTPDesde.Enabled = false;
+            DTPHasta.Enabled = false;
+
+           
+            CBReporteVentas.Click += CBReporteVentas_Click;
+        }
+
+        private void CBReporteVentas_Click(object sender, EventArgs e)
+        {
+            
+            bool habilitar = !DTPDesde.Enabled;
+
+            DTPDesde.Enabled = habilitar;
+            DTPHasta.Enabled = habilitar;
         }
 
         private void LTituloReporteVentas_Click(object sender, System.EventArgs e)
@@ -15,47 +34,6 @@ namespace ProyectoTaller.Views.Gerentes
 
         }
 
-        private void CBOXAnual_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (CBOXAnual.Checked)
-            {
-                CBOXMensual.Enabled = false;
-                CBOXDiario.Enabled = false;
-            }
-            else
-            {
-                CBOXMensual.Enabled = true;
-                CBOXDiario.Enabled = true;
-            }
-        }
-
-        private void CBOXMensual_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (CBOXMensual.Checked)
-            {
-                CBOXAnual.Enabled = false;
-                CBOXDiario.Enabled = false;
-            }
-            else
-            {
-                CBOXAnual.Enabled = true;
-                CBOXDiario.Enabled = true;
-            }
-        }
-
-        private void CBOXDiario_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (CBOXDiario.Checked)
-            {
-                CBOXAnual.Enabled = false;
-                CBOXMensual.Enabled = false;
-            }
-            else
-            {
-                CBOXAnual.Enabled = true;
-                CBOXMensual.Enabled = true;
-            }
-        }
 
         private void CBReporteStock_CheckedChanged(object sender, System.EventArgs e)
         {
@@ -64,17 +42,29 @@ namespace ProyectoTaller.Views.Gerentes
 
         private void CBReporteProducto_CheckedChanged(object sender, System.EventArgs e)
         {
+            CBListaPreciosActivo = !CBListaPreciosActivo;
 
+            
+            CBListaClientes.Enabled = !CBListaPreciosActivo;
+            CBReporteVentas.Enabled = !CBListaPreciosActivo;
         }
 
         private void CBReporteVentas_CheckedChanged(object sender, System.EventArgs e)
         {
+            CBReporteVentasActivo = !CBReporteVentasActivo;
 
+            
+            CBListaPrecios.Enabled = !CBReporteVentasActivo;
+            CBListaClientes.Enabled = !CBReporteVentasActivo;
         }
 
         private void CBReporteCliente_CheckedChanged(object sender, System.EventArgs e)
         {
+            CBListaClientesActivo = !CBListaClientesActivo;
 
+            
+            CBListaPrecios.Enabled = !CBListaClientesActivo;
+            CBReporteVentas.Enabled = !CBListaClientesActivo;
         }
 
         private void dateTimePicker2_ValueChanged(object sender, System.EventArgs e)
@@ -89,7 +79,36 @@ namespace ProyectoTaller.Views.Gerentes
 
         private void BImprimir_Click(object sender, System.EventArgs e)
         {
+            
+            if (CBListaClientes.Enabled == true && CBListaPrecios.Enabled == false && CBReporteVentas.Enabled == false)
+            {
+                ClienteNegocio clienteNegocio = new ClienteNegocio();
+                var documento = new ListaDeClientes(clienteNegocio.ObtenerClientes());
+                documento.crearDocumento();
 
+            }
+           
+            else if (CBListaPrecios.Enabled == true && CBListaClientes.Enabled == false && CBReporteVentas.Enabled == false)
+            {
+                ProductoNegocio productoNegocio = new ProductoNegocio();
+                var documento = new ListaDePrecio(productoNegocio.listarProductos());
+                documento.crearDocumento();
+            }
+            else if (CBReporteVentas.Enabled == true && CBListaPrecios.Enabled == false && CBListaClientes.Enabled == false)
+            {
+               VentaNegocio ventaNegocio = new VentaNegocio();
+
+                DateTime fechaDesde = DTPDesde.Value;
+                DateTime fechaHasta = DTPHasta.Value;
+
+                var documento = new ListaDeVenta(ventaNegocio.ObtenerVentasPorRangoDeFechas(DTPDesde.Value, DTPHasta.Value));
+                documento.crearDocumento();
+            }
+            else
+            {
+               
+                MessageBox.Show("Por favor, seleccione una opción.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void BLimpiar_Click(object sender, System.EventArgs e)
@@ -98,21 +117,14 @@ namespace ProyectoTaller.Views.Gerentes
 
             if (result == DialogResult.Yes)
             {
-                CBOXAnual.Checked = false;
-                CBOXMensual.Checked = false;
-                CBOXDiario.Checked = false;
 
-                CBReporteStock.Checked = false;
-                CBReporteProducto.Checked = false;
+                
+                CBListaPrecios.Checked = false;
                 CBReporteVentas.Checked = false;
-                CBReporteCliente.Checked = false;
+                CBListaClientes.Checked = false;
 
-                CBOXAnual.Enabled = true;
-                CBOXMensual.Enabled = true;
-                CBOXDiario.Enabled = true;
-
-                dateTimePicker1.Value = DateTime.Now;
-                dateTimePicker2.Value = DateTime.Now;
+                DTPDesde.Value = DateTime.Now;
+                DTPHasta.Value = DateTime.Now;
 
                 MessageBox.Show("Los filtros han sido limpiados.", "Filtros Restablecidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

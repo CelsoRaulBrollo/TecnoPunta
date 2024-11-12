@@ -295,5 +295,31 @@ namespace ProyectoTaller.CNegocio
             ventaDatos = new VentaDatos();
             return ventaDatos.ObtenerVentaMediaPorClientePorMes(fechaInicio, fechaFin);
         }
+
+        public List<VentasAdmDTO> ObtenerVentasPorRangoDeFechas(DateTime fechaInicio, DateTime fechaFin)
+        {
+            ventaDatos = new VentaDatos();
+            List<VentasAdmDTO> ventasDTO = new List<VentasAdmDTO>();
+
+            
+            foreach (Venta venta in ventaDatos.BuscarTodasLasVentas())
+            {
+                if (venta.fechaDeVenta >= fechaInicio && venta.fechaDeVenta <= fechaFin)
+                {
+                    VentasAdmDTO ventaDTO = new VentasAdmDTO
+                    {
+                        CodigoVenta = venta.idVenta,
+                        Cliente = venta.cliente.Nombre_Cliente + " " + venta.cliente.Apellido_Cliente,
+                        Vendedor = venta.vendedor.Nombre_Usuario + " " + venta.vendedor.Apellido_Usuario,
+                        FechaDeFacturacion = venta.fechaDeVenta,
+                        MetodoDePago = venta.metodoDePago.nombre,
+                        Total = venta.total,
+                    };
+                    ventasDTO.Add(ventaDTO);
+                }
+            }
+
+            return ventasDTO;
+        }
     }
 }
