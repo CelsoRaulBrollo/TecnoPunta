@@ -15,8 +15,21 @@ namespace ProyectoTaller.Views.Administradores
         public InformesAdministrador()
         {
             InitializeComponent();
-            inicializarGraficoTorta();
+            inicializarGraficoTorta(); CargarCBInformeUsuClient();
             inicializarGraficoUsuario();
+        }
+
+        private void CargarCBInformeUsuClient()
+        {
+          
+            CBInformeUsuClient.Items.Clear();
+
+          
+            CBInformeUsuClient.Items.Add("Cantidad de Usuario");
+            CBInformeUsuClient.Items.Add("Cantidad de Clientes");
+
+           
+            CBInformeUsuClient.SelectedIndex = 0;
         }
 
         public void inicializarGraficoTorta()
@@ -82,22 +95,57 @@ namespace ProyectoTaller.Views.Administradores
                 serie.Points.AddXY(rol.nombre, rol.cantidad);
             }
             CHCantidadUsuarios.Series.Add(serie);
+            LCantidadUsuarios.Text = "Cantidad de Usuarios";
 
         }
 
-      
+        public void cargarDatosClientes(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
 
-      
+            
+            if (fechaHasta < fechaDesde)
+            {
+                MessageBox.Show("La fecha 'Desde' no puede ser mayor que la fecha 'Hasta'.");
+                return;
+            }
 
-        private void DTPHastaCantidadUsuarios_ValueChanged(object sender, EventArgs e)
+           
+            List<Tuple<string, int>> clienteDatos = clienteNegocio.GenerarInformeClientes(fechaDesde, fechaHasta);
+
+           
+            CHCantidadUsuarios.Series.Clear();
+            CHCantidadUsuarios.Legends.Clear();
+            CHCantidadUsuarios.Titles.Clear();
+
+            
+            var serie = new Series("Cantidad de Clientes")
+            {
+                ChartType = SeriesChartType.Column 
+            };
+
+            
+            foreach (var cliente in clienteDatos)
+            {
+                serie.Points.AddXY(cliente.Item1, cliente.Item2); 
+            }
+
+            
+            CHCantidadUsuarios.Series.Add(serie);
+            CHCantidadUsuarios.Titles.Add("Informe de Clientes por Estado");
+            LCantidadUsuarios.Text = "Cantidad de Clientes";
+        }
+
+        public void cargarDatosClienteGenero(DateTime fechaDesde, DateTime fechaHasta)
         {
 
         }
 
-        private void DTPDesdeCantidadUsuarios_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
+
+
+        
 
         private void DTPDesdeMarcas_ValueChanged(object sender, EventArgs e)
         {
@@ -136,5 +184,59 @@ namespace ProyectoTaller.Views.Administradores
             DTPDesdeMarcas.Value = DateTime.Today;
             DTPHastaMarcas.Value = DateTime.Today;
         }
+
+        private void CBInformeUsuClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            DateTime fechaDesde = DTPDesdeCantidadUsuarios.Value;
+            DateTime fechaHasta = DTPHastaCantidadUsuarios.Value;
+
+            string seleccion = CBInformeUsuClient.SelectedItem.ToString();
+           
+
+            if (seleccion == "Cantidad de Usuario")
+            {
+                cargarDatosUsuarios(fechaDesde, fechaHasta);
+            }
+            else if (seleccion == "Cantidad de Clientes")
+            {
+                cargarDatosClientes(fechaDesde, fechaHasta);
+            }
+        }
+
+        private void DTPHastaCantidadUsuarios_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaDesde = DTPDesdeCantidadUsuarios.Value;
+            DateTime fechaHasta = DTPHastaCantidadUsuarios.Value;
+            if(LCantidadUsuarios.Text == "Cantidad de Clientes")
+            {
+                cargarDatosClientes(fechaDesde, fechaHasta);
+
+            }
+            else 
+            {
+                cargarDatosUsuarios(fechaDesde, fechaHasta);
+                
+            }
+
+        }
+
+        private void DTPDesdeCantidadUsuarios_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaDesde = DTPDesdeCantidadUsuarios.Value;
+            DateTime fechaHasta = DTPHastaCantidadUsuarios.Value;
+            if (LCantidadUsuarios.Text == "Cantidad de Clientes")
+            {
+                cargarDatosClientes(fechaDesde, fechaHasta);
+            }
+            else
+            {
+                
+                cargarDatosUsuarios(fechaDesde, fechaHasta);
+            }
+        }
+
+
+
     }
 }

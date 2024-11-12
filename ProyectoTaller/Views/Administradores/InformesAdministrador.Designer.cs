@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PBImagenInformeAdmin = new System.Windows.Forms.PictureBox();
             this.LTituloInformeAdmin = new System.Windows.Forms.Label();
             this.CHMarcasVendidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -49,6 +49,7 @@
             this.LDesde1 = new System.Windows.Forms.Label();
             this.DTPDesdeMarcas = new System.Windows.Forms.DateTimePicker();
             this.BLimpiarFiltros = new System.Windows.Forms.Button();
+            this.CBInformeUsuClient = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenInformeAdmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CHMarcasVendidas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CHCantidadUsuarios)).BeginInit();
@@ -58,7 +59,7 @@
             // 
             this.PBImagenInformeAdmin.Image = global::ProyectoTaller.Properties.Resources.informe_titulo;
             this.PBImagenInformeAdmin.Location = new System.Drawing.Point(16, 15);
-            this.PBImagenInformeAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PBImagenInformeAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.PBImagenInformeAdmin.Name = "PBImagenInformeAdmin";
             this.PBImagenInformeAdmin.Size = new System.Drawing.Size(87, 82);
             this.PBImagenInformeAdmin.TabIndex = 31;
@@ -80,19 +81,19 @@
             // 
             this.CHMarcasVendidas.BackColor = System.Drawing.SystemColors.Control;
             this.CHMarcasVendidas.BorderlineColor = System.Drawing.SystemColors.Control;
-            chartArea1.Name = "ChartArea1";
-            this.CHMarcasVendidas.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.CHMarcasVendidas.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.CHMarcasVendidas.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.CHMarcasVendidas.Legends.Add(legend5);
             this.CHMarcasVendidas.Location = new System.Drawing.Point(639, 175);
-            this.CHMarcasVendidas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CHMarcasVendidas.Margin = new System.Windows.Forms.Padding(4);
             this.CHMarcasVendidas.Name = "CHMarcasVendidas";
             this.CHMarcasVendidas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.CHMarcasVendidas.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.CHMarcasVendidas.Series.Add(series5);
             this.CHMarcasVendidas.Size = new System.Drawing.Size(528, 354);
             this.CHMarcasVendidas.TabIndex = 33;
             this.CHMarcasVendidas.Text = "chart1";
@@ -100,18 +101,18 @@
             // CHCantidadUsuarios
             // 
             this.CHCantidadUsuarios.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.Name = "ChartArea1";
-            this.CHCantidadUsuarios.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.CHCantidadUsuarios.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.CHCantidadUsuarios.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.CHCantidadUsuarios.Legends.Add(legend6);
             this.CHCantidadUsuarios.Location = new System.Drawing.Point(16, 175);
-            this.CHCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CHCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.CHCantidadUsuarios.Name = "CHCantidadUsuarios";
             this.CHCantidadUsuarios.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.CHCantidadUsuarios.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.CHCantidadUsuarios.Series.Add(series6);
             this.CHCantidadUsuarios.Size = new System.Drawing.Size(528, 354);
             this.CHCantidadUsuarios.TabIndex = 34;
             this.CHCantidadUsuarios.Text = "chart2";
@@ -153,7 +154,7 @@
             // 
             this.DTPHastaCantidadUsuarios.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTPHastaCantidadUsuarios.Location = new System.Drawing.Point(416, 144);
-            this.DTPHastaCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPHastaCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.DTPHastaCantidadUsuarios.Name = "DTPHastaCantidadUsuarios";
             this.DTPHastaCantidadUsuarios.Size = new System.Drawing.Size(128, 22);
             this.DTPHastaCantidadUsuarios.TabIndex = 74;
@@ -174,7 +175,7 @@
             // 
             this.DTPDesdeCantidadUsuarios.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTPDesdeCantidadUsuarios.Location = new System.Drawing.Point(416, 94);
-            this.DTPDesdeCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPDesdeCantidadUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.DTPDesdeCantidadUsuarios.Name = "DTPDesdeCantidadUsuarios";
             this.DTPDesdeCantidadUsuarios.Size = new System.Drawing.Size(128, 22);
             this.DTPDesdeCantidadUsuarios.TabIndex = 72;
@@ -196,7 +197,7 @@
             // 
             this.DTPHastaMarcas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTPHastaMarcas.Location = new System.Drawing.Point(1037, 140);
-            this.DTPHastaMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPHastaMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.DTPHastaMarcas.Name = "DTPHastaMarcas";
             this.DTPHastaMarcas.Size = new System.Drawing.Size(128, 22);
             this.DTPHastaMarcas.TabIndex = 79;
@@ -217,7 +218,7 @@
             // 
             this.DTPDesdeMarcas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTPDesdeMarcas.Location = new System.Drawing.Point(1037, 90);
-            this.DTPDesdeMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPDesdeMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.DTPDesdeMarcas.Name = "DTPDesdeMarcas";
             this.DTPDesdeMarcas.Size = new System.Drawing.Size(128, 22);
             this.DTPDesdeMarcas.TabIndex = 77;
@@ -231,7 +232,7 @@
             this.BLimpiarFiltros.Image = global::ProyectoTaller.Properties.Resources.Limpiar;
             this.BLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BLimpiarFiltros.Location = new System.Drawing.Point(503, 545);
-            this.BLimpiarFiltros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BLimpiarFiltros.Margin = new System.Windows.Forms.Padding(4);
             this.BLimpiarFiltros.Name = "BLimpiarFiltros";
             this.BLimpiarFiltros.Size = new System.Drawing.Size(164, 64);
             this.BLimpiarFiltros.TabIndex = 81;
@@ -240,12 +241,22 @@
             this.BLimpiarFiltros.UseVisualStyleBackColor = true;
             this.BLimpiarFiltros.Click += new System.EventHandler(this.BLimpiarFiltros_Click);
             // 
+            // CBInformeUsuClient
+            // 
+            this.CBInformeUsuClient.FormattingEnabled = true;
+            this.CBInformeUsuClient.Location = new System.Drawing.Point(12, 545);
+            this.CBInformeUsuClient.Name = "CBInformeUsuClient";
+            this.CBInformeUsuClient.Size = new System.Drawing.Size(266, 24);
+            this.CBInformeUsuClient.TabIndex = 82;
+            this.CBInformeUsuClient.SelectedIndexChanged += new System.EventHandler(this.CBInformeUsuClient_SelectedIndexChanged);
+            // 
             // InformesAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1183, 624);
+            this.Controls.Add(this.CBInformeUsuClient);
             this.Controls.Add(this.BLimpiarFiltros);
             this.Controls.Add(this.LHasta1);
             this.Controls.Add(this.DTPHastaMarcas);
@@ -261,7 +272,7 @@
             this.Controls.Add(this.CHMarcasVendidas);
             this.Controls.Add(this.LTituloInformeAdmin);
             this.Controls.Add(this.PBImagenInformeAdmin);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InformesAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesAdministrador";
@@ -290,5 +301,6 @@
         private System.Windows.Forms.Label LDesde1;
         private System.Windows.Forms.DateTimePicker DTPDesdeMarcas;
         private System.Windows.Forms.Button BLimpiarFiltros;
+        private System.Windows.Forms.ComboBox CBInformeUsuClient;
     }
 }

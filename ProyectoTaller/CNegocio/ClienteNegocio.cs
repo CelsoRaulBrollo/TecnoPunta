@@ -71,5 +71,26 @@ namespace ProyectoTaller.CNegocio
             ClienteDatos clienteDatos = new ClienteDatos();
             clienteDatos.bajaCliente(dniCliente);
         }
+
+        public List<Tuple<string, int>> GenerarInformeClientes(DateTime desde, DateTime hasta)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            DataTable dtClientes = clienteDatos.GenerarInformeClientes(desde, hasta);
+
+           
+            List<Tuple<string, int>> listaInforme = new List<Tuple<string, int>>();
+
+            
+            foreach (DataRow row in dtClientes.Rows)
+            {
+                string estado = row["Estado"].ToString();
+                int cantidad = Convert.ToInt32(row["Cantidad"]);
+
+                
+                listaInforme.Add(new Tuple<string, int>(estado, cantidad));
+            }
+
+            return listaInforme;
+        }
     }
 }

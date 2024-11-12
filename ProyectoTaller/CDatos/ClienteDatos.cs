@@ -135,6 +135,8 @@ namespace ProyectoTaller.CDatos
             }
         }
 
+        
+
         public bool VerificarTelefono(string telefono)
         {
             using (var con = conexion.ObtenerConexion())
@@ -236,6 +238,40 @@ namespace ProyectoTaller.CDatos
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public DataTable GenerarInformeClientes(DateTime desde, DateTime hasta)
+        {
+            DataTable dtClientes = new DataTable();
+
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                connection.Open();
+
+                
+                string query = @"
+                SELECT c.genero AS Estado, COUNT(c.DNI_Cliente) AS Cantidad
+                FROM Clientes c
+                WHERE 
+                    c.fechaCreacion >= @Desde 
+                    AND c.fechaCreacion < @Hasta
+                GROUP BY c.genero";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    
+                    command.Parameters.AddWithValue("@Desde", desde);
+                    command.Parameters.AddWithValue("@Hasta", hasta.AddDays(1));
+
+                    
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dtClientes);
+                    }
+                }
+            }
+
+            return dtClientes;
         }
     }
 }
