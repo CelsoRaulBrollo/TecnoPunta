@@ -95,6 +95,7 @@
     <Compile Include="CModelos\Usuario.cs" />
     <Compile Include="CModelos\Venta.cs" />
     <Compile Include="CModelos\VentaDetalle.cs" />
+    <Compile Include="CNegocio\BaseDatosNegocio.cs" />
     <Compile Include="CNegocio\CarritoNegocio.cs" />
     <Compile Include="CNegocio\ClienteNegocio.cs" />
     <Compile Include="CNegocio\CondicionNegocio.cs" />
