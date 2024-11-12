@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTaller.CNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace ProyectoTaller.Views.Administradores
 {
     public partial class Backup : Form
     {
+        private BaseDatosNegocio baseDeDatos;
         public Backup()
         {
             InitializeComponent();
@@ -33,7 +35,31 @@ namespace ProyectoTaller.Views.Administradores
 
         private void RealizarRestauracion()
         {
-            MessageBox.Show("La restauración se ha realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos de Backup (*.bak)|*.bak";  
+            openFileDialog.Title = "Seleccionar archivo de Restauración";
+
+           
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string rutaBackup = openFileDialog.FileName;  
+
+                try
+                {
+                    
+                    baseDeDatos = new BaseDatosNegocio();
+                    baseDeDatos.generarRestore(rutaBackup); 
+
+                    
+                    MessageBox.Show("La restauración se ha realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    
+                    MessageBox.Show($"Error al restaurar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void BBackup_Click(object sender, EventArgs e)
@@ -52,7 +78,31 @@ namespace ProyectoTaller.Views.Administradores
 
         private void RealizarBackup()
         {
-            MessageBox.Show("El Backup se ha realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos de Backup (*.bak)|*.bak";  
+            saveFileDialog.Title = "Seleccionar ubicación para el Backup";
+
+            
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string url = saveFileDialog.FileName;  
+
+                try
+                {
+                   
+                    baseDeDatos = new BaseDatosNegocio();
+                    baseDeDatos.generarBackUP(url);
+
+                   
+                    MessageBox.Show("El Backup se ha realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                   
+                    MessageBox.Show($"Error al realizar el backup: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
