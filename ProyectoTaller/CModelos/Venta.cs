@@ -12,7 +12,7 @@ namespace ProyectoTaller.CModelos
     public class Venta
     {
         public int idVenta { get; set; }
-        public Usuario vendedor { get; set; }
+        public Usuarios vendedor { get; set; }
         public Clientes cliente { get; set; }
         public decimal total { get; set; }
         public MetodoDePagoModel metodoDePago { get; set; }

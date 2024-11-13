@@ -65,11 +65,11 @@ namespace ProyectoTaller.Views.Administradores
         {
             if (DGClientes.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Por favor, selecciona un cliente para borrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, selecciona un cliente para dar de baja.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea borrar al cliente seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea dar de baja al cliente seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 clienteNegocio = new ClienteNegocio();
@@ -81,7 +81,7 @@ namespace ProyectoTaller.Views.Administradores
 
 
 
-                MessageBox.Show("Cliente borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cliente dado de baja exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -89,7 +89,7 @@ namespace ProyectoTaller.Views.Administradores
         {
             if (DGClientes.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Por favor, selecciona un cliente para borrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, selecciona un cliente para dar de Alta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace ProyectoTaller.Views.Administradores
 
 
 
-                MessageBox.Show("Cliente borrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cliente dado de Alta exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

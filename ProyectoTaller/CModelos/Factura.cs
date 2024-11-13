@@ -10,7 +10,7 @@ namespace ProyectoTaller.CModelos
     {
         public int ID_Factura { get; set; }
         public Clientes Cliente { get; set; }
-        public Usuario Vendedor { get; set; }
+        public Usuarios Vendedor { get; set; }
         public DateTime FechaFacturacion { get; set; }
         public MetodoDePago MetodoDePago { get; set; }
         public int Total { get; set; }
