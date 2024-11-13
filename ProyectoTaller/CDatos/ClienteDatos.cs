@@ -135,8 +135,6 @@ namespace ProyectoTaller.CDatos
             }
         }
 
-        
-
         public bool VerificarTelefono(string telefono)
         {
             using (var con = conexion.ObtenerConexion())
@@ -150,8 +148,6 @@ namespace ProyectoTaller.CDatos
                 }
             }
         }
-
-
 
         public bool VerificarCorreo(string correo)
         {

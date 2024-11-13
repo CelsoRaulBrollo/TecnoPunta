@@ -21,6 +21,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             InitializeComponent();
             ClienteDatos clienteDatos = new ClienteDatos();
+            ClienteNegocio clienteNegocios = new ClienteNegocio();
             CargarClientes();
         }
 
@@ -42,36 +43,6 @@ namespace ProyectoTaller.Views.Vendedor
 
             if (ValidacionFormulario())
             {
-                int dniCliente;
-                string telefonoCliente = TTelefonoCliente.Text;
-                string correoCliente = TCorreoCliente.Text;
-
-                // Validar el DNI
-                if (!editando && int.TryParse(TDNICliente.Text, out dniCliente))
-                {
-                    if (clienteNegocio.EsDNIExistente(dniCliente))
-                    {
-                        LValidDNI.ForeColor = Color.Red;
-                        LValidDNI.Text = "El DNI ya existe.";
-                        return;
-                    }
-                }
-
-                if (!editando && clienteNegocio.EsTelefonoExistente(telefonoCliente))
-                {
-                    LValiTelefono.ForeColor = Color.Red;
-                    LValiTelefono.Text = "El teléfono ya está registrado.";
-                    return;
-                }
-
-                if (!editando && clienteNegocio.EsCorreoExistente(correoCliente))
-                {
-                    LValiCorreo.ForeColor = Color.Red;
-                    LValiCorreo.Text = "El correo ya está registrado.";
-                    return;
-                }
-
-
                 Clientes cliente = new Clientes
                 {
                     DNI_Cliente = int.Parse(TDNICliente.Text),
@@ -87,8 +58,35 @@ namespace ProyectoTaller.Views.Vendedor
 
                 if (resultado == DialogResult.Yes)
                 {
+                    ClienteNegocio clientesNegocio = new ClienteNegocio();
+
+                    if (!editando)
+                    {
+                        string correo = TCorreoCliente.Text;
+                        string dni = TDNICliente.Text;
+
+                        if (clienteNegocio.EsDNIExistente(int.Parse(dni)))
+                        {
+                            LValidDNI.ForeColor = Color.Red;
+                            LValidDNI.Text = "El DNI ya está en uso.";
+                            return;
+                        }
+
+                        if (clienteNegocio.EsCorreoExistente(correo))
+                        {
+                            LValiCorreo.ForeColor = Color.Red;
+                            LValiCorreo.Text = "El correo ya está en uso.";
+                            return;
+                        }
+                    }
+
                     if (editando)
                     {
+                        TDNICliente.ReadOnly = false;
+                        TDNICliente.BackColor = Color.White;
+                        TCorreoCliente.ReadOnly = false;
+                        TCorreoCliente.BackColor = Color.White;
+
                         clienteNegocio = new ClienteNegocio();
 
                         Clientes clienteEditar = new Clientes
@@ -103,9 +101,7 @@ namespace ProyectoTaller.Views.Vendedor
 
                         };
                         clienteNegocio.editarCliente(clienteEditar);
-                        LValido.Text = "Cliente registrado exitosamente!";
-                        LimpiarCampos();
-                        CargarClientes();
+                        LValido.Text = "Cliente editado exitosamente!";
                     }
                     else
                     {
@@ -125,8 +121,6 @@ namespace ProyectoTaller.Views.Vendedor
                             };
                             clienteNegocio.registrarCliente( clienteRegistrar );
                             LValido.Text = "Cliente registrado exitosamente!";
-                            LimpiarCampos();
-                            CargarClientes();
 
 
                         }
@@ -135,8 +129,10 @@ namespace ProyectoTaller.Views.Vendedor
                             LValido.Text = $"Se produjo un error: {ex.Message}";
                         }
                     }
-
+                    CargarClientes();
                     LimpiarCampos();
+                    editando = false;
+                    BAgregar.Text = "Agregar";
                 }
             }
             else
@@ -145,32 +141,6 @@ namespace ProyectoTaller.Views.Vendedor
             }
         }
 
-        public bool ActualizarCliente(Clientes cliente)
-        {
-            try
-            {
-                using (SqlConnection connection = conexion.ObtenerConexion())
-                {
-                    string query = "UPDATE Clientes SET Nombre_Cliente=@Nombre_Cliente, Apellido_Cliente=@Apellido_Cliente, Telefono_Cliente=@Telefono_Cliente, Correo_Cliente=@Correo_Cliente, Direccion_Cliente=@Direccion_Cliente WHERE DNI_cliente=@DNI_Cliente";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@DNI_Cliente", cliente.DNI_Cliente);
-                    command.Parameters.AddWithValue("@Nombre_Cliente", cliente.Nombre_Cliente);
-                    command.Parameters.AddWithValue("@Apellido_Cliente", cliente.Apellido_Cliente);
-                    command.Parameters.AddWithValue("@Telefono_Cliente", cliente.Telefono_Cliente);
-                    command.Parameters.AddWithValue("@Correo_Cliente", cliente.Correo_Cliente);
-                    command.Parameters.AddWithValue("@Direccion_Cliente", cliente.Direccion_Cliente);
-
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    return rowsAffected > 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al editar cliente: {ex.Message}");
-                return false;
-            }
-        }
 
         private void BEditarCliente_Click(object sender, EventArgs e)
         {
@@ -203,6 +173,8 @@ namespace ProyectoTaller.Views.Vendedor
                     BAgregar.Enabled = true;
                     TDNICliente.ReadOnly = true;
                     TDNICliente.BackColor = Color.LightGray;
+                    TCorreoCliente.ReadOnly = true;
+                    TCorreoCliente.BackColor = Color.LightGray;
                     editando = true;
 
                     BAgregar.Text = "Modificar";
@@ -229,6 +201,7 @@ namespace ProyectoTaller.Views.Vendedor
         {
             if (editando)
             {
+                TDNICliente.Clear();
                 TNombreCliente.Clear();
                 TApellidoCliente.Clear();
                 TTelefonoCliente.Clear();

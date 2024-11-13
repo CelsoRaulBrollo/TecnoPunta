@@ -46,7 +46,6 @@ namespace ProyectoTaller.Views.Administradores
         private void BAgregar_Click(object sender, EventArgs e)
         {
             LimpiarMensajesDeValidacion();
-            BAgregar.Text = "Agregar";
 
             string marca = CBMarca.SelectedItem?.ToString();
             string nombreProducto = TNombreProducto.Text;
@@ -317,6 +316,7 @@ namespace ProyectoTaller.Views.Administradores
                     {
                         MessageBox.Show(ex.Message, "Error de inserción", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    BAgregar.Text = "Agregar";
                 }
             }
         }

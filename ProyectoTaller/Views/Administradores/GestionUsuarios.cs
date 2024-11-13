@@ -49,8 +49,6 @@ namespace ProyectoTaller.Views.Administradores
 
         private void BAgregar_Click(object sender, EventArgs e)
         {
-            BAgregar.Text = "Agregar";
-
             string puesto = CBPuesto.SelectedItem?.ToString();
             string usuario = TUsuario.Text;
             string dnitexto = TDni.Text;
@@ -299,7 +297,21 @@ namespace ProyectoTaller.Views.Administradores
 
                             if (filaSeleccionadaIndex >= 0)
                             {
-                                usuariosNegocio.EditarUsuario(GenerarUsuario());
+                                Usuarios usuarioEditar= new Usuarios
+                                {
+                                    Nombre_Usuario = TNombre.Text,
+                                    Apellido_Usuario = TApellido.Text,
+                                    DNI_Usuario = Convert.ToInt32(TDni.Text),
+                                    Sueldo_Usuario = Convert.ToDecimal(TSueldo.Text),
+                                    Telefono_Usuario = TTelefono.Text,
+                                    Correo_Usuario = TEmail.Text,
+                                    Contraseña = TContraseña.Text,
+                                    Usuario = TUsuario.Text,
+                                    Sexo_Usuario = (int)CBSexo.SelectedValue,
+                                    Rol_Usuario = (int)CBPuesto.SelectedValue
+                                };
+                                usuariosNegocio.EditarUsuario(usuarioEditar);
+
                                 LimpiarMensajesDeValidacion();
                                 LValido.Text = "Usuario editado exitosamente.";
                                 GestionUsuarios_Load();
@@ -340,7 +352,9 @@ namespace ProyectoTaller.Views.Administradores
                         TSueldo.Clear();
                         TTelefono.Clear();
                         TContraseña.Clear();
-                    
+
+                        BAgregar.Text = "Agregar";
+
                     }
                     catch (Exception ex)
                     {

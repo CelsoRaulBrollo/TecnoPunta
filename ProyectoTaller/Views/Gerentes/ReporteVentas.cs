@@ -409,5 +409,29 @@ namespace ProyectoTaller.Views.Gerentes
         {
 
         }
+
+        private void BReset_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Desea resetear todos los filtros?", "Confirmar Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                DTMDesdeReporteDeVentas.Value = new DateTime(DateTime.Now.Year, 1, 1);
+                DTMHastaReporteDeVentas.Value = DateTime.Now;
+
+                CAAnualReporteVentas.Checked = false;
+                CAMensualReporteVentas.Checked = false;
+                CADiarioReporteVentas.Checked = false;
+
+                CAAnualReporteVentas.Enabled = true;
+                CAMensualReporteVentas.Enabled = true;
+                CADiarioReporteVentas.Enabled = true;
+
+                MessageBox.Show("Se han reseteado los filtros.", "Filtros Restablecidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                UpdateChartRecaudacion();
+                UpdateChartCantidad();
+            }
+        }
     }
 }
