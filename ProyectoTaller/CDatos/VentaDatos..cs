@@ -98,7 +98,7 @@ namespace ProyectoTaller.CDatos
                                 idVenta = Convert.ToInt32(reader["idVenta"]),
                                 total = Convert.ToDecimal(reader["Total"]),
                                 fechaDeVenta = Convert.ToDateTime(reader["FechaVenta"]),
-                                vendedor = new Usuario
+                                vendedor = new Usuarios
                                 {
                                     DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
                                     Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
@@ -167,7 +167,7 @@ namespace ProyectoTaller.CDatos
                                 idVenta = Convert.ToInt32(reader["idVenta"]),
                                 total = Convert.ToDecimal(reader["Total"]),
                                 fechaDeVenta = Convert.ToDateTime(reader["FechaVenta"]),
-                                vendedor = new Usuario
+                                vendedor = new Usuarios
                                 {
                                     DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
                                     Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
@@ -224,7 +224,7 @@ namespace ProyectoTaller.CDatos
                                 idVenta = Convert.ToInt32(reader["idVenta"]),
                                 total = Convert.ToDecimal(reader["Total"]),
                                 fechaDeVenta = Convert.ToDateTime(reader["FechaVenta"]),
-                                vendedor = new Usuario
+                                vendedor = new Usuarios
                                 {
                                     DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
                                     Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
@@ -296,7 +296,7 @@ namespace ProyectoTaller.CDatos
                                 idVenta = Convert.ToInt32(reader["idVenta"]),
                                 total = Convert.ToDecimal(reader["Total"]),
                                 fechaDeVenta = Convert.ToDateTime(reader["FechaVenta"]),
-                                vendedor = new Usuario
+                                vendedor = new Usuarios
                                 {
                                     DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
                                     Nombre_Usuario = reader["Nombre_Usuario"].ToString(),

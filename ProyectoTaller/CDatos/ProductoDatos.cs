@@ -92,14 +92,10 @@ namespace ProyectoTaller.CDatos
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
-            } catch (SqlException ex)
+            }
+            catch (SqlException ex)
             {
-                MessageBox.Show("No se puede guardar el producto. Ya existe un producto con el mismo modelo.",
-                              "Error de inserción",
-                              MessageBoxButtons.OK,
-                              MessageBoxIcon.Error);
-
-
+                throw new Exception("No se puede guardar el producto. Ya existe un producto con el mismo modelo.", ex);
             }
         }
 

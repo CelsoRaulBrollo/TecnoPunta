@@ -25,7 +25,7 @@ namespace ProyectoTaller.CNegocio
             Clientes clientee = clienteNegocio.buscarCliente(dniCliente);
 
             usarioNegocio = new UsuarioNegocio();
-            Usuario usuario = usarioNegocio.buscarUsuarioByDNI(dniVendedor);
+            Usuarios usuario = usarioNegocio.buscarUsuarioByDNI(dniVendedor);
             ventaDatos = new VentaDatos();
 
             metodoNegocio = new MetodoDePagoNegocio();

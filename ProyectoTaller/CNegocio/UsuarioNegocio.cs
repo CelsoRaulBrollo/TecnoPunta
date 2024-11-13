@@ -20,7 +20,7 @@ namespace ProyectoTaller.CNegocio
             usuarioDatos.actualizarEstado(dni_Usuario);
         }
 
-        public Usuario autenticacion(string nombreUsuario, string contraseña)
+        public Usuarios autenticacion(string nombreUsuario, string contraseña)
         {
             usuarioDatos = new UsuarioDatos();
             return usuarioDatos.autenticacion(nombreUsuario, contraseña);
@@ -33,23 +33,35 @@ namespace ProyectoTaller.CNegocio
             return usuarioDatos.ListarUsuario();
         }
 
-        public bool EditarUsuario(Usuario usuario)
+        public bool EditarUsuario(Usuarios usuario)
         {
             usuarioDatos = new UsuarioDatos();
             return usuarioDatos.ActualizarUsuario(usuario);
         }
 
-        public void GuardarUsuario(Usuario usuario)
+        public void GuardarUsuario(Usuarios usuario)
         {
             usuarioDatos = new UsuarioDatos();
 
             usuarioDatos.GuardarUsuario(usuario);
         }
 
-        public Usuario buscarUsuarioByDNI(int dNI)
+        public Usuarios buscarUsuarioByDNI(int dNI)
         {
             usuarioDatos = new UsuarioDatos();
             return usuarioDatos.buscarUsuario(dNI);
+        }
+
+        public bool ExisteCorreo(string correo)
+        {
+            usuarioDatos = new UsuarioDatos();
+            return usuarioDatos.EsCorreoExistente(correo);
+        }
+
+        public bool ExisteUsuario(string nombreUsuario)
+        {
+            usuarioDatos = new UsuarioDatos();
+            return usuarioDatos.EsUsuarioExistente(nombreUsuario);
         }
 
     }

@@ -3,6 +3,7 @@ using ProyectoTaller.CModelos;
 using ProyectoTaller.CNegocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -77,7 +78,7 @@ namespace ProyectoTaller.Views.Administradores
                 LValiPuesto.Text = string.Empty;
             }
 
-            
+
             if (string.IsNullOrWhiteSpace(dnitexto))
             {
                 LValiDni.ForeColor = Color.Red;
@@ -258,93 +259,104 @@ namespace ProyectoTaller.Views.Administradores
 
                 if (result == DialogResult.Yes)
                 {
-
-                    if (editando)
+                    try
                     {
-                        if (filaSeleccionadaIndex >= 0)
+                        UsuarioNegocio usuariosNegocio = new UsuarioNegocio();
+                        string nombreUsuario = TUsuario.Text;
+                        string correo = TEmail.Text;
+                        string Dni = TDni.Text;
+
+                        if (usuariosNegocio.buscarUsuarioByDNI(int.Parse(Dni)) != null && !editando)
                         {
-                            
-                           
-                            usuariosNegocio = new UsuarioNegocio();
-                            usuariosNegocio.EditarUsuario(GenerarUsuario());
-
-
-                            LimpiarMensajesDeValidacion();
-                            LValido.Text = "Usuario editado exitosamente.";
-                            GestionUsuarios_Load();
-                            TDni.ReadOnly = false;
-                            TDni.BackColor = Color.White;
-                            
+                            LValiDni.ForeColor = Color.Red;
+                            LValiDni.Text = "El DNI ya está en uso.";
+                            return;
                         }
 
-                        editando = false;
-                        filaSeleccionadaIndex = -1;
-
-                    }
-                    else
-                    {
-                        /*if (!ValidarDni(TDni.Text))
+                        if (usuariosNegocio.ExisteUsuario(nombreUsuario) && !editando)
                         {
+                            LValiUsuario.ForeColor = Color.Red;
+                            LValiUsuario.Text = "El nombre de usuario ya está en uso.";
                             return;
-                        }*/
+                        }
 
-
-
-                        Usuario usuarioGuardar = new Usuario
+                        if (usuariosNegocio.ExisteCorreo(correo) && !editando)
                         {
-                            Nombre_Usuario = nombre,
-                            Apellido_Usuario = apellido,
-                            DNI_Usuario = Convert.ToInt32(dnitexto),
-                            Sueldo_Usuario = Convert.ToInt32(sueldotexto),
-                            Telefono_Usuario = telefonotexto,
-                            Correo_Usuario = email,
-                            Contraseña = contraseña,
-                            Usuario_Login = usuario,
-                            Sexo_Usuario = (int)CBSexo.SelectedValue,
-                            Rol_Usuario = (int)CBPuesto.SelectedValue
-                     
-                        };
+                            LValiEmail.ForeColor = Color.Red;
+                            LValiEmail.Text = "El correo electrónico ya está en uso.";
+                            return;
+                        }
 
+                        if (editando)
+                        {
+                            TUsuario.ReadOnly = false;
+                            TEmail.ReadOnly = false;
+                            TDni.ReadOnly = false;
 
-                        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-                        usuarioNegocio.GuardarUsuario(usuarioGuardar);
-                        GestionUsuarios_Load();
-                        LValido.Text = "Usuario agregado exitosamente.";
+                            TUsuario.BackColor = Color.White; 
+                            TEmail.BackColor = Color.White;
+                            TDni.BackColor = Color.White;
+
+                            if (filaSeleccionadaIndex >= 0)
+                            {
+                                usuariosNegocio.EditarUsuario(GenerarUsuario());
+                                LimpiarMensajesDeValidacion();
+                                LValido.Text = "Usuario editado exitosamente.";
+                                GestionUsuarios_Load();
+                            }
+
+                            editando = false;
+                            filaSeleccionadaIndex = -1;
+                        }
+                        else
+                        {
+                            Usuarios usuarioGuardar = new Usuarios
+                            {
+                                Nombre_Usuario = TNombre.Text,
+                                Apellido_Usuario = TApellido.Text,
+                                DNI_Usuario = Convert.ToInt32(TDni.Text),
+                                Sueldo_Usuario = Convert.ToDecimal(TSueldo.Text),
+                                Telefono_Usuario = TTelefono.Text,
+                                Correo_Usuario = TEmail.Text,
+                                Contraseña = TContraseña.Text,
+                                Usuario = TUsuario.Text,
+                                Sexo_Usuario = (int)CBSexo.SelectedValue,
+                                Rol_Usuario = (int)CBPuesto.SelectedValue
+                            };
+
+                            usuariosNegocio.GuardarUsuario(usuarioGuardar);
+                            GestionUsuarios_Load();
+                            LValido.Text = "Usuario agregado exitosamente.";
+                        }
+
+                        // Limpiar campos después de guardar
+                        CBPuesto.SelectedIndex = -1;
+                        TUsuario.Clear();
+                        TDni.Clear();
+                        TNombre.Clear();
+                        TApellido.Clear();
+                        TEmail.Clear();
+                        CBSexo.SelectedIndex = -1;
+                        TSueldo.Clear();
+                        TTelefono.Clear();
+                        TContraseña.Clear();
+                    
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error de inserción", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
-                CBPuesto.SelectedIndex = -1;
-                TUsuario.Clear();
-                TDni.Clear();
-                TNombre.Clear();
-                TApellido.Clear();
-                TEmail.Clear();
-                CBSexo.SelectedIndex = -1;
-                TSueldo.Clear();
-                TTelefono.Clear();
-                TContraseña.Clear();
             }
-        }
-
-        private bool ValidarDni(string dniTexto)
-        {
-            foreach (DataGridViewRow fila in DGUsuarios.Rows)
+            else
             {
-                if (fila.Cells["CDni"].Value != null && fila.Cells["CDni"].Value.ToString() == dniTexto)
-                {
-                    LValiDni.ForeColor = Color.Red;
-                    LValiDni.Text = "El DNI ya está registrado.";
-                    return false;
-                }
-            }
-
-            LValiDni.Text = string.Empty;
-            return true;
+                LValido.Text = string.Empty;
+            }  
         }
 
-        public Usuario GenerarUsuario()
+        public Usuarios GenerarUsuario()
         {
-            Usuario usuarioGuardar = new Usuario
+            Usuarios usuarioGuardar = new Usuarios
             {
                 Nombre_Usuario = TUsuario.Text,
                 Apellido_Usuario = TApellido.Text,
@@ -353,7 +365,7 @@ namespace ProyectoTaller.Views.Administradores
                 Telefono_Usuario = TTelefono.Text,
                 Correo_Usuario = TEmail.Text,
                 Contraseña = TContraseña.Text,
-                Usuario_Login = TUsuario.Text,
+                Usuario = TUsuario.Text,
                 Sexo_Usuario = (int)CBSexo.SelectedValue,
                 Rol_Usuario = (int)CBPuesto.SelectedValue
 
@@ -444,7 +456,12 @@ namespace ProyectoTaller.Views.Administradores
                     TContraseña.Text = filaSeleccionada.Cells["Contraseña"].Value.ToString();
 
                     TDni.ReadOnly = true;
+                    TUsuario.ReadOnly = true;
+                    TEmail.ReadOnly = true;
                     TDni.BackColor = Color.LightGray;
+                    TUsuario.BackColor = Color.LightGray;
+                    TEmail.BackColor = Color.LightGray;
+
                     editando = true;
 
                     BAgregar.Text = "Modificar";

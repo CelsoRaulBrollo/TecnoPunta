@@ -61,7 +61,7 @@ namespace ProyectoTaller.CDatos
             return lista;
         }
 
-        public bool ActualizarUsuario(Usuario usuario)
+        public bool ActualizarUsuario(Usuarios usuario)
         {
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
@@ -74,7 +74,7 @@ namespace ProyectoTaller.CDatos
                     Sueldo_Usuario = @Sueldo,
 
                     Contraseña = @Contraseña,
-                    Usuario = @Usuario_Login,
+                    Usuario = @Usuario,
                     Sexo_Usuario = @Id_Sexo,
                     Rol_Usuario = @Id_Rol
                 WHERE DNI_Usuario = @DNI";
@@ -86,7 +86,7 @@ namespace ProyectoTaller.CDatos
                 cmd.Parameters.AddWithValue("@Correo", usuario.Correo_Usuario);
                 cmd.Parameters.AddWithValue("@Sueldo", usuario.Sueldo_Usuario);
                 cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
-                cmd.Parameters.AddWithValue("@Usuario_Login", usuario.Usuario_Login);
+                cmd.Parameters.AddWithValue("@Usuario", usuario.Usuario);
                 cmd.Parameters.Add("@Id_Sexo", SqlDbType.Int).Value = usuario.Sexo_Usuario;
                 
                 cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario;
@@ -118,59 +118,82 @@ namespace ProyectoTaller.CDatos
             }
         }
 
-        public void GuardarUsuario(Usuario usuario)
+        public void GuardarUsuario(Usuarios usuario)
+        {
+            try
+            {
+                using (SqlConnection connection = conexion.ObtenerConexion())
+                {
+                    string query = @"
+    INSERT INTO Usuarios (DNI_Usuario, Usuario, Nombre_Usuario, Apellido_Usuario, Correo_Usuario, Sueldo_Usuario, Telefono_Usuario, 
+                          Contraseña, Sexo_Usuario, Rol_Usuario)
+    VALUES (@DNI, @Usuario, @Nombre, @Apellido, @Correo, @Sueldo, @Telefono, @Contraseña, @Id_Sexo, @Id_Rol)";
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@DNI", usuario.DNI_Usuario);
+                    cmd.Parameters.AddWithValue("@Usuario", usuario.Usuario);
+                    cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre_Usuario);
+                    cmd.Parameters.AddWithValue("@Apellido", usuario.Apellido_Usuario);
+                    cmd.Parameters.AddWithValue("@Correo", usuario.Correo_Usuario);
+                    cmd.Parameters.AddWithValue("@Sueldo", usuario.Sueldo_Usuario);
+                    cmd.Parameters.AddWithValue("@Telefono", usuario.Telefono_Usuario);
+                    cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
+                    cmd.Parameters.Add("@Id_Sexo", SqlDbType.Int).Value = usuario.Sexo_Usuario;
+                    cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario;
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Error al guardar el usuario: " + sqlEx.Message, sqlEx);
+            }
+        }
+
+
+        public bool EsDniExistente(int dni)
         {
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
-                string query = @"
-                INSERT INTO Usuarios (DNI_Usuario,Usuario, Nombre_Usuario, Apellido_Usuario,Correo_Usuario,Sueldo_Usuario , Telefono_Usuario, 
-                                      Contraseña, Sexo_Usuario, Rol_Usuario)
-                VALUES (@DNI, @Usuario,@Nombre, @Apellido, @Correo, @Sueldo, @Telefono,@Contraseña ,@Id_Sexo, @Id_Rol )";
-
+                string query = "SELECT COUNT(*) FROM Usuarios WHERE DNI_Usuario = @DNI";
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@DNI", usuario.DNI_Usuario);
-                cmd.Parameters.AddWithValue("@Usuario", usuario.Usuario_Login);
-                cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre_Usuario);
-                cmd.Parameters.AddWithValue("@Apellido", usuario.Apellido_Usuario);
-                cmd.Parameters.AddWithValue("@Correo", usuario.Correo_Usuario);
-                cmd.Parameters.AddWithValue("@Sueldo", usuario.Sueldo_Usuario);
-                cmd.Parameters.AddWithValue("@Telefono", usuario.Telefono_Usuario);
-                cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
-                cmd.Parameters.Add("@Id_Sexo", SqlDbType.Int).Value = usuario.Sexo_Usuario; 
-                cmd.Parameters.Add("@Id_Rol", SqlDbType.Int).Value = usuario.Rol_Usuario;
-
-
-
+                cmd.Parameters.AddWithValue("@DNI", dni);
                 connection.Open();
-
-                if (cmd.ExecuteNonQuery() > 0)
-                {
-                    //si inserto los datos agrega el carrito para el vendedor
-                    if (usuario.Rol_Usuario == 3)
-                    {
-                        string queryCarrito = @"
-                                INSERT INTO Carrito (DNI_Vendedor, Total)
-                                VALUES (@DNI, 0)";
-
-                        using (SqlCommand cmdCarrito = new SqlCommand(queryCarrito, connection))
-                        {
-                            cmdCarrito.Parameters.AddWithValue("@DNI", usuario.DNI_Usuario);
-                            cmdCarrito.ExecuteNonQuery();
-                        }
-                    }
-                }
-                else
-                {
-                    throw new Exception("No se pudo guardar el usuario.");
-                }
-
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
             }
-
         }
 
-        public Usuario buscarUsuario(int dni)
+        public bool EsCorreoExistente(string correo)
         {
-            Usuario usuario = null;
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string query = "SELECT COUNT(*) FROM Usuarios WHERE Correo_Usuario = @Correo";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@Correo", correo);
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public bool EsUsuarioExistente(string nombreUsuario)
+        {
+            using (SqlConnection connection = conexion.ObtenerConexion())
+            {
+                string query = "SELECT COUNT(*) FROM Usuarios WHERE Usuario = @Usuario";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public Usuarios buscarUsuario(int dni)
+        {
+            Usuarios usuario = null;
 
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
@@ -184,10 +207,10 @@ namespace ProyectoTaller.CDatos
                     {
                         if (reader.Read())
                         {
-                            usuario = new Usuario
+                            usuario = new Usuarios
                             {
                                 DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
-                                Usuario_Login = reader["Usuario"].ToString(),
+                                Usuario = reader["Usuario"].ToString(),
                                 Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
                                 Apellido_Usuario = reader["Apellido_Usuario"].ToString(),
                                 Correo_Usuario = reader["Correo_Usuario"].ToString(),
@@ -205,7 +228,7 @@ namespace ProyectoTaller.CDatos
             return usuario;
         }
 
-        public Usuario autenticacion(string nombreUsuario, string contraseña)
+        public Usuarios autenticacion(string nombreUsuario, string contraseña)
         {
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
@@ -220,10 +243,10 @@ namespace ProyectoTaller.CDatos
                         if (reader.Read())
                         {
                             
-                            return new Usuario
+                            return new Usuarios
                             {
                                 DNI_Usuario = Convert.ToInt32(reader["DNI_Usuario"]),
-                                Usuario_Login = reader["Usuario"].ToString(),
+                                Usuario = reader["Usuario"].ToString(),
                                 Nombre_Usuario = reader["Nombre_Usuario"].ToString(),
                                 Apellido_Usuario = reader["Apellido_Usuario"].ToString(),
                                 Correo_Usuario = reader["Correo_Usuario"].ToString(),
@@ -274,9 +297,6 @@ namespace ProyectoTaller.CDatos
                 ActualizarCommand.ExecuteNonQuery();
 
             }
-
-
         }
-
     }
 }
