@@ -69,7 +69,7 @@ namespace ProyectoTaller.Views
                 BProductos.Visible = true;
                 BVentas.Visible = true;
                 BCliente.Visible = true;
-                BStock.Visible = true;
+            
                 BInformes.Visible = true;
             }
         }
