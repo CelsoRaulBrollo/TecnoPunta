@@ -17,7 +17,7 @@ namespace ProyectoTaller.CDatos
             List<Clientes> listaClientes = new List<Clientes>();
             using (SqlConnection connection = conexion.ObtenerConexion())
             {
-                string query = "SELECT * from Clientes";
+                string query = "SELECT * from Clientes order by Estado_Cliente";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();

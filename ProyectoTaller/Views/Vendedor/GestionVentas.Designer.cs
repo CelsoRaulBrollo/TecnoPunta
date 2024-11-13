@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DGVentasVendedor = new System.Windows.Forms.DataGridView();
             this.BVerDetalle = new System.Windows.Forms.Button();
-            this.BImprimirInformeVentaVendedor = new System.Windows.Forms.Button();
             this.LBVentasDiaPrint = new System.Windows.Forms.Label();
             this.LImporteTotalPrint = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PBImagenVentas)).BeginInit();
@@ -46,7 +45,7 @@
             // 
             this.PBImagenVentas.Image = global::ProyectoTaller.Properties.Resources.VentasTitulo;
             this.PBImagenVentas.Location = new System.Drawing.Point(16, 15);
-            this.PBImagenVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PBImagenVentas.Margin = new System.Windows.Forms.Padding(4);
             this.PBImagenVentas.Name = "PBImagenVentas";
             this.PBImagenVentas.Size = new System.Drawing.Size(87, 82);
             this.PBImagenVentas.TabIndex = 29;
@@ -101,7 +100,7 @@
             this.DGVentasVendedor.AllowUserToAddRows = false;
             this.DGVentasVendedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVentasVendedor.Location = new System.Drawing.Point(37, 240);
-            this.DGVentasVendedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGVentasVendedor.Margin = new System.Windows.Forms.Padding(4);
             this.DGVentasVendedor.Name = "DGVentasVendedor";
             this.DGVentasVendedor.RowHeadersWidth = 51;
             this.DGVentasVendedor.Size = new System.Drawing.Size(1099, 297);
@@ -115,7 +114,7 @@
             this.BVerDetalle.Image = global::ProyectoTaller.Properties.Resources.Ver_detalle;
             this.BVerDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BVerDetalle.Location = new System.Drawing.Point(972, 161);
-            this.BVerDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BVerDetalle.Margin = new System.Windows.Forms.Padding(4);
             this.BVerDetalle.Name = "BVerDetalle";
             this.BVerDetalle.Size = new System.Drawing.Size(164, 64);
             this.BVerDetalle.TabIndex = 42;
@@ -123,22 +122,6 @@
             this.BVerDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BVerDetalle.UseVisualStyleBackColor = true;
             this.BVerDetalle.Click += new System.EventHandler(this.BVerDetalle_Click);
-            // 
-            // BImprimirInformeVentaVendedor
-            // 
-            this.BImprimirInformeVentaVendedor.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BImprimirInformeVentaVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BImprimirInformeVentaVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BImprimirInformeVentaVendedor.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
-            this.BImprimirInformeVentaVendedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BImprimirInformeVentaVendedor.Location = new System.Drawing.Point(972, 545);
-            this.BImprimirInformeVentaVendedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BImprimirInformeVentaVendedor.Name = "BImprimirInformeVentaVendedor";
-            this.BImprimirInformeVentaVendedor.Size = new System.Drawing.Size(164, 64);
-            this.BImprimirInformeVentaVendedor.TabIndex = 43;
-            this.BImprimirInformeVentaVendedor.Text = "Imprimir";
-            this.BImprimirInformeVentaVendedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BImprimirInformeVentaVendedor.UseVisualStyleBackColor = true;
             // 
             // LBVentasDiaPrint
             // 
@@ -168,7 +151,6 @@
             this.ClientSize = new System.Drawing.Size(1183, 624);
             this.Controls.Add(this.LImporteTotalPrint);
             this.Controls.Add(this.LBVentasDiaPrint);
-            this.Controls.Add(this.BImprimirInformeVentaVendedor);
             this.Controls.Add(this.BVerDetalle);
             this.Controls.Add(this.DGVentasVendedor);
             this.Controls.Add(this.label2);
@@ -176,7 +158,7 @@
             this.Controls.Add(this.LVentaDelDia);
             this.Controls.Add(this.LTituloGestionVentas);
             this.Controls.Add(this.PBImagenVentas);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GestionVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionVentas";
@@ -196,7 +178,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView DGVentasVendedor;
         private System.Windows.Forms.Button BVerDetalle;
-        private System.Windows.Forms.Button BImprimirInformeVentaVendedor;
         private System.Windows.Forms.Label LBVentasDiaPrint;
         private System.Windows.Forms.Label LImporteTotalPrint;
     }

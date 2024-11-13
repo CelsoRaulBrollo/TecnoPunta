@@ -22,7 +22,8 @@ namespace ProyectoTaller.CDatos
                 SELECT p.*, m.Id_Marca, m.Nombre_Marca, c.Id_Condicion, c.Descripcion_Estado
                 FROM Productos p
                 LEFT JOIN Marcas m ON p.Id_Marca = m.Id_Marca
-                LEFT JOIN Condicion c ON p.Id_Condicion = c.Id_Condicion";
+                LEFT JOIN Condicion c ON p.Id_Condicion = c.Id_Condicion
+                Order by m.Nombre_Marca";
 
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -91,14 +92,10 @@ namespace ProyectoTaller.CDatos
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
-            } catch (SqlException ex)
+            }
+            catch (SqlException ex)
             {
-                MessageBox.Show("No se puede guardar el producto. Ya existe un producto con el mismo modelo.",
-                              "Error de inserción",
-                              MessageBoxButtons.OK,
-                              MessageBoxIcon.Error);
-
-
+                throw new Exception("No se puede guardar el producto. Ya existe un producto con el mismo modelo.", ex);
             }
         }
 

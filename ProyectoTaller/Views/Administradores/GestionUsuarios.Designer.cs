@@ -79,10 +79,9 @@
             // PBImagenUsuarios
             // 
             this.PBImagenUsuarios.Image = global::ProyectoTaller.Properties.Resources.UsuarioGrande;
-            this.PBImagenUsuarios.Location = new System.Drawing.Point(16, 15);
-            this.PBImagenUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.PBImagenUsuarios.Location = new System.Drawing.Point(12, 12);
             this.PBImagenUsuarios.Name = "PBImagenUsuarios";
-            this.PBImagenUsuarios.Size = new System.Drawing.Size(87, 82);
+            this.PBImagenUsuarios.Size = new System.Drawing.Size(65, 67);
             this.PBImagenUsuarios.TabIndex = 30;
             this.PBImagenUsuarios.TabStop = false;
             // 
@@ -90,10 +89,9 @@
             // 
             this.LTituloUsuarios.AutoSize = true;
             this.LTituloUsuarios.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTituloUsuarios.Location = new System.Drawing.Point(105, 17);
-            this.LTituloUsuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LTituloUsuarios.Location = new System.Drawing.Point(79, 14);
             this.LTituloUsuarios.Name = "LTituloUsuarios";
-            this.LTituloUsuarios.Size = new System.Drawing.Size(313, 44);
+            this.LTituloUsuarios.Size = new System.Drawing.Size(247, 36);
             this.LTituloUsuarios.TabIndex = 31;
             this.LTituloUsuarios.Text = "Gestion Usuarios";
             // 
@@ -101,10 +99,9 @@
             // 
             this.LEmail.AutoSize = true;
             this.LEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LEmail.Location = new System.Drawing.Point(543, 94);
-            this.LEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LEmail.Location = new System.Drawing.Point(407, 76);
             this.LEmail.Name = "LEmail";
-            this.LEmail.Size = new System.Drawing.Size(52, 21);
+            this.LEmail.Size = new System.Drawing.Size(43, 17);
             this.LEmail.TabIndex = 83;
             this.LEmail.Text = "Email";
             // 
@@ -112,20 +109,18 @@
             // 
             this.LValiEmail.AutoSize = true;
             this.LValiEmail.ForeColor = System.Drawing.Color.Red;
-            this.LValiEmail.Location = new System.Drawing.Point(657, 114);
-            this.LValiEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiEmail.Location = new System.Drawing.Point(493, 93);
             this.LValiEmail.Name = "LValiEmail";
-            this.LValiEmail.Size = new System.Drawing.Size(0, 16);
+            this.LValiEmail.Size = new System.Drawing.Size(0, 13);
             this.LValiEmail.TabIndex = 76;
             // 
             // LApellido
             // 
             this.LApellido.AutoSize = true;
             this.LApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LApellido.Location = new System.Drawing.Point(125, 303);
-            this.LApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LApellido.Location = new System.Drawing.Point(94, 246);
             this.LApellido.Name = "LApellido";
-            this.LApellido.Size = new System.Drawing.Size(78, 21);
+            this.LApellido.Size = new System.Drawing.Size(61, 17);
             this.LApellido.TabIndex = 74;
             this.LApellido.Text = "Apellido";
             // 
@@ -133,30 +128,27 @@
             // 
             this.LValiApellido.AutoSize = true;
             this.LValiApellido.ForeColor = System.Drawing.Color.Red;
-            this.LValiApellido.Location = new System.Drawing.Point(233, 331);
-            this.LValiApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiApellido.Location = new System.Drawing.Point(175, 269);
             this.LValiApellido.Name = "LValiApellido";
-            this.LValiApellido.Size = new System.Drawing.Size(0, 16);
+            this.LValiApellido.Size = new System.Drawing.Size(0, 13);
             this.LValiApellido.TabIndex = 72;
             // 
             // LValiPuesto
             // 
             this.LValiPuesto.AutoSize = true;
             this.LValiPuesto.ForeColor = System.Drawing.Color.Red;
-            this.LValiPuesto.Location = new System.Drawing.Point(233, 118);
-            this.LValiPuesto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiPuesto.Location = new System.Drawing.Point(175, 96);
             this.LValiPuesto.Name = "LValiPuesto";
-            this.LValiPuesto.Size = new System.Drawing.Size(0, 16);
+            this.LValiPuesto.Size = new System.Drawing.Size(0, 13);
             this.LValiPuesto.TabIndex = 71;
             // 
             // LValiDni
             // 
             this.LValiDni.AutoSize = true;
             this.LValiDni.ForeColor = System.Drawing.Color.Red;
-            this.LValiDni.Location = new System.Drawing.Point(233, 226);
-            this.LValiDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiDni.Location = new System.Drawing.Point(175, 184);
             this.LValiDni.Name = "LValiDni";
-            this.LValiDni.Size = new System.Drawing.Size(0, 16);
+            this.LValiDni.Size = new System.Drawing.Size(0, 13);
             this.LValiDni.TabIndex = 70;
             // 
             // LValiUsuario
@@ -164,20 +156,18 @@
             this.LValiUsuario.AutoSize = true;
             this.LValiUsuario.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.LValiUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LValiUsuario.Location = new System.Drawing.Point(233, 172);
-            this.LValiUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiUsuario.Location = new System.Drawing.Point(175, 140);
             this.LValiUsuario.Name = "LValiUsuario";
-            this.LValiUsuario.Size = new System.Drawing.Size(0, 16);
+            this.LValiUsuario.Size = new System.Drawing.Size(0, 13);
             this.LValiUsuario.TabIndex = 69;
             // 
             // LTelefono
             // 
             this.LTelefono.AutoSize = true;
             this.LTelefono.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LTelefono.Location = new System.Drawing.Point(543, 252);
-            this.LTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LTelefono.Location = new System.Drawing.Point(407, 205);
             this.LTelefono.Name = "LTelefono";
-            this.LTelefono.Size = new System.Drawing.Size(105, 21);
+            this.LTelefono.Size = new System.Drawing.Size(81, 17);
             this.LTelefono.TabIndex = 64;
             this.LTelefono.Text = "N° Teléfono";
             // 
@@ -185,10 +175,9 @@
             // 
             this.LPuesto.AutoSize = true;
             this.LPuesto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LPuesto.Location = new System.Drawing.Point(125, 94);
-            this.LPuesto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LPuesto.Location = new System.Drawing.Point(94, 76);
             this.LPuesto.Name = "LPuesto";
-            this.LPuesto.Size = new System.Drawing.Size(34, 21);
+            this.LPuesto.Size = new System.Drawing.Size(28, 17);
             this.LPuesto.TabIndex = 63;
             this.LPuesto.Text = "Rol";
             // 
@@ -196,10 +185,9 @@
             // 
             this.LNombre.AutoSize = true;
             this.LNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LNombre.Location = new System.Drawing.Point(125, 252);
-            this.LNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LNombre.Location = new System.Drawing.Point(94, 205);
             this.LNombre.Name = "LNombre";
-            this.LNombre.Size = new System.Drawing.Size(77, 21);
+            this.LNombre.Size = new System.Drawing.Size(61, 17);
             this.LNombre.TabIndex = 62;
             this.LNombre.Text = "Nombre";
             // 
@@ -207,10 +195,9 @@
             // 
             this.LDni.AutoSize = true;
             this.LDni.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDni.Location = new System.Drawing.Point(125, 198);
-            this.LDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LDni.Location = new System.Drawing.Point(94, 161);
             this.LDni.Name = "LDni";
-            this.LDni.Size = new System.Drawing.Size(41, 21);
+            this.LDni.Size = new System.Drawing.Size(31, 17);
             this.LDni.TabIndex = 61;
             this.LDni.Text = "DNI";
             // 
@@ -218,31 +205,30 @@
             // 
             this.LValiNombre.AutoSize = true;
             this.LValiNombre.ForeColor = System.Drawing.Color.Red;
-            this.LValiNombre.Location = new System.Drawing.Point(233, 279);
-            this.LValiNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiNombre.Location = new System.Drawing.Point(175, 227);
             this.LValiNombre.Name = "LValiNombre";
-            this.LValiNombre.Size = new System.Drawing.Size(0, 16);
+            this.LValiNombre.Size = new System.Drawing.Size(0, 13);
             this.LValiNombre.TabIndex = 91;
             // 
             // DGUsuarios
             // 
             this.DGUsuarios.AllowUserToAddRows = false;
+            this.DGUsuarios.AllowUserToDeleteRows = false;
             this.DGUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGUsuarios.Location = new System.Drawing.Point(16, 391);
-            this.DGUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.DGUsuarios.Location = new System.Drawing.Point(12, 318);
             this.DGUsuarios.Name = "DGUsuarios";
+            this.DGUsuarios.ReadOnly = true;
             this.DGUsuarios.RowHeadersWidth = 51;
-            this.DGUsuarios.Size = new System.Drawing.Size(1151, 218);
+            this.DGUsuarios.Size = new System.Drawing.Size(863, 177);
             this.DGUsuarios.TabIndex = 94;
             // 
             // LSexo
             // 
             this.LSexo.AutoSize = true;
             this.LSexo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSexo.Location = new System.Drawing.Point(543, 148);
-            this.LSexo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LSexo.Location = new System.Drawing.Point(407, 120);
             this.LSexo.Name = "LSexo";
-            this.LSexo.Size = new System.Drawing.Size(48, 21);
+            this.LSexo.Size = new System.Drawing.Size(37, 17);
             this.LSexo.TabIndex = 97;
             this.LSexo.Text = "Sexo";
             // 
@@ -250,10 +236,9 @@
             // 
             this.LSueldo.AutoSize = true;
             this.LSueldo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSueldo.Location = new System.Drawing.Point(543, 198);
-            this.LSueldo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LSueldo.Location = new System.Drawing.Point(407, 161);
             this.LSueldo.Name = "LSueldo";
-            this.LSueldo.Size = new System.Drawing.Size(65, 21);
+            this.LSueldo.Size = new System.Drawing.Size(51, 17);
             this.LSueldo.TabIndex = 100;
             this.LSueldo.Text = "Sueldo";
             // 
@@ -262,19 +247,17 @@
             this.LValido.AutoSize = true;
             this.LValido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LValido.ForeColor = System.Drawing.Color.Green;
-            this.LValido.Location = new System.Drawing.Point(409, 59);
-            this.LValido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValido.Location = new System.Drawing.Point(307, 48);
             this.LValido.Name = "LValido";
-            this.LValido.Size = new System.Drawing.Size(0, 23);
+            this.LValido.Size = new System.Drawing.Size(0, 21);
             this.LValido.TabIndex = 109;
             // 
             // CBPuesto
             // 
             this.CBPuesto.FormattingEnabled = true;
-            this.CBPuesto.Location = new System.Drawing.Point(233, 89);
-            this.CBPuesto.Margin = new System.Windows.Forms.Padding(4);
+            this.CBPuesto.Location = new System.Drawing.Point(175, 72);
             this.CBPuesto.Name = "CBPuesto";
-            this.CBPuesto.Size = new System.Drawing.Size(272, 24);
+            this.CBPuesto.Size = new System.Drawing.Size(205, 21);
             this.CBPuesto.TabIndex = 115;
             this.CBPuesto.Text = "Seleccione el rol";
             // 
@@ -288,10 +271,9 @@
             this.BEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BEliminar.Image = global::ProyectoTaller.Properties.Resources.Borrar1;
             this.BEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BEliminar.Location = new System.Drawing.Point(979, 270);
-            this.BEliminar.Margin = new System.Windows.Forms.Padding(4);
+            this.BEliminar.Location = new System.Drawing.Point(734, 219);
             this.BEliminar.Name = "BEliminar";
-            this.BEliminar.Size = new System.Drawing.Size(164, 64);
+            this.BEliminar.Size = new System.Drawing.Size(123, 52);
             this.BEliminar.TabIndex = 93;
             this.BEliminar.Text = "Activa / Baja";
             this.BEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -308,10 +290,9 @@
             this.BBorrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BBorrar.Image = global::ProyectoTaller.Properties.Resources.Eliminar;
             this.BBorrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBorrar.Location = new System.Drawing.Point(979, 55);
-            this.BBorrar.Margin = new System.Windows.Forms.Padding(4);
+            this.BBorrar.Location = new System.Drawing.Point(734, 45);
             this.BBorrar.Name = "BBorrar";
-            this.BBorrar.Size = new System.Drawing.Size(164, 64);
+            this.BBorrar.Size = new System.Drawing.Size(123, 52);
             this.BBorrar.TabIndex = 95;
             this.BBorrar.Text = "Borrar Todo";
             this.BBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -325,10 +306,9 @@
             this.BEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BEditar.Image = global::ProyectoTaller.Properties.Resources.editar2;
             this.BEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BEditar.Location = new System.Drawing.Point(979, 198);
-            this.BEditar.Margin = new System.Windows.Forms.Padding(4);
+            this.BEditar.Location = new System.Drawing.Point(734, 161);
             this.BEditar.Name = "BEditar";
-            this.BEditar.Size = new System.Drawing.Size(164, 64);
+            this.BEditar.Size = new System.Drawing.Size(123, 52);
             this.BEditar.TabIndex = 108;
             this.BEditar.Text = "Editar    ";
             this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -339,10 +319,9 @@
             // 
             this.LUsuario.AutoSize = true;
             this.LUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LUsuario.Location = new System.Drawing.Point(125, 145);
-            this.LUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LUsuario.Location = new System.Drawing.Point(94, 118);
             this.LUsuario.Name = "LUsuario";
-            this.LUsuario.Size = new System.Drawing.Size(70, 21);
+            this.LUsuario.Size = new System.Drawing.Size(54, 17);
             this.LUsuario.TabIndex = 117;
             this.LUsuario.Text = "Usuario";
             // 
@@ -350,60 +329,53 @@
             // 
             this.LContraseña.AutoSize = true;
             this.LContraseña.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LContraseña.Location = new System.Drawing.Point(543, 308);
-            this.LContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LContraseña.Location = new System.Drawing.Point(407, 250);
             this.LContraseña.Name = "LContraseña";
-            this.LContraseña.Size = new System.Drawing.Size(109, 21);
+            this.LContraseña.Size = new System.Drawing.Size(84, 17);
             this.LContraseña.TabIndex = 118;
             this.LContraseña.Text = "Contraseña";
             // 
             // TUsuario
             // 
-            this.TUsuario.Location = new System.Drawing.Point(233, 143);
-            this.TUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.TUsuario.Location = new System.Drawing.Point(175, 116);
             this.TUsuario.Name = "TUsuario";
-            this.TUsuario.Size = new System.Drawing.Size(272, 22);
+            this.TUsuario.Size = new System.Drawing.Size(205, 20);
             this.TUsuario.TabIndex = 119;
             // 
             // TDni
             // 
-            this.TDni.Location = new System.Drawing.Point(233, 198);
-            this.TDni.Margin = new System.Windows.Forms.Padding(4);
+            this.TDni.Location = new System.Drawing.Point(175, 161);
             this.TDni.Name = "TDni";
-            this.TDni.Size = new System.Drawing.Size(272, 22);
+            this.TDni.Size = new System.Drawing.Size(205, 20);
             this.TDni.TabIndex = 120;
             // 
             // TNombre
             // 
-            this.TNombre.Location = new System.Drawing.Point(233, 249);
-            this.TNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.TNombre.Location = new System.Drawing.Point(175, 202);
             this.TNombre.Name = "TNombre";
-            this.TNombre.Size = new System.Drawing.Size(272, 22);
+            this.TNombre.Size = new System.Drawing.Size(205, 20);
             this.TNombre.TabIndex = 121;
             // 
             // TApellido
             // 
-            this.TApellido.Location = new System.Drawing.Point(233, 304);
-            this.TApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.TApellido.Location = new System.Drawing.Point(175, 247);
             this.TApellido.Name = "TApellido";
-            this.TApellido.Size = new System.Drawing.Size(272, 22);
+            this.TApellido.Size = new System.Drawing.Size(205, 20);
             this.TApellido.TabIndex = 122;
             // 
             // TEmail
             // 
-            this.TEmail.Location = new System.Drawing.Point(659, 89);
-            this.TEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.TEmail.Location = new System.Drawing.Point(494, 72);
             this.TEmail.Name = "TEmail";
-            this.TEmail.Size = new System.Drawing.Size(272, 22);
+            this.TEmail.Size = new System.Drawing.Size(205, 20);
             this.TEmail.TabIndex = 123;
             // 
             // CBSexo
             // 
             this.CBSexo.FormattingEnabled = true;
-            this.CBSexo.Location = new System.Drawing.Point(659, 144);
-            this.CBSexo.Margin = new System.Windows.Forms.Padding(4);
+            this.CBSexo.Location = new System.Drawing.Point(494, 117);
             this.CBSexo.Name = "CBSexo";
-            this.CBSexo.Size = new System.Drawing.Size(272, 24);
+            this.CBSexo.Size = new System.Drawing.Size(205, 21);
             this.CBSexo.TabIndex = 124;
             this.CBSexo.Text = "Seleccione el sexo";
             // 
@@ -411,84 +383,75 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(591, 304);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(443, 247);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 125;
             // 
             // LValiSexo
             // 
             this.LValiSexo.AutoSize = true;
             this.LValiSexo.ForeColor = System.Drawing.Color.Red;
-            this.LValiSexo.Location = new System.Drawing.Point(657, 174);
-            this.LValiSexo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiSexo.Location = new System.Drawing.Point(493, 141);
             this.LValiSexo.Name = "LValiSexo";
-            this.LValiSexo.Size = new System.Drawing.Size(0, 16);
+            this.LValiSexo.Size = new System.Drawing.Size(0, 13);
             this.LValiSexo.TabIndex = 126;
             // 
             // TSueldo
             // 
-            this.TSueldo.Location = new System.Drawing.Point(659, 198);
-            this.TSueldo.Margin = new System.Windows.Forms.Padding(4);
+            this.TSueldo.Location = new System.Drawing.Point(494, 161);
             this.TSueldo.Name = "TSueldo";
-            this.TSueldo.Size = new System.Drawing.Size(272, 22);
+            this.TSueldo.Size = new System.Drawing.Size(205, 20);
             this.TSueldo.TabIndex = 128;
             // 
             // LValiSueldo
             // 
             this.LValiSueldo.AutoSize = true;
             this.LValiSueldo.ForeColor = System.Drawing.Color.Red;
-            this.LValiSueldo.Location = new System.Drawing.Point(657, 224);
-            this.LValiSueldo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiSueldo.Location = new System.Drawing.Point(493, 182);
             this.LValiSueldo.Name = "LValiSueldo";
-            this.LValiSueldo.Size = new System.Drawing.Size(0, 16);
+            this.LValiSueldo.Size = new System.Drawing.Size(0, 13);
             this.LValiSueldo.TabIndex = 127;
             // 
             // TTelefono
             // 
-            this.TTelefono.Location = new System.Drawing.Point(659, 250);
-            this.TTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.TTelefono.Location = new System.Drawing.Point(494, 203);
             this.TTelefono.Name = "TTelefono";
-            this.TTelefono.Size = new System.Drawing.Size(272, 22);
+            this.TTelefono.Size = new System.Drawing.Size(205, 20);
             this.TTelefono.TabIndex = 130;
             // 
             // LValiTelefono
             // 
             this.LValiTelefono.AutoSize = true;
             this.LValiTelefono.ForeColor = System.Drawing.Color.Red;
-            this.LValiTelefono.Location = new System.Drawing.Point(657, 276);
-            this.LValiTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiTelefono.Location = new System.Drawing.Point(493, 224);
             this.LValiTelefono.Name = "LValiTelefono";
-            this.LValiTelefono.Size = new System.Drawing.Size(0, 16);
+            this.LValiTelefono.Size = new System.Drawing.Size(0, 13);
             this.LValiTelefono.TabIndex = 129;
             // 
             // TContraseña
             // 
-            this.TContraseña.Location = new System.Drawing.Point(659, 304);
-            this.TContraseña.Margin = new System.Windows.Forms.Padding(4);
+            this.TContraseña.Location = new System.Drawing.Point(494, 247);
             this.TContraseña.Name = "TContraseña";
-            this.TContraseña.Size = new System.Drawing.Size(272, 22);
+            this.TContraseña.Size = new System.Drawing.Size(205, 20);
             this.TContraseña.TabIndex = 132;
             // 
             // LValiContraseña
             // 
             this.LValiContraseña.AutoSize = true;
             this.LValiContraseña.ForeColor = System.Drawing.Color.Red;
-            this.LValiContraseña.Location = new System.Drawing.Point(657, 332);
-            this.LValiContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LValiContraseña.Location = new System.Drawing.Point(493, 270);
             this.LValiContraseña.Name = "LValiContraseña";
-            this.LValiContraseña.Size = new System.Drawing.Size(0, 16);
+            this.LValiContraseña.Size = new System.Drawing.Size(0, 13);
             this.LValiContraseña.TabIndex = 131;
             // 
             // CBAdministrador
             // 
             this.CBAdministrador.AutoSize = true;
             this.CBAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBAdministrador.Location = new System.Drawing.Point(833, 364);
-            this.CBAdministrador.Margin = new System.Windows.Forms.Padding(4);
+            this.CBAdministrador.Location = new System.Drawing.Point(625, 296);
             this.CBAdministrador.Name = "CBAdministrador";
-            this.CBAdministrador.Size = new System.Drawing.Size(126, 22);
+            this.CBAdministrador.Size = new System.Drawing.Size(106, 19);
             this.CBAdministrador.TabIndex = 137;
             this.CBAdministrador.Text = "Admintradores";
             this.CBAdministrador.UseVisualStyleBackColor = true;
@@ -498,10 +461,9 @@
             // 
             this.CBVendedor.AutoSize = true;
             this.CBVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBVendedor.Location = new System.Drawing.Point(707, 364);
-            this.CBVendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.CBVendedor.Location = new System.Drawing.Point(530, 296);
             this.CBVendedor.Name = "CBVendedor";
-            this.CBVendedor.Size = new System.Drawing.Size(109, 22);
+            this.CBVendedor.Size = new System.Drawing.Size(92, 19);
             this.CBVendedor.TabIndex = 136;
             this.CBVendedor.Text = "Vendedores";
             this.CBVendedor.UseVisualStyleBackColor = true;
@@ -511,10 +473,9 @@
             // 
             this.CBGerente.AutoSize = true;
             this.CBGerente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBGerente.Location = new System.Drawing.Point(597, 364);
-            this.CBGerente.Margin = new System.Windows.Forms.Padding(4);
+            this.CBGerente.Location = new System.Drawing.Point(448, 296);
             this.CBGerente.Name = "CBGerente";
-            this.CBGerente.Size = new System.Drawing.Size(91, 22);
+            this.CBGerente.Size = new System.Drawing.Size(76, 19);
             this.CBGerente.TabIndex = 135;
             this.CBGerente.Text = "Gerentes";
             this.CBGerente.UseVisualStyleBackColor = true;
@@ -522,10 +483,9 @@
             // 
             // TBuscarUsuarios
             // 
-            this.TBuscarUsuarios.Location = new System.Drawing.Point(216, 363);
-            this.TBuscarUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.TBuscarUsuarios.Location = new System.Drawing.Point(162, 295);
             this.TBuscarUsuarios.Name = "TBuscarUsuarios";
-            this.TBuscarUsuarios.Size = new System.Drawing.Size(368, 22);
+            this.TBuscarUsuarios.Size = new System.Drawing.Size(277, 20);
             this.TBuscarUsuarios.TabIndex = 134;
             this.TBuscarUsuarios.TextChanged += new System.EventHandler(this.TBuscarUsuarios_TextChanged);
             // 
@@ -533,10 +493,9 @@
             // 
             this.LBuscarUsuario.AutoSize = true;
             this.LBuscarUsuario.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBuscarUsuario.Location = new System.Drawing.Point(16, 359);
-            this.LBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBuscarUsuario.Location = new System.Drawing.Point(12, 292);
             this.LBuscarUsuario.Name = "LBuscarUsuario";
-            this.LBuscarUsuario.Size = new System.Drawing.Size(182, 28);
+            this.LBuscarUsuario.Size = new System.Drawing.Size(144, 23);
             this.LBuscarUsuario.TabIndex = 133;
             this.LBuscarUsuario.Text = "Buscar Usuario";
             // 
@@ -548,10 +507,9 @@
             this.BAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BAgregar.Image = global::ProyectoTaller.Properties.Resources.GuardarProducto;
             this.BAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregar.Location = new System.Drawing.Point(979, 127);
-            this.BAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.BAgregar.Location = new System.Drawing.Point(734, 103);
             this.BAgregar.Name = "BAgregar";
-            this.BAgregar.Size = new System.Drawing.Size(164, 64);
+            this.BAgregar.Size = new System.Drawing.Size(123, 52);
             this.BAgregar.TabIndex = 138;
             this.BAgregar.Text = "Agregar";
             this.BAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -560,10 +518,10 @@
             // 
             // GestionUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1183, 624);
+            this.ClientSize = new System.Drawing.Size(887, 507);
             this.Controls.Add(this.BAgregar);
             this.Controls.Add(this.CBAdministrador);
             this.Controls.Add(this.CBVendedor);
@@ -608,7 +566,6 @@
             this.Controls.Add(this.LDni);
             this.Controls.Add(this.LTituloUsuarios);
             this.Controls.Add(this.PBImagenUsuarios);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionUsuarios";

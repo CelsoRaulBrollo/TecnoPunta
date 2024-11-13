@@ -247,11 +247,12 @@ namespace ProyectoTaller.Views.Administradores
 
                 if (result == DialogResult.Yes)
                 {
-                    if (editando)
+                    try { 
+                        if (editando)
                     {
                         if (filaSeleccionadaIndex >= 0)
                         {
-                           
+
                             Producto productoActualizar = new Producto
                             {
                                 Modelo_Producto = TModelo.Text,
@@ -294,10 +295,10 @@ namespace ProyectoTaller.Views.Administradores
                             SistemaOperativo_Producto = TSo.Text,
                             Almacenamiento_Producto = TAlmacenamiento.Text,
                             Ram_Producto = TRam.Text,
-                            Stock_Producto = int.Parse(TStock.Text), 
-                            Precio_Producto = decimal.Parse(TPrecio.Text), 
-                            Marca = CBMarca.SelectedItem as Marca, 
-                            Condicion = CBEstado.SelectedItem as Condicion 
+                            Stock_Producto = int.Parse(TStock.Text),
+                            Precio_Producto = decimal.Parse(TPrecio.Text),
+                            Marca = CBMarca.SelectedItem as Marca,
+                            Condicion = CBEstado.SelectedItem as Condicion
                         };
 
                         productoNegocio = new ProductoNegocio();
@@ -310,6 +311,11 @@ namespace ProyectoTaller.Views.Administradores
                         CargarCondicion();
                         CargarProductos();
                         CargarMarcas();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error de inserción", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

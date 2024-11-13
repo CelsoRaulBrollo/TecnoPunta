@@ -33,7 +33,7 @@ namespace ProyectoTaller
             LValidaciones.Text = "";
 
             ValidarLogin(nombre, contraseña);
-            Usuario usuario = UsuarioNegocio.autenticacion(nombre, contraseña);
+            Usuarios usuario = UsuarioNegocio.autenticacion(nombre, contraseña);
 
             if (string.IsNullOrWhiteSpace(LValidaciones.Text))
             {

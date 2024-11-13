@@ -22,7 +22,7 @@ namespace ProyectoTaller.Views
 
         public static Form FormularioActivo;
 
-        public MenuPrincipal(FormularioInicio formularioInicio, Usuario usuario)
+        public MenuPrincipal(FormularioInicio formularioInicio, Usuarios usuario)
         {
             InitializeComponent();
             _formularioInicio = formularioInicio;
@@ -69,7 +69,7 @@ namespace ProyectoTaller.Views
                 BProductos.Visible = true;
                 BVentas.Visible = true;
                 BCliente.Visible = true;
-                BStock.Visible = true;
+            
                 BInformes.Visible = true;
             }
         }
